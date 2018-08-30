@@ -21,11 +21,11 @@ public class TaskB {
     private static void step2(double lowerLim, double upperLim, double delta) {
         for (int i = 1; i < (upperLim-lowerLim)/delta ; i++) {
             if(-2.0 < (lowerLim+i*delta)/2.0 && (lowerLim+i*delta)/2.0 <=-1){
-                System.out.printf("При x/2=%-4.2f α= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs(Math.sin(Math.pow(lowerLim+i*delta,2.0))+2.74)));
+                System.out.printf("При x/2=%-4.2f a= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs(Math.sin(Math.pow(lowerLim+i*delta,2.0))+2.74)));
             }else if(-1 <= (lowerLim+i*delta)/2.0 && (lowerLim+i*delta)/2.0 < 0.2) {
-                System.out.printf("При x/2=%-4.2f α= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs(Math.cos(Math.pow(lowerLim+i*delta,2.0))+2.74)));
+                System.out.printf("При x/2=%-4.2f a= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs(Math.cos(Math.pow(lowerLim+i*delta,2.0))+2.74)));
             }else if((lowerLim+i*delta)/2.0 == 0.2){
-                System.out.printf("При x/2=%-4.2f α= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs((1.0/Math.tan(Math.pow(lowerLim+i*delta,2.0)))+2.74)));
+                System.out.printf("При x/2=%-4.2f a= %e%n", (lowerLim + delta*i)/2.0, Math.log(Math.abs((1.0/Math.tan(Math.pow(lowerLim+i*delta,2.0)))+2.74)));
             }else System.out.printf("При x/2=%-4.2f вычисления не определены%n", (lowerLim + delta*i)/2.0);
         }
     }

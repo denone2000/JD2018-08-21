@@ -45,7 +45,7 @@ public class TaskC {
     private static double[] arrayGen(double lowerLim, double upperLim, int minLenght, int maxLength){
         double[] result = new double[minLenght + (int) (Math.random()*(maxLength - minLenght + 1))];
         for (int i = 0; i < result.length; i++) {
-            result[i] = Math.pow((Math.pow(Math.random()*(upperLim-lowerLim) + lowerLim,2.0)+4.5),1.0/3.0);
+            result[i] = Math.pow((Math.pow(((upperLim-lowerLim)*i/result.length + lowerLim),2.0)+4.5),1.0/3.0);
         }
         return result;
     }
