@@ -33,11 +33,9 @@ public class TaskC {
 
 
     static void mergeSort(double[] array) {
-        while (array.length > 1) {
-            int m = array.length / 2;
-            double[] array1 = Arrays.copyOfRange(array, 0, m - 1);
-            double[] array2 = Arrays.copyOfRange(array, m, array.length);
-            merge(mergeSort(array1, 0, m - 1), mergeSort(array2, m, array2.length));
+        double[] tmp=mergeSort(array,0,array.length-1);
+        for (int i = 0; i < array.length; i++) {
+            array[i]=tmp[i];
         }
     }
 
@@ -45,7 +43,7 @@ public class TaskC {
         if (array.length > 1) {
 
 
-                int m = array.length / 2;
+                int m = (left+right) / 2;
                 double[] array1 = Arrays.copyOfRange(array, 0, m - 1);
                 double[] array2 = Arrays.copyOfRange(array, m, array.length);
                 return merge(mergeSort(array1, 0, m - 1), mergeSort(array2, m, array2.length));
