@@ -1,4 +1,4 @@
-package basumatarau.jd01_01;
+package by.it.basumatarau.jd01_01;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package basumatarau.jd01_03;
+package by.it.basumatarau.jd01_03;
 
 public class Helper {
     /** the method looks up the min value in the array on the input and returns it

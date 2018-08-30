@@ -1,4 +1,4 @@
-package basumatarau.jd01_02;
+package by.it.basumatarau.jd01_02;
 import java.util.*;
 
 public class TaskB {

@@ -1,6 +1,4 @@
-package basumatarau.jd01_03;
-
-import java.util.Scanner;
+package by.it.basumatarau.jd01_03;
 
 public class InOut {
 

@@ -1,4 +1,4 @@
-package basumatarau.jd01_03;
+package by.it.basumatarau.jd01_03;
 
 import org.junit.Test;
 

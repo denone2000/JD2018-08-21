@@ -1,5 +1,4 @@
-package basumatarau.jd01_04;
-import java.util.Random;
+package by.it.basumatarau.jd01_04;
 import java.util.Scanner;
 
 public class TaskB {

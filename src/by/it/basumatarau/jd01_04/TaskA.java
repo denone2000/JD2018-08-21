@@ -1,4 +1,5 @@
-package basumatarau.jd01_04;
+package by.it.basumatarau.jd01_04;
+
 import by.it.basumatarau.jd01_03.Helper;
 import by.it.basumatarau.jd01_03.InOut;
 
