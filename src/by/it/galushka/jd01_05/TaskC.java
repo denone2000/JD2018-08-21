@@ -1,72 +1,33 @@
 package by.it.galushka.jd01_05;
 
+import by.it.galushka.jd01_05.taskC.TaskC1;
+import by.it.galushka.jd01_05.taskC.TaskC2;
+
 public class TaskC {
     public static void main(String[] args) {
 
-        //Task C1
+        //taskC1();
+
+        taskC2();
+
+    }
+
+    private static void taskC1() {
         double[] array = new double[37];
-        getArray(array);
-        printArrayA(array);
-        getArrayB(array);
-        printArrayB(array);
-        findGeoAvr(array);
-
-        //Task C2
-
+        TaskC1.getArrayA(array);
+        TaskC1.printArrayA(array);
+        TaskC1.getArrayB(array);
+        TaskC1.printArrayB(array);
+        TaskC1.findGeoAvr(array);
     }
 
-    private static double[] getArray(double[] array) {
-        int i = 0;
-        for (double x = 5.33; x <= 9; x = x + 0.1) {
-            array[i] = Math.cbrt(x * x + 4.5);
-            i++;
-        }
-        return array;
+    private static void taskC2() {
+        int[] arrayA = new int[31];
+        TaskC2.getArrayA(arrayA);
+        int[] arrayB = TaskC2.getArrayB(arrayA);
+        TaskC2.sort(arrayB);
+        TaskC2.print(arrayA);
+        //TaskC2.print(arrayB);
     }
 
-    private static void printArrayA(double[] array) {
-        for (int j = 0; j < array.length; j++) {
-            System.out.printf("%c[% -3d] = %-10.5f", 'A', j, array[j]);
-            if ((j + 1) % 5 == 0) {
-                System.out.println();
-            }
-        }
-        System.out.println("\n");
-    }
-
-    private static double[] getArrayB(double[] array) {
-        int t = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 3.5)
-                t++;
-        }
-        double[] arrayB = new double[t];
-        t =0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 3.5) {
-                arrayB[t] = array[i];
-                t++;
-            }
-        }
-        return arrayB;
-    }
-
-    private static void printArrayB (double[] array) {
-        for (int j = 0; j < array.length; j++) {
-            System.out.printf("%c[% -3d] = %-10.5f", 'A', j, array[j]);
-            if ((j + 1) % 5 == 0) {
-                System.out.println();
-            }
-        }
-        System.out.println("\n");
-    }
-
-    private static void findGeoAvr(double[] array) {
-        double mul = 1;
-        for (int i = 0; i < array.length; i++) {
-            mul = mul * array[i];
-        }
-        double geoAvr = Math.pow(mul, 1 / (double)(array.length));
-        System.out.println("Среднее геометрическое значение массива B: "+geoAvr);
-    }
 }
