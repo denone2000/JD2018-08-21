@@ -1,6 +1,5 @@
 package by.it.basumatarau.jd01_05;
 
-import java.io.*;
 
 public class TaskC {
     public static void main(String[] args) {
@@ -14,14 +13,14 @@ public class TaskC {
         someArrRearranged = arrayRearranger2(someArr, 10);
         arrayPrintFormat(arraySort(someArrRearranged), 5, "B");
         drawGorgeousTableCol(someArr, "A", 5);
-        drawGorgeousTableRow(someArrRearranged, "B", 4);
+        drawGorgeousTableRow(someArrRearranged, "B", 10);
     }
 
     private static void drawGorgeousTableRow(double[] arr, String name, int row){
-        StringBuffer out = new StringBuffer();
-        StringBuffer[] str = new StringBuffer[row];
+        StringBuilder out = new StringBuilder();
+        StringBuilder[] str = new StringBuilder[row];
         for (int i = 0; i < str.length; i++) {
-            str[i] = new StringBuffer();
+            str[i] = new StringBuilder();
         }
         int currentRow = 0;
         int col = (arr.length%row !=0 ? arr.length/row + 1: arr.length/row);
@@ -37,7 +36,7 @@ public class TaskC {
             if(currentRow == row) currentRow=0;
         }
 
-        for (StringBuffer string:
+        for (StringBuilder string:
                 str) {
             string.append("\u2551"+"\n");
         }
@@ -54,15 +53,13 @@ public class TaskC {
                 aux.append(String.format("%14s", ' ').replace(' ','\u2550') + '\u2566');
             }
         }
-
-        out = new StringBuffer();
+        out = new StringBuilder();
         out.append(aux);
-        for (StringBuffer buffer : str) {
+        for (StringBuilder buffer : str) {
             out.append(buffer);
         }
         String top = new String(aux);
         aux = new StringBuilder();
-
         for (int i = 0; i < col -1; i++) {
             if (i==0){
                 aux.append(String.format('\u255A'+"%14s", ' ').replace(' ','\u2550') + '\u2569');
@@ -73,9 +70,6 @@ public class TaskC {
                 aux.append(String.format("%14s", ' ').replace(' ','\u2550') + '\u2569');
             }
         }
-        out.append(aux);
-        System.out.println(out);
-
         String bottom = new String(aux);
         aux = new StringBuilder();
         for (int i = 0; i < col-1; i++) {
@@ -92,16 +86,14 @@ public class TaskC {
         for (int i = 0; i < str.length-1; i++) {
             str[i].append(aux);
         }
-        out = new StringBuffer();
+        out = new StringBuilder();
         out.append(top);
-        for (StringBuffer stringBuffer : str) {
-            out.append(stringBuffer);
+        for (StringBuilder StringBuilder : str) {
+            out.append(StringBuilder);
         }
         out.append(bottom);
         System.out.println(out);
-        /*
-        System.out.println(string);
-        */
+
     }
 
     private static void drawGorgeousTableCol(double[] arr, String name, int col){
