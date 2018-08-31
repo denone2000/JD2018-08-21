@@ -1,4 +1,4 @@
-package by.it.galushka.jd01_05;
+package by.it.galushka.jd01_05.taskA;
 
 public class TaskA1 {
     public static void taskA1() {
@@ -28,6 +28,7 @@ public class TaskA1 {
     }
 
     private static void printResultA1(double a, double x, double z) {
-        System.out.printf("Результат:%nz = %f%nпри a = %.2f x = %.1f%n", z, a, x);
+        System.out.printf("Результат:%nz = %f%nпри a = %.2f x = %.1f", z, a, x);
+        System.out.println("\n");
     }
 }
