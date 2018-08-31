@@ -7,13 +7,16 @@ public class TaskC {
         arrayPrintFormat(someArr, 5, "A");
         double[] someArrRearranged = arrayRearranger(someArr,3.5);
         arrayPrintFormat(someArrRearranged, 5, "B");
+
         System.out.println("avg value: " + avg(someArrRearranged));
+
         someArr = arrayGen2(103, 450, 31);
         arrayPrintFormat(someArr, 5, "A");
         someArrRearranged = arrayRearranger2(someArr, 10);
         arrayPrintFormat(arraySort(someArrRearranged), 5, "B");
         drawGorgeousTableCol(someArr, "A", 5);
         drawGorgeousTableRow(someArrRearranged, "B", 10);
+
     }
 
     private static void drawGorgeousTableRow(double[] arr, String name, int row){
@@ -45,12 +48,12 @@ public class TaskC {
 
         for (int i = 0; i < col-1; i++) {
             if (i==0){
-                aux.append(String.format('\u2554'+"%14s", ' ').replace(' ','\u2550') + '\u2566');
+                aux.append(String.format('\u2554'+"%14s", ' ').replace(' ','\u2550')+'\u2566');
             }
             if (i==col-2){
-                aux.append(String.format("%14s", ' ').replace(' ','\u2550') + '\u2557' + '\n');
+                aux.append(String.format("%14s", ' ').replace(' ','\u2550')+'\u2557' + '\n');
             }else {
-                aux.append(String.format("%14s", ' ').replace(' ','\u2550') + '\u2566');
+                aux.append(String.format("%14s", ' ').replace(' ','\u2550')+'\u2566');
             }
         }
         out = new StringBuilder();
@@ -93,7 +96,6 @@ public class TaskC {
         }
         out.append(bottom);
         System.out.println(out);
-
     }
 
     private static void drawGorgeousTableCol(double[] arr, String name, int col){
@@ -166,6 +168,7 @@ public class TaskC {
         }
         return Math.pow(result, Math.pow(arr.length, -1.0));
     }
+
     private static double[] arrayRearranger(double[] array, double threshold){
         int newLen = 0;
         boolean[] matcher = new boolean[array.length];
@@ -187,7 +190,7 @@ public class TaskC {
     }
     private static void arrayPrintFormat(double[] array, int col, String name){
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("%s[% -3d] = %-4.1f   ", name, i, array[i]);
+            System.out.printf("%s[% -3d] = %-6.5f   ", name, i, array[i]);
             if((i+1)%col==0) System.out.print('\n');
         }
         System.out.print('\n');
@@ -200,6 +203,7 @@ public class TaskC {
         }
         return result;
     }
+
     private static double[] arrayGen2(double lowerLim, double upperLim, int length){
         double[] result = new double[length];
         for (int i = 0; i < result.length; i++) {
