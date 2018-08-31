@@ -27,6 +27,6 @@ public class TaskA2 {
     }
 
     private static void printResultA2(double a, double b, double y) {
-        System.out.printf("Результат:%ny = %f%nпри a = %.2f b = %.3f", y, a, b);
+        System.out.printf("Результат:%ny = %f%nпри a = %.2f b = %.3f%n", y, a, b);
     }
 }

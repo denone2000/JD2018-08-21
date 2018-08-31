@@ -4,5 +4,6 @@ public class TaskA {
     public static void main(String[] args) {
         TaskA1.taskA1();
         TaskA2.taskA2();
+        TaskA3.step1A3();
     }
 }
