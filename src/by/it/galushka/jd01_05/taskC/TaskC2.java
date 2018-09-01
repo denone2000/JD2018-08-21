@@ -47,7 +47,6 @@ public class TaskC2 {
                 tmp++;
             }
         }
-        System.out.println(tmp);
         int[] arrayB = new int[tmp];
         tmp = 0;
         for (int i = 0; i < arrayA.length; i++) {
@@ -59,7 +58,7 @@ public class TaskC2 {
         return arrayB;
     }
 
-    public static void print(int[] array) {
+    public static void printf(int[] array, int colomnCount, String nameIndex) {
         String leftTop = "┏━━━━━━━━━━━━━┳";
         String midleTop = "━━━━━━━━━━━━━┳";
         String rightTop = "━━━━━━━━━━━━━┓%n";
@@ -69,14 +68,14 @@ public class TaskC2 {
         String leftBottom = "┗━━━━━━━━━━━━━┻";
         String midleBottom = "━━━━━━━━━━━━━┻";
         String rightBottom = "━━━━━━━━━━━━━┛%n";
-        String name = "A";
+        String name = nameIndex;
         int min = 0;
-        int col = 5;
+        int col = colomnCount;
         int max = array.length - 1;
         int lastRow = (array.length)%col;
         for (int i = 0; i < array.length; i++) {
 
-            // Первый ряд
+            // Первый ряд и верхняя граница таблицы
             if (i == min) {
                 for (int j = min; j < col; j++) {
                     if (j == min) {
@@ -121,36 +120,45 @@ public class TaskC2 {
 
             // Последний ряд
             if (i + lastRow-1 == max) {
+                for (int k = min; k < min + col; k++) {
+                    if (k == min) {
+                        System.out.printf(leftMidle);
+                    } else if (k == min + col - 1) {
+                        System.out.printf(rightMidle);
+                        System.out.print("┃");
+                    } else {
+                        System.out.printf(midleMidle);
+                    }
+                }
                 for (int j = i; j <= max; j++) {
                     System.out.printf(" %s[%-2d]=%3d ┃", name, j, array[j]);
-                    if (i + col - 1 != max){
-                        for (int k = i + col - 1; k < i + col*2; k++) {
-                            if (k == i + col-1) {
-                                System.out.printf(leftMidle);
-                            } else if (k == i + col * 2 - 1) {
-                                System.out.printf(rightMidle);
-                                System.out.print("┃");
-                            } else {
-                                System.out.printf(midleMidle);
-                            }
-                        }
-                    }
                     if (j == max) {
                         System.out.println();
                     }
                 }
-                for (int j = i; j <= i+col-1; j++) {
-                    if (j == i) {
-                        System.out.printf(leftBottom);
-                    } else if (j == max && max % col == 0) {
-                        System.out.printf(rightBottom);
-                    } else if (j == i + col - 1){
-                        System.out.printf(rightBottom);
-                    } else {
-                        System.out.printf(midleBottom);
-                    }
-                }
             }
         }
+
+        // Нижняя граница таблицы
+        for (int j = 0; j < col; j++) {
+            if (j == 0) {
+                System.out.printf(leftBottom);
+            } else if (j == col - 1){
+                System.out.printf(rightBottom);
+            } else {
+                System.out.printf(midleBottom);
+            }
+        }
+    }
+
+    public static void printElements(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(i+":"+array[i]+" ");
+            if ((i+1)%5 == 0) {
+                System.out.println();
+            }
+        }
+        System.out.println(array.length);
+        System.out.println("\n");
     }
 }

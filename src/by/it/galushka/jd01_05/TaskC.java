@@ -6,7 +6,7 @@ import by.it.galushka.jd01_05.taskC.TaskC2;
 public class TaskC {
     public static void main(String[] args) {
 
-        //taskC1();
+        taskC1();
 
         taskC2();
 
@@ -26,8 +26,8 @@ public class TaskC {
         TaskC2.getArrayA(arrayA);
         int[] arrayB = TaskC2.getArrayB(arrayA);
         TaskC2.sort(arrayB);
-        TaskC2.print(arrayA);
-        //TaskC2.print(arrayB);
+        TaskC2.printf(arrayA, 5, "A");
+        TaskC2.printf(arrayB, 3, "B");
     }
 
 }
