@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class TaskC {
     public static void main(String[] args) {
-        int n=arrayLength();
-        double[] array = new double[n];//Тесты не хотят проходить проверку на ввод диапазона массива
-        //double[] array = new double[25];
+       // int n=arrayLength();
+      //  double[] array = new double[n];//Тесты не хотят проходить проверку на ввод диапазона массива
+        double[] array = new double[25];
         fillArray(array);
         printArray(array, "M", 5);
         System.out.println();
