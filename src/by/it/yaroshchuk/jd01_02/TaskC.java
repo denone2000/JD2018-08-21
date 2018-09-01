@@ -14,10 +14,6 @@ public class TaskC {
     }
 
     private static int[][] step1(int n) {
-        /*int [][]mas = fillArray(n);
-        while(checkArray(mas,n) == false){
-            fillArray(n);
-        }*/
         int[][] mas = new int[n][n];
         boolean checkMin = false;
         boolean checkMax = true;
@@ -45,33 +41,6 @@ public class TaskC {
 
         return mas;
     }
-
-   /* private static int[][] fillArray(int n){
-        int[][]mas = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                mas[i][j] = (int) Math.round((Math.random() * (n * 2) - n));
-            }
-        }
-        return mas;
-    }
-
-    private static boolean checkArray(int [][] mas, int n){
-        boolean checkMin = false;
-        boolean checkMax = false;
-        boolean check = false;
-        for (int[] element : mas) {
-            for (int value : element) {
-                if (value == -n)
-                    checkMin = true;
-                if (value == n)
-                    checkMax = true;
-            }
-        }
-        if(checkMax == true && checkMin == true)
-            check = true;
-        return check;
-    }*/
 
     private static int step2(int[][] mas) {
         int first = -1, last = -1;

@@ -1,9 +1,8 @@
 package by.it.yaroshchuk.jd01_04;
 
-import by.it.yaroshchuk.jd01_03.Helper;
-import by.it.yaroshchuk.jd01_03.InOut;
-
 import java.util.Scanner;
+import by.it.yaroshchuk.jd01_03.InOut;
+import by.it.yaroshchuk.jd01_03.Helper;
 
 /**
  * Created by user on 28.08.2018.

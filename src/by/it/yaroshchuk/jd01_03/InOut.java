@@ -4,14 +4,14 @@ package by.it.yaroshchuk.jd01_03;
  * Created by user on 25.08.2018.
  */
 public class InOut {
-    
+
     public static double[] getArray(String line){
         String[] strVar = line.trim().split(" ");
         double[] res = new double [strVar.length];
         for (int i = 0; i < strVar.length; i++) {
             res[i] = Double.parseDouble(strVar[i]);
         }
-        return res;        
+        return res;
     }
 
     static void printArray(double[ ] arr){

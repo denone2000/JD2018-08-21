@@ -1,7 +1,6 @@
 package by.it.yaroshchuk.jd01_03;
 
 import java.util.Scanner;
-
 /**
  * Created by user on 25.08.2018.
  */
