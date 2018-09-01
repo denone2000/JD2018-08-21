@@ -34,7 +34,6 @@ public class TaskB {
 
     public static void step2()
     {
-        double x=12.1;
         double y[]=new double[15];
         double b=0.0;
         int i=0;
