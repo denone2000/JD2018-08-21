@@ -5,10 +5,6 @@ import java.util.regex.Pattern;
 
 public class TaskB1 {
     public static void main(String[] args) {
-        /*TaskB1.Вывести в консоль все слова текста,
-        начинающихся согласной и заканчивающихся гласной буквой
-        (нужно сделать для проверки этого условия приватный метод
-        без regex).*/
         StringBuilder sb = new StringBuilder(Poem.text);
         Pattern compile = Pattern.compile("[А-яЁё]+");
         Matcher matcher = compile.matcher(sb);
