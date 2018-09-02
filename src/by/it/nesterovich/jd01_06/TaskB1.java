@@ -29,6 +29,7 @@ public class TaskB1 {
             if (words[i].length() > 1) {
                 char firstChar = words[i].charAt(0);
                 char lastChar = words[i].charAt(words[i].length() - 1);
+
                 if ((lastChar == 'а' || lastChar == 'е' || lastChar == 'ё' || lastChar == 'и' || lastChar == 'о' ||
                         lastChar == 'у' || lastChar == 'ы' || lastChar == 'э' || lastChar == 'ю' || lastChar == 'я') &&
                         (firstChar == 'й' || firstChar == 'ц' || firstChar == 'к' || firstChar == 'н' || firstChar == 'г' || firstChar == 'ш' || firstChar == 'щ' ||
