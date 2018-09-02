@@ -10,7 +10,6 @@ public class TaskA2 {
     private static int[] counts = {};
 
     private static void process(String word) {
-
         for (int i = 0; i < words.length; i++) {
             if (word.equals(words[i])) {
                 counts[i]++;
