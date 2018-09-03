@@ -7,7 +7,7 @@ public class TaskB2 {
     public static void main(String[] args) {
         StringBuilder text = new StringBuilder(Poem.text);
 
-        Pattern splitter = Pattern.compile("(\\.(?!\\.))");
+        Pattern splitter = Pattern.compile("([\\.](?![\\.]))");
         String[] splitStrings = splitter.split(text);
 
         Pattern replacer = Pattern.compile("([^а-яА-ЯёЁ]+)");
@@ -17,7 +17,6 @@ public class TaskB2 {
             matcherObj.reset(splitStrings[i]);
             splitStrings[i] = matcherObj.replaceAll(" ").trim();
         }
-
         splitStrings=arraySort(splitStrings);
 
         StringBuilder string = new StringBuilder();
@@ -26,7 +25,6 @@ public class TaskB2 {
         }
         System.out.println(string);
     }
-
     private static String[] arraySort(String[] array) {
         return mergeSort(array, 0, array.length-1);
     }
@@ -40,7 +38,6 @@ public class TaskB2 {
             return merge(left, right);
         }
     }
-
     private static String[] merge(String[] left, String[] right) {
         int ptr1= 0, ptr2=0, currentPtr =0;
         String[] result = new String[left.length+right.length];
