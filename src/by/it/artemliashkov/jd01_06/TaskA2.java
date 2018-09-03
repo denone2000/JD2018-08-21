@@ -12,7 +12,7 @@ public class TaskA2 {
     public static void main(String args[])
     {
         StringBuilder sb=new StringBuilder(Poem.text);
-        Pattern compile=Pattern.compile("[a-яА-ЯёЁ]{4,}");
+        Pattern compile=Pattern.compile("[a-яА-ЯёЁ]+");
         Matcher mathcer=compile.matcher(sb);
         while(mathcer.find())
         {

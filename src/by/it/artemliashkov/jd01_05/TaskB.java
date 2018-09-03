@@ -1,5 +1,8 @@
 package by.it.artemliashkov.jd01_05;
 
+import static java.lang.Math.*;
+import static java.lang.Math.abs;
+
 public class TaskB {
     public   static void main(String args[])
     {
@@ -34,38 +37,21 @@ public class TaskB {
 
     public static void step2()
     {
-        double y[]=new double[15];
-        double b=0.0;
-        int i=0;
-        boolean isTrue=false;
-        for(double a=-2.75;a<=0.75;a=a+0.25)
-        {
-            isTrue=false;
-            if((a>-2)&&(a<=-1))
-            {
-                isTrue=true;
-                b=Math.sin(Math.pow(a,2));
+        double a;
+        double b;
+        for (double x = -5.5; x < 2; x = x + 0.5) {
+            if (x / 2 > -2 && x / 2 <= -1) {
+                b = sin(x * x);
+            } else if (x / 2 > -1 && x / 2 < 0.2) {
+                b = cos(x * x);
+            } else if (x / 2 == 0.2) {
+                b = 1 / tan(x * x);
+            } else {
+                System.out.println("вычисления не определены");
+                continue;
             }
-            if((a>-1)&&(a<0.2))
-            {
-                isTrue=true;
-                b=Math.cos(Math.pow(a,2));
-            }
-            if(a==0.2)
-            {
-                isTrue=true;
-                b=1/Math.tan(Math.pow(a,2));
-            }
-            if(isTrue) {
-                y[i] = Math.abs(Math.log10(b) + 2.74);
-                System.out.printf("При a=%6.2f y=%g",a,y[i]);
-                System.out.println();
-            }
-            else {
-                System.out.printf("При a=%6.2f результат не определен", a);
-                System.out.println();
-            }
-            i++;
+            a = log10(abs(b + 2.74));
+            System.out.printf("При x/2 =%4.2f a =%16.12f\n", x / 2, a);
         }
     }
 }
