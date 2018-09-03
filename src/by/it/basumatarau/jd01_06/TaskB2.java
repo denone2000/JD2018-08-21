@@ -7,7 +7,7 @@ public class TaskB2 {
     public static void main(String[] args) {
         StringBuilder text = new StringBuilder(Poem.text);
 
-        Pattern splitter = Pattern.compile("([\\.](?![\\.]))");
+        Pattern splitter = Pattern.compile("((?<![\\.])[\\.](?![\\.]))");
         String[] splitStrings = splitter.split(text);
 
         Pattern replacer = Pattern.compile("([^а-яА-ЯёЁ]+)");
