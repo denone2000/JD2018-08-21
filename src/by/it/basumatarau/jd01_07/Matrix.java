@@ -4,29 +4,35 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Matrix extends AbstractVar{
-    double[][] value;
+    private double[][] value;
     public Matrix(double[][] value){
         this.value = new double[value.length][value[0].length];
-        double[][] test = new double[value.length][value[0].length];
 
-        System.arraycopy(value, 0, test, 0, value.length);
+        System.arraycopy(value, 0, this.value, 0, value.length);
         for (int i = 0; i < value.length; i++) {
-            System.arraycopy(value[i], 0, test[i], 0, value[i].length);
+            System.arraycopy(value[i], 0, this.value[i], 0, value[i].length);
         }
-
+        /*
         for (int i = 0; i < value.length; i++) {
             for (int j = 0; j < value[0].length; j++) {
                 this.value[i][j]=value[i][j];
             }
         }
+        */
     }
     public Matrix(Matrix anotherMatrix){
         this.value = new double[anotherMatrix.value.length][anotherMatrix.value[0].length];
+        System.arraycopy(anotherMatrix.value, 0 , this.value, 0, anotherMatrix.value.length);
+        for (int i = 0; i < anotherMatrix.value[0].length; i++) {
+            System.arraycopy(anotherMatrix.value[i], 0, this.value[i], 0, anotherMatrix.value.length);
+        }
+        /*
         for (int i = 0; i < this.value.length; i++) {
             for (int j = 0; j < this.value[0].length; j++) {
                     this.value[i][j]=anotherMatrix.value[i][j];
             }
         }
+        */
     }
     public Matrix(String strMatrix){
         Pattern NumLine= Pattern.compile("(\\{[^{}]+\\})");
