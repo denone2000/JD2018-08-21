@@ -31,36 +31,26 @@ public class TaskB2 {
     }
 
     private static void printGroup(String[] text) {
-        int i = 1;
         for (String s : text) {
             System.out.println(s);
-            i++;
         }
     }
 
     private static void getString(String[] text) {
         for (int i = 0; i < text.length; i++) {
             String tmp = text[i];
-            //tmp.trim().split("\\s\\p{Punct}]");
-            //System.out.println(tmp);
             text[i] = splitAndConcat(tmp);
         }
     }
 
     public static String splitAndConcat(String tmp) {
         String[] array = tmp.split("\\p{Punct}?\\s\\p{Punct}?\\s?");
-        /*int k = 0;
-        for (String s : array) {
-            System.out.println(k + ": " + s);
-            k++;
-        }*/
         String result = "";
         for (int i = 0; i < array.length; i++) {
             String trim = array[i].trim();
             result = result.concat(trim + " ");
         }
         String trim = result.trim();
-        //System.out.println(result);
         return trim;
     }
 

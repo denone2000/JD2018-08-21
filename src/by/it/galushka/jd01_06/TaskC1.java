@@ -1,7 +1,5 @@
 package by.it.galushka.jd01_06;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskC1 {
@@ -22,9 +20,11 @@ public class TaskC1 {
     }
 
     private static void printArray(String[] array) {
-        for (String string : array) {
-            System.out.println(string);
+        String text = "";
+        for (int i = 0; i < array.length; i++) {
+            text = text + array[i] + "\n";
         }
+        System.out.println(text);
     }
 
     private static int findMaxLength(String[] array) {
