@@ -8,7 +8,7 @@ public class Task7 {
     public static void main(String[] args) {
         int[] arrayA = new int[31];
         fillArray(arrayA);
-        System.out.println("\u2554");
+
         printArray(arrayA, "M", 5);
         System.out.println();
 
@@ -24,21 +24,91 @@ public class Task7 {
     }
 
     private static void printArray(int[] array, String name, int columnCount) {
+        System.out.println("Massiv A (index to rows)");
+        System.out.print("\u250c");
+        for (int i = 0; i < columnCount; i++) {
+            System.out.print("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
+        }
+        System.out.println("\u2510");
+        System.out.print("\u2502");
+        for (int i = 0; i < columnCount; i++) {
+            System.out.print("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
+        }
+        System.out.println("\u2502");
+        System.out.print("\u2502");
+
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("%s[% 3d]=%-6d", name, i, array[i]);
-            if ((i + 1) % columnCount == 0 || i + 1 == array.length) {
-                System.out.println();
+            System.out.print("");
+            System.out.printf("\u2502%s[% 3d]=%-4d\u2502", name, i, array[i]);
+            if ((i + 1) % columnCount == 0) {
+                System.out.println("\u2502");
+                System.out.print("\u2502");
+                for (int k = 0; k < columnCount; k++) {
+                    System.out.print("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
+                }
+                System.out.println("\u2502");
+                System.out.print("\u2502");
+                for (int k = 0; k < columnCount; k++) {
+                    System.out.print("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
+                }
+                System.out.println("\u2502");
+                System.out.print("\u2502");
             }
         }
+
+        System.out.println("\u2502");
+        System.out.print("\u2502");
+        for (int k = 0; k < columnCount; k++) {
+            System.out.print("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
+        }
+        System.out.println("\u2502");
+        System.out.print("\u2514");
+        for (int i = 0; i < columnCount; i++) {
+            System.out.print("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
+        }
+        System.out.println("\u2518");
     }
 
     private static void printArrayColumn(int[] array, String name, int rows) {
-        for (int j = 0; j < rows; j++) {
-            for (int i = j; i < array.length; i+=rows) {
-                System.out.printf("%s[% 3d]=%-6d", name, i, array[i]);
-            }
-            System.out.println();
+        System.out.println("Massiv B (index to cols)");
+        int lengthRows;
+        if (array.length % rows == 0) {
+            lengthRows = array.length / rows;
+        } else {
+            lengthRows = array.length / rows + 1;
         }
+        System.out.print("\u250c");
+        for (int i = 0; i < lengthRows; i++) {
+            System.out.print("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
+        }
+        System.out.println("\u2510");
+        for (int j = 0; j < rows; j++) {
+            System.out.print("\u2502");
+            for (int i = 0; i < lengthRows; i++) {
+                System.out.print("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
+            }
+            System.out.println("\u2502");
+            System.out.print("\u2502");
+
+            for (int i = j; i < array.length; i += rows) {
+                System.out.printf("\u2502%s[% 3d]=%-4d\u2502", name, i, array[i]);
+//                if (array.length<lengthRows*rows){  //определить условие или что-то другое
+//                    System.out.print("\u2502"+"           "+"\u2502");
+//                }
+            }
+
+            System.out.println("\u2502");
+            System.out.print("\u2502");
+            for (int i = 0; i < lengthRows; i++) {
+                System.out.print("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
+            }
+            System.out.println("\u2502");
+        }
+        System.out.print("\u2514");
+        for (int i = 0; i < lengthRows; i++) {
+            System.out.print("\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500");
+        }
+        System.out.println("\u2518");
     }
 
     private static int[] selectionValues(int[] array) {
