@@ -11,5 +11,8 @@ public class Runner {
         String vectStr = "{1.5, 2.2, 3.2, 4.0}";
         Vector vect = new Vector(vectStr);
         System.out.println(vect);
+        String matrStr= "{{1.0, 2.3, 4.2},{2.2, 3.3, 4.4}}";
+        Matrix matr = new Matrix(matrStr);
+        System.out.println(matr);
     }
 }
