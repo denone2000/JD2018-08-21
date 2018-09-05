@@ -12,8 +12,8 @@ public class Vector extends AbstractVar {
     }
 
     public Vector(String strVector){
-      strVector.replace('{', ' ').replace('}',' ').trim();
-      String [] strArray = strVector.split(",");
+      strVector = strVector.replace('{', ' ').replace('}',' ').trim();
+      String [] strArray = strVector.split(",\\s*");
       value = new double[strArray.length];
         for (int i = 0; i <strArray.length ; i++) {
             value[i] = Double.parseDouble(strArray[i]);

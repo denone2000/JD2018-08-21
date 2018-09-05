@@ -18,8 +18,19 @@ public class Runner {
         Vector vector1 = new Vector(vector);
         System.out.println(vector1);
 
-        Vector vector2 = new Vector("{1,2,4}");
+        Vector vector2 = new Vector("{1, 2, 4}");
         System.out.println(vector2);
+
+        double[][] mas1 = {{1,2},{3,4}};
+
+        Matrix matrix = new Matrix(mas1);
+        System.out.println(matrix);
+
+        Matrix matrix1 = new Matrix(matrix);
+        System.out.println(matrix1);
+
+        Matrix matrix2 = new Matrix("{{1,2},{3,4}}");
+        System.out.println(matrix2);
 
     }
 }
