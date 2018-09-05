@@ -1,6 +1,10 @@
 package by.it.litvin.jd01_07;
 
-public class AbstractVar {
+abstract class AbstractVar {
 
+    @Override
+    public String toString() {
+        return "AbstractVar";
     }
+}
 

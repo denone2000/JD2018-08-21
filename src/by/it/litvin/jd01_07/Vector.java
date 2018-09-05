@@ -1,18 +1,29 @@
 package by.it.litvin.jd01_07;
 
-public class Vector extends AbstractVar{
+public class Vector extends AbstractVar {
     private double[] value;
 
-    public Vector(String strVector){
 
-        strVector=strVector.replace('{', ' ').replace('}', ' ').trim();
-        String [] strArray = strVector.split(",\\s*");
+    public Vector(String strVector) {
+
+        strVector = strVector.replace('{', ' ').replace('}', ' ').trim();
+        String[] strArray = strVector.split(",\\s*");
         value = new double[strArray.length];
-        for (int i = 0; i <strArray.length ; i++) {
-            value[i]=Double.parseDouble(strArray[i]);
+        for (int i = 0; i < strArray.length; i++) {
+            value[i] = Double.parseDouble(strArray[i]);
 
 
         }
+    }
+
+    public Vector(double[] value) {
+        this.value = value;
+
+
+    }
+
+    public Vector(Vector vector){
+        this.value=vector.value;
     }
 
     @Override
@@ -21,7 +32,7 @@ public class Vector extends AbstractVar{
         String delimiter = "";
         for (double currentValue : value) {
             result.append(delimiter).append(currentValue);
-            delimiter=", ";
+            delimiter = ", ";
 
 
         }

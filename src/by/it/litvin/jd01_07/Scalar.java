@@ -8,15 +8,18 @@ class Scalar extends AbstractVar {
     }
 
     Scalar(Scalar otherScalar){
+
         value = otherScalar.value;
     }
 
     public Scalar(String strValue) {
+
         value=Double.parseDouble(strValue);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return Double.toString(value);
     }
 }
