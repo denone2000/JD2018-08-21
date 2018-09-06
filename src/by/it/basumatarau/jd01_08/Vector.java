@@ -16,16 +16,10 @@ public class Vector extends Var {
         }
     }
     public Vector(double[] value){
-        this.value = new double[value.length];
-        for (int i = 0; i < this.value.length; i++) {
-            this.value[i] = value[i];
-        }
+        this.value = Arrays.copyOf(value, value.length);
     }
     public Vector(Vector anotherVect){
-        this.value = new double[anotherVect.value.length];
-        for (int i = 0; i < this.value.length; i++) {
-            this.value[i] = anotherVect.value[i];
-        }
+        this.value = Arrays.copyOf(anotherVect.value, anotherVect.value.length);
     }
 
     @Override
