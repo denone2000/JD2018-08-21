@@ -17,7 +17,6 @@ class Matrix extends  AbstractVar {
 
     Matrix (String str){
         int occurrencesCount = str.length() - str.replace("}","").length() - 1;
-        //String regex = "([0-9]*[.])?[0-9]+";
         Pattern pattern = Pattern.compile("([0-9]*[.])?[0-9]+");
         StringBuilder sb = new StringBuilder();
         Matcher matcher = pattern.matcher(str);
