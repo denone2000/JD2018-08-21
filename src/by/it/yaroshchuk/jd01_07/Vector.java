@@ -17,7 +17,15 @@ class Vector extends AbstractVar {
     }
 
     Vector(String str){
-
+        /*String regex = "([0-9]*[.])?[0-9]+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (matcher.find()){
+            sb.append(matcher.group());
+            i++;
+        }*/
     }
 
     @Override
