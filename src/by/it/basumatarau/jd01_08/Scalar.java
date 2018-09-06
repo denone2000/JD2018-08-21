@@ -2,6 +2,46 @@ package by.it.basumatarau.jd01_08;
 
 public class Scalar extends Var {
     private double value;
+    public double getVal(){
+        return this.value;
+    }
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar){
+            return new Scalar(this.value + ((Scalar) other).value);
+        }else{
+            return other.add(this);
+        }
+    }
+
+    @Override
+    public Var sub(Var other) {
+        if (other instanceof Scalar){
+            return new Scalar(this.value - ((Scalar) other).value);
+        }else{
+            Scalar negScalar = new Scalar(-1);
+            return this.mul(negScalar).add(other);
+        }
+    }
+
+    @Override
+    public Var mul(Var other) {
+        if (other instanceof Scalar){
+            return new Scalar(this.value*((Scalar) other).value);
+        }else{
+            return other.mul(this);
+        }
+    }
+
+    @Override
+    public Var div(Var other) {
+        if (other instanceof Scalar){
+            return new Scalar(this.value/((Scalar) other).value);
+        }else {
+            return other.mul(this);
+        }
+    }
+
     public Scalar(double value){
         this.value = value;
     }
