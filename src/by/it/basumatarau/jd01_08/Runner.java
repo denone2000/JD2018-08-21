@@ -15,11 +15,12 @@ public class Runner {
         System.out.println(v.sub(v));
         System.out.println(v.mul(v));
         System.out.println(v.div(v));
-        /*
+
         System.out.println(m.add(m));
         System.out.println(m.sub(m));
         System.out.println(m.mul(m));
         System.out.println(m.div(m));
-        */
+
+        System.out.println(s.sub(m));
     }
 }

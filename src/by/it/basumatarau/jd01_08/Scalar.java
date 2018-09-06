@@ -20,7 +20,7 @@ public class Scalar extends Var {
             return new Scalar(this.value - ((Scalar) other).value);
         }else{
             Scalar negScalar = new Scalar(-1);
-            return this.mul(negScalar).add(other);
+            return negScalar.mul(other).add(this);
         }
     }
 
