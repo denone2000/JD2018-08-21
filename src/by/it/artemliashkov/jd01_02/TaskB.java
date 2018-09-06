@@ -19,15 +19,17 @@ public class TaskB {
         for (int i = 0; i < mas.length; i++) {
             mas[i]=scanner.nextInt();
         }
-        step1(mas);
+        step1();
     }
 
-    public static void step1(int[] mas) {
-        for (int i = 0; i < mas.length; i++) {
-            System.out.print(mas[i]+" ");
-            if(i % 5 == 4)
-                System.out.println();
+    private static void step1() {
+        for (int i = 0; i <= 25; i++) {
+            System.out.print(i + " ");
+            if (i % 5 == 0) System.out.println();
+
         }
+
+
     }
 
     public static void step2(int month) {
