@@ -22,7 +22,8 @@ class Scalar extends Var {
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
-            double result=this.value+((Scalar) other).value;
+            Scalar otherScalar=(Scalar) other;
+            double result=this.value+otherScalar.value;
             return new Scalar(result);
         }
         else
