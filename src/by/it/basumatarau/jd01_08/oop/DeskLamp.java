@@ -1,78 +1,77 @@
 package by.it.basumatarau.jd01_08.oop;
 
 public class DeskLamp extends Lamp {
-    private boolean isPlugged;
-    private boolean isOnTheDesk;
+    private boolean isPluggedIn;
+    private boolean isOnDesk;
     private float brightness;
+    private static int counter=0;
+    final int ID = counter++;
 
     public DeskLamp(){
-        System.out.println("DeskLamp default constructor");
-        //this.color = LampColor.WHITE;
-        super.changeColor(LampColor.WHITE);
+        super();
         isTurnedOn = false;
         powerCapacity = 40;
-        isPlugged = false;
-        isOnTheDesk = false;
+        isPluggedIn = false;
+        isOnDesk = false;
         brightness = 0.5f;
+        System.out.println("DeskLamp#"+ID+" of default configuration has been instantiated");
     }
-    public DeskLamp(LampColor color){
-        this();
-        System.out.println("DeskLamp(LampColor color) constructor");
-        //this.color = color;
-        super.changeColor(LampColor.WHITE);
+    public DeskLamp(LightBulbColor color){
+        super(color);
+        isTurnedOn = false;
+        powerCapacity = 40;
+        isPluggedIn = false;
+        isOnDesk = false;
+        brightness = 0.5f;
+        System.out.println("DeskLamp#"+ID+" with a lamp of " + color + " color has been instantiated");
     }
-    public DeskLamp(LampColor color, int capacity, boolean isTurnedOn){
+    public DeskLamp(LightBulbColor color, int capacity, boolean isTurnedOn){
         this(color);
-        System.out.println("DeskLamp(LampColor color, int capacity, boolean isTurnedOn) constructor");
-        this.isOnTheDesk = true;
-        this.isPlugged = true;
+        this.isOnDesk = true;
+        this.isPluggedIn = true;
         this.isTurnedOn = isTurnedOn;
         this.powerCapacity = capacity;
+        System.out.println("DeskLamp#"+ID+" with light bulb of " +color +"color, " +capacity+" W power capacity has been instantiated" + (isTurnedOn?"(and it's already turned on)": "(and it's turned off)"));
     }
     @Override
-    public void changeColor(LampColor color){
+    public void setLightBulbColor(LightBulbColor color){
+        System.out.println("Before changing the light bulb of the DeskLamp#"+ID+" for another one of " + color + " color the Lamp must be turned off");
         this.turnOff();
-        super.changeColor(color);
+        super.setLightBulbColor(color);
+        System.out.println("After changing the light bulb the DeskLamp#"+ID+" is turned on");
         this.turnOn();
     }
 
     @Override
     public void goBrighter(){
         if(this.brightness>=1.0){
-            System.out.println("Lamp is already set at full brightness");
+            System.out.println("DeskLamp#"+ID+" is already at full brightness");
         }else{
             this.brightness+=0.1f;
+            System.out.println("DeskLamp#"+ID+" brightness has been set at " + brightness);
         }
     }
     @Override
     public void goDarker(){
         if(this.brightness<=0.0f){
-            System.out.println("Lamp is already set at minimum brightness");
+            System.out.println("DeskLamp#"+ID+" is already at minimum brightness");
         }else{
-            System.out.println("Lower brightness has been set to a Lamp");
             this.brightness-=0.1f;
+            System.out.println("DeskLamp#"+ID+" brightness has been set at " + brightness);
         }
     }
-
-    /*void playMusic(){
-        System.out.println("Plays some music");
-    }
-    void playMusic(String songName){
-        System.out.println("Plays "+ songName);
-    }*/
 
     @Override
     public void turnOff() {
         super.turnOff();
-        System.out.println("DescLamp has been turned off and unplugged");
-        if(isPlugged) {isPlugged=false;}
+        if(isPluggedIn) {isPluggedIn=false;}
+        System.out.println("DescLamp#"+ID+" has been turned off and unplugged");
     }
     @Override
     public void turnOn() {
-        System.out.println("DescLamp is going to be turned on: and punt on the desk and plugged (if not)");
-        if(!isOnTheDesk) {isOnTheDesk=true;}
-        if(!isPlugged) {isPlugged=true;}
-        if(!isTurnedOn) {isTurnedOn=true;}
+        if(!isOnDesk) {isOnDesk=true;}
+        if(!isPluggedIn) {isPluggedIn=true;}
+        System.out.println("DescLamp#"+ID+" is going to be turned on (it has been plugged in and installed on table)");
         super.turnOn();
     }
 }
