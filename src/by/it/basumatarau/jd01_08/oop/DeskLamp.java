@@ -6,6 +6,7 @@ public class DeskLamp extends Lamp {
     private byte brightness;
     private static int counter=1;
     private final int ID = counter++;
+    private final double POWER_CABLE_LENGTH = getDistanceToPowerOutlet();
 
     public DeskLamp(){
         super();
@@ -16,8 +17,8 @@ public class DeskLamp extends Lamp {
         brightness = 50;
         System.out.println("DeskLamp#"+ID+" of default configuration has been instantiated");
     }
-    public DeskLamp(LightBulbColor color){
-        super(color);
+    public DeskLamp(LightBulbColor color, Location location){
+        super(color, location);
         isTurnedOn = false;
         powerCapacity = 40;
         isPluggedIn = false;
@@ -25,13 +26,23 @@ public class DeskLamp extends Lamp {
         brightness = 50;
         System.out.println("DeskLamp#"+ID+" with a lamp of " + color + " color has been instantiated");
     }
-    public DeskLamp(LightBulbColor color, int capacity, boolean isTurnedOn){
-        this(color);
+    public DeskLamp(LightBulbColor color, Location location, int capacity, boolean isTurnedOn){
+        this(color, location);
         isOnDesk = true;
         isPluggedIn = true;
         this.isTurnedOn = isTurnedOn;
         powerCapacity = capacity;
         System.out.println("DeskLamp#"+ID+" with light bulb of " +color +"color, " +capacity+" W power capacity has been instantiated" + (isTurnedOn?"(and it's already turned on)": "(and it's turned off)"));
+    }
+    @Override
+    public void move(Location anotherLocation) {
+        System.out.println("Trying to move the DeskLamp#"+ID+" to another place");
+        if(POWER_CABLE_LENGTH<Math.sqrt(Math.pow(anotherLocation.xCoord, 2.0)+ Math.pow(anotherLocation.yCoord, 2.0)+ Math.pow(anotherLocation.zCoord, 2.0))){
+            System.out.println("Power cable is too short to move the DeskLamp#"+ID+" that far from the power outlet");
+        }else {
+            super.move(anotherLocation);
+            System.out.println("DeskLamp#"+ID+" has been moved to another location successfully");
+        }
     }
     @Override
     public void setLightBulbColor(LightBulbColor color){
@@ -41,7 +52,6 @@ public class DeskLamp extends Lamp {
         System.out.println("After the light bulb has been changed the DeskLamp#"+ID+" is turned on");
         this.turnOn();
     }
-
     @Override
     public void goBrighter(){
         if(this.brightness>=100){
@@ -60,7 +70,6 @@ public class DeskLamp extends Lamp {
             System.out.println("DeskLamp#"+ID+" brightness has been set at " + brightness+"%");
         }
     }
-
     @Override
     public void turnOff() {
         super.turnOff();
