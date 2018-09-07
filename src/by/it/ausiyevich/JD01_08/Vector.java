@@ -1,6 +1,8 @@
-package by.it.ausiyevich.jd01_07;
+package by.it.ausiyevich.JD01_08;
 
-public class Vector extends AbstractVar {
+import java.util.Arrays;
+
+public class Vector extends Var {
     private double[] value;
 
     public Vector(String strVector) {
@@ -24,6 +26,26 @@ public class Vector extends AbstractVar {
         for (int i = 0; i < this.value.length; i++) {
             this.value[i] = anotherVect.value[i];
         }
+    }
+
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar) {
+            double[] res=Arrays.copyOf(value,value.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i]=res[i]+((Scalar)other).getValue();
+            }
+            return new Vector(res);
+        }
+        else if (other instanceof Vector) {
+            double[] res=Arrays.copyOf(value,value.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i]=res[i]+((Vector)other).value[i];
+            }
+            return new Vector(res);
+        }
+        else 
+        return super.add(other);
     }
 
     @Override

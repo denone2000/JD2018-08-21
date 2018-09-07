@@ -1,22 +1,19 @@
 package by.it.ausiyevich.jd01_07;
 
-class Scalar extends AbstractVar {
+public class Scalar extends AbstractVar {
     private double value;
-
-    Scalar(double value) {
+    public Scalar(double value){
         this.value = value;
     }
-
-    Scalar(String str) {
-        this.value = Double.parseDouble(str);
+    public Scalar(Scalar scalarObj){
+        value = scalarObj.value;
     }
-
-    Scalar(Scalar scalar) {
-        this.value = scalar.value;
+    public Scalar(String strVal){
+        value = Double.parseDouble(strVal);
     }
-
     @Override
     public String toString() {
-        return Double.toString(value);
+        return Double.toString(this.value);
     }
+
 }
