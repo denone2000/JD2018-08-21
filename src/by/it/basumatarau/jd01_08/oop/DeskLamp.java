@@ -1,21 +1,25 @@
 package by.it.basumatarau.jd01_08.oop;
 
 public class DeskLamp extends Lamp {
-    boolean isPlugged;
-    boolean isOnTheDesk;
+    private boolean isPlugged;
+    private boolean isOnTheDesk;
+    private float brightness;
 
     public DeskLamp(){
         System.out.println("DeskLamp default constructor");
-        this.color = LampColor.WHITE;
+        //this.color = LampColor.WHITE;
+        super.changeColor(LampColor.WHITE);
         isTurnedOn = false;
         powerCapacity = 40;
         isPlugged = false;
         isOnTheDesk = false;
+        brightness = 0.5f;
     }
     public DeskLamp(LampColor color){
         this();
         System.out.println("DeskLamp(LampColor color) constructor");
-        this.color = color;
+        //this.color = color;
+        super.changeColor(LampColor.WHITE);
     }
     public DeskLamp(LampColor color, int capacity, boolean isTurnedOn){
         this(color);
@@ -25,12 +29,37 @@ public class DeskLamp extends Lamp {
         this.isTurnedOn = isTurnedOn;
         this.powerCapacity = capacity;
     }
-    void playMusic(){
+    @Override
+    public void changeColor(LampColor color){
+        this.turnOff();
+        super.changeColor(color);
+        this.turnOn();
+    }
+
+    @Override
+    public void goBrighter(){
+        if(this.brightness>=1.0){
+            System.out.println("Lamp is already set at full brightness");
+        }else{
+            this.brightness+=0.1f;
+        }
+    }
+    @Override
+    public void goDarker(){
+        if(this.brightness<=0.0f){
+            System.out.println("Lamp is already set at minimum brightness");
+        }else{
+            System.out.println("Lower brightness has been set to a Lamp");
+            this.brightness-=0.1f;
+        }
+    }
+
+    /*void playMusic(){
         System.out.println("Plays some music");
     }
     void playMusic(String songName){
         System.out.println("Plays "+ songName);
-    }
+    }*/
 
     @Override
     public void turnOff() {

@@ -4,11 +4,11 @@ public abstract class Lamp implements SourceOfLight {
     public enum LampColor{
         WHITE, RED, GREEN, BLUE
     }
-    protected LampColor color;
+    private LampColor color;
     protected boolean isTurnedOn;
     protected int powerCapacity;
 
-    void changeColor(LampColor color){
+    public void changeColor(LampColor color){
         this.color = color;
     }
 
@@ -21,4 +21,6 @@ public abstract class Lamp implements SourceOfLight {
         isTurnedOn = false;
     }
 
+    abstract public void goBrighter();
+    abstract public void goDarker();
 }
