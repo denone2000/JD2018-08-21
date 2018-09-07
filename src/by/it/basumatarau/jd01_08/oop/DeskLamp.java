@@ -27,7 +27,7 @@ public class DeskLamp extends Lamp {
         System.out.println("DeskLamp#"+ID+" with a light bulb of " + color + " color has been instantiated");
     }
     public DeskLamp(LightBulbColor color, Location location, int capacity, boolean isTurnedOn){
-        this(color, location);
+        super(color, location);
         isOnDesk = true;
         isPluggedIn = true;
         this.isTurnedOn = isTurnedOn;

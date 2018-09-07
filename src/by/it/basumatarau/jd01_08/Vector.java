@@ -37,7 +37,7 @@ public class Vector extends Var {
             }
             return new Vector(result);
         } else {
-            return other.add(this);
+            return super.add(this);
         }
     }
     @Override
@@ -55,7 +55,7 @@ public class Vector extends Var {
             }
             return new Vector(result);
         } else{
-            return other.sub(this);
+            return super.sub(this);
         }
     }
 
@@ -92,8 +92,7 @@ public class Vector extends Var {
             return new Matrix(result);
         }
         else{
-            System.out.printf("operation mul is not allowed for %s and %s \n", getClass().getSimpleName(), other.getClass().getSimpleName());
-            return null;
+            return super.mul(other);
         }
     }
 
@@ -106,8 +105,7 @@ public class Vector extends Var {
             }
             return new Vector(result);
         } else {
-            System.out.printf("operation div is not allowed for Vector and %s", other.getClass().getSimpleName());
-            return null;
+           return super.div(other);
         }
     }
 

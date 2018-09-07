@@ -66,7 +66,7 @@ public class Matrix extends Var{
                 }
             }
             return new Matrix(result);
-        }else return super.sub(other);
+        }else return super.add(other);
     }
 
     @Override
@@ -131,8 +131,7 @@ public class Matrix extends Var{
             }
             return new Matrix(result);
         } else {
-            System.out.printf("operation mul between Matrix and %s is not allowed", other.getClass().getSimpleName());
-            return null;
+            return super.mul(other);
         }
     }
 
