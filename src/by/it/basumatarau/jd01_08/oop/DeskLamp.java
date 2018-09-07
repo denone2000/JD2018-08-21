@@ -24,7 +24,7 @@ public class DeskLamp extends Lamp {
         isPluggedIn = false;
         isOnDesk = false;
         brightness = 50;
-        System.out.println("DeskLamp#"+ID+" with a lamp of " + color + " color has been instantiated");
+        System.out.println("DeskLamp#"+ID+" with a light bulb of " + color + " color has been instantiated");
     }
     public DeskLamp(LightBulbColor color, Location location, int capacity, boolean isTurnedOn){
         this(color, location);
@@ -32,7 +32,7 @@ public class DeskLamp extends Lamp {
         isPluggedIn = true;
         this.isTurnedOn = isTurnedOn;
         powerCapacity = capacity;
-        System.out.println("DeskLamp#"+ID+" with light bulb of " +color +"color, " +capacity+" W power capacity has been instantiated" + (isTurnedOn?"(and it's already turned on)": "(and it's turned off)"));
+        System.out.println("DeskLamp#"+ID+" with light bulb of " +color +" color, " +capacity+" W power capacity has been instantiated" + (isTurnedOn?"(and it's already turned on)": "(and it's turned off)"));
     }
     @Override
     public void move(Location anotherLocation) {
