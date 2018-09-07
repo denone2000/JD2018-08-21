@@ -10,8 +10,12 @@
           <option name="url" value="git@github.com:itacad/cs2018-09-03.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="git@github.com:demologin/cs2018-09-03.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="D:\Java\github" />
+    <option name="cloneParentDir" value="D:\Java\git" />
   </component>
 </application>
