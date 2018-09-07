@@ -11,8 +11,8 @@ public abstract class Lamp implements SourceOfLight {
         this.color = color;
     }
     private LightBulbColor color;
-    protected boolean isTurnedOn;
-    protected int powerCapacity;
+    boolean isTurnedOn;
+    int powerCapacity;
 
     public void setLightBulbColor (LightBulbColor color){
         System.out.println("Lamp's light bulb is being changed from " + this.color + " to " + color);
@@ -21,12 +21,13 @@ public abstract class Lamp implements SourceOfLight {
 
     @Override
     public void turnOn(){
-        System.out.println("");
         isTurnedOn = true;
+        System.out.println("Lamp is being turned on...");
     }
     @Override
     public void turnOff(){
         isTurnedOn = false;
+        System.out.println("Lamp is being turned off...");
     }
 
     abstract public void goBrighter();
