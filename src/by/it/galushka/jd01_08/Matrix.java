@@ -92,7 +92,7 @@ public class Matrix extends Var {
             return new Matrix(resSubMatrix);
         }
         else
-            return super.add(other);
+            return super.sub(other);
     }
 
     @Override
@@ -107,18 +107,27 @@ public class Matrix extends Var {
             return new Matrix(resMul);
         }
         if (other instanceof Matrix) {
-            double[][] resAddMatrix = new double[value.length][value[0].length];
-            for (int i = 0; i < resAddMatrix.length; i++) {
-                for (int j = 0; j < resAddMatrix[0].length; j++) {
-                    for (int k = 0; k < resAddMatrix.length; k++) {
-                        resAddMatrix[i][j] = resAddMatrix[j][i] + value[j][k] * ((Matrix) other).value[k][j];
+            double[][] resMulMatrix = new double[value.length][value[0].length];
+            for (int i = 0; i < resMulMatrix.length; i++) {
+                for (int j = 0; j < resMulMatrix[0].length; j++) {
+                    for (int k = 0; k < resMulMatrix[0].length; k++) {
+                        resMulMatrix[i][j] = resMulMatrix[i][j] + value[i][k] * ((Matrix) other).value[k][j];
                     }
                 }
             }
-            return new Matrix(resAddMatrix);
+            return new Matrix(resMulMatrix);
+        }
+        if (other instanceof Vector) {
+            double[] resMul = new double[((Vector) other).getValue().length];
+            for (int i = 0; i < resMul.length; i++) {
+                for (int j = 0; j < value.length; j++) {
+                    resMul[i] = resMul[i] + ((Vector) other).getValue()[j] * value[i][j];
+                }
+            }
+            return new Vector(resMul);
         }
         else
-            return super.add(other);
+            return super.mul(other);
     }
 
     @Override
