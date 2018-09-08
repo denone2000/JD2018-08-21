@@ -11,49 +11,57 @@ public class Matrix extends AbstractVar {
         value = matrix.value;
     }
 
+    // { { 1.0, 2.0 }, { 3.0, 4.0 } }
+
     public Matrix(String strMatrix) {
-        strMatrix = strMatrix.replace('{', ' ').replace('}', ' ').trim();
-        String[] strMatrix12 = strMatrix.split(",\\s*");
-        String[] strMatrix1 = {strMatrix12[0], strMatrix12[1]};
-        String[] strMatrix2 = {strMatrix12[2], strMatrix12[3]};
-        value = new double[strMatrix1.length][strMatrix2.length];
-        for (int i = 0; i < strMatrix1.length; i++) {
-            for (int j = 0; j < strMatrix2.length; j++) {
-                if (i == 0) {
-                    value[i][j] = Double.parseDouble(strMatrix1[j]);
-                }
-                if (i == 1) {
-                    value[i][j] = Double.parseDouble(strMatrix2[j]);
-                }
+        String[] yards = strMatrix.split("},");
+        String[] yards2 = new String[yards.length];
+        for (int i = 0; i < yards2.length; i++) {
+            yards2[i] = yards[i].replace('{', ' ').replace('}', ' ').trim();
+        }
+        value = new double[yards2.length][yards2[0].split(",").length];
+        for (int i = 0; i < yards2.length; i++) {
+            String[] arrayOfMatrix = yards2[i].split(",");
+            for (int j = 0; j < arrayOfMatrix.length; j++) {
+                value[i][j] = Double.parseDouble(arrayOfMatrix[j]);
             }
         }
     }
-
 
     @Override
 
     public String toString() {
-        StringBuilder result = new StringBuilder("{{");
-        String delimeter = "";
+        StringBuilder result = new StringBuilder("{");
+        String delimeter1 = "{";
         for (int i = 0; i < value.length; i++) {
-            for (int j = 0; j < value.length; j++) {
-                if (i == 0) {
-                    result.append(delimeter).append(value[i][j]);
-                    delimeter = ", ";
-                    if (j == 1) {
-                        result.append("}, {");
-                        delimeter = "";
-                    }
-                }
-                if (i == 1) {
-                    result.append(delimeter).append(value[i][j]);
-                    delimeter = ", ";
-                    if (j == 1) {
-                        result.append("}}");
-                    }
-                }
+            result.append(delimeter1);
+            String delemeter2 = "";
+            for (int j = 0; j < value[i].length; j++) {
+                result.append(delemeter2).append(value[i][j]);
+                delemeter2 = ", ";
             }
+            delimeter1 = "}, {";
         }
+        result.append("}}");
         return result.toString();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
