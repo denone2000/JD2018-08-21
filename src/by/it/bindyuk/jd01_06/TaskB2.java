@@ -9,60 +9,48 @@ public class TaskB2 {
     private static String[] sentences = {};
 
     public static void main(String[] args) {
-        StringBuilder sb2 = new StringBuilder(Poem.text);
-        Pattern pattern2 = Pattern.compile("[:,-]");
-        Matcher matcher2 = pattern2.matcher(sb2);
-        String sb3 = matcher2.replaceAll("");
+        Pattern crops = Pattern.compile("\\.{3}");
+        Matcher cropper = crops.matcher(Poem.text);
+        String s1 = cropper.replaceAll(" ");
 
-        StringBuilder sb4 = new StringBuilder(sb3);
+        Pattern punct = Pattern.compile("[,:-]");
+        Matcher matcher = punct.matcher(s1);
+        s1 = matcher.replaceAll(" ");
 
-        Pattern pattern3 = Pattern.compile("[\\.\\.\\.]+[.]");
-        Matcher matcher3 = pattern3.matcher(sb4);
-        String sb5 = matcher3.replaceAll("");
+        Pattern space = Pattern.compile("[\\s]+");
+        Matcher spacer = space.matcher(s1);
+        s1 = spacer.replaceAll(" ");
 
-        StringBuilder sb6 = new StringBuilder(sb5);
-
-        Pattern pattern4 = Pattern.compile("[^.!]+");
-        Matcher matcher4 = pattern4.matcher(sb6);
-        while (matcher4.find()) {
-            String sentence = matcher4.group();
-            sentence.trim();
-            processSort(sentence);
+        sentences = s1.split("[!.]");
+        for (int i = 0; i < sentences.length; i++) {
+            sentences[i].trim();
         }
-        sort1(sentences);
-        for (int i = 0; i <sentences.length ; i++) {
-            System.out.println(sentences[i]);
-        }
+        sortSentences(sentences);
+        printSentences(sentences);
 
     }
 
-
-    private static String[] processSort(String sentence) {
-        sentences = Arrays.copyOf(sentences, sentences.length + 1);
-        sentences[sentences.length - 1] = sentence;
-        return sentences;
-    }
-
-    private static void sort1(String[] sentences) {
-        boolean swap;
-        int last = sentences.length-1;
-        do {
-            swap = false;
-            for (int i = 0; i < last; i++) {
+    public static void sortSentences(String[] INeedToSort) {
+        for (int i = 0; i < INeedToSort.length; i++) {
+            for (int j = 0; j < INeedToSort.length - 1; j++) {
                 String buff;
-                if (sentences[i].length() > sentences[i + 1].length()) {
-                    buff = sentences[i];
-                    sentences[i] = sentences[i + 1];
-                    sentences[i + 1] = buff;
-                    swap = true;
+                if (INeedToSort[j].length() > INeedToSort[j + 1].length()) {
+                    buff = INeedToSort[j];
+                    INeedToSort[j] = INeedToSort[j + 1];
+                    INeedToSort[j + 1] = buff;
                 }
             }
-            last--;
-        } while (swap);
-
+        }
     }
 
+    public static void printSentences(String[] arrayOfSentence) {
+        for (int i = 0; i < arrayOfSentence.length; i++) {
+            System.out.print(arrayOfSentence[i] + '\n');
+        }
+    }
 }
+
+
 
 
 
