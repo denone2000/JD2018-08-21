@@ -1,66 +1,29 @@
-//package by.it.bindyuk.jd01_08;
-//
-//public class Runner {
-//    public static void main(String[] args) {
-//        Scalar scalar = new Scalar(3.1415);
-//        System.out.println(scalar);
-//
-//        Scalar scalar1 = new Scalar(scalar);
-//        System.out.println(scalar1);
-//
-//        Scalar scalar2 = new Scalar("3.141511");
-//        System.out.println(scalar2);
-//
-//        double [] mas = {1,2,4};
-//        Vector vector = new Vector(mas);
-//        System.out.println(vector);
-//
-//        Vector vector1 = new Vector(vector);
-//        System.out.println(vector1);
-//
-//        Vector vector2 = new Vector("{1, 2, 4}");
-//        System.out.println(vector2);
-//
-//        double[][] mas1 = {{1,2},{3,4}};
-//
-//        Matrix matrix = new Matrix(mas1);
-//        System.out.println(matrix);
-//
-//        Matrix matrix1 = new Matrix(matrix);
-//        System.out.println(matrix1);
-//
-//        Matrix matrix2 = new Matrix("{{1,2},{3,4}}");
-//        System.out.println(matrix2);
-//
-//    }
-//}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-////    Scalar scalar = new Scalar(1.2);
-////        System.out.println(scalar);
-////
-////        Scalar scalar2 = new Scalar(scalar);
-////        System.out.println(scalar2);
-////
-////        Scalar scalar3 = new Scalar("1.23213");
-////        System.out.println(scalar3);
+package by.it.bindyuk.jd01_08;
+
+public class Runner {
+    private static void print(Var var) {
+        System.out.println(var);
+    }
+
+    public static void main(String[] args) {
+        Var s = new Scalar(3.0);
+        Var v = new Vector(new double[]{1, 2, 3});
+        Var m = new Matrix("{1,2,3},{4,5,6},{7,8,9}");
+
+        print(s.add(s)); //выведет в консоль 6.0
+        print(s.sub(s)); //выведет в консоль 0.0
+        print(s.mul(s)); //выведет в консоль 9.0
+        print(s.div(s)); //выведет в консоль 1.0
+
+        print(v.add(v)); //выведет в консоль {2.0, 4.0, 6.0}
+        print(v.sub(v)); //выведет в консоль {0.0, 0.0, 0.0}
+        print(v.mul(v)); //выведет в консоль 14.0
+        print(v.div(v)); //сообщит о невозможности операции
+
+        print(m.add(s));
+        print(m.add(m)); //{{2.0, 4.0, 6.0}, {8.0, 10.0, 12.0}, {14.0, 16.0, 18.0}}
+        print(m.sub(m)); //{{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}
+        print(m.mul(v)); //{14.0, 32.0, 50.0}
+
+    }
+}
