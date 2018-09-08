@@ -1,5 +1,5 @@
 *.class
-*.jar2
+*.jar
 *.war
 *.ear
 *.iml
