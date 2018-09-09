@@ -2,13 +2,21 @@ package by.it.basumatarau.jd01_09;
 
 public class Scalar extends Var {
     private double value;
+
     public double getVal(){
         return this.value;
     }
     @Override
+    public void accept(Dispatcher dispatcher) {
+        dispatcher.dispatch(this);
+    }
+
+    @Override
     public Var add(Var other) {
-        if (other instanceof Scalar){
-            return new Scalar(this.value + ((Scalar) other).value);
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
+            return new Scalar(this.getVal()+((Scalar)other).getVal());
         }else{
             return other.add(this);
         }
@@ -16,7 +24,9 @@ public class Scalar extends Var {
 
     @Override
     public Var sub(Var other) {
-        if (other instanceof Scalar){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             return new Scalar(this.value - ((Scalar) other).value);
         }else{
             Scalar negScalar = new Scalar(-1);
@@ -26,7 +36,9 @@ public class Scalar extends Var {
 
     @Override
     public Var mul(Var other) {
-        if (other instanceof Scalar){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             return new Scalar(this.value*((Scalar) other).value);
         }else{
             return other.mul(this);
@@ -35,7 +47,9 @@ public class Scalar extends Var {
 
     @Override
     public Var div(Var other) {
-        if (other instanceof Scalar){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             return new Scalar(this.value/((Scalar) other).value);
         }else {
             return other.mul(this);

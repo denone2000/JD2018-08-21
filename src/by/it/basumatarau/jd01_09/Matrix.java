@@ -45,8 +45,15 @@ public class Matrix extends Var {
     }
 
     @Override
+    public void accept(Dispatcher dispatcher) {
+        dispatcher.dispatch(this);
+    }
+
+    @Override
     public Var add(Var other) {
-        if (other instanceof Matrix){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
             if (value.length!=((Matrix) other).getValue().length&&value[0].length!=((Matrix) other).getValue()[0].length){
                 System.out.println("operation add is not allowed for matrices of different dimensions");
                 return null;
@@ -58,7 +65,7 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        }else if (other instanceof Scalar){
+        }else if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {
@@ -71,7 +78,9 @@ public class Matrix extends Var {
 
     @Override
     public Var sub(Var other) {
-        if (other instanceof Matrix){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
             if (value.length!=((Matrix) other).getValue().length&&value[0].length!=((Matrix) other).getValue()[0].length){
                 System.out.println("operation sub is not allowed for matrices of different dimensions");
                 return null;
@@ -83,7 +92,7 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        }else if (other instanceof Scalar){
+        }else if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {
@@ -96,7 +105,9 @@ public class Matrix extends Var {
 
     @Override
     public Var mul(Var other) {
-        if(other instanceof Matrix){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
             if(((Matrix) other).value[0].length!=this.value.length){
                 System.out.println("operation add is mot allowed: amount of rows of left matrix is not equal to the amount of columns of the right matrix");
                 return null;
@@ -110,7 +121,7 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        }else if(other instanceof Vector){
+        }else if(((TypeLister) dispatcher).wasAtInstanceOfVector){
             if(this.value.length!=((Vector) other).getValue().length){
                 System.out.println("operation mul is not allowed for matrix and vector that have different amount of rows and columns respectively");
                 return null;
@@ -122,7 +133,7 @@ public class Matrix extends Var {
                 }
             }
             return new Vector(result);
-        }else if(other instanceof Scalar){
+        }else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[][] result = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {

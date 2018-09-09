@@ -23,14 +23,21 @@ public class Vector extends Var {
     }
 
     @Override
+    public void accept(Dispatcher dispatcher) {
+        dispatcher.dispatch(this);
+    }
+
+    @Override
     public Var add(Var other) {
-        if(other instanceof Vector){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfVector){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i]+=((Vector) other).value[i];
             }
             return new Vector(result);
-        } else if(other instanceof Scalar){
+        } else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i]+=((Scalar)other).getVal();
@@ -42,13 +49,15 @@ public class Vector extends Var {
     }
     @Override
     public Var sub(Var other) {
-        if (other instanceof Vector){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfVector){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i]-= ((Vector) other).value[i];
             }
             return new Vector(result);
-        } else if(other instanceof Scalar){
+        } else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i]-=((Scalar) other).getVal();
@@ -61,13 +70,15 @@ public class Vector extends Var {
 
     @Override
     public Var mul(Var other) {
-        if (other instanceof Scalar){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i]=this.value[i]*((Scalar) other).getVal();
             }
             return new Vector(result);
-        }else if(other instanceof Vector){
+        }else if(((TypeLister) dispatcher).wasAtInstanceOfVector){
             if(((Vector)other).value.length!=value.length){
                 System.out.println("operation mul is not allowed for Vectors of different length");
                 return null;
@@ -78,7 +89,7 @@ public class Vector extends Var {
                 }
                 return new Scalar(result);
             }
-        }else if(other instanceof Matrix){
+        }else if(((TypeLister) dispatcher).wasAtInstanceOfMatrix){
             if(((Matrix) other).getValue()[0].length!=1){
                 System.out.println("operation mul is not allowed for matrix and vector that have different amount of columns and rows (vector has only one row) respectively");
                 return null;
@@ -98,7 +109,9 @@ public class Vector extends Var {
 
     @Override
     public Var div(Var other) {
-        if (other instanceof Scalar){
+        Dispatcher dispatcher = new TypeLister();
+        other.accept(dispatcher);
+        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
             double[] result = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < this.value.length; i++) {
                 result[i]= this.value[i]/((Scalar)other).getVal();

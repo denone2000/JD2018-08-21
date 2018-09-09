@@ -1,6 +1,6 @@
 package by.it.basumatarau.jd01_09;
 
-public class Var implements Operation {
+public abstract class Var implements Operation {
     public static Var createVar(String strOperand) {
         if (strOperand.trim().matches(RegExPatterns.SCALAR)) return new Scalar(strOperand);
         if (strOperand.trim().matches(RegExPatterns.VECTOR)) return new Vector(strOperand);
@@ -9,6 +9,7 @@ public class Var implements Operation {
         System.out.println("operand didn't fall under set of parsing patterns...");
         return null;
     }
+    public abstract void accept(Dispatcher dispatcher);
 
     @Override
     public Var add(Var other) {
