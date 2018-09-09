@@ -2,16 +2,16 @@ package by.it.nesterovich.jd01_09;
 
 abstract class Var implements Operation {
 
-    static Var createVar(String operand){
-        operand = operand.trim().replace("\\s+","");
-        if (operand.matches(Patterns.SCALAR)){
-            new Scalar(operand);
+    static Var createVar(String operand) {
+        operand = operand.trim().replace("\\s+", "");
+        if (operand.matches(Patterns.SCALAR)) {
+            return new Scalar(operand);
         }
-        if (operand.matches(Patterns.VECTOR)){
-            new Vector(operand);
+        if (operand.matches(Patterns.VECTOR)) {
+            return new Vector(operand);
         }
-        if (operand.matches(Patterns.MATRIX)){
-            new Matrix(operand);
+        if (operand.matches(Patterns.MATRIX)) {
+            return new Matrix(operand);
         }
         //TODO add exception create vars
         return null;
