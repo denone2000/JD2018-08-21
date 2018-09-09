@@ -1,9 +1,10 @@
 package by.it.galushka.jd01_09;
 
-import java.util.regex.Pattern;
 
 public class Patterns {
 
     static final String OPERATORS = "[-+*/]";
-    static final String SKALAR = "-?\\d+(\\.\\d+)?";
+    static final String SCALAR = "(-?\\d+(\\.\\d+)?)?";
+    static final String VECTOR = "(\\{(\\d+(\\.\\d+)?\\,?\\s?)+})?";
+    static final String MATRIX = "\\{\\s?(\\{(\\d+(\\.\\d+)?\\,?\\s?)+}\\,?\\s?)+\\s?}";
 }

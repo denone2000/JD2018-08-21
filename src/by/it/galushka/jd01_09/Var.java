@@ -4,8 +4,14 @@ abstract class Var implements Operation {
 
     static Var createVar(String inputLine) {
         inputLine = inputLine.trim();
-        if (inputLine.matches(Patterns.SKALAR)) {
+        if (inputLine.matches(Patterns.SCALAR)) {
             return new Scalar(inputLine);
+        }
+        if (inputLine.matches(Patterns.VECTOR)) {
+            return new Vector(inputLine);
+        }
+        if (inputLine.matches(Patterns.MATRIX)) {
+            return new Matrix(inputLine);
         }
         else
             return null;
