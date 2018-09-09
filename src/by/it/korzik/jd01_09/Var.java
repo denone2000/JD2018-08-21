@@ -1,4 +1,4 @@
-package by.it.korzik.jd01_08;
+package by.it.korzik.jd01_09;
 
 public abstract class Var implements Operation{
     @Override
