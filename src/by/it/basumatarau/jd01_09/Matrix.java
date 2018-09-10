@@ -1,9 +1,10 @@
 package by.it.basumatarau.jd01_09;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Matrix extends Var {
+public class Matrix extends Var{
     private double[][] value;
 
     public double[][] getValue() {
@@ -45,107 +46,127 @@ public class Matrix extends Var {
     }
 
     @Override
-    public void accept(Dispatcher dispatcher) {
-        dispatcher.dispatch(this);
+    public Var addTo(Scalar scalar) {
+        double[][] result = new double[value.length][value[0].length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length; j++) {
+                result[i][j]=value[i][j] + scalar.getVal();
+            }
+        }
+        return new Matrix(result);
     }
-
+    @Override
+    public Var addTo(Vector vector) {
+        return super.add(vector);
+    }
+    @Override
+    public Var addTo(Matrix matrix) {
+        if (value.length!=matrix.getValue().length&&value[0].length!=matrix.getValue()[0].length){
+            return super.add(matrix);
+        }
+        double[][] result = new double[value.length][value[0].length];
+        for (int i = 0; i < value.length; i++) {
+            for (int j = 0; j < value[0].length; j++) {
+                result[i][j]= value[i][j] + matrix.getValue()[i][j];
+            }
+        }
+        return new Matrix(result);
+    }
     @Override
     public Var add(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
-            if (value.length!=((Matrix) other).getValue().length&&value[0].length!=((Matrix) other).getValue()[0].length){
-                System.out.println("operation add is not allowed for matrices of different dimensions");
-                return null;
-            }
-            double[][] result = new double[value.length][value[0].length];
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[0].length; j++) {
-                    result[i][j]= this.value[i][j] + ((Matrix) other).getValue()[i][j];
-                }
-            }
-            return new Matrix(result);
-        }else if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[][] result = new double[value.length][value[0].length];
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
-                    result[i][j]=value[i][j] + ((Scalar) other).getVal();
-                }
-            }
-            return new Matrix(result);
-        }else return super.add(other);
+        return other.addTo(this);
     }
 
+    @Override
+    public Var subAnother(Matrix matrix) {
+        if (value.length!=matrix.getValue().length&&value[0].length!=matrix.getValue()[0].length){
+            return super.sub(matrix);
+        }
+        double[][] result = new double[value.length][value[0].length];
+        for (int i = 0; i < value.length; i++) {
+            for (int j = 0; j < value[0].length; j++) {
+                result[i][j]= matrix.getValue()[i][j] - value[i][j];
+            }
+        }
+        return new Matrix(result);
+    }
+    @Override
+    public Var subAnother(Scalar scalar) {
+        return super.sub(scalar);
+    }
+    @Override
+    public Var subAnother(Vector vector) {
+        if(value.length>1) {
+            return super.sub(vector);
+        }else{
+            double[] result = Arrays.copyOf(vector.getValue(), vector.getValue().length);
+            for (int i = 0; i < result.length; i++) {
+                result[i]-=this.value[0][i];
+            }
+            return new Vector(result);
+        }
+    }
     @Override
     public Var sub(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
-            if (value.length!=((Matrix) other).getValue().length&&value[0].length!=((Matrix) other).getValue()[0].length){
-                System.out.println("operation sub is not allowed for matrices of different dimensions");
-                return null;
-            }
-            double[][] result = new double[value.length][value[0].length];
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[0].length; j++) {
-                    result[i][j]= this.value[i][j] - ((Matrix) other).getValue()[i][j];
-                }
-            }
-            return new Matrix(result);
-        }else if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[][] result = new double[value.length][value[0].length];
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
-                    result[i][j]=value[i][j] - ((Scalar) other).getVal();
-                }
-            }
-            return new Matrix(result);
-        }else return super.sub(other);
+        return other.subAnother(this);
     }
 
     @Override
-    public Var mul(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfMatrix){
-            if(((Matrix) other).value[0].length!=this.value.length){
-                System.out.println("operation add is mot allowed: amount of rows of left matrix is not equal to the amount of columns of the right matrix");
-                return null;
+    public Var mulBy(Scalar scalar) {
+        double[][] result = new double[value.length][value[0].length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length; j++) {
+                result[i][j] = value[i][j]*scalar.getVal();
             }
-            double[][] result = new double[this.value.length][this.value.length];
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    for (int iterator = 0; iterator< result.length; iterator++){
-                        result[i][j]+=this.value[i][iterator]*((Matrix) other).value[iterator][j];
-                    }
-                }
-            }
-            return new Matrix(result);
-        }else if(((TypeLister) dispatcher).wasAtInstanceOfVector){
-            if(this.value.length!=((Vector) other).getValue().length){
-                System.out.println("operation mul is not allowed for matrix and vector that have different amount of rows and columns respectively");
-                return null;
-            }
+        }
+        return new Matrix(result);
+    }
+    @Override
+    public Var mulBy(Vector vector) {
+        if(this.value.length!=vector.getValue().length&&value[0].length!=1) {
+            return super.mul(vector);
+        }else{
             double[] result = new double[this.value.length];
             for (int i = 0; i < this.value.length; i++) {
                 for (int j = 0; j < this.value.length; j++) {
-                    result[i]+= ((Vector) other).getValue()[j]*this.value[i][j];
+                    result[i]+= vector.getValue()[j]*this.value[i][j];
                 }
             }
             return new Vector(result);
-        }else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[][] result = new double[this.value.length][this.value[0].length];
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
-                    result[i][j] = this.value[i][j]*((Scalar) other).getVal();
-                }
-            }
-            return new Matrix(result);
-        } else {
-            return super.mul(other);
         }
     }
+    @Override
+    public Var mulBy(Matrix matrix) {
+        if(matrix.value[0].length!=value.length){
+            return super.mul(matrix);
+        }
+        double[][] result = new double[matrix.getValue().length][value[0].length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result.length; j++) {
+                for (int iterator = 0; iterator< result.length; iterator++){
+                    result[i][j]+=matrix.getValue()[i][iterator]*value[iterator][j];
+                }
+            }
+        }
+        return new Matrix(result);
+    }
+    @Override
+    public Var mul(Var other) {
+        return other.mulBy(this);
+    }
 
+    @Override
+    public Var divBy(Matrix matrix) {
+        return super.div(matrix);
+    }
+    @Override
+    public Var divBy(Scalar scalar) {
+        return super.div(scalar);
+    }
+    @Override
+    public Var divBy(Vector vector) {
+        return super.div(vector);
+    }
     @Override
     public Var div(Var other) {
         return super.div(other);

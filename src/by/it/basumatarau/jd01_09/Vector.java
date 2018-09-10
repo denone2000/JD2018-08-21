@@ -23,103 +23,112 @@ public class Vector extends Var {
     }
 
     @Override
-    public void accept(Dispatcher dispatcher) {
-        dispatcher.dispatch(this);
+    public Var addTo(Vector vector) {
+        double[] result = Arrays.copyOf(vector.value, vector.value.length);
+        for (int i = 0; i < result.length; i++) {
+            result[i]+=this.value[i];
+        }
+        return new Vector(result);
+    }
+    @Override
+    public Var addTo(Scalar scalar) {
+        double[] result = Arrays.copyOf(this.value, this.value.length);
+        for (int i = 0; i < result.length; i++) {
+            result[i]+=scalar.getVal();
+        }
+        return new Vector(result);
+    }
+    @Override
+    public Var addTo(Matrix matrix) {
+        return matrix.addTo(this);
+    }
+    @Override
+    public Var add(Var other) {
+        return other.addTo(this);
     }
 
     @Override
-    public Var add(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfVector){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i]+=((Vector) other).value[i];
-            }
-            return new Vector(result);
-        } else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i]+=((Scalar)other).getVal();
-            }
-            return new Vector(result);
-        } else {
-            return super.add(this);
+    public Var subAnother(Matrix matrix) {
+        if(matrix.getValue().length>1&&matrix.getValue()[0].length!=value.length){
+            return super.mul(matrix);
         }
+        double[] result = new double[value.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i]=matrix.getValue()[0][i]-value[i];
+        }
+        return new Vector(result);
+    }
+    @Override
+    public Var subAnother(Vector vector) {
+        double[] result = Arrays.copyOf(vector.getValue(), vector.getValue().length);
+        for (int i = 0; i < result.length; i++) {
+            result[i]-= this.value[i];
+        }
+        return new Vector(result);
+    }
+    @Override
+    public Var subAnother(Scalar scalar) {
+        double[] result = Arrays.copyOf(this.value, this.value.length);
+        for (int i = 0; i < result.length; i++) {
+            result[i]-=scalar.getVal();
+        }
+        return new Vector(result);
     }
     @Override
     public Var sub(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfVector){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i]-= ((Vector) other).value[i];
-            }
-            return new Vector(result);
-        } else if(((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i]-=((Scalar) other).getVal();
-            }
-            return new Vector(result);
-        } else{
-            return super.sub(this);
-        }
+        return other.subAnother(this);
     }
 
+    @Override
+    public Var mulBy(Matrix matrix) {
+        if(value.length!=matrix.getValue().length){
+            return super.mul(matrix);
+        }
+        double[] result= new double[value.length];
+        for (int i = 0; i < this.value.length; i++) {
+            for (int j = 0; j < this.value.length; j++) {
+                result[i]+= value[j]*matrix.getValue()[i][j];
+            }
+        }
+        return new Vector(result);
+    }
+
+    @Override
+    public Var mulBy(Vector vector) {
+        double result = 0;
+        for (int i = 0; i < this.value.length; i++) {
+            result += this.value[i]*vector.value[i];
+        }
+        return new Scalar(result);
+    }
+    @Override
+    public Var mulBy(Scalar scalar) {
+        double[] result = Arrays.copyOf(this.getValue(), this.getValue().length);
+        for (int i = 0; i < result.length; i++) {
+            result[i]*=scalar.getVal();
+        }
+        return new Vector(result);
+    }
     @Override
     public Var mul(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i]=this.value[i]*((Scalar) other).getVal();
-            }
-            return new Vector(result);
-        }else if(((TypeLister) dispatcher).wasAtInstanceOfVector){
-            if(((Vector)other).value.length!=value.length){
-                System.out.println("operation mul is not allowed for Vectors of different length");
-                return null;
-            } else {
-                double result = 0;
-                for (int i = 0; i < this.value.length; i++) {
-                    result += this.value[i]*((Vector) other).value[i];
-                }
-                return new Scalar(result);
-            }
-        }else if(((TypeLister) dispatcher).wasAtInstanceOfMatrix){
-            if(((Matrix) other).getValue()[0].length!=1){
-                System.out.println("operation mul is not allowed for matrix and vector that have different amount of columns and rows (vector has only one row) respectively");
-                return null;
-            }
-            double[][] result = new double[this.value.length][this.value.length];
-            for (int i = 0; i < this.value.length; i++) {
-                for (int j = 0; j < this.value.length; j++) {
-                    result[i][j]+=this.value[j]*((Matrix) other).getValue()[i][0];
-                }
-            }
-            return new Matrix(result);
-        }
-        else{
-            return super.mul(other);
-        }
+        return other.mulBy(this);
     }
 
     @Override
+    public Var divBy(Matrix matrix) {
+        return super.div(matrix);
+    }
+    @Override
+    public Var divBy(Vector vector) {
+        return super.div(vector);
+    }
+    @Override
+    public Var divBy(Scalar scalar) {
+        return super.div(scalar);
+    }
+    @Override
     public Var div(Var other) {
-        Dispatcher dispatcher = new TypeLister();
-        other.accept(dispatcher);
-        if (((TypeLister) dispatcher).wasAtInstanceOfScalar){
-            double[] result = Arrays.copyOf(this.value, this.value.length);
-            for (int i = 0; i < this.value.length; i++) {
-                result[i]= this.value[i]/((Scalar)other).getVal();
-            }
-            return new Vector(result);
-        } else {
-           return super.div(other);
-        }
+        return other.divBy(this);
     }
 
     @Override
