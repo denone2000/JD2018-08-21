@@ -2,7 +2,7 @@ package by.it.yarmolenka.jd01_08;
 
 import by.it.yarmolenka.jd01_08.Scalar;
 import by.it.yarmolenka.jd01_08.Var;
-import by.it.yarmolenka.jd01_08.Vector;
+//import by.it.yarmolenka.jd01_08.Vector;
 
 public class Runner {
 private static void print(Var var) {System.out.println(var);}
@@ -16,7 +16,7 @@ print(s.sub(s)); //выведет в консоль 0.0
 print(s.mul(s)); //выведет в консоль 9.0
 print(s.div(s)); //выведет в консоль 1.0
 /* Уровень сложности B (векторные операции) закомментируйте, если не реализовали */
-print(v.add(v)); //выведет в консоль {2.0, 4.0, 6.0}
+/*print(v.add(v)); //выведет в консоль {2.0, 4.0, 6.0}
 print(v.sub(v)); //выведет в консоль {0.0, 0.0, 0.0}
 print(v.mul(v)); //выведет в консоль 14.0
 print(v.div(v)); //сообщит о невозможности операции
