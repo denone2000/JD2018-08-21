@@ -8,9 +8,10 @@ public class ConsoleRunner {
         String cmd;
         Parser parser = new Parser();
         Printer printer = new Printer();
-        while (!(cmd = scanner.next()).equalsIgnoreCase("END")){
-          //  Var result = parser.calc(cmd);
-        //    printer.print(result);
+        while (!(cmd = scanner.nextLine()).equals("end")){
+          Var result = parser.calc(cmd.trim());
+          printer.print(result);
         }
     }
+
 }

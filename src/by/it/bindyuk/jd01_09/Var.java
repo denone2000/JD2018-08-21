@@ -24,4 +24,13 @@ abstract class Var implements Operation {
         System.out.println("Операция деления невозможна");
         return null;
     }
+
+    static Var createVar(String strVar) {
+        strVar = strVar.trim();
+        if (strVar.matches(Patterns.SCALAR)) return new Scalar(strVar);
+        if (strVar.matches(Patterns.VECTOR)) return new Vector(strVar);
+        if (strVar.matches(Patterns.MATRIX)) return new Matrix(strVar);
+        else return null;
+    }
+
 }
