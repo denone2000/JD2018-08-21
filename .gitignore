@@ -8,5 +8,7 @@ _windows
 debugger.renderers.xml
 debugger.xml
 github_settings.xml
+vcs.xml
+
 
 
