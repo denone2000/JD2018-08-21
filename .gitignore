@@ -4,9 +4,7 @@
 *.ear
 *.iml
 .idea
-_windows
-debugger.renderers.xml
-debugger.xml
-github_settings.xml
+
+
 
 
