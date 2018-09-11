@@ -1,8 +1,8 @@
-package by.it.bindyuk.jd01_08;
+package by.it.bindyuk.jd01_09;
 
 import java.util.Arrays;
 
-public class Matrix extends Var {
+ class Matrix extends Var {
     private double[][] value;
 
     public Matrix(double[][] value) {
@@ -136,26 +136,26 @@ public class Matrix extends Var {
     }
 
 
-        @Override
-        public Var div (Var other){
-            return super.div(other);
-        }
-
-        @Override
-        public String toString () {
-            StringBuilder result = new StringBuilder("{");
-            String delimeter1 = "{";
-            for (int i = 0; i < value.length; i++) {
-                result.append(delimeter1);
-                String delemeter2 = "";
-                for (int j = 0; j < value[i].length; j++) {
-                    result.append(delemeter2).append(value[i][j]);
-                    delemeter2 = ", ";
-                }
-                delimeter1 = "}, {";
-            }
-            result.append("}}");
-            return result.toString();
-        }
+    @Override
+    public Var div (Var other){
+        return super.div(other);
     }
+
+    @Override
+    public String toString () {
+        StringBuilder result = new StringBuilder("{");
+        String delimeter1 = "{";
+        for (int i = 0; i < value.length; i++) {
+            result.append(delimeter1);
+            String delemeter2 = "";
+            for (int j = 0; j < value[i].length; j++) {
+                result.append(delemeter2).append(value[i][j]);
+                delemeter2 = ", ";
+            }
+            delimeter1 = "}, {";
+        }
+        result.append("}}");
+        return result.toString();
+    }
+}
 
