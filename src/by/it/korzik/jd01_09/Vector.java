@@ -87,7 +87,8 @@ public class Vector extends Var {
             }
             return new Vector(result);
         }
-        else {return super.div(other);}
+        else {
+            return super.div(other);}
     }
 
     Vector(String strVec) {
