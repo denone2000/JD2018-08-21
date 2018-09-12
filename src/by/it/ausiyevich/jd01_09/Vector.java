@@ -31,21 +31,19 @@ public class Vector extends Var {
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
-            double[] res=Arrays.copyOf(value,value.length);
+            double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]+((Scalar)other).getValue();
+                res[i] = res[i] + ((Scalar) other).getValue();
             }
             return new Vector(res);
-        }
-        else if (other instanceof Vector) {
-            double[] res=Arrays.copyOf(value,value.length);
+        } else if (other instanceof Vector) {
+            double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i]=res[i]+((Vector)other).value[i];
+                res[i] = res[i] + ((Vector) other).value[i];
             }
             return new Vector(res);
-        }
-        else
-        return super.add(other);
+        } else
+            return super.add(other);
     }
 
     @Override
