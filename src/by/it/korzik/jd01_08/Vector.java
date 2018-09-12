@@ -1,12 +1,11 @@
 package by.it.korzik.jd01_08;
 
+import java.util.Arrays;
+
 public class Vector extends Var {
     private double[] value;
     Vector(double[] value){
         this.value=value;
-    }
-    Vector(Vector vector){
-        value=vector.value;
     }
 
     @Override
@@ -73,9 +72,18 @@ public class Vector extends Var {
         return super.mul(other);
     }
 
-    @Override
-    public Var div(Var other) {
-        return super.div(other);
+        @Override
+        public Var div(Var other) {
+            if (other instanceof Scalar){
+                double[] result = Arrays.copyOf(this.value, this.value.length);
+                for (int i = 0; i < this.value.length; i++) {
+                    result[i]= this.value[i]/((Scalar)other).getValue();
+                }
+                return new Vector(result);
+            } else {
+                return super.div(other);
+            }
+
     }
 
     Vector(String strVec){
@@ -96,7 +104,6 @@ public class Vector extends Var {
             delimit=", ";
         }
         sb.append("}");
-        String result=sb.toString();
-        return result;
+        return sb.toString();
     }
 }
