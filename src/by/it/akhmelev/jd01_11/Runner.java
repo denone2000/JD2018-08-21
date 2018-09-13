@@ -11,6 +11,7 @@ public class Runner {
         System.out.println(Arrays.toString(m));
 
         List<String> list=new ListA<>();
+        list.add("ONE");
         list.add("TWO");
         list.add("THREE");
         System.out.println(list);
