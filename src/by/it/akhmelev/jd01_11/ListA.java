@@ -61,7 +61,7 @@ class ListA<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return size>0;
+        return size==0;
     }
 
     @Override
