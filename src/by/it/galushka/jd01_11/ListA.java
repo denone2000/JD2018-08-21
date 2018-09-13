@@ -6,9 +6,9 @@ import java.util.function.UnaryOperator;
 class ListA<T> implements List<T> {
 
     private T[] elements = (T[]) new Object[]{};
-    int size=0;
+    private int size=0;
 
-    public ListA() {
+    private ListA() {
     }
 
     //Task implements
