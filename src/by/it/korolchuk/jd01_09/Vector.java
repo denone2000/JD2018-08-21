@@ -1,134 +1,123 @@
-package by.it.yaroshchuk.jd01_08;
+package by.it.korolchuk.jd01_09;
+
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-class Vector extends Var {
+public class Vector extends Var {
+    public double[] getValue() {
+        return value;
+    }
 
     private double[] value;
 
-    public double[] getValue(){
-        return this.value;
+    public Vector(double[] doubles) {
+        value = Arrays.copyOf(doubles, doubles.length);
     }
 
-    Vector(double[] value){
-        this.value = Arrays.copyOf(value, value.length);
-    }
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("{");
+        String delimiter = "";
+        for (double currentValue : value) {
+            result.append(delimiter).append(currentValue);
+            delimiter = ", ";
 
-
-    Vector(Vector vector){
-        this.value = vector.value;
-    }
-
-    Vector(String str){
-        String regex = "([0-9]*[.])?[0-9]+";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(str);
-        StringBuilder sb = new StringBuilder();
-        while (matcher.find()){
-            sb.append(matcher.group());
-            sb.append(" ");
         }
-        String strSb = new String(sb);
-        String[] strVar = strSb.trim().split(" ");
-        value = new double[strVar.length];
-        for (int i = 0; i < strVar.length; i++) {
-            value[i] = Double.parseDouble(strVar[i]);
-        }
+        result.append("}");
+        return result.toString();
     }
 
     @Override
     public Var add(Var other) {
-        if(other instanceof Scalar){
+        if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
             for (int i = 0; i < result.length; i++) {
                 result[i] += scalar;
             }
             return new Vector(result);
-        }
-        else if(other instanceof Vector){
+        } else if (other instanceof Vector) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i] += ((Vector) other).value[i];
             }
             return new Vector(result);
-        }
-        else
-            return super.add(this);
+        } else
 
+            return super.add(other);
     }
 
     @Override
     public Var sub(Var other) {
-        if(other instanceof Scalar){
+        if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
             for (int i = 0; i < result.length; i++) {
                 result[i] -= scalar;
             }
             return new Vector(result);
-        }
-        else if(other instanceof Vector){
+        } else if (other instanceof Vector) {
             double[] result = Arrays.copyOf(value, value.length);
             for (int i = 0; i < result.length; i++) {
                 result[i] -= ((Vector) other).value[i];
             }
             return new Vector(result);
-        }
-        else
-            return super.sub(this);
+        } else
+
+            return super.add(other);
     }
 
     @Override
     public Var mul(Var other) {
-        if(other instanceof Scalar){
+        if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
             for (int i = 0; i < result.length; i++) {
                 result[i] *= scalar;
             }
             return new Vector(result);
-        }
-        else if(other instanceof Vector){
+        } else if (other instanceof Vector) {
             double[] result = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < result.length; i++) {
-                result[i] *= ((Vector) other).value[i];
-            }
             double res = 0;
-            for (double resultElement : result) {
-                res += resultElement;
+            for (int i = 0; i < result.length; i++) {
+                res += result[i] *= ((Vector) other).value[i];
             }
             return new Scalar(res);
-        }
-        else
-            return super.mul(this);
+        } else
+
+            return super.add(other);
     }
 
     @Override
     public Var div(Var other) {
-        if(other instanceof Scalar){
+        if (other instanceof Scalar) {
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
             for (int i = 0; i < result.length; i++) {
                 result[i] /= scalar;
             }
             return new Vector(result);
-        }
-        else
-            return super.div(this);
+        } else
+            return super.add(other);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("{");
-        String delimiter ="";
-        for (double element : value) {
-            sb.append(delimiter).append(element);
-            delimiter = ", ";
+
+    /*public Vector(double[] value) {
+        this.value = value;
+    }*/
+
+    public Vector(Vector vector) {
+        this.value = vector.value;
+    }
+
+   public Vector(String strVector) {
+        //{1,2,3,4,5}
+        strVector = strVector.replace('{', ' ').replace('}', ' ').trim();
+        String[] strArray = strVector.split(",\\s*");
+        value = new double[strArray.length];
+        for (int i = 0; i < strArray.length; i++) {
+            value[i] = Double.parseDouble(strArray[i]);
         }
-        sb.append("}");
-        return sb.toString();
     }
 }
+

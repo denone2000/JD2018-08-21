@@ -1,4 +1,4 @@
-package by.it.litvin.jd01_08;
+package by.it.litvin.jd01_09;
 
 import java.util.Arrays;
 
@@ -64,7 +64,7 @@ class Matrix extends Var {
             return new Matrix(res);
 
         } else
-            return super.add(other);
+            return super.div(other);
     }
 
     @Override
@@ -133,7 +133,7 @@ class Matrix extends Var {
             return new Matrix(res);
         } else {
 
-            return super.add(other);
+            return super.sub(other);
         }
     }
 
@@ -159,12 +159,12 @@ class Matrix extends Var {
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
             }
-            //for (int i = 0; i < res.length; i++) {
-               // for (int j = 0; j < res[i].length; j++) {
-                    //res[i][j] = res[i][j]*((Matrix) other).getValue()[i][j];
+            /*for (int i = 0; i < res.length; i++) {
+               for (int j = 0; j < res[i].length; j++) {
+                   res[i][j] = res[i][j] * ((Matrix) other).getValue()[i][j];
+               }}*/
 
-
-                double [][]z=new double[res.length][((Matrix) other).value[0].length] ;
+                double [][]z=new double[res.length][res[0].length] ;
             for (int i = 0; i <res.length ; i++) {
                 for (int j = 0; j <res[i].length ; j++) {
                     for (int k = 0; k <res.length ; k++) {
@@ -188,21 +188,20 @@ class Matrix extends Var {
                     res[i][j] = res[i][j] *((Vector) other).getValue()[j];
                 }
             }
-            double[] result = new double[res.length];
+            double[]z=new double[res.length];
             for (int i = 0; i <res.length ; i++) {
                 for (int j = 0; j <res[i].length ; j++) {
-                    result[i]+=res[i][j];
+                    z[i]+=res[i][j];
 
                 }
 
             }
-
-
-            return new Vector(result);
+            
+            return new Vector(z);
         }
      else {
 
-        return super.add(other);
+        return super.mul(other);
     }}}
 
 
