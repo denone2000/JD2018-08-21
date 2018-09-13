@@ -1,7 +1,6 @@
 package by.it.korzik.jd01_09;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Vector extends Var {
     private double[] value;
