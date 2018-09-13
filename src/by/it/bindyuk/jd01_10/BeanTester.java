@@ -1,22 +1,27 @@
 package by.it.bindyuk.jd01_10;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 public class BeanTester {
     public static void main(String[] args) throws Exception {
         Class<Bean> BeanTested = Bean.class;
-        Param param = BeanTested.getAnnotation(Param.class);
         Method[] methods = BeanTested.getDeclaredMethods();
-        Object o;
+        Object o = null;
 
-        for (Method method : methods)
+        for (Method method : methods){
             if (method.isAnnotationPresent(Param.class)) {
+                Param annotation = method.getAnnotation(Param.class);
+                if(Modifier.isStatic(method.getModifiers())){
+                    double result = (double)(method.invoke(o,annotation.a(),annotation.b()));
+                    System.out.println(method.getName() + " " + result);
+                } else if(!Modifier.isStatic(method.getModifiers())) {
+                    o = BeanTested.getConstructor().newInstance();
 
-                o = BeanTested.newInstance();
-
-                double result = (double)(method.invoke(o,param.a(),param.b()));
-                System.out.println(method.getName() + " " + result);
+                    double result = (double) (method.invoke(o, annotation.a(), annotation.b()));
+                    System.out.println(method.getName() + " " + result);
+                }
             }
+        }
     }
 }
