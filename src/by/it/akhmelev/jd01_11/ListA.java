@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_11;
+package by.it.akhmelev.jd01_11;
 
 import java.util.Arrays;
 import java.util.Collection;
