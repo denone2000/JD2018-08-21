@@ -1,39 +1,72 @@
 package by.it.basumatarau.jd01_11;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class ListB<T> implements List<T> {
+    private T[] array = (T[])new Object[0];
+    int size = 0;
+
     @Override
     public boolean addAll(Collection<? extends T> collection) {
-        return false;
+        if (size<=(array.length+collection.size())) array = Arrays.copyOf(array, (array.length+collection.size())*3/2 + 1);
+        Iterator<? extends T> iterator = collection.iterator();
+        while(iterator.hasNext()){
+            array[size++]=iterator.next();
+        }
+        return true;
     }
 
     @Override
-    public void add(int i, T t) {
-
+    public boolean add(T obj) {
+        if (size==array.length) array = Arrays.copyOf(array, array.length*3/2 + 1);
+        array[size++]=obj;
+        return true;
     }
 
     @Override
-    public T set(int i, T t) {
-        return null;
+    public void add(int index, T obj) {
+        if (index>size||index<0) return;
+        if (size==array.length) array = Arrays.copyOf(array, array.length*3/2 + 1);
+        System.out.println("array length" + array.length);
+        System.arraycopy(array, index, array, index+1, size-index);
+        array[index]=obj;
+        size++;
     }
 
     @Override
-    public T get(int i) {
-        return null;
+    public T set(int index, T obj) {
+        if (index>=size||index<0) return null;
+        T replaced = array[index];
+        array[index]=obj;
+        return replaced;
     }
 
     @Override
-    public boolean add(T t) {
-        return false;
+    public T get(int index) {
+        if (index>=size||index<0) return null;
+        return array[index];
+    }
+
+    @Override
+    public T remove(int index) {
+        if (index>=size||index<0) return null;
+        T obj = array[index];
+        System.arraycopy(array, index+1, array, index, size - index);
+        size--;
+        return obj;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+        String delimiter = "[";
+        for (int i = 0; i < size; i++) {
+            sb.append(delimiter).append(array[i]);
+            delimiter = ", ";
+        }
+        if(delimiter.equals("["))sb.append("[");
+        sb.append("]");
+        return sb.toString();
     }
 
 
@@ -96,11 +129,6 @@ public class ListB<T> implements List<T> {
     @Override
     public void clear() {
 
-    }
-
-    @Override
-    public T remove(int i) {
-        return null;
     }
 
     @Override

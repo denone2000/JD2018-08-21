@@ -4,14 +4,13 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
-        List<String> list = new ListA<>();
-        list.add("test1");
-        list.add("test2");
-        list.add("test3");
-        list.add("test4");
-        list.add("test4");
+        List<String> list = new ListB<>();
+        list.add(0,"test1");
+        list.add(0, "test2");
+        list.add(0, "test3");
+        list.add(0, "test4");
+        list.add("test5");
         System.out.println(list);
-        list.remove(1);
-        System.out.println(list);
+
     }
 }

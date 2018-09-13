@@ -3,7 +3,7 @@ package by.it.basumatarau.jd01_11;
 import java.util.*;
 
 public class ListA<T> implements List<T> {
-    private T[] array = (T[]) new Object[]{};
+    private T[] array = (T[]) new Object[0];
     private int size = 0;
     @Override
     public String toString(){
