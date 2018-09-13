@@ -1,6 +1,5 @@
 package by.it.akhmelev.jd01_11;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Runner {
