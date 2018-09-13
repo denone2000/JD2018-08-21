@@ -1,4 +1,4 @@
-package by.it.yaroshchuk.jd01_08;
+package by.it.yaroshchuk.jd01_09;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -69,8 +69,23 @@ class Matrix extends Var {
             }
             return new Matrix(result);
         }
+        else if(other instanceof Vector){
+            double [][] matrix = new double [value.length][value[0].length];
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i] = Arrays.copyOf(value[i], value[i].length);
+            }
+
+            double [] vector = Arrays.copyOf(((Vector) other).getValue(), ((Vector) other).getValue().length);
+            double [] result = new double[vector.length];
+            for (int i = 0; i < vector.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    result[i] += vector[j] * matrix[i][j];
+                }
+            }
+            return new Vector(result);
+        }
         else
-            return super.add(other);
+            return super.mul(other);
     }
 
     @Override
