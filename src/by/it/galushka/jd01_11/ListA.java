@@ -8,7 +8,7 @@ class ListA<T> implements List<T> {
     private T[] elements = (T[]) new Object[]{};
     private int size=0;
 
-    ListA() {
+    public ListA() {
     }
 
     //Task implements
@@ -51,11 +51,6 @@ class ListA<T> implements List<T> {
     }
 
     @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
-
-    @Override
     public void add(int index, T element) {
         if (elements.length == size) {
             elements = Arrays.copyOf(elements, size*3/2+1);
@@ -71,7 +66,7 @@ class ListA<T> implements List<T> {
             elements = Arrays.copyOf(elements, size*3/2+1);
         }
         elements[size++] = e;
-        return false;
+        return true;
     }
 
     @Override
@@ -87,6 +82,11 @@ class ListA<T> implements List<T> {
     }
 
     //don`t implements
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
     @Override
     public int size() {
         return 0;
