@@ -67,7 +67,8 @@ public class ListB<T> implements List<T> {
         Object[] a = c.toArray();
         int numNew = a.length;
         if ((numNew + size) > numNew) {
-            // array = Arrays.copyOf(array, array.length * 3 / 2 + 1);
+             //array = Arrays.copyOf(array, array.length * 3 / 2 + 1);
+            //array = Arrays.copyOf(array, array.length + (numNew>size?numNew:size));
             array = Arrays.copyOf(array, array.length + (numNew>size?numNew:size));
         }
         System.arraycopy(a, 0, array, size, numNew);
@@ -99,7 +100,8 @@ public class ListB<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(array,array.length-1);
+        //return  array.clone();
     }
 
     @Override
