@@ -8,7 +8,7 @@ class ListA<T> implements List<T> {
     private T[] elements = (T[]) new Object[]{};
     private int size=0;
 
-    private ListA() {
+    ListA() {
     }
 
     //Task implements
