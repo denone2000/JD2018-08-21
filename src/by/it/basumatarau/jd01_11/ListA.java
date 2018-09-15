@@ -3,7 +3,7 @@ package by.it.basumatarau.jd01_11;
 import java.util.*;
 
 public class ListA<T> implements List<T> {
-    private T[] array = (T[]) new Object[]{};
+    private T[] array = (T[]) new Object[0];
     private int size = 0;
     @Override
     public String toString(){
@@ -18,14 +18,15 @@ public class ListA<T> implements List<T> {
     }
     @Override
     public T remove(int i) {
-        System.arraycopy(array, i +1, array, i, array.length -i -1);
+        T item = array[i];
+        System.arraycopy(array, i+1, array, i, array.length - i -1);
         size--;
-        return array[i];
+        return item;
     }
 
     @Override
     public T get(int i) {
-        if(i>=size) return null;
+        if(i>=size||i<0) return null;
         return array[i];
     }
 
@@ -37,9 +38,9 @@ public class ListA<T> implements List<T> {
     @Override
     public boolean add(T item) {
         if(size==array.length){
-            array = Arrays.copyOf(array, array.length*3/2 + 1);
-            array[size++]=item;
+            array = Arrays.copyOf(array, (array.length*3)/2 + 1);
         }
+        array[size++]=item;
         return true;
     }
 
