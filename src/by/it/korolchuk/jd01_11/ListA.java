@@ -6,7 +6,7 @@ public class ListA<T> implements List<T>{
 
     private T[] array = ( T[] ) new Object[]{};
     private int size = 0;
-
+    public ListA(){}
     @Override
     public boolean add(T element) {
 
@@ -19,7 +19,7 @@ public class ListA<T> implements List<T>{
     @Override
     public T remove(int index) {
         T element = array[index];
-        System.arraycopy(array, index+1,array, index,size-index-1);
+        System.arraycopy(array, index+1,array, index, size - index);
         size--;
         return element;
     }
