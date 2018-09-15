@@ -5,33 +5,33 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
+
         //Runner ListA
-//        List<String> myList = new ListA<>();
-//        List<String> arList = new ArrayList<>();
-//        myList.add("ONE"); arList.add("ONE");
-//        myList.add("TWO"); arList.add("TWO");
-//        myList.add("THREE"); arList.add("THREE");
-//        System.out.println("myList: " + myList + "\n" + "arList: " + arList);
-//        myList.add(2, "FOUR (added by index)");
-//        arList.add(2, "FOUR (added by index)");
-//        System.out.println("myList after add by index: " + myList +
-//                "\n" + "arList after add by index: " + arList);
-//        myList.remove("FOUR (added by index)");
-//        arList.remove("FOUR (added by index)");
-//        System.out.println("myList after remove by \"o\": " + myList +
-//                "\n" + "arList after remove by \"o\": " + arList);
-//        myList.remove(2);
-//        arList.remove(2);
-//        System.out.println("myList after remove by index: " + myList +
-//                "\n" + "arList after remove by index: " + arList);
-//        System.out.println("myList get(index 1): " + myList.get(1) +
-//                        "\n" + "arList get(index 1): " + arList.get(1));
+        List<String> myList = new ListA<>();
+        List<String> arList = new ArrayList<>();
+        myList.add("ONE"); arList.add("ONE");
+        myList.add("TWO"); arList.add("TWO");
+        myList.add("THREE"); arList.add("THREE");
+        System.out.println("myList: " + myList + "\n" + "arList: " + arList);
+        myList.add(2, "FOUR (added by index)");
+        arList.add(2, "FOUR (added by index)");
+        System.out.println("myList after add by index: " + myList +
+                "\n" + "arList after add by index: " + arList);
+        myList.remove("FOUR (added by index)");
+        arList.remove("FOUR (added by index)");
+        System.out.println("myList after remove by \"o\": " + myList +
+                "\n" + "arList after remove by \"o\": " + arList);
+        myList.remove(2);
+        arList.remove(2);
+        System.out.println("myList after remove by index: " + myList +
+                "\n" + "arList after remove by index: " + arList);
+        System.out.println("myList get(index 1): " + myList.get(1) +
+                        "\n" + "arList get(index 1): " + arList.get(1));
 
         //Runner ListB
         List<String> myListB = new ListB<>();
         List<String> arListB = new ArrayList<>();
         List<String> arEmptyList = new ArrayList<>();
-        List<String> myEmptyList = new ListB<>();
         myListB.add("one"); arListB.add("one");
         myListB.add("two"); arListB.add("two");
         myListB.add("three"); arListB.add("three");
@@ -48,10 +48,5 @@ public class Runner {
         System.out.println("arEmptyList before addAll: " + arEmptyList);
         arEmptyList.addAll(arListB);
         System.out.println("arEmptyList after addAll: " + arEmptyList);
-        System.out.println("myEmptyList before addAll: " + myEmptyList);
-        myEmptyList.addAll(myListB);
-        arEmptyList.addAll(arListB);
-        System.out.println(myEmptyList);
-        System.out.println(arEmptyList);
     }
 }

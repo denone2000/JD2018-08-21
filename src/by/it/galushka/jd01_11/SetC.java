@@ -2,12 +2,22 @@ package by.it.galushka.jd01_11;
 
 import java.util.*;
 
-public class SetC<T> implements List<T> {
+public class SetC<T> implements Set<T> {
+
+    private T[] elements = (T[]) new Object[]{};
+    private int size = 0;
+
+    public SetC() {
+    }
 
     //task implements
     @Override
     public boolean add(T t) {
-        return false;
+        if (elements.length == size) {
+            elements = Arrays.copyOf(elements, size*3/2+1);
+        }
+        elements[size++] = t;
+        return true;
     }
 
     @Override
@@ -40,6 +50,18 @@ public class SetC<T> implements List<T> {
         return false;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        String delimiter = "";
+        for (int i = 0; i < size; i++) {
+            sb.append(delimiter).append(elements[i]);
+            delimiter = ", ";
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     //don`t implements
     @Override
     public Iterator<T> iterator() {
@@ -57,8 +79,8 @@ public class SetC<T> implements List<T> {
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+    public Spliterator<T> spliterator() {
+        return null;
     }
 
     @Override
@@ -74,50 +96,5 @@ public class SetC<T> implements List<T> {
     @Override
     public void clear() {
 
-    }
-
-    @Override
-    public T get(int index) {
-        return null;
-    }
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
-
-    }
-
-    @Override
-    public T remove(int index) {
-        return null;
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public ListIterator<T> listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator<T> listIterator(int index) {
-        return null;
-    }
-
-    @Override
-    public List<T> subList(int fromIndex, int toIndex) {
-        return null;
     }
 }
