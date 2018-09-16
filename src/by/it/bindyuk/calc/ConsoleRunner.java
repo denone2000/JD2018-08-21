@@ -1,5 +1,6 @@
-package by.it.bindyuk.jd01_09;
+package by.it.bindyuk.calc;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class ConsoleRunner {
