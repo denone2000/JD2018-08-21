@@ -1,21 +1,31 @@
 package by.it.galushka.jd01_12;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TaskA2 {
 
     private static Set<Integer> getUnion(Set<Integer> a, Set<Integer> b) {
         Set<Integer> result = new HashSet<>(a);
         result.addAll(b);
+//        Iterator<Integer> aIterator = a.iterator();
+//        while (aIterator.hasNext()) {
+//            int numA = aIterator.next();
+//            Iterator<Integer> bIterator = b.iterator();
+//            while(bIterator.hasNext()) {
+//                int numB = aIterator.next();
+//                if (numA == numB)
+//                    result.add(numB);
+//                else
+//                    result.add(numA);
+//            }
+//        }
         return result;
     }
 
     private static Set<Integer> getCross(Set<Integer> a, Set<Integer> b) {
         Set<Integer> result = new HashSet<>(a);
         result.retainAll(b);
+
         return result;
     }
 
