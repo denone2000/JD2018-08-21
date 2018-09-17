@@ -1,9 +1,6 @@
 package by.it.galushka.jd01_12;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TaskB2 {
 
@@ -18,28 +15,38 @@ public class TaskB2 {
     }
 
     static String process(ArrayList<String> peoples) {
-        ArrayList<String> removeNames = new ArrayList<>();
-        int counter = 1;
-        if (peoples.size() <= 1) {
-            return peoples.toString();
-        }
-        else {
-            Iterator<String> iterator = peoples.iterator();
+        boolean remove = false;
+        while (peoples.size() > 1) {
+            ListIterator<String> iterator = peoples.listIterator();
             while (iterator.hasNext()) {
-                String name = iterator.next();
-                if (counter % 2 != 0) {
-                    removeNames.add(name);
-                    counter++;
+                iterator.next();
+                if (remove == true) {
+                    iterator.remove();
+                    remove = false;
                 }
-                else
-                    counter++;
+                else {
+                    remove = true;
+                }
             }
         }
-        return process(removeNames);
+        return peoples.get(0);
     }
 
     static String process(LinkedList<String> peoples) {
-
-        return null;
+        boolean remove = false;
+        while (peoples.size() > 1) {
+            ListIterator<String> iterator = peoples.listIterator();
+            while (iterator.hasNext()) {
+                iterator.next();
+                if (remove == true) {
+                    iterator.remove();
+                    remove = false;
+                }
+                else {
+                    remove = true;
+                }
+            }
+        }
+        return peoples.get(0);
     }
 }
