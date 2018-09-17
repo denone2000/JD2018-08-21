@@ -12,7 +12,7 @@ public class TaskB3 {
             ListIterator<String> iterator = peoples.listIterator();
             while (iterator.hasNext()) {
                 iterator.next();
-                if (remove == true) {
+                if (remove) {
                     iterator.remove();
                     remove = false;
                 }
@@ -30,7 +30,7 @@ public class TaskB3 {
             ListIterator<String> iterator = peoples.listIterator();
             while (iterator.hasNext()) {
                 iterator.next();
-                if (remove == true) {
+                if (remove) {
                     iterator.remove();
                     remove = false;
                 }
