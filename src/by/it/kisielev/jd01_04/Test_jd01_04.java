@@ -40,7 +40,7 @@ public class Test_jd01_04 {
         m.invoke(null, "123 99 88 77 66 5 4 3 1 0 2");
         ok.include("V[").include("]=0").include("]=123");
         ok.include("first element=10");
-        ok.include("last element=2");
+        ok.include("last element=0");
         System.out.println("Проверка обработки массива завершена");
     }
 
@@ -58,7 +58,7 @@ public class Test_jd01_04 {
                 .include("9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81");
         ok.include("V[").include("]=0").include("]=123");
         ok.include("first element=10");
-        ok.include("last element=2");
+        ok.include("last element=0");
         System.out.println("Проверка метода main завершена");
     }
 
