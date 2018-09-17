@@ -11,7 +11,6 @@ public class TaskB2 {
         linkedList.add("Вася");linkedList.add("Петя");linkedList.add("Гриша");linkedList.add("Саша");linkedList.add("Костя");
         System.out.println(process(arrayList));
         System.out.println(process(linkedList));
-
     }
 
     static String process(ArrayList<String> peoples) {
