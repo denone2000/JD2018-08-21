@@ -13,7 +13,7 @@ public class Runner {
         list.remove(0);
         System.out.println(list);
 
-        ArrayList<String> aList = new ArrayList<>();
+
 
     }
 }
