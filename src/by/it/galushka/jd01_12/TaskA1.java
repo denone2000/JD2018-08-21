@@ -19,12 +19,12 @@ public class TaskA1 {
     }
 
     private void clearBad(List<Integer> grades) {
-        Iterator<Integer> iterator = grades.iterator();
-        while (iterator.hasNext()) {
-            int mark = iterator.next();
-            if (mark < 4) {
+        for (Iterator<Integer> iterator = grades.iterator(); iterator.hasNext();) {
+            int grade = iterator.next();
+            if (grade < 4) {
                 iterator.remove();
             }
         }
+
     }
 }
