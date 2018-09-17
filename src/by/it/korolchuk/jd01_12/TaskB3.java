@@ -1,28 +1,28 @@
 package by.it.korolchuk.jd01_12;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class TaskB2 {
+
+public class TaskB3 {
     public static void main(String[] args) {
 
         ArrayList<String> peopleA = new ArrayList<>();
         LinkedList<String> peopleL = new LinkedList<>();
 
-        Scanner sc = new Scanner(System.in);
-        String names = sc.nextLine();
-
-        Pattern patternWord = Pattern.compile("[A-Яа-яЁё]+");
-        Matcher matcher = patternWord.matcher(names);
-        while (matcher.find()) {
-            String name = matcher.group();
-            peopleA.add(name);
-            peopleL.add(name);
+        int amount = 4096;
+        for (int i = 0; i < amount; i++) {
+            peopleA.add("name" + i);
+            peopleL.add("name" + i);
         }
+        long startPeopleA = System.nanoTime();
+        process(peopleA);
+        long endPeopleA = System.nanoTime();
+        System.out.println(endPeopleA - startPeopleA);
 
-        System.out.println("Name" + ":" + process(peopleA));
-        System.out.println("Name" + ":" + process(peopleL));
+        long startPeopleL = System.nanoTime();
+        process(peopleL);
+        long endPeopleL = System.nanoTime();
+        System.out.println(endPeopleL - startPeopleL);
     }
 
     private static String process(ArrayList<String> peoples) {
