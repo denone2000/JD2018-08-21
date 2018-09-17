@@ -6,28 +6,12 @@ import java.util.regex.Pattern;
 
 public class TaskB1 {
     public static void main(String[] args) {
-//      HashMap<String, Integer> hashMap = new HashMap<>();
         StringBuilder text = getInputText();
         List<String> words = getWords(text);
-//        System.out.println(words);
-//        System.out.println(words);
-        System.out.println(countOfRepeat(words));
-//        Scanner scanner=new Scanner(System.in);
-//        String word;
-//        while (!(word = scanner.nextLine()).equals("end")) {
-//            int counter = 1;
-//            for (Map.Entry<String, Integer> entry: hashMap.entrySet()) {
-//                if (word.equals(entry.getKey())) {
-//                    counter ++;
-//                }
-//            }
-//            hashMap.put(word, counter);
-//        }
-//        hashMap.remove("");
-//        System.out.println(hashMap);
+        System.out.println(getHashMap(words));
     }
 
-    private static HashMap countOfRepeat(List<String> words) {
+    private static HashMap getHashMap(List<String> words) {
         HashMap<String, Integer> hashMap = new HashMap<>();
         Iterator<String> iterator = words.iterator();
         String word;
@@ -39,23 +23,6 @@ public class TaskB1 {
             String key = entry.getKey();
             hashMap.replace(key, getRepeatCounter(words, key));
         }
-//        for (Map.Entry<String, Integer> entry: hashMap.entrySet()) {
-//            String key = entry.getKey();
-//            int value = entry.getValue();
-//            while (iterator.hasNext()) {
-//                word = iterator.next();
-//                if (key.equals(word)) {
-//                    value++;
-//                    hashMap.replace(word, value);
-//                }
-//            }
-//        }
-//                if (word.equals(entry.getKey())) {
-//                    counter ++;
-//                }
-//            }
-//            hashMap.put(word, counter);
-//        }
         hashMap.remove("");
         return hashMap;
     }
@@ -88,7 +55,7 @@ public class TaskB1 {
         Scanner scanner=new Scanner(System.in);
         String text;
         while (!(text = scanner.nextLine()).equals("end")) {
-            result.append(" " + text.trim());
+            result.append(" ").append(text.trim());
         }
         return result;
     }
