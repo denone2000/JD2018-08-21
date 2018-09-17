@@ -4,27 +4,40 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//to be finalized...
 public class TaskC3 {
     public static void main(String[] args) {
-        String testLineFix = "(2+3)+([3*4]+4)";
-        String testLineFailed = "(2+3)+[(3*4]+4) (";
+        String testLineFix = "{((2+3)+([3*4]+4))}";
+        String testLineFix2 = "{3}*({2}*([1]-2+3)+([3*4]+4))";
+        String testLineFailed = "{3}*({2}*[1-2+3))";
 
-        parenthOrderChecker(testLineFix);
-        parenthOrderChecker(testLineFailed);
+        System.out.println(parenthOrderChecker(testLineFix)+ testLineFix);
+        System.out.println(parenthOrderChecker(testLineFix2)+ testLineFix2);
+        System.out.println(parenthOrderChecker(testLineFailed)+ testLineFailed);
     }
-    static boolean parenthOrderChecker(String line){
-        Stack<String> symbStack = new Stack<>();
+    private static boolean parenthOrderChecker(String line){
+        Stack<String> separatorStack = new Stack<>();
 
-        String parenthesisPattern = "[\\{\\}\\(\\)\\[\\]]";
-        Pattern pattern = Pattern.compile(parenthesisPattern);
+        //noinspection RegExpRedundantEscape built-in regex chek doesn't work correctly...
+        String separatorPattern = "[\\{\\}\\(\\)\\[\\]]";
+        Pattern pattern = Pattern.compile(separatorPattern);
         Matcher parMatcher = pattern.matcher(line);
 
+        String buffer;
+        String token;
         while(parMatcher.find()){
-            symbStack.push(parMatcher.group());
+            token=parMatcher.group();
+            if((token).matches("[({\\[]")){
+                separatorStack.push(token);
+            }else if(token.matches("[)}\\]]")){
+                buffer = token;
+                //noinspection LoopStatementThatDoesntLoop the loop statement will be likely necessary for further work with the code (no latency footprint is anticipated)
+                while(!((token=separatorStack.pop()).contains("[({\\[]"))){
+                    if(!token.concat(buffer).matches("(\\[])|(\\{})|(\\(\\))")){
+                        return false;
+                    }else break;
+                }
+            }
         }
-
-        System.out.println(symbStack);
-        return true;
+        return separatorStack.size()==0;
     }
 }
