@@ -28,6 +28,10 @@ abstract class Var implements Operation {
         return null;
     }
 
+    public static Map<String, Var> getVars() {
+        return vars;
+    }
+
     private static Map<String,Var> vars = new HashMap<>();
     static Var saveVars (String name, Var var){
         vars.put(name,var);
