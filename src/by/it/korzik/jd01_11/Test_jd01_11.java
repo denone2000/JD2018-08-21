@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_11;
+package by.it.korzik.jd01_11;
 
 
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class Test_jd01_11 {
     public void testTaskA__ListA() throws Exception {
         System.out.println("\nA. Диагностика обязательных к реализации методов:");
         Class<?> aclass = findClass("ListA");
-        List<Integer> a = (List<Integer>) aclass.getDeclaredConstructor().newInstance();
+        List<Integer> a = (List<Integer>) aclass.getConstructor().newInstance();
         List<Integer> e = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             e.add(i * 2);
@@ -55,7 +55,7 @@ public class Test_jd01_11 {
     public void testTaskB__ListB() throws Exception {
         System.out.println("\nB. Диагностика обязательных к реализации методов:");
         Class<?> aclass = findClass("ListB");
-        List<Long> a = (List<Long>) aclass.getDeclaredConstructor().newInstance();
+        List<Long> a = (List<Long>) aclass.getConstructor().newInstance();
         List<Long> e = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             e.add(i * 2L);
@@ -155,7 +155,7 @@ public class Test_jd01_11 {
     public void testTaskC__SetC() throws Exception {
         System.out.println("\nC. Диагностика обязательных к реализации методов:");
         Class<?> aclass = findClass("SetC");
-        Set<Short> a = (Set<Short>) aclass.getDeclaredConstructor().newInstance();
+        Set<Short> a = (Set<Short>) aclass.getConstructor().newInstance();
         Set<Short> e = new HashSet<>();
         for (int i = 0; i < 10; i++) {
             e.add((short) (i * 2));

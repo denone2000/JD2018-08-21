@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_11;
+package by.it.bindyuk.jd01_11;
 
 
 import org.junit.Test;
