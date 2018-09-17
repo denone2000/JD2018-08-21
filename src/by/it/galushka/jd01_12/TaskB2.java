@@ -14,17 +14,17 @@ public class TaskB2 {
     }
 
     static String process(ArrayList<String> peoples) {
-        boolean remove = false;
+        int counter = 1;
         while (peoples.size() > 1) {
             ListIterator<String> iterator = peoples.listIterator();
             while (iterator.hasNext()) {
                 iterator.next();
-                if (remove == true) {
+                if (counter % 2 == 0) {
                     iterator.remove();
-                    remove = false;
+                    counter++;
                 }
                 else {
-                    remove = true;
+                    counter++;
                 }
             }
         }
@@ -37,7 +37,7 @@ public class TaskB2 {
             ListIterator<String> iterator = peoples.listIterator();
             while (iterator.hasNext()) {
                 iterator.next();
-                if (remove == true) {
+                if (remove) {
                     iterator.remove();
                     remove = false;
                 }
