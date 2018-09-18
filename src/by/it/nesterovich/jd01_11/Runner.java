@@ -48,10 +48,10 @@ public class Runner {
         HashSet<String> haSet = new HashSet<>();
         //проверка метода add
         mySet.add("1"); haSet.add("1");
-        mySet.add("2"); haSet.add("2");
+        mySet.add("t"); haSet.add("t");
         mySet.add("3"); haSet.add("3");
-        System.out.println("myList.add:"+myList);
-        System.out.println("arList.add:"+arList);
+        System.out.println("mySet.add:"+mySet);
+        System.out.println("haSet.add:"+haSet);
 
 
     }
