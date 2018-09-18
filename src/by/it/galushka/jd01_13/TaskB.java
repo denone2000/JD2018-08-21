@@ -14,9 +14,11 @@ public class TaskB {
             inputArrayList.add(inputLine.trim());
             List<Double> doubleList = getDoubleList(inputArrayList);
             if (doubleList != null) {
-                System.out.println(getSqrt(doubleList));
-            }
-            else
+                if (getSqrt(doubleList) > 0)
+                    System.out.println(getSqrt(doubleList));
+                else
+                    break;
+            } else
                 break;
         }
     }
@@ -27,23 +29,27 @@ public class TaskB {
         while (iterator.hasNext()) {
             sum = sum + iterator.next();
         }
-//        try {
-//            return Math.sqrt(sum);
-//        }
-//        catch (Exception e) {
-//            String myClassName = e.getClass().getName();
-//            StackTraceElement[] stackTrace = e.getStackTrace();
-//            for (StackTraceElement element : stackTrace) {
-//                if (TaskB.class.getName().equals(element.getClassName())) {
-//                    System.out.println(" name: " + myClassName);
-//                    System.out.println("class: " + element.getClassName());
-//                    System.out.println(" line: " + element.getLineNumber());
-//                    break;
-//                }
-//            }
-//            return null;
-//        }
-        return Math.sqrt(sum);
+        double result = 0;
+        try {
+            result = Math.sqrt(sum);
+            String toString = String.valueOf(result);
+            if (toString.equalsIgnoreCase("nan")) {
+                throw new ArithmeticException();
+            }
+        } catch (ArithmeticException e) {
+            String myClassName = e.getClass().getName();
+            StackTraceElement[] stackTrace = e.getStackTrace();
+            for (StackTraceElement element : stackTrace) {
+                if (TaskB.class.getName().equals(element.getClassName())) {
+                    System.out.println(" name: " + myClassName);
+                    System.out.println("class: " + element.getClassName());
+                    System.out.println(" line: " + element.getLineNumber());
+                    break;
+                }
+            }
+            return -1;
+        }
+        return result;
     }
 
     private static List<Double> getDoubleList(List list) {
