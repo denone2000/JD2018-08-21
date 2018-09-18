@@ -6,8 +6,7 @@ public class ListB<T> implements List<T> {
 
     private T[] array = ( T[] ) new Object[]{};
     private int size = 0;
-    //private final ArrayList<E> root;
-    //private final int offset;
+    public ListB(){}
 
     @Override
     public String toString() {
@@ -42,30 +41,37 @@ public class ListB<T> implements List<T> {
         return array[index];
     }
 
+    @Override
+    public T set(int index, T element) {
+        T del = array[index];
+        T tmp = del;
+        array[index] = element;
+        return tmp;
+
+    }
 
     @Override
     public void add(int index, T element) {
-        if (size  == array.length ) {
-            array = Arrays.copyOf(array, size*3/2+1);
-            System.arraycopy(array, index, array, index+1, size-index);
-            array[index] = element;
-            size++;
-        }
+        if (size == array.length)
+            array = Arrays.copyOf(array, (size*3)/2+1);
+        System.arraycopy(array, index, array, index + 1, size - index);
+        array[index] = element;
+        size++;
     }
 
-
-
-    @Override
+       @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        if (size  <= array.length + c.size()) {
+            array = Arrays.copyOf(array, (size + c.size())*3/2+1);
+        }
+        Iterator<? extends T> iterator = c.iterator();
+        while (iterator.hasNext()) {
+            array[size++] = iterator.next();
+        }
+        return true;
     }
 
-    @Override
-    public T set(int index, T element) {
 
-
-        return element;
-    }
 
     @Override
     public int size() {
@@ -138,7 +144,21 @@ public class ListB<T> implements List<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        if ( o == null) {
+            for (int i = 0; i < size; i++) {
+                if (array[i] == null) {
+                    return i;
+                }
+            }
+        }
+        else  {
+            for (int i = 0; i < size; i++) {
+                if (o.equals(array[i])) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     @Override

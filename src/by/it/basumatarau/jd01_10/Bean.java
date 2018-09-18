@@ -6,9 +6,7 @@ public class Bean {
         return (double)(a+b);
     }
     @Param(a=1, b=3)
-    public static double min(int a, int b){
-        return (double)(a<b? a:b);
-    }
+    public static double min(int a, int c){return (double)(a<c? a:c);}
     @Param(a=30, b=40)
     public double max(int a, int b){
         return (double)(a>b? a:b);
