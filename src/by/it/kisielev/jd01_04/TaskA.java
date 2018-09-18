@@ -1,9 +1,6 @@
 package by.it.kisielev.jd01_04;
 
 
-//import by.it.kisielev.jd01_03.Helper;
-
-import by.it.akhmelev.jd01_03.Helper;
 
 import java.util.Scanner;
 
@@ -19,7 +16,7 @@ public class TaskA {
     static void printMulTable() {
         for (int i = 2; i <= 9; i++) {
             for (int j = 2; j <= 9; j++) {
-                System.out.printf("%1d*%1d=%-2d", i, j, i * j);
+                System.out.printf("%1d*%1d=%-2d ", i, j, i * j);
             }
             System.out.println();
         }
@@ -33,10 +30,13 @@ public class TaskA {
         Helper.sort(array);
         InOut.printArray(array,"V",4);
         int indexFirst=0;
-        while(array[indexFirst]!=first && indexFirst<=array.length) indexFirst++;
-
+        while(array[indexFirst]!=first && indexFirst<=array.length) {
+            indexFirst++;
+        }
         int indexLast=0;
-        while(array[indexLast]!=first && indexLast<=array.length) indexLast++;
+        while(array[indexLast]!=first && indexLast>=array.length) {
+            indexLast++;
+        }
         System.out.println("Index of first element="+indexFirst);
         System.out.println("Index of last element="+indexLast);
     }

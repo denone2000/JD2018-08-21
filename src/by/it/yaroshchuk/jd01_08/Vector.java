@@ -8,6 +8,10 @@ class Vector extends Var {
 
     private double[] value;
 
+    public double[] getValue(){
+        return this.value;
+    }
+
     Vector(double[] value){
         this.value = Arrays.copyOf(value, value.length);
     }

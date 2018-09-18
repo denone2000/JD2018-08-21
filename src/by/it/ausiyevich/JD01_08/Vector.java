@@ -44,7 +44,7 @@ public class Vector extends Var {
             }
             return new Vector(res);
         }
-        else 
+        else
         return super.add(other);
     }
 
