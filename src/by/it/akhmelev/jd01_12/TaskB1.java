@@ -1,6 +1,5 @@
 package by.it.akhmelev.jd01_12;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
@@ -32,11 +31,18 @@ public class TaskB1 {
 
         }
 
-        //перебор карты
+        //перебор карты через for each
         for (Map.Entry<String, Integer> pair : map.entrySet()) {
             System.out.println(pair.getKey()+"="+pair.getValue());
         }
 
+        //второй вариант перебора итератором
+        Set<Map.Entry<String, Integer>> set = map.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator = set.iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Integer> pair = iterator.next();
+            System.out.println(pair.getKey()+"="+pair.getValue());
+        }
 
     }
 }
