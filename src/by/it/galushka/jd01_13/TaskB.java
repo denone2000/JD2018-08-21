@@ -27,8 +27,23 @@ public class TaskB {
         while (iterator.hasNext()) {
             sum = sum + iterator.next();
         }
-        double result = Math.sqrt(sum);
-        return result;
+//        try {
+//            return Math.sqrt(sum);
+//        }
+//        catch (Exception e) {
+//            String myClassName = e.getClass().getName();
+//            StackTraceElement[] stackTrace = e.getStackTrace();
+//            for (StackTraceElement element : stackTrace) {
+//                if (TaskB.class.getName().equals(element.getClassName())) {
+//                    System.out.println(" name: " + myClassName);
+//                    System.out.println("class: " + element.getClassName());
+//                    System.out.println(" line: " + element.getLineNumber());
+//                    break;
+//                }
+//            }
+//            return null;
+//        }
+        return Math.sqrt(sum);
     }
 
     private static List<Double> getDoubleList(List list) {
