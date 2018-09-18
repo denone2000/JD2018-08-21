@@ -1,6 +1,5 @@
 package by.it.akhmelev.jd01_13;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class TaskA {
