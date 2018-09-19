@@ -6,6 +6,14 @@ import java.util.regex.Pattern;
 class Parser {
 
     Var calc(String expression) {
+        if (expression.trim().equals("printvar")){
+            Var.printVar();
+            return null;
+        }
+        if (expression.trim().equals("sortvar")){
+            Var.sortVar();
+            return null;
+        }
         String[] stringVars = expression.split(Patterns.OPERATION);
         Var two = Var.createVar(stringVars[1]);
         if (expression.contains("=")){

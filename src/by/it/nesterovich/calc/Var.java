@@ -2,14 +2,38 @@ package by.it.nesterovich.calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
-    private static Map<String,Var> vars = new HashMap<>();
+    private static Map<String, Var> vars = new HashMap<>();
 
-    static Var saveVar(String name, Var var){
-        vars.put(name,var);
+
+    static Var saveVar(String name, Var var) {
+        vars.put(name, var);
         return var;
+    }
+
+    static void printVar() {
+        if (vars.isEmpty()) {
+            System.out.println("в списке нет переменных");
+        } else {
+            for (Map.Entry<String, Var> entry : vars.entrySet()) {
+                System.out.println(entry.getKey() + "=" + entry.getValue());
+            }
+        }
+    }
+
+    static void sortVar() {
+        if (vars.isEmpty()) {
+            System.out.println("в списке нет переменных");
+        } else {
+            HashMap<String, Var> varsSort = new HashMap<>();
+            varsSort.putAll(vars);
+            for (Map.Entry<String, Var> entry : varsSort.entrySet()) {
+                System.out.println(entry.getKey() + "=" + entry.getValue());
+            }
+        }
     }
 
     static Var createVar(String operand) {
@@ -23,7 +47,7 @@ abstract class Var implements Operation {
         if (operand.matches(Patterns.MATRIX)) {
             return new Matrix(operand);
         }
-        if (vars.containsKey(operand)){
+        if (vars.containsKey(operand)) {
             return vars.get(operand);
         }
         //TODO add exception create vars
