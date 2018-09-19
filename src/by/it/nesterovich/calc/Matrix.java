@@ -39,7 +39,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
@@ -63,6 +63,9 @@ class Matrix extends Var {
             }
             return new Matrix(res);
         } else if (other instanceof Matrix) {
+            if (((Matrix) other).value.length != this.value.length) {
+                throw new CalcException("Невозможно сложить матрицы разного размера");
+            }
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
@@ -79,7 +82,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
@@ -103,6 +106,9 @@ class Matrix extends Var {
             }
             return new Matrix(res);
         } else if (other instanceof Matrix) {
+            if (((Matrix) other).value[0].length != this.value.length) {
+                throw new CalcException("Невозможно вычитать матрицы разного размера");
+            }
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
@@ -119,7 +125,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
@@ -149,6 +155,9 @@ class Matrix extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Matrix) {
+            if (((Matrix) other).value[0].length != this.value.length) {
+                throw new CalcException("Невозможно умножать матрицы разной размерности");
+            }
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
@@ -166,12 +175,11 @@ class Matrix extends Var {
             return new Matrix(result);
         } else {
             return super.mul(other);
-
         }
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 
