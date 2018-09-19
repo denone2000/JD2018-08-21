@@ -4,59 +4,34 @@ import java.util.*;
 
 public class TaskC {
 
+    private static List<Double> list = new ArrayList<>();
     private static int counter = 0;
+    private static Scanner scanner;
 
-    public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        while (counter < 5)
-            readData(scanner);
-
+    public static void main(String[] args) throws Exception {
+        scanner = new Scanner(System.in);
+        while (true) {
+            readData();
+        }
     }
 
-    static void readData(Scanner scanner) throws InterruptedException {
-        List<Double> list = new ArrayList<>();
-//        while (counter < 5) {
-            try {
-                double num = scanner.nextDouble();
-                list.add(num);
-            } catch (Exception e) {
+    static void readData() throws NumberFormatException, InterruptedException {
+        try {
+            Double num = Double.parseDouble(scanner.nextLine());
+            list.add(num);
+        } catch (Exception e) {
+            if (counter >= 4) {
+                throw new NumberFormatException();
+            } else {
                 Thread.sleep(100);
                 int sizeList = list.size();
-                for (int j = sizeList-1; j >= 0; j--) {
-                    double res = list.get(j);
+                for (int i = sizeList - 1; i >= 0; i--) {
+                    double res = list.get(i);
                     System.out.print(res + " ");
                 }
+                System.out.println();
                 counter++;
             }
-//        }
-//        boolean counter = false;
-//        for (int i = 0; i < 4; counter = true) {
-//            try {
-//                if (i == 4)
-//                    counter = false;
-//                while (counter == true) {
-//                    double num = scanner.nextDouble();
-//                    list.add(num);
-//                }
-//            } catch (Exception e) {
-//                Thread.sleep(100);
-//                int sizeList = list.size();
-//                for (int j = sizeList-1; j >= 0; j--) {
-//                    double res = list.get(j);
-//                    System.out.print(res + " ");
-//                }
-//                i++;
-//            }
-//        }
-
-
-        //--------------------------------------
-        //вывод в обратном порядке
-//        int sizeList = list.size();
-//        for (int i = sizeList-1; i >= 0; i--) {
-//            double res = list.get(i);
-//            System.out.print(res + " ");
-//        }
-        //--------------------------------------
+        }
     }
 }
