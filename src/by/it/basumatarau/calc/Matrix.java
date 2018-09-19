@@ -157,6 +157,10 @@ public class Matrix extends Var {
     }
 
     @Override
+    public Var div(Var other) throws CalcException {
+        return other.divBy(this);
+    }
+    @Override
     public Var divBy(Matrix matrix)throws CalcException {
         return super.div(matrix);
     }
@@ -167,10 +171,6 @@ public class Matrix extends Var {
     @Override
     public Var divBy(Vector vector)throws CalcException {
         return super.div(vector);
-    }
-    @Override
-    public Var div(Var other)throws CalcException {
-        return super.div(other);
     }
 
     @Override

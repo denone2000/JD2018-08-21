@@ -21,20 +21,19 @@ public abstract class Var implements Operation {
     static String printVar(){
         StringBuilder sb = new StringBuilder();
         Set<Map.Entry<String, Var>> entries = Var.varHashMap.entrySet();
-        Iterator<Map.Entry<String, Var>> iterator = entries.iterator();
-        while(iterator.hasNext()){
-            sb.append(iterator.next().toString()).append("\n");
+        for (Map.Entry<String, Var> entry : entries) {
+            sb.append(entry.toString()).append("\n");
         }
         return sb.toString();
     }
 
-    public static Var createVar(String strOperand) throws CalcException{
+    static Var createVar(String strOperand) throws CalcException{
         if (strOperand.trim().matches(RegExPatterns.SCALAR)) return new Scalar(strOperand);
         if (strOperand.trim().matches(RegExPatterns.VECTOR)) return new Vector(strOperand);
         if (strOperand.trim().matches(RegExPatterns.MATRIX)) return new Matrix(strOperand);
         if (varHashMap.containsKey(strOperand)){return varHashMap.get(strOperand);}
 
-        throw new CalcException("operand didn't fall under set of parsing patterns...");
+        throw new CalcException("operand has not been parsed...");
     }
 
     @Override
@@ -56,7 +55,6 @@ public abstract class Var implements Operation {
     @Override
     public Var mul(Var other) throws CalcException{
         throw new CalcException(String.format("mul operation: %s * %s is not allowed\n", this, other));
-
     }
     public abstract Var mulBy(Scalar scalar) throws CalcException;
     public abstract Var mulBy(Vector vector) throws CalcException;
