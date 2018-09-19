@@ -3,7 +3,7 @@ package by.it.artemliashkov.calc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parser {
+class Parser{
 
     Var calc(String expression)  throws CalcException {
         if (expression.trim().equals("printvar")){

@@ -1,6 +1,6 @@
 package by.it.artemliashkov.calc;
 
-class Scalar extends Var {
+class Scalar extends Var{
 
     private double value;
 

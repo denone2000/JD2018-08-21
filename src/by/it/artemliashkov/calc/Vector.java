@@ -2,7 +2,7 @@ package by.it.artemliashkov.calc;
 
 import java.util.Arrays;
 
-class Vector extends Var {
+class Vector extends Var{
 
     private double[] value;
 

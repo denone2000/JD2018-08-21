@@ -13,7 +13,7 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_13_for_calc {
+public class Test_jd01_13_for_calc{
 
     @Test(timeout = 1500)
     public void testTaskA__ConsoleRunner() throws Exception {

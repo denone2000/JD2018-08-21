@@ -3,7 +3,7 @@ package by.it.artemliashkov.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-abstract class Var implements Operation {
+abstract class Var implements Operation{
 
     private static Map<String, Var> vars = new HashMap<>();
 

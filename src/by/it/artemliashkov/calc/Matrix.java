@@ -2,7 +2,7 @@ package by.it.artemliashkov.calc;
 
 import java.util.Arrays;
 
-class Matrix extends Var {
+class Matrix extends Var{
 
     private double[][] value;
 
