@@ -11,24 +11,16 @@ public class TaskC {
 
     public static void main(String[] args) throws Exception {
         scanner = new Scanner(System.in);
-        while (count <= 5) {
+        while (true) {
             readData();
         }
     }
 
     private static void readData() throws Exception {
-        String text = scanner.next();
-        String[] numbers = text.split("\\n");
+        String text = scanner.nextLine();
         try {
-            for (String number : numbers) {
-                Double num = Double.parseDouble(number);
-                if (count < 5) {
-                    strings.add(num);
-                } else {
-                    count++;
-                    throw new Exception();
-                }
-            }
+            Double num = Double.parseDouble(text);
+            strings.add(num);
         } catch (Exception e) {
             Thread.sleep(100);
             for (int i = strings.size() - 1; i >= 0; i--) {
@@ -36,6 +28,9 @@ public class TaskC {
             }
             System.out.println();
             count++;
+            if (count >= 5) {
+                throw new Exception();
+            }
         }
     }
 }
