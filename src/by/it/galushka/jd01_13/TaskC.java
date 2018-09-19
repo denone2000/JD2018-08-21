@@ -15,7 +15,7 @@ public class TaskC {
         }
     }
 
-    static void readData() throws NumberFormatException, InterruptedException {
+    private static void readData() throws NumberFormatException, InterruptedException {
         try {
             Double num = Double.parseDouble(scanner.nextLine());
             list.add(num);
