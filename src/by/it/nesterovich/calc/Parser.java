@@ -40,9 +40,9 @@ class Parser {
                 case "/":
                     return one.div(two);
             }
+            //throw  new  CalcException("Невозможно определить операцию");
         }
-        throw  new  CalcException("Невозможно определить операцию");
         //ODO create error
-        //return null;
+        return null;
     }
 }
