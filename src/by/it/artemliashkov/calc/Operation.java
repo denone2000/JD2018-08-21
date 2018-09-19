@@ -1,8 +1,11 @@
-package by.it.basumatarau.calc;
+package by.it.artemliashkov.calc;
 
-public interface Operation {
+interface Operation {
     Var add(Var other) throws CalcException;
+
     Var sub(Var other) throws CalcException;
+
     Var mul(Var other) throws CalcException;
+
     Var div(Var other) throws CalcException;
 }

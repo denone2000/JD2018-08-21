@@ -1,4 +1,4 @@
-package by.it.nesterovich.calc;
+package by.it.artemliashkov.calc;
 
 import java.util.Scanner;
 

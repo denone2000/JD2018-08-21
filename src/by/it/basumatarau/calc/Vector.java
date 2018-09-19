@@ -23,7 +23,10 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var addTo(Vector vector) {
+    public Var addTo(Vector vector) throws CalcException{
+        if(this.value.length!=vector.value.length){
+            return super.add(vector);
+        }
         double[] result = Arrays.copyOf(vector.value, vector.value.length);
         for (int i = 0; i < result.length; i++) {
             result[i]+=this.value[i];
@@ -39,16 +42,16 @@ public class Vector extends Var {
         return new Vector(result);
     }
     @Override
-    public Var addTo(Matrix matrix) {
+    public Var addTo(Matrix matrix) throws CalcException {
         return matrix.addTo(this);
     }
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException {
         return other.addTo(this);
     }
 
     @Override
-    public Var subAnother(Matrix matrix) {
+    public Var subAnother(Matrix matrix)throws CalcException {
         if(matrix.getValue().length>1&&matrix.getValue()[0].length!=value.length){
             return super.mul(matrix);
         }
@@ -59,7 +62,10 @@ public class Vector extends Var {
         return new Vector(result);
     }
     @Override
-    public Var subAnother(Vector vector) {
+    public Var subAnother(Vector vector) throws CalcException{
+        if(this.value.length!=vector.value.length){
+            return super.sub(vector);
+        }
         double[] result = Arrays.copyOf(vector.getValue(), vector.getValue().length);
         for (int i = 0; i < result.length; i++) {
             result[i]-= this.value[i];
@@ -75,12 +81,12 @@ public class Vector extends Var {
         return new Vector(result);
     }
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException {
         return other.subAnother(this);
     }
 
     @Override
-    public Var mulBy(Matrix matrix) {
+    public Var mulBy(Matrix matrix)throws CalcException {
         if(value.length!=matrix.getValue().length){
             return super.mul(matrix);
         }
@@ -110,24 +116,24 @@ public class Vector extends Var {
         return new Vector(result);
     }
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException {
         return other.mulBy(this);
     }
 
     @Override
-    public Var divBy(Matrix matrix) {
+    public Var divBy(Matrix matrix)throws CalcException {
         return super.div(matrix);
     }
     @Override
-    public Var divBy(Vector vector) {
+    public Var divBy(Vector vector)throws CalcException {
         return super.div(vector);
     }
     @Override
-    public Var divBy(Scalar scalar) {
+    public Var divBy(Scalar scalar)throws CalcException {
         return super.div(scalar);
     }
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalcException {
         return other.divBy(this);
     }
 

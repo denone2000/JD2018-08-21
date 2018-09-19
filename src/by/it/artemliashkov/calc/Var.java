@@ -1,8 +1,7 @@
-package by.it.nesterovich.calc;
+package by.it.artemliashkov.calc;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
@@ -34,7 +33,7 @@ abstract class Var implements Operation {
         }
     }
 
-    static Var createVar(String operand) throws CalcException{
+    static Var createVar(String operand) throws CalcException {
         operand = operand.trim().replace("\\s+", "");
         if (operand.matches(Patterns.SCALAR)) {
             return new Scalar(operand);
@@ -49,26 +48,26 @@ abstract class Var implements Operation {
             return vars.get(operand);
         }
         //ODO add exception create vars
-        throw  new  CalcException("Невозможно создать "+operand);
+        throw  new CalcException("Невозможно создать "+operand);
     }
 
     @Override
-    public Var add(Var other)  throws CalcException{
+    public Var add(Var other)  throws CalcException {
         throw  new CalcException("Операция сложения " + this + "+" + other + " невозможна");
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException{
+    public Var sub(Var other)  throws CalcException {
         throw  new CalcException("Операция вычитания " + this + "-" + other + " невозможна");
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException{
+    public Var mul(Var other)  throws CalcException {
         throw  new CalcException("Операция умножения " + this + "*" + other + " невозможна");
     }
 
     @Override
-    public Var div(Var other)  throws CalcException{
+    public Var div(Var other)  throws CalcException {
         throw  new CalcException("Операция деления " + this + "/" + other + " невозможна");
     }
 
