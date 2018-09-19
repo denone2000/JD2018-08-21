@@ -28,50 +28,46 @@ public abstract class Var implements Operation {
         return sb.toString();
     }
 
-    public static Var createVar(String strOperand) {
+    public static Var createVar(String strOperand) throws CalcException{
         if (strOperand.trim().matches(RegExPatterns.SCALAR)) return new Scalar(strOperand);
         if (strOperand.trim().matches(RegExPatterns.VECTOR)) return new Vector(strOperand);
         if (strOperand.trim().matches(RegExPatterns.MATRIX)) return new Matrix(strOperand);
         if (varHashMap.containsKey(strOperand)){return varHashMap.get(strOperand);}
 
-        System.out.println("operand didn't fall under set of parsing patterns...");
-        return null;
+        throw new CalcException("operand didn't fall under set of parsing patterns...");
     }
 
     @Override
-    public Var add(Var other) {
-        System.out.printf("sum operation: %s + %s is not allowed\n", this, other);
-        return null;
+    public Var add(Var other) throws CalcException{
+        throw new CalcException(String.format("sum operation: %s + %s is not allowed\n", this, other));
     }
-    public abstract Var addTo(Scalar scalar);
-    public abstract Var addTo(Vector vector);
-    public abstract Var addTo(Matrix matrix);
+    public abstract Var addTo(Scalar scalar) throws CalcException;
+    public abstract Var addTo(Vector vector) throws CalcException;
+    public abstract Var addTo(Matrix matrix) throws CalcException;
 
     @Override
-    public Var sub(Var other) {
-        System.out.printf("sub operation: %s - %s is not allowed\n", this, other);
-        return null;
+    public Var sub(Var other)  throws CalcException{
+        throw new CalcException(String.format("sub operation: %s - %s is not allowed\n", other, this));
     }
-    public abstract Var subAnother(Scalar scalar);
-    public abstract Var subAnother(Vector vector);
-    public abstract Var subAnother(Matrix matrix);
+    public abstract Var subAnother(Scalar scalar) throws CalcException;
+    public abstract Var subAnother(Vector vector) throws CalcException;
+    public abstract Var subAnother(Matrix matrix) throws CalcException;
 
     @Override
-    public Var mul(Var other) {
-        System.out.printf("mul operation: %s * %s is not allowed\n", this, other);
-        return null;
+    public Var mul(Var other) throws CalcException{
+        throw new CalcException(String.format("mul operation: %s * %s is not allowed\n", this, other));
+
     }
-    public abstract Var mulBy(Scalar scalar);
-    public abstract Var mulBy(Vector vector);
-    public abstract Var mulBy(Matrix matrix);
+    public abstract Var mulBy(Scalar scalar) throws CalcException;
+    public abstract Var mulBy(Vector vector) throws CalcException;
+    public abstract Var mulBy(Matrix matrix) throws CalcException;
     @Override
-    public Var div(Var other) {
-        System.out.printf("div operation: %s / %s is not allowed\n", this, other);
-        return null;
+    public Var div(Var other) throws CalcException{
+        throw new CalcException(String.format("div operation: %s / %s is not allowed\n",  other, this));
     }
-    public abstract Var divBy(Scalar scalar);
-    public abstract Var divBy(Vector vector);
-    public abstract Var divBy(Matrix matrix);
+    public abstract Var divBy(Scalar scalar) throws CalcException;
+    public abstract Var divBy(Vector vector) throws CalcException;
+    public abstract Var divBy(Matrix matrix) throws CalcException;
 
     @Override
     public String toString() {

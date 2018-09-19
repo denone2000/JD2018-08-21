@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    public Var calc(String str) {
+    public Var calc(String str) throws CalcException{
 
         Pattern operatorPattern = Pattern.compile(RegExPatterns.OPERATOR);
         Matcher operatorMatcher = operatorPattern.matcher(str);
