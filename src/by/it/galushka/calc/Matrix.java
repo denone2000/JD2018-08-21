@@ -48,7 +48,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] resAdd = new double[value.length][value[0].length];
             for (int i = 0; i < resAdd.length; i++) {
@@ -72,7 +72,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] resSub = new double[value.length][value[0].length];
             for (int i = 0; i < resSub.length; i++) {
@@ -84,6 +84,10 @@ public class Matrix extends Var {
         }
         if (other instanceof Matrix) {
             double[][] resSubMatrix = new double[value.length][value[0].length];
+            int thisLength = this.value.length;
+            int otherLength = ((Matrix) other).value[0].length;
+            if (thisLength != otherLength)
+                throw new CalcException("Размер матриц не совподает!");
             for (int i = 0; i < resSubMatrix.length; i++) {
                 for (int j = 0; j < resSubMatrix[0].length; j++) {
                     resSubMatrix[i][j] = value[i][j] - ((Matrix) other).value[i][j];
@@ -96,7 +100,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] resMul = new double[value.length][value[0].length];
             for (int i = 0; i < resMul.length; i++) {
@@ -131,7 +135,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalcException {
         return super.div(other);
     }
 
