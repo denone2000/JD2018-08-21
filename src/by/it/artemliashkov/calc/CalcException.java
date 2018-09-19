@@ -1,6 +1,6 @@
 package by.it.artemliashkov.calc;
 
-public class CalcException extends Exception {
+public class CalcException extends Exception{
     public CalcException() {
     }
 
