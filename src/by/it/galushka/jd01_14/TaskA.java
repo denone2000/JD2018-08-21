@@ -16,7 +16,7 @@ public class TaskA {
 
 
     public static void main(String[] args) {
-//        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         try (DataOutputStream dos =
                      new DataOutputStream(
                              new BufferedOutputStream(
@@ -43,6 +43,7 @@ public class TaskA {
                 int i = dis.readInt();
                 System.out.print(i + " ");
                 pw.print(i + " ");
+                list.add(i);
                 sum += i;
                 counter++;
             }
@@ -51,5 +52,6 @@ public class TaskA {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("\nArrayList: " + list);
     }
 }
