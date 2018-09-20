@@ -14,8 +14,12 @@ public class ConsoleRunner {
             }else if(str.contains("sortvar")){
                 System.out.println(Var.sortvar());
             }else{
-                Var var = parser.calc(str);
-                System.out.println(printer.print(var));
+                try {
+                    Var var = parser.calc(str);
+                    System.out.println(printer.print(var));
+                } catch (CalcException e){
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }

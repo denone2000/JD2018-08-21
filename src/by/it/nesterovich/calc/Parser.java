@@ -5,7 +5,15 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    Var calc(String expression) {
+    Var calc(String expression)  throws CalcException{
+        if (expression.trim().equals("printvar")){
+            Var.printVar();
+            return null;
+        }
+        if (expression.trim().equals("sortvar")){
+            Var.sortVar();
+            return null;
+        }
         String[] stringVars = expression.split(Patterns.OPERATION);
         Var two = Var.createVar(stringVars[1]);
         if (expression.contains("=")){
@@ -14,8 +22,9 @@ class Parser {
         }
         Var one = Var.createVar(stringVars[0]);
         if (one == null || two == null) {
-            System.out.println("нет переменной");
-            return null; //TODO create error
+            throw  new  CalcException("нет переменной");
+           // System.out.println("нет переменной");
+            //return null; //ODO create error
         }
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
         Matcher m = patternOperation.matcher(expression);
@@ -31,8 +40,9 @@ class Parser {
                 case "/":
                     return one.div(two);
             }
+            //throw  new  CalcException("Невозможно определить операцию");
         }
-        //TODO create error
+        //ODO create error
         return null;
     }
 }
