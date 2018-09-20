@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class TaskC {
 
-    static Scanner scanner;
-    static int counterError=0;
-    static List<Double> list = new ArrayList<Double>(){
+    private static Scanner scanner;
+    private static int counterError=0;
+    private static List<Double> list = new ArrayList<Double>(){
         @Override
         public String toString() {
             StringBuilder sb=new StringBuilder();
@@ -33,8 +33,7 @@ public class TaskC {
             list.add(v);
         } catch (NumberFormatException e) {
             try {
-                counterError++;
-                if (counterError>5)
+                if (++counterError>=5)
                     throw e;
                 Thread.sleep(100);
                 System.out.println(list);
