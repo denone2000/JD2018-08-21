@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class Scalar extends Var {
     private double value;
 
-    public double getVal(){
+    double getVal(){
         return this.value;
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException{
         return other.addTo(this);
     }
     @Override
@@ -27,11 +27,11 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var subAnother(Matrix matrix) {
+    public Var subAnother(Matrix matrix)throws CalcException {
         return this.mul(new Scalar(-1)).addTo(matrix);
     }
     @Override
-    public Var subAnother(Vector vector) {
+    public Var subAnother(Vector vector){
         return vector.subAnother(this);
     }
     @Override
@@ -39,12 +39,12 @@ public class Scalar extends Var {
         return new Scalar(scalar.getVal() - this.getVal());
     }
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException{
         return other.subAnother(this);
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException{
         return other.mulBy(this);
     }
     @Override
@@ -75,7 +75,10 @@ public class Scalar extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var divBy(Scalar scalar) {
+    public Var divBy(Scalar scalar)throws CalcException {
+        if (this.getVal()==0){
+            throw new CalcException("division by zero");
+        }
         return new Scalar(scalar.getVal()/this.getVal());
     }
     @Override
@@ -87,7 +90,7 @@ public class Scalar extends Var {
         return new Vector(result);
     }
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalcException {
         return other.divBy(this);
     }
 
