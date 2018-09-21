@@ -5,24 +5,19 @@ import java.util.ArrayList;
 
 public class TaskC {
 
-    private static ArrayList<String> arrayListFiles = new ArrayList<>();
-    private static ArrayList<String> arrayListDirectory = new ArrayList<>();
+    private static ArrayList<String> arrayListFilesAndDirectory = new ArrayList<>();
 
     public static void main(String[] args) {
         String path = System.getProperty("user.dir");
         String fileName = path + "/src/by/it/nesterovich/";
 
         getAllNameFileAndDirectory(fileName);
-        printArrayList(arrayListDirectory);
-        printArrayList(arrayListFiles);
+        printArrayList(arrayListFilesAndDirectory);
 
         try (PrintWriter bufferedWriter = new PrintWriter(
                 new FileWriter(dir(TaskC.class) + "resultTaskC.txt"))
         ) {
-            for (String elem : arrayListFiles) {
-                bufferedWriter.print(elem);
-            }
-            for (String elem : arrayListDirectory) {
+            for (String elem : arrayListFilesAndDirectory) {
                 bufferedWriter.print(elem);
             }
         } catch (IOException e) {
@@ -42,13 +37,11 @@ public class TaskC {
         for (File elementListFiles : listFiles) {
             if (elementListFiles.isDirectory()) {
                 String directory = "dir:" + elementListFiles.getName();
-                arrayListDirectory.add(directory);
-                //System.out.println("dir:" + elementListFiles.getName());
+                arrayListFilesAndDirectory.add(directory);
                 getAllNameFileAndDirectory(elementListFiles.getAbsolutePath());
             } else {
                 String nameFile = "file:" + elementListFiles.getName();
-                arrayListFiles.add(nameFile);
-                //System.out.println("file:" + elementListFiles.getName());
+                arrayListFilesAndDirectory.add(nameFile);
             }
         }
     }
