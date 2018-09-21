@@ -13,7 +13,7 @@ public class TaskB {
 
     public static void main(String[] args) {
         // получеам путь к файлам
-        String dir = TaskA.getDirectory(TaskB.class);
+        String dir = getDirectory(TaskB.class);
         // создаем файл TaskB.txt и копируем данные из text.txt
         createAndCopy(dir);
         // считаем количсетво слов и знаков препинания
@@ -94,5 +94,13 @@ public class TaskB {
         String[] words = line.split("[^А-яЁё]+");
         result = words.length;
         return result;
+    }
+
+    private static String getDirectory(Class<?> clss) {
+        StringBuilder path = new StringBuilder();
+        String dir = clss.getName().replace(".", File.separator).replace(clss.getSimpleName(), "");
+        path.append(System.getProperty("user.dir")).append(File.separator);
+        path.append("src" + File.separator).append(dir);
+        return path.toString();
     }
 }

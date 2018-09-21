@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TaskA {
 
-    public static String getDirectory(Class<?> clss) {
+    private static String getDirectory(Class<?> clss) {
         StringBuilder path = new StringBuilder();
         String dir = clss.getName().replace(".", File.separator).replace(clss.getSimpleName(), "");
         path.append(System.getProperty("user.dir")).append(File.separator);
