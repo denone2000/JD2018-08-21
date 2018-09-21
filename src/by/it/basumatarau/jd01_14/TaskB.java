@@ -7,13 +7,9 @@ import java.util.regex.Pattern;
 public class TaskB {
     public static void main(String[] args) {
         String projectRootPath = System.getProperty("user.dir");
-
-        System.out.println(projectRootPath);
-        String path = projectRootPath +"/src/"+
+        String path = projectRootPath +System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
                 TaskB.class.getName().replaceAll(TaskB.class.getSimpleName(),"").replaceAll("[.]",
                         System.getProperty("file.separator"));
-        System.out.println(path);
-
         File f = new File(path+"text.txt");
         FileReader inputStream = null;
         BufferedReader buffReader = null;
@@ -56,12 +52,11 @@ public class TaskB {
             }
         }
         File result = new File(path+"resultTaskB.txt");
-       BufferedWriter buffresultFW = null;
+        BufferedWriter buffresultFW = null;
         try{
             buffresultFW = new BufferedWriter(new FileWriter(result));
             buffresultFW.write(String.format("\nwords=%s, punctuation marks=%s", wordCounter, punctMarksCounter));
             System.out.printf("\nwords=%s, punctuation marks=%s", wordCounter, punctMarksCounter);
-
         }catch (IOException e){
             e.printStackTrace();
         }finally{

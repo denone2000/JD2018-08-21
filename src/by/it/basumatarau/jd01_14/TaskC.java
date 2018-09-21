@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.TreeSet;
 
 public class TaskC {
     public static void main(String[] args) {
-        String rootPath = System.getProperty("user.dir")+"/src/";
+        String rootPath = System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator");
         String innerPath = TaskC.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll(("[^/]+/"+TaskC.class.getSimpleName()),"");
-        System.out.println(rootPath+innerPath);
         File entrance = new File(rootPath+innerPath);
         File result = new File(rootPath+TaskC.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll((TaskC.class.getSimpleName()),"")+"resultTaskC.txt");
 
@@ -29,7 +29,7 @@ public class TaskC {
         }
 
         offset++;
-        for (String fileName : new TreeSet<>(Arrays.asList(entrance.list()))) {
+        for (String fileName : new TreeSet<>(Arrays.asList(Objects.requireNonNull(entrance.list())))) {
             File file = new File(entrance.getAbsolutePath()+System.getProperty("file.separator")+fileName);
             if (file.isDirectory()){
                 for (int i = 1; i < offset; i++) {

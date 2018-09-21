@@ -7,7 +7,8 @@ import java.util.List;
 public class TaskA {
     public static void main(String[] args) {
         String pathToPJDir = System.getProperty("user.dir");
-        String pathToCurrentDir = pathToPJDir+"/src/"+ TaskA.class.getName().replace(TaskA.class.getSimpleName(), "").replaceAll("[.]","/");
+        String pathToCurrentDir = pathToPJDir+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
+                TaskA.class.getName().replace(TaskA.class.getSimpleName(), "").replaceAll("[.]","/");
 
         String fileName = pathToCurrentDir + "dataTaskA.bin";
         File f = new File(fileName);
@@ -72,7 +73,5 @@ public class TaskA {
                 }
             }
         }
-
-
     }
 }
