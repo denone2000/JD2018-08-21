@@ -33,6 +33,7 @@ public class TaskA {
                 int i = dis.readInt();
                 list.add(i);
                 System.out.print(i + " ");
+                out2.print(i+" ");
                 sum += i;
             }
             System.out.println("\navg=" + sum / list.size());
