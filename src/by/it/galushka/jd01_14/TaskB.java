@@ -8,13 +8,6 @@ import java.util.regex.Pattern;
 
 public class TaskB {
 
-    /*
-    Вариант B. В классе TaskBнужно выполнить следующие шаги:
-    В файле с текстом TaskB.txt нужно подсчитать общее количество знаков препинания и слов
-    Вывести результат на консоль в виде одной строки:words=123, punctuation marks=15
-    Продублировать вывод в консоль в файл resultTaskB.txt
-     */
-
     private static int wordsCounter = 0;
     private static int punctCounter = 0;
 
