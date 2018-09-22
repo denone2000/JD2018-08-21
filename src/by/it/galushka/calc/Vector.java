@@ -23,8 +23,8 @@ class Vector extends Var {
         while (matcher.find()) {
             String group = matcher.group();
             double convertToDouble = Double.parseDouble(group);
-            this.value = Arrays.copyOf(this.value, this.value.length+1);
-            this.value[this.value.length-1] = convertToDouble;
+            this.value = Arrays.copyOf(this.value, this.value.length + 1);
+            this.value[this.value.length - 1] = convertToDouble;
         }
     }
 
@@ -33,7 +33,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] resAdd = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < resAdd.length; i++) {
@@ -43,17 +43,20 @@ class Vector extends Var {
         }
         if (other instanceof Vector) {
             double[] result = Arrays.copyOf(this.value, this.value.length);
+            int thisLength = this.value.length;
+            int otherLength = ((Vector) other).value.length;
+            if (thisLength != otherLength)
+                throw new CalcException("Размер векторов не совподает!");
             for (int i = 0; i < this.value.length; i++) {
                 result[i] = result[i] + ((Vector) other).value[i];
             }
             return new Vector(result);
-        }
-        else
+        } else
             return other.add(this);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] resSub = Arrays.copyOf(value, value.length);
             for (int i = 0; i < resSub.length; i++) {
@@ -63,6 +66,10 @@ class Vector extends Var {
         }
         if (other instanceof Vector) {
             double[] res = Arrays.copyOf(value, value.length);
+            int thisLength = this.value.length;
+            int otherLength = ((Vector) other).value.length;
+            if (thisLength != otherLength)
+                throw new CalcException("Размер векторов не совподает!");
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Vector) other).value[i];
             }
@@ -72,7 +79,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] resMul = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < resMul.length; i++) {
@@ -87,21 +94,19 @@ class Vector extends Var {
                 mul = mul + value[i] * ((Vector) other).value[i];
             }
             return new Scalar(mul);
-        }
-        else
+        } else
             return super.mul(other);
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double[] resDiv = Arrays.copyOf(value, value.length);
             for (int i = 0; i < resDiv.length; i++) {
                 resDiv[i] = resDiv[i] / ((Scalar) other).getValue();
             }
             return new Vector(resDiv);
-        }
-        else
+        } else
             return super.div(other);
     }
 
@@ -109,11 +114,11 @@ class Vector extends Var {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        for (int i = 0; i < value.length-1; i++) {
+        for (int i = 0; i < value.length - 1; i++) {
             String delimiter = ", ";
             sb.append(value[i] + delimiter);
         }
-        sb.append(value[value.length-1]).append("}");
+        sb.append(value[value.length - 1]).append("}");
         return sb.toString();
     }
 }
