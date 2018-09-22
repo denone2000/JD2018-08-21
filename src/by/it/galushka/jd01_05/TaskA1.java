@@ -1,4 +1,4 @@
-package by.it.galushka.jd01_05.taskA;
+package by.it.galushka.jd01_05;
 
 public class TaskA1 {
     public static void taskA1() {

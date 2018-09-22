@@ -32,7 +32,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -41,6 +41,8 @@ class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector)other).value.length)
+                throw new CalcException("Размеры не совпадают");
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] + ((Vector) other).value[i];
@@ -51,7 +53,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -60,6 +62,8 @@ class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector)other).value.length)
+            throw new CalcException("Размеры не совпадают");
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Vector) other).value[i];
@@ -70,7 +74,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -79,6 +83,8 @@ class Vector extends Var {
             }
             return new Vector(res);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector)other).value.length)
+            throw new CalcException("Размеры не совпадают");
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i]*((Vector) other).value[i];
@@ -94,7 +100,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[] res = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
