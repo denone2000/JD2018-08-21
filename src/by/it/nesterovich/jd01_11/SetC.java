@@ -47,7 +47,6 @@ public class SetC<T> implements Set<T> {
     @Override
     public boolean isEmpty() {
         return arrayKey.size() == 0;
-       // return size==0;
     }
 
     @Override

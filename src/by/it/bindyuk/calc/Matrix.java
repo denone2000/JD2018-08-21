@@ -29,7 +29,7 @@ class Matrix extends Var {
    }
 
    @Override
-   public Var add(Var other) {
+   public Var add(Var other) throws CalcException{
        if (other instanceof Scalar) {
            double[][] addScalar = new double[this.value.length][this.value[0].length];
            for (int i = 0; i < this.value.length; i++) {
@@ -53,12 +53,13 @@ class Matrix extends Var {
                    addMatrix[i][j] = this.value[i][j] + ((Matrix) other).value[i][j];
                }
            }
+           if(this.value.length!=((Matrix) other).value.length) throw new CalcException("Разные длины матриц");
            return new Matrix(addMatrix);
        } else return other.add(this);
    }
 
    @Override
-   public Var sub(Var other) {
+   public Var sub(Var other) throws CalcException{
        if (other instanceof Scalar) {
            double[][] subScalar = new double[this.value.length][this.value[0].length];
            for (int i = 0; i < this.value.length; i++) {
@@ -73,6 +74,7 @@ class Matrix extends Var {
            return new Matrix(subScalar);
 
        } else if (other instanceof Matrix) {
+           if(this.value[0].length!=((Matrix) other).value[0].length) throw new CalcException("Разные длины матриц");
            double[][] subMatrix = new double[this.value.length][this.value[0].length];
            for (int i = 0; i < this.value.length; i++) {
                subMatrix[i] = Arrays.copyOf(this.value[i], this.value[i].length);
@@ -82,12 +84,13 @@ class Matrix extends Var {
                    subMatrix[i][j] = this.value[i][j] - ((Matrix) other).value[i][j];
                }
            }
+
            return new Matrix(subMatrix);
        } else return other.add(this);
    }
 
    @Override
-   public Var mul(Var other) {
+   public Var mul(Var other) throws CalcException{
        if (other instanceof Matrix) {
            double[][] matrixOne = new double[this.value.length][this.value[0].length];
            for (int i = 0; i < this.value.length; i++) {
@@ -137,7 +140,7 @@ class Matrix extends Var {
 
 
    @Override
-   public Var div (Var other){
+   public Var div (Var other)throws CalcException{
        return super.div(other);
    }
 
