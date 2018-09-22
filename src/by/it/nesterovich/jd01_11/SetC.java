@@ -104,8 +104,4 @@ public class SetC<T> implements Set<T> {
     public void clear() {
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 61ed4f10e8e0feafdb3ae662675e1f8c08067005
