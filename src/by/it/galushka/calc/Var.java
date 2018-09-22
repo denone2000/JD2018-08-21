@@ -11,54 +11,47 @@ abstract class Var implements Operation {
         return var;
     }
 
-    static String printVar(){
+    static String printVar() {
         StringBuilder sb = new StringBuilder();
         Set<Map.Entry<String, Var>> entries = Var.vars.entrySet();
         Iterator<Map.Entry<String, Var>> i = entries.iterator();
-        while(i.hasNext()){
+        while (i.hasNext()) {
             sb.append(i.next().toString()).append("\n");
         }
         return sb.toString();
     }
 
-    static Var createVar(String inputLine) {
+    static Var createVar(String inputLine) throws CalcException {
         inputLine = inputLine.trim();
         if (inputLine.matches(Patterns.SCALAR)) {
             return new Scalar(inputLine);
-        }
-        else if (inputLine.matches(Patterns.VECTOR)) {
+        } else if (inputLine.matches(Patterns.VECTOR)) {
             return new Vector(inputLine);
-        }
-        else if (inputLine.matches(Patterns.MATRIX)) {
+        } else if (inputLine.matches(Patterns.MATRIX)) {
             return new Matrix(inputLine);
-        }
-        else if (vars.containsKey(inputLine))
+        } else if (vars.containsKey(inputLine))
             return vars.get(inputLine);
-        return null;
+        throw new CalcException("Невозможно создать " + inputLine);
     }
 
     @Override
-    public Var add(Var other) {
-        System.out.println("Операция сложения "+this+" + "+other+" невозможна!");
-        return null;
+    public Var add(Var other) throws CalcException {
+        throw new CalcException("Операция сложения " + this + " + " + other + " невозможна!");
     }
 
     @Override
-    public Var sub(Var other) {
-        System.out.println("Операция вычетания "+this+" - "+other+" невозможна!");
-        return null;
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException("Операция вычетания " + this + " - " + other + " невозможна!");
     }
 
     @Override
-    public Var mul(Var other) {
-        System.out.println("Операция умножения "+this+" * "+other+" невозможна!");
-        return null;
+    public Var mul(Var other) throws CalcException {
+        throw new CalcException("Операция умножения " + this + " * " + other + " невозможна!");
     }
 
     @Override
-    public Var div(Var other) {
-        System.out.println("Операция деления "+this+" / "+other+" невозможна!");
-        return null;
+    public Var div(Var other) throws CalcException {
+        throw new CalcException("Операция деления " + this + " / " + other + " невозможна!");
     }
 
     @Override

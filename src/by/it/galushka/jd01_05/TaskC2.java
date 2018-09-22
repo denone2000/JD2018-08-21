@@ -1,4 +1,4 @@
-package by.it.galushka.jd01_05.taskC;
+package by.it.galushka.jd01_05;
 
 public class TaskC2 {
     public static int[] getArrayA(int[] arrayA) {
