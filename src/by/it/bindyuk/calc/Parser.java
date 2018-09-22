@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expression) {
+    Var calc(String expression) throws CalcException{
         String[] strVars = expression.split(Patterns.OPERATION);                //making array of Vars(till string)
         Var two = Var.createVar(strVars[1]);                                    //now Vars creating from string
                if(expression.contains("=")){
