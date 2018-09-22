@@ -49,7 +49,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -68,7 +68,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException{
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             //double scalar = ((Scalar) other).getValue();
@@ -80,6 +80,8 @@ class Matrix extends Var {
                     res[i][j] = res[i][j] + ((Scalar) other).getValue();
 
                 }
+                if(this.value.length!=((Matrix)other).value.length)
+                    throw new CalcException("Размеры не совпадают");
             }
             return new Matrix(res);
 
@@ -103,7 +105,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             //double scalar = ((Scalar) other).getValue();
@@ -119,6 +121,8 @@ class Matrix extends Var {
             return new Matrix(res);
 
         } else if (other instanceof Matrix) {
+            if(this.value[0].length!=((Matrix)other).value[0].length)
+                throw new CalcException("Размеры не совпадают");
             double[][] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
@@ -139,7 +143,7 @@ class Matrix extends Var {
 
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException {
         if (other instanceof Scalar) {
             double[][] res = Arrays.copyOf(value, value.length);
             //double scalar = ((Scalar) other).getValue();
