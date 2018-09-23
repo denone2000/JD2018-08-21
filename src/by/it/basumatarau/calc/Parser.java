@@ -6,15 +6,15 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    public Var calc(String str) throws CalcException {
-        if (!parenthOrderChecker(str)) {
+    public Var calc(String infixLine) throws CalcException{
+        if (!parenthOrderChecker(infixLine)) {
             throw new CalcException("wrong parentheses order");
         }
         StringBuilder postfixLine = new StringBuilder();
         String token;
         Stack<String> tokenStack = new Stack<>();
         Pattern anyToken = Pattern.compile(RegExPatterns.TOKEN);
-        Matcher tokenMatcher = anyToken.matcher(str.trim());
+        Matcher tokenMatcher = anyToken.matcher(infixLine.trim());
 
         while (tokenMatcher.find()) {
             token = tokenMatcher.group();
@@ -35,7 +35,7 @@ public class Parser {
                 while (!tokenStack.empty() && !tokenStack.peek().matches(RegExPatterns.OPENING_SEPARATOR)) {
                     postfixLine.append(" ").append(tokenStack.pop());
                 }
-                if(tokenStack.peek().matches(RegExPatterns.OPENING_SEPARATOR)){
+                if (tokenStack.peek().matches(RegExPatterns.OPENING_SEPARATOR)) {
                     tokenStack.pop();
                 }
             }
@@ -44,7 +44,7 @@ public class Parser {
             postfixLine.append(" ").append(tokenStack.pop());
         }
 
-        Pattern postfixToken = Pattern.compile("("+RegExPatterns.SIMPLE_TOKEN+")|("+RegExPatterns.OPERATOR+")|("+RegExPatterns.IDENTIFIER+")");
+        Pattern postfixToken = Pattern.compile("(" + RegExPatterns.SIMPLE_TOKEN + ")|(" + RegExPatterns.OPERATOR + ")|(" + RegExPatterns.IDENTIFIER + ")");
         tokenMatcher = postfixToken.matcher(postfixLine);
         while (tokenMatcher.find()) {
             token = tokenMatcher.group();
@@ -57,24 +57,25 @@ public class Parser {
                 if (token.matches("=")) {
                     rightVar = Var.createVar(tokenStack.pop());
                     tokenStack.push(Var.saveVar(tokenStack.pop(), rightVar).toString());
-                }else if (token.matches("\\+")) {
+                } else if (token.matches("\\+")) {
                     tokenStack.push((Var.createVar(tokenStack.pop()).add(Var.createVar(tokenStack.pop()))).toString());
-                }else if (token.matches("-")) {
+                } else if (token.matches("-")) {
                     rightVar = Var.createVar(tokenStack.pop());
                     leftVar = Var.createVar(tokenStack.pop());
                     tokenStack.push(leftVar.sub(rightVar).toString());
-                }else if (token.matches("/")) {
+                } else if (token.matches("/")) {
                     rightVar = Var.createVar(tokenStack.pop());
                     leftVar = Var.createVar(tokenStack.pop());
                     tokenStack.push(leftVar.div(rightVar).toString());
-                }else if (token.matches("\\*")) {
+                } else if (token.matches("\\*")) {
                     rightVar = Var.createVar(tokenStack.pop());
                     leftVar = Var.createVar(tokenStack.pop());
                     tokenStack.push(leftVar.mul(rightVar).toString());
-                }else throw new CalcException(String.format("operation %s is yet to be implemented", token));
+                } else throw new CalcException(String.format("operation %s is yet to be implemented", token));
             }
         }
         return Var.createVar(tokenStack.pop());
+
     }
 
     private int getOpPrecedence(String operatorToken) throws CalcException{
