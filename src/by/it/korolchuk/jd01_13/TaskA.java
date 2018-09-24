@@ -1,6 +1,6 @@
 package by.it.korolchuk.jd01_13;
 
-import java.util.Arrays;
+
 import java.util.HashMap;
 
 public class TaskA {
@@ -22,7 +22,6 @@ public class TaskA {
                     break;
                 }
                 System.out.println(element);
-
             }
         }
     }
