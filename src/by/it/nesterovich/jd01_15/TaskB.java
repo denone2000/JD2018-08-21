@@ -18,24 +18,28 @@ public class TaskB {
                      new FileWriter(dir(TaskB.class) + "TaskB.txt"))
         ) {
             StringBuilder text = new StringBuilder();
-            boolean notComment = true;
+            boolean comment = false;
             String line = bufferedReader.readLine();
-
+            /*
+             comment
+            */
             while (line != null) {
-                if (line.contains("/*") && notComment && !line.contains("\"/")) {
-                    notComment = false;
+                if (line.contains("/*") && !line.contains("\"/")) {
+                    comment = true;
                     int index = line.indexOf("/");
                     text.append(line.substring(0, index));
                     line = bufferedReader.readLine();
-                } else if (line.contains("*/") && !notComment && !line.contains("\"*/")) {
+                } else if (line.contains("*/") && comment && !line.contains("\"*/")) {
                     text.append("\n");
-                    notComment = true;
+                    comment = false;
                     line = bufferedReader.readLine();
-                } else if (line.contains("*") && !notComment && !line.contains("\"*")) {
+                } else if (line.contains("*") && comment && !line.contains("\"*")) {
                     line = bufferedReader.readLine();
                 } else if (line.contains("//") && !line.contains("\"//")) {
                     int index = line.lastIndexOf("//");
                     text.append(line.substring(0, index)).append("\n");
+                    line = bufferedReader.readLine();
+                } else if (comment) {
                     line = bufferedReader.readLine();
                 } else {
                     text.append(line).append("\n");
@@ -48,6 +52,7 @@ public class TaskB {
             e.printStackTrace();
         }
     }//comment end main
+
     /**
      * method to get the full path to the class
      *
