@@ -53,19 +53,19 @@ public class TaskB {
         ) {
             while (reader.ready()) {
                 String line = reader.readLine();
-                if (line.contains(SymbolsForTaskB.javaDoc)) {
+                if (line.contains(SymbolsForTaskB.getJavaDoc())) {
                     int startCommentIndex = line.indexOf("/");
                     String tmp = line.substring(startCommentIndex);
                     String result = line.replace(tmp, "");
                     sb.append(result).append("\n");
-                } else if (line.contains(SymbolsForTaskB.comment)) {
+                } else if (line.contains(SymbolsForTaskB.getComment())) {
                     int startCommentIndex = line.indexOf("/");
                     String tmp = line.substring(startCommentIndex);
                     String result = line.replace(tmp, "");
                     sb.append(result).append("\n");
-                } else if (line.contains(SymbolsForTaskB.javaDocEnd)) {
+                } else if (line.contains(SymbolsForTaskB.getJavaDocEnd())) {
                     removedComments.append(line).append("\n");
-                } else if (line.contains(SymbolsForTaskB.javaDocMidle)) {
+                } else if (line.contains(SymbolsForTaskB.getJavaDocMidle())) {
                     removedComments.append(line).append("\n");
                 } else {
                     sb.append(line).append("\n");
