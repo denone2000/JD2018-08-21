@@ -11,38 +11,43 @@ public class TaskB {
     /*
     * this method main
     */
-    public static void main(String[] args) {
-        //comment start main
+    public static void main(String[] args) {        //comment start main
         try (BufferedReader bufferedReader = new BufferedReader(
                 new FileReader(dir(TaskB.class) + "TaskB.java"));
              PrintWriter printWriter = new PrintWriter(
                      new FileWriter(dir(TaskB.class) + "TaskB.txt"))
         ) {
             StringBuilder text = new StringBuilder();
-
-
+            boolean notComment = true;
             String line = bufferedReader.readLine();
+
             while (line != null) {
-                if (line.contains("/") | line.contains("*")) {
-                    //int indexStartComment = line.lastIndexOf("/");
-                    //text.append(line.subSequence(0,indexStartComment+1)).append("\n");
+                if (line.contains("/*") && notComment && !line.contains("\"/")) {
+                    notComment = false;
+                    int index = line.indexOf("/");
+                    text.append(line.substring(0, index));
+                    line = bufferedReader.readLine();
+                } else if (line.contains("*/") && !notComment && !line.contains("\"*/")) {
+                    text.append("\n");
+                    notComment = true;
+                    line = bufferedReader.readLine();
+                } else if (line.contains("*") && !notComment && !line.contains("\"*")) {
+                    line = bufferedReader.readLine();
+                } else if (line.contains("//") && !line.contains("\"//")) {
+                    int index = line.lastIndexOf("//");
+                    text.append(line.substring(0, index)).append("\n");
                     line = bufferedReader.readLine();
                 } else {
                     text.append(line).append("\n");
                     line = bufferedReader.readLine();
                 }
-
             }
-
             System.out.println(text);
             printWriter.print(text);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //comment end main
-    }
-
+    }//comment end main
     /**
      * method to get the full path to the class
      *
