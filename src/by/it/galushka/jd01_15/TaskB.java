@@ -10,13 +10,13 @@ public class TaskB {
      */
     public static void main(String[] args) {
         /*прописываем путь для прочения нужного файла
-        //используем для этого метод getDirectory()*/
+        используем для этого метод getDirectory()*/
         String pathToFile = getDirectory(TaskB.class) + "TaskB.java";
         /*создаем переменную типа StringBuilder для записи кода класса TaskB
-        //для получения кода класса TaskB используем метод readJavaFile()*/
+        для получения кода класса TaskB используем метод readJavaFile()*/
         StringBuilder textTaskB = readJavaFile(pathToFile);
         /*записываем результат в файл и выводим на консоль
-        //используем метод writeResultInFileTxtAndConsole()*/
+        используем метод writeResultInFileTxtAndConsole()*/
         writeResultInFileTxtAndConsole(textTaskB, getDirectory(TaskB.class));
     }
 
@@ -52,28 +52,23 @@ public class TaskB {
                      new BufferedReader(new FileReader(pathToFile))
         ) {
             while (reader.ready()) {
-//                String line = reader.readLine();
-//                if (!line.contains("/") && !line.contains("*"))
-//                    sb.append(line + "\n");
-//                else
-//                    sb.append("\n");
                 String line = reader.readLine();
-                if (line.contains("/*")) {
+                if (line.contains(SymbolsForTaskB.javaDoc)) {
                     int startCommentIndex = line.indexOf("/");
                     String tmp = line.substring(startCommentIndex);
                     String result = line.replace(tmp, "");
-                    sb.append(result + "\n");
-                } else if (line.contains("//")) {
+                    sb.append(result).append("\n");
+                } else if (line.contains(SymbolsForTaskB.comment)) {
                     int startCommentIndex = line.indexOf("/");
                     String tmp = line.substring(startCommentIndex);
                     String result = line.replace(tmp, "");
-                    sb.append(result + "\n");
-                } else if (line.contains("*/")) {
-                    removedComments.append(line + "\n");
-                } else if (line.contains(" *")) {
-                    removedComments.append(line + "\n");
+                    sb.append(result).append("\n");
+                } else if (line.contains(SymbolsForTaskB.javaDocEnd)) {
+                    removedComments.append(line).append("\n");
+                } else if (line.contains(SymbolsForTaskB.javaDocMidle)) {
+                    removedComments.append(line).append("\n");
                 } else {
-                    sb.append(line + "\n");
+                    sb.append(line).append("\n");
                 }
             }
         } catch (IOException e) {
