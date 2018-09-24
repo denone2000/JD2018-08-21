@@ -1,6 +1,5 @@
 package by.it.voinilo.jd01_12;
 
-import by.it.yarmolenka.jd01_04.TaskA;
 
 import java.util.ArrayList;
 import java.util.Iterator;
