@@ -9,7 +9,7 @@ public class TaskB {
      * @versoin 1.0
      */
     public static void main(String[] args) {
-        /*прописываем путь для прочения нужного файла
+        /*прописываем путь для прочтения нужного файла
         используем для этого метод getDirectory()*/
         String pathToFile = getDirectory(TaskB.class) + "TaskB.java";
         /*создаем переменную типа StringBuilder для записи кода класса TaskB
