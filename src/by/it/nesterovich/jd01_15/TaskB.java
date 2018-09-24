@@ -24,19 +24,19 @@ public class TaskB {
              comment
             */
             while (line != null) {
-                if (line.contains("/*") && !line.contains("\"/")) {
+                if (line.contains(ClassComment.START_COMMENT)) {
                     comment = true;
-                    int index = line.indexOf("/");
+                    int index = line.indexOf(ClassComment.SLASH);
                     text.append(line.substring(0, index));
                     line = bufferedReader.readLine();
-                } else if (line.contains("*/") && comment && !line.contains("\"*/")) {
+                } else if (line.contains(ClassComment.END_COMMENT) && comment ) {
                     text.append("\n");
                     comment = false;
                     line = bufferedReader.readLine();
-                } else if (line.contains("*") && comment && !line.contains("\"*")) {
+                } else if (line.contains(ClassComment.STAR) && comment) {
                     line = bufferedReader.readLine();
-                } else if (line.contains("//") && !line.contains("\"//")) {
-                    int index = line.lastIndexOf("//");
+                } else if (line.contains(ClassComment.ONE_COMMENT)) {
+                    int index = line.lastIndexOf(ClassComment.ONE_COMMENT);
                     text.append(line.substring(0, index)).append("\n");
                     line = bufferedReader.readLine();
                 } else if (comment) {
@@ -51,8 +51,8 @@ public class TaskB {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }//comment end main
-
+    }
+    //comment end main
     /**
      * method to get the full path to the class
      *
