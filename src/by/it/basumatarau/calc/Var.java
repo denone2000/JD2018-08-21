@@ -1,11 +1,39 @@
 package by.it.basumatarau.calc;
 
+import java.io.*;
 import java.util.*;
 
 public abstract class Var implements Operation {
     private static HashMap<String, Var> varHashMap = new HashMap<>();
+
+    static {
+        String path = System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")
+                + Var.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll(Var.class.getSimpleName(),"");
+        File file = new File(path+"vars.txt");
+        try(BufferedReader buffR = new BufferedReader(new FileReader(file))){
+            String line;
+            while((line=buffR.readLine())!=null){
+                varHashMap.put(line.split("=")[0],createVar(line.split("=")[1]));
+            }
+        }catch (IOException | CalcException e){
+            e.printStackTrace();
+        }
+    }
+
     static Var saveVar(String name, Var var){
         varHashMap.put(name, var);
+
+        String path = System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")
+                + Var.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll(Var.class.getSimpleName(),"");
+        File file = new File(path+"vars.txt");
+        try(BufferedWriter buffW = new BufferedWriter(new FileWriter(file))){
+            for (Map.Entry<String, Var> entry : varHashMap.entrySet()) {
+                buffW.write(entry.getKey() + "=" +entry.getValue()+'\n');
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
         return var;
     }
     static String sortvar(){
@@ -14,7 +42,7 @@ public abstract class Var implements Operation {
         Iterator<String> entryIterator = treeSet.iterator();
         String key;
         while(entryIterator.hasNext()){
-            sb.append(key=entryIterator.next()).append(varHashMap.get(key)).append("\n");
+            sb.append(key=entryIterator.next()).append("=").append(varHashMap.get(key)).append("\n");
         }
         return sb.toString();
     }
