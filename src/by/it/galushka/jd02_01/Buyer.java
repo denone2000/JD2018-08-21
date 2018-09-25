@@ -54,7 +54,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             Util.sleep(Util.getRandom(100, 200));
             List<String> goods = new ArrayList<>(choosingGoods.keySet());
             String lastAddedGood = goods.get(goods.size() - 1);
-            System.out.println(this + " put to backet " + lastAddedGood + ".");
+            System.out.println(this + " put to backet " + lastAddedGood + ", "
+                    + "cost - " + choosingGoods.get(lastAddedGood) + ".");
         }
     }
     //=========================================================================
