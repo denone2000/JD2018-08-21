@@ -10,16 +10,16 @@ public class TaskC1 {
 
     private static void getMap(List<String> list) {
         Map<Integer, String> C1 = new TreeMap<>();
-        Iterator<String> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            String value = iterator.next();
+        for (String value : list) {
             C1.put(getHash(value), value);
+        }
+        for (Map.Entry<Integer, String> treeMap : C1.entrySet()) {
+            System.out.println(treeMap);
         }
     }
 
     private static int getHash(String word) {
-        int hashCode = word.hashCode();
-        return hashCode;
+        return word.hashCode();
     }
 
     private static List<String> getText() {

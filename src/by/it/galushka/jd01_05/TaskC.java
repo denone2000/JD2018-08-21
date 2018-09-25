@@ -1,8 +1,5 @@
 package by.it.galushka.jd01_05;
 
-import by.it.galushka.jd01_05.taskC.TaskC1;
-import by.it.galushka.jd01_05.taskC.TaskC2;
-
 public class TaskC {
     public static void main(String[] args) {
 
