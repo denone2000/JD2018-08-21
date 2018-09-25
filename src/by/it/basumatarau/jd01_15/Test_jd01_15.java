@@ -1,4 +1,4 @@
-package by.it.nesterovich.jd01_15;
+package by.it.basumatarau.jd01_15;
 
 
 import org.junit.Test;
