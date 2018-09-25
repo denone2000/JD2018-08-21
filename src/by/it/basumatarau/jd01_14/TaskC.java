@@ -13,7 +13,7 @@ public class TaskC {
         String rootPath = System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator");
         String innerPath = TaskC.class.getName().replace(".", System.getProperty("file.separator")).replaceAll(("[^"+File.separator+"]+"+File.separator+TaskC.class.getSimpleName()),"");
         File entrance = new File(rootPath+innerPath);
-        File result = new File(rootPath+TaskC.class.getName().replace("[.]", System.getProperty("file.separator")).replaceAll((TaskC.class.getSimpleName()),"")+"resultTaskC.txt");
+        File result = new File(rootPath+TaskC.class.getName().replace(".", System.getProperty("file.separator")).replaceAll((TaskC.class.getSimpleName()),"")+"resultTaskC.txt");
 
         try(BufferedWriter buffFW = new BufferedWriter(
                 new FileWriter(result))) {
