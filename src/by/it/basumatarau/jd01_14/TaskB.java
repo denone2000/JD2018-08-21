@@ -8,7 +8,7 @@ public class TaskB {
     public static void main(String[] args) {
         String projectRootPath = System.getProperty("user.dir");
         String path = projectRootPath +System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
-                TaskB.class.getName().replaceAll(TaskB.class.getSimpleName(),"").replaceAll("[.]",
+                TaskB.class.getName().replaceAll(TaskB.class.getSimpleName(),"").replace(".",
                         System.getProperty("file.separator"));
         File f = new File(path+"text.txt");
         FileReader inputStream = null;
