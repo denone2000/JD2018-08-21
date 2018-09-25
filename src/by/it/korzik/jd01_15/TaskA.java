@@ -1,44 +1,55 @@
 package by.it.korzik.jd01_15;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskA {
     public static void main(String[] args) {
-        int[][] matrix = new int[6][4];
-        int row=0;
         String dir = System.getProperty("user.dir");
         String path = TaskA.class.getName();
         path = path.replaceAll("\\.", "/");
         path = dir + "/src/" + path;
         path = path.replaceAll("\\\\", "/");
         path = path.replaceAll(TaskA.class.getSimpleName(), "");
-        matrixFiller(matrix, -15, 15);
         String filePath = path + "matrix.txt";
-        matrixWriter(matrix, filePath);
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
-           while (bufferedReader.ready()){
-               bufferedReader.readLine();
-               row++;
-           }
-           int[][] intArr=new int[row][];
-           while (bufferedReader.ready()){
-               String[] split = bufferedReader.readLine().trim().split("\\s+");
-               for (int j = 0; j < intArr.length; j++) {
 
-                   intArr[j] = new int[split.length];
-                   for (int i = 0; i < intArr[j].length; i++) {
-                       intArr[j][i]=Integer.parseInt(split[i]);
+        int[][] matrix = new int[6][4];
+
+        matrixFiller(matrix, -15, 15);
+        matrixWriter(matrix, filePath);
+        matrix=readMatrix(filePath);
+        printMatrix(matrix);
+    }
+
+    private static int[][] readMatrix(String filePath) {
+        int[][] intArr=new int[0][0];
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
+            List<String> rows = new ArrayList<>();
+           while (bufferedReader.ready()){
+               rows.add(bufferedReader.readLine());
+           }
+           intArr=new int[rows.size()][0];
+            for (int i = 0; i < rows.size(); i++) {
+                String line = rows.get(i);
+               String[] split = line.trim().split("\\s+");
+               intArr[i]=new int[split.length];
+                   for (int j = 0; j < intArr[i].length; j++) {
+                       intArr[i][j]=Integer.parseInt(split[j]);
                    }
                }
-           }
-            for (int[] ints : intArr) {
-                for (int anInt : ints) {
-                    System.out.print(anInt);
-                }
-                System.out.println();
-            }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return intArr;
+    }
+
+    private static void printMatrix(int[][] intArr) {
+        for (int[] ints : intArr) {
+            for (int anInt : ints) {
+                System.out.printf("%3d ",anInt);
+            }
+            System.out.println();
         }
     }
 
@@ -59,9 +70,7 @@ public class TaskA {
         for (int[] ints : matrix) {
             for (int i = 0; i < ints.length; i++) {
                 ints[i] = (int) Math.round(Math.random() * (max - min + 1) + min);
-                System.out.print(ints[i]);
             }
-            System.out.println();
         }
     }
 }
