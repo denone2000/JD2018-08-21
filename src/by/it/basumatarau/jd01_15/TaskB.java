@@ -19,9 +19,9 @@ public class TaskB {
         /*
          *this is a multiline comment
          */
-        File f = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+
-                "src"+System.getProperty("file.separator")+TaskB.class.getName().
-                replaceAll("[.]", System.getProperty("file.separator"))+".java");
+        File f = new File(System.getProperty("user.dir")+File.separator+
+                "src"+File.separator+TaskB.class.getName().
+                replace(".", File.separator)+".java");
         StringBuilder sb = new StringBuilder();
         try(BufferedReader buffR = new BufferedReader(new FileReader(f))){
             char ch, chFrw;
@@ -76,8 +76,8 @@ public class TaskB {
         }catch (IOException e){
             e.printStackTrace();
         }
-        f = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
-                TaskB.class.getName().replaceAll("[.]", System.getProperty("file.separator"))+".txt");
+        f = new File(System.getProperty("user.dir")+File.separator+"src"+File.separator+
+                TaskB.class.getName().replace(".", File.separator)+".txt");
         try(BufferedWriter buffW = new BufferedWriter(new FileWriter(f))){
             buffW.write(sb.toString());
             System.out.println(sb.toString());
