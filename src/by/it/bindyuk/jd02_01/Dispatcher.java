@@ -4,6 +4,7 @@ class Dispatcher {
 
 
     static final int KOEFSPEED = 100;
+
     static private int buyersInMarket = 0;
 
     static void addBuyer() {
