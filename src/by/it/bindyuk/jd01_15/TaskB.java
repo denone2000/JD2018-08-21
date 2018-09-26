@@ -16,7 +16,7 @@ public class TaskB {
              */
         int c = 523;
         int row = 321; // its comment two
-
+        System.out.println(a+b+c);
         String s = "comment";
             /*
              many-rows comment
@@ -24,6 +24,7 @@ public class TaskB {
              i love tim kook
              */
         double a1 = 0.42;
+        System.out.println(s+" " + a1 + " " + row);
 
         String fileNameRead = System.getProperty("user.dir") + "/src/by/it/bindyuk/jd01_15/TaskB.java";
         String fileNameWrite = System.getProperty("user.dir") + "/src/by/it/bindyuk/jd01_15/TaskB.txt";
@@ -51,14 +52,12 @@ public class TaskB {
                     if (one != '*') {
                         continue;
                     }
-                    if (one == '*') {
-                        two = (char) reader.read();
-                        if (two == '/') {
-                            manyComment = false;
-                            continue;
-                        } else if (two != '/') {
-                            continue;
-                        }
+                    two = (char) reader.read();
+                    if (two == '/') {
+                        manyComment = false;
+                        continue;
+                    } else {
+                        continue;
                     }
                 }
 //здесь решаем что это, однострочный коммент, многострочный или просто слэш
