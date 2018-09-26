@@ -64,7 +64,7 @@ public class TaskC {
                     e.printStackTrace();
                 }
                 return att!=null?att.size():0;
-            }).reduce((item1,item2)->item1+item2).orElse(0L)));
+            }).reduce(0L,(item1,item2)->item1+item2)));
             System.out.printf("%19d Dir(s)  %15s bytes free\n",(Files.list(p).filter(path->Files.isDirectory(path)).count()),
                     nf.format(Files.getFileStore(p).getUsableSpace()));
 
