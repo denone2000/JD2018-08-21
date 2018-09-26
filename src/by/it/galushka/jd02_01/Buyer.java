@@ -13,7 +13,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         enterToMarket();
         takeBacket();
         chooseGoods();
-        putGoodsToBacket();
         goOut();
     }
 
@@ -26,10 +25,17 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " start choose goods.");
-        int timeForChoose = Util.getRandom(500, 2000);
-        Util.sleep(timeForChoose);
-        System.out.println(this + " end choose goods.");
+        int quantityGoods = Util.getRandom(1, 4);
+        for (int goods = 0; goods < quantityGoods; goods++) {
+            System.out.println(this + " start choosing goods.");
+            int timeForChoosing = Util.getRandom(500, 2000);
+            Util.sleep(timeForChoosing);
+            Map<String, Double> choosedGood = Goods.getRandomGoods();
+            String good = Goods.getGoodName(choosedGood);
+            double cost = Goods.getGoodCost(choosedGood);
+            System.out.println(this + " choosed " + good + ", - " + cost + " rubles.");
+            putGoodsToBacket(good);
+        }
     }
 
     @Override
@@ -48,17 +54,13 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void putGoodsToBacket() {
-        Map<String, Double> choosingGoods = new HashMap<>();
-        for (int quantityGoods = 0; quantityGoods < Util.getRandom(4); quantityGoods++) {
-            choosingGoods.putAll(Goods.getRandomGoods());
-            Util.sleep(Util.getRandom(100, 200));
-            List<String> goods = new ArrayList<>(choosingGoods.keySet());
-            String lastAddedGood = goods.get(goods.size() - 1);
-            System.out.println(this + " put to backet " + lastAddedGood + ", "
-                    + "cost - " + choosingGoods.get(lastAddedGood) + ".");
-        }
     }
+
     //=========================================================================
+    private void putGoodsToBacket(String good) {
+        Util.sleep(Util.getRandom(100, 200));
+        System.out.println(this + " put " + good + " to backet.");
+    }
 
     @Override
     public String toString() {

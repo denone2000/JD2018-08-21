@@ -27,15 +27,19 @@ class Goods {
         return result;
     }
 
-    //===============================================================
-    // main для проверки метода
-//    public static void main(String[] args) {
-//        Map<String, Double> randomGoods = new HashMap<>();
-//
-//        for (int i = 0; i <4; i++) {
-//            randomGoods.putAll(getRandomGoods());
-//        }
-//        System.out.println(randomGoods);
-//    }
-//===============================================================
+    static String getGoodName(Map<String, Double> map) {
+        String goodName = "";
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            goodName = entry.getKey();
+        }
+        return goodName;
+    }
+
+    static double getGoodCost(Map<String, Double> map) {
+        double goodCost = 0;
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            goodCost = entry.getValue();
+        }
+        return goodCost;
+    }
 }
