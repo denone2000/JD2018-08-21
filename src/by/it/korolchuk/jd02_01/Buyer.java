@@ -1,19 +1,18 @@
 package by.it.korolchuk.jd02_01;
 
-import java.security.Key;
-import java.util.*;
-
-import static by.it.korolchuk.jd02_01.Goods.*;
+import static by.it.korolchuk.jd02_01.Good.*;
 import static by.it.korolchuk.jd02_01.Util.*;
 
-public class Buyer extends  Thread implements IBuyer, IUseBasket {
+public class Buyer extends Thread implements IBuyer, IUseBasket {
+
+    private Basket basket = null;
 
     @Override
     public String toString() {
         return this.getName();
     }
 
-    Buyer (int number) {
+    Buyer(int number) {
         super("Покупатель № " + number);
     }
 
@@ -26,18 +25,32 @@ public class Buyer extends  Thread implements IBuyer, IUseBasket {
         goOut();
     }
 
-     public void takeBasket() {
+    @Override
+    public void takeBasket() {
+
+        Util.sleep(Util.random(100, 200));
+        this.basket = new Basket();
         System.out.println(this + " взял корзину");
     }
 
-    public void putGoodsToBasket(){
+    @Override
+    public void putGoodsToBasket() {
 
-       // System.out.println(this + " положил в корзину");
-        addGoods();
-
-
-
+        Util.sleep(Util.random(100, 200));
+        for (int i = 0; i < Util.random(goodsKeySet().size()); i++) {
+            int counter = 0;
+            int randomKey = Util.random(0, goodsKeySet().size());
+            for (String good : goodsKeySet()) {
+                if (randomKey == counter++) {
+                    basket.put(good);
+                    System.out.println(this + " взял " + good);
+                }
+            }
+        }
+        System.out.println(this + " положил " + basket.getKeys().size() + " товара в корзину");
     }
+
+
     @Override
     public void enterToMarket() {
         System.out.println(this + " вошел в магазин");
@@ -47,10 +60,10 @@ public class Buyer extends  Thread implements IBuyer, IUseBasket {
     @Override
     public void chooseGoods() {
 
-            System.out.println(this + " начал выбирать товары");
-            int timeout = random(500, 2000);
-            Util.sleep(timeout);
-            System.out.println(this + " закончил выбирать товары");
+        System.out.println(this + " начал выбирать товары");
+        int timeout = random(500, 2000);
+        Util.sleep(timeout);
+        System.out.println(this + " закончил выбирать товары");
     }
 
     @Override
