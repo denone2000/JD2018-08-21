@@ -9,15 +9,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     }
 
     static boolean pensioneer;
-
-    static double pensioneerCheck() {
-        double kSpeed;
-        if (pensioneer) {
-            kSpeed = 1.5;
-        } else
-            kSpeed = 1.0;
-        return kSpeed;
-    }
+    private final double KSPEED = pensioneer ? 1.5 : 1.0;
 
     @Override
     public void run() {
@@ -31,7 +23,11 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     // IBuyer methods
     @Override
     public void enterToMarket() {
-        System.out.println(this + " enter to market.");
+        if (pensioneer) {
+            System.out.println(this + "(pensioneer) enter to market.");
+        } else {
+            System.out.println(this + " enter to market.");
+        }
     }
 
     @Override
@@ -39,7 +35,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         int quantityGoods = Util.getRandom(1, 4);
         for (int goods = 0; goods < quantityGoods; goods++) {
             System.out.println(this + " start choosing goods.");
-            Util.sleep(Util.getRandom(500, 2000));
+            Util.sleep((int) (Util.getRandom(500, 2000) * KSPEED));
             Map<String, Double> choosedGood = Goods.getRandomGood();
             String good = Goods.getGoodName(choosedGood);
             double cost = Goods.getGoodCost(choosedGood);
@@ -59,19 +55,20 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     // IUseBacket methods
     @Override
     public void takeBacket() {
-        Util.sleep(Util.getRandom(100, 200));
+        Util.sleep((int) (Util.getRandom(100, 200) * KSPEED));
         System.out.println(this + " took backet.");
     }
 
     @Override
     public void putGoodsToBacket() {
+
     }
-    //=========================================================================
 
     private void putGoodsToBacket(String good) {
-        Util.sleep(Util.getRandom(100, 200));
+        Util.sleep((int) (Util.getRandom(100, 200) * KSPEED));
         System.out.println(this + " put " + good + " to backet.");
     }
+    //=========================================================================
 
     @Override
     public String toString() {
