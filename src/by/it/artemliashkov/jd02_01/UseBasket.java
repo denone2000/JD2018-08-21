@@ -6,8 +6,12 @@ import java.util.Map;
 public class UseBasket extends Thread implements IUseBasket {
     private Map<String, Integer> goods = new HashMap<>();
 
+    private boolean pensioner;
+    private static final  double delta=150;
+
     UseBasket(int number) {
         super("Покупатель №"+number);
+        this.pensioner = number % 4 == 0;
     }
 
     public void run()
@@ -28,6 +32,9 @@ public class UseBasket extends Thread implements IUseBasket {
         try {
             System.out.println(this+ "взял корзину");
             sleep((int)(100+Math.random()*101));
+            if (pensioner) {
+                sleep((int) (delta*(100+Math.random()*101)));
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -78,6 +85,9 @@ public class UseBasket extends Thread implements IUseBasket {
                        System.out.println( entry.getKey() + " " + entry.getValue() );
                 }
                 sleep((int)(100+Math.random()*101));
+                if (pensioner) {
+                    sleep((int) (delta*(100+Math.random()*101)));
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
