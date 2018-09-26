@@ -2,6 +2,7 @@ package by.it.korolchuk.jd02_01;
 class Dispatcher {
     static final int KoefSpeed = 10;
     private static int buyersInMarket = 0;
+    private static int goodsInBasket = 0;
 
     static void addBuyer() {
         buyersInMarket++;
@@ -11,7 +12,11 @@ class Dispatcher {
         buyersInMarket--;
     }
 
-   public static int getBuyersInMarket() {
+   static int getBuyersInMarket() {
       return buyersInMarket;
+   }
+
+   static void addGoods() {
+        goodsInBasket++;
    }
 }

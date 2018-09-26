@@ -1,23 +1,43 @@
 package by.it.korolchuk.jd02_01;
 
-public class Buyer extends  Thread implements IBuyer{
+import java.security.Key;
+import java.util.*;
+
+import static by.it.korolchuk.jd02_01.Goods.*;
+import static by.it.korolchuk.jd02_01.Util.*;
+
+public class Buyer extends  Thread implements IBuyer, IUseBasket {
 
     @Override
     public String toString() {
         return this.getName();
     }
 
-    public Buyer (int number) {
+    Buyer (int number) {
         super("Покупатель № " + number);
     }
 
     @Override
     public void run() {
         enterToMarket();
+        takeBasket();
+        putGoodsToBasket();
         chooseGoods();
         goOut();
     }
 
+     public void takeBasket() {
+        System.out.println(this + " взял корзину");
+    }
+
+    public void putGoodsToBasket(){
+
+       // System.out.println(this + " положил в корзину");
+        addGoods();
+
+
+
+    }
     @Override
     public void enterToMarket() {
         System.out.println(this + " вошел в магазин");
@@ -26,16 +46,11 @@ public class Buyer extends  Thread implements IBuyer{
 
     @Override
     public void chooseGoods() {
-        try {
-            System.out.println(this + " начал выбирать товары");
-            int timeout = Util.random(500, 2000);
-            sleep((int)(Math.random()*1501));
 
+            System.out.println(this + " начал выбирать товары");
+            int timeout = random(500, 2000);
+            Util.sleep(timeout);
             System.out.println(this + " закончил выбирать товары");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println();
     }
 
     @Override
@@ -43,4 +58,6 @@ public class Buyer extends  Thread implements IBuyer{
         Dispatcher.removeBuyer();
         System.out.println(this + " вышел из магазина");
     }
+
+
 }

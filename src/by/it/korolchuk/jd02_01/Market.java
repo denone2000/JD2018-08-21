@@ -9,21 +9,22 @@ public class Market {
         int counterBuyer = 0;
         List<Buyer> buyers = new ArrayList<>();
 
-        for (int currentSecond = 0; currentSecond < Util.random(2); currentSecond++) {
+        for (int currentSecond = 0; currentSecond < 120; currentSecond++) {
+            for (int i = 0; i < Util.random(2); i++) {
             Buyer buyer = new Buyer(++counterBuyer);
             buyer.start();
            System.out.println("Всего в магазине " + Dispatcher.getBuyersInMarket());
             Util.sleep(1000);
+            }
+        }
+        for (Buyer buyer : buyers) {
             try {
-                Thread.sleep(1000/Dispatcher.KoefSpeed);
-
+                buyer.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        Buyer buyer1 = new Buyer(1);
-        Buyer buyer2 = new Buyer(2);
-        buyer1.start();
-        buyer2.start();
+        System.out.println("Всего в магазине:"+ Dispatcher.getBuyersInMarket());
+        System.out.println("Магазин закрыт");
     }
 }
