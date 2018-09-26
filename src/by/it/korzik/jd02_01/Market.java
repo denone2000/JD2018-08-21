@@ -25,7 +25,7 @@ public class Market {
     private static void fillMap() {
         goodsMap.put("Хлеб",12);
         goodsMap.put("Молоко",14);
-        goodsMap.put("Воличка",10);
+        goodsMap.put("Водичка",10);
         goodsMap.put("Масло",17);
         goodsMap.put("Рыба",17);
         goodsMap.put("Корм для кота",7);
