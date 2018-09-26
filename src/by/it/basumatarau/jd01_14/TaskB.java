@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 public class TaskB {
     public static void main(String[] args) {
         String projectRootPath = System.getProperty("user.dir");
-        String path = projectRootPath +System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
-                TaskB.class.getName().replaceAll(TaskB.class.getSimpleName(),"").replaceAll("[.]",
-                        System.getProperty("file.separator"));
+        String path = projectRootPath +File.separator+"src"+File.separator+
+                TaskB.class.getName().replaceAll(TaskB.class.getSimpleName(),"").replace(".",
+                        File.separator);
         File f = new File(path+"text.txt");
         FileReader inputStream = null;
         BufferedReader buffReader = null;
