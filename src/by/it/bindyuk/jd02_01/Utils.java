@@ -8,11 +8,9 @@ class Utils {
 
     static void sleep(int millis){
         try {
-            Thread.sleep(millis);
+            Thread.sleep(millis/Dispatcher.KOEFSPEED);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-///Dispatcher.KOEFSPEED
 }
