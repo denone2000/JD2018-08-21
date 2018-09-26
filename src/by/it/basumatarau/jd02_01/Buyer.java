@@ -48,9 +48,14 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         System.out.println(getName()+" entered market");
     }
 
+    /**
+     *
+     * время жизни треда увеличино чтобы позволить экземплярам треда Buyer накапливаться
+     * чтобы протестировать регулирование численности акивных потоков (экземпляров Buyer)
+     * */
     @Override
     public void chooseGoods() {
-        Util.sleep(Util.random((int)(500* BUYER_KSPEED), (int)(2000* BUYER_KSPEED)));
+        Util.sleep(Util.random((int)(35000* BUYER_KSPEED), (int)(40000* BUYER_KSPEED)));
         System.out.println(getName()+" has chosen some goods");
     }
 

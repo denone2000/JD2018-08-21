@@ -12,7 +12,7 @@ public class Market {
 
             int buyersInDaShop = getBuyersInDaShop(buyers);
 
-            System.out.printf("---->Buyers in the shop: %d, total buyers: %d\n", buyersInDaShop, buyers.size());
+            System.out.printf("---->Buyers in the shop: %d, at %ds\n", buyersInDaShop, i);
             if(i%60>30){
                 if(buyersInDaShop<=(40+30-i%60)){
                     introduceCustomers(buyers);

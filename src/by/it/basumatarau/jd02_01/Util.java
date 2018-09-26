@@ -2,7 +2,7 @@ package by.it.basumatarau.jd02_01;
 
  class Util {
 
-     private static final int KSPEED = 1;
+     private static final int KSPEED = 100;
 
     static int random(int from, int to){
         return (int)(Math.random()*(to-from)+from+1);
