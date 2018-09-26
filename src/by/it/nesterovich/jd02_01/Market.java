@@ -5,17 +5,27 @@ import java.util.List;
 
 public class Market {
 
+    private static List<Buyer> buyers = new ArrayList<>();
+    private static int counterBuyer = 0;
+
     public static void main(String[] args) {
-        List<Buyer> buyers = new ArrayList<>();
-        int counterBuyer = 0;
+
         for (int currentSecond = 0; currentSecond < 120; currentSecond++) {
-            for (int i = 0; i < Util.random(0, 2); i++) {
-                Buyer buyer = new Buyer(++counterBuyer);
-                buyers.add(buyer);
-                buyer.start();
-                System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
-                Util.sleep(1000);
+            int secondInMinute = (60 + currentSecond) % 60;
+            System.out.println(currentSecond);
+            System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
+
+            if (secondInMinute < 30) {
+                while (Dispatcher.getBuyersInMarket() < (secondInMinute + 11)) {
+                    addBuyer();
+                }
             }
+            if (secondInMinute >= 30) {
+                while (Dispatcher.getBuyersInMarket() < (40 + (30 - secondInMinute))) {
+                    addBuyer();
+                }
+            }
+            //Util.sleep(1000);
         }
         for (Buyer buyer : buyers) {
             try {
@@ -26,5 +36,13 @@ public class Market {
         }
         System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
         System.out.println("Market closed");
+    }
+
+    private static void addBuyer() {
+        for (int i = 0; i < Util.random(0, 2); i++) {
+            Buyer buyer = new Buyer(++counterBuyer);
+            buyers.add(buyer);
+            buyer.start();
+        }
     }
 }
