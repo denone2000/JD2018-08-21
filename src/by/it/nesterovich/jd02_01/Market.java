@@ -9,11 +9,11 @@ public class Market {
         List<Buyer> buyers = new ArrayList<>();
         int counterBuyer = 0;
         for (int currentSecond = 0; currentSecond < 120; currentSecond++) {
-            for (int i = 0; i < Util.random(); i++) {
+            for (int i = 0; i < Util.random(0, 2); i++) {
                 Buyer buyer = new Buyer(++counterBuyer);
                 buyers.add(buyer);
                 buyer.start();
-                System.out.println("In market total:" + Dispatcher.getBuyersInMarket());
+                System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
                 Util.sleep(1000);
             }
         }
@@ -24,7 +24,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        System.out.println("In market total:" + Dispatcher.getBuyersInMarket());
+        System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
         System.out.println("Market closed");
     }
 }
