@@ -13,15 +13,15 @@ public class Market {
 
         for (int actualSecond = 0; actualSecond < 120; actualSecond++) {
             if (actualSecond <= 30) {
-                newBuyer(actualSecond);
+                newBuyer();
             } else if (actualSecond > 30 && actualSecond <= 60) {
                 if (counterBuyers <= 40 + (30 - actualSecond))
-                    newBuyer(actualSecond);
+                    newBuyer();
             } else if (actualSecond > 60 && actualSecond <= 90) {
-                newBuyer(actualSecond);
+                newBuyer();
             } else {
                 if (counterBuyers <= 40 + (30 - actualSecond))
-                    newBuyer(actualSecond);
+                    newBuyer();
             }
         }
         for (Buyer buyer : buyers) {
@@ -34,7 +34,7 @@ public class Market {
         System.out.println("Market is closed.");
     }
 
-    private static void newBuyer(int actualSecond) {
+    private static void newBuyer() {
         for (int quantityBuyers = 0; quantityBuyers < Util.getRandom(2); quantityBuyers++) {
             Buyer buyer = new Buyer(++counterBuyers);
             Buyer.pensioneer = counterBuyers % 4 == 0;
