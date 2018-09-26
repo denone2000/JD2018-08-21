@@ -19,7 +19,7 @@ class Goods {
         return map;
     }
 
-    static Map<String, Double> getRandomGoods() {
+    static Map<String, Double> getRandomGood() {
         Map<String, Double> result = new HashMap<>();
         List<String> list = new ArrayList<>(mapGoods.keySet());
         String key = list.get(Util.getRandom(7));

@@ -28,14 +28,14 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         int quantityGoods = Util.getRandom(1, 4);
         for (int goods = 0; goods < quantityGoods; goods++) {
             System.out.println(this + " start choosing goods.");
-            int timeForChoosing = Util.getRandom(500, 2000);
-            Util.sleep(timeForChoosing);
-            Map<String, Double> choosedGood = Goods.getRandomGoods();
+            Util.sleep(Util.getRandom(500, 2000));
+            Map<String, Double> choosedGood = Goods.getRandomGood();
             String good = Goods.getGoodName(choosedGood);
             double cost = Goods.getGoodCost(choosedGood);
-            System.out.println(this + " choosed " + good + ", - " + cost + " rubles.");
+            System.out.println(this + " choosed " + good + ", cost - " + cost + " rubles.");
             putGoodsToBacket(good);
         }
+        System.out.println(this + " end choosing goods today.");
     }
 
     @Override
