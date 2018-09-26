@@ -47,7 +47,7 @@ public class TaskC {
                 if (att != null) {
                     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
                     return String.format("%19s %15s %s",
-                            att.creationTime().toString().substring(0,19).replaceAll("T", " "),
+                            att.creationTime().toString().substring(0,19).replace("T", " "),
                             (att.isDirectory() ? "<DIR>" : String.format("%s",nf.format(att.size()))),
                             path.getFileName());
                 } else return "<can't access attributes>"+'\t' + path.getFileName();
