@@ -7,8 +7,9 @@ public class Market {
         int counterBuyers = 0;
 
         for (int actualSecond = 0; actualSecond < 120; actualSecond++) {
-            for (int quantityBuyers = 0; quantityBuyers<Util.getRandom(2); quantityBuyers++){
+            for (int quantityBuyers = 0; quantityBuyers < Util.getRandom(2); quantityBuyers++) {
                 Buyer buyer = new Buyer(++counterBuyers);
+                Buyer.pensioneer = counterBuyers % 4 == 0;
                 buyer.start();
             }
         }

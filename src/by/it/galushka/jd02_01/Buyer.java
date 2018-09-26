@@ -8,6 +8,17 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         super("Buyer #" + number);
     }
 
+    static boolean pensioneer;
+
+    static double pensioneerCheck() {
+        double kSpeed;
+        if (pensioneer) {
+            kSpeed = 1.5;
+        } else
+            kSpeed = 1.0;
+        return kSpeed;
+    }
+
     @Override
     public void run() {
         enterToMarket();
@@ -55,8 +66,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void putGoodsToBacket() {
     }
-
     //=========================================================================
+
     private void putGoodsToBacket(String good) {
         Util.sleep(Util.getRandom(100, 200));
         System.out.println(this + " put " + good + " to backet.");
