@@ -15,7 +15,7 @@ public class Market {
                 Buyer buyer = new Buyer(++counterBuyer);
                 buyers.add(buyer);
                 buyer.start();
-                System.out.println("In market total:"+Dispathcer.getBuyesInMarket());
+                System.out.println("In market total:"+Dispathcer.getBuyersInMarket());
                 Util.sleep(1000);
             }
         }
@@ -26,7 +26,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        System.out.println("In market total:"+Dispathcer.getBuyesInMarket());
+        System.out.println("In market total:"+Dispathcer.getBuyersInMarket());
         System.out.println("Market closed");
     }
 }

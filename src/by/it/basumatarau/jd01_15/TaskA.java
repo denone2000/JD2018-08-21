@@ -12,9 +12,9 @@ public class TaskA {
                 matrix[i][j]=(int)(Math.random()*31-15);
             }
         }
-        File f = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
-                TaskA.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll(TaskA.class.getSimpleName(),"")
-                +System.getProperty("file.separator")+"matrix.txt");
+        File f = new File(System.getProperty("user.dir")+File.separator+"src"+File.separator+
+                TaskA.class.getName().replace(".", File.separator).replaceAll(TaskA.class.getSimpleName(),"")
+                +File.separator+"matrix.txt");
 
         try(BufferedWriter buffR = new BufferedWriter(new FileWriter(f))){
             for (int[] aMatrix : matrix) {

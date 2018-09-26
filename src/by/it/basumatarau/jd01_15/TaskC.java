@@ -1,5 +1,6 @@
 package by.it.basumatarau.jd01_15;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,9 +13,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TaskC {
-    private static String currentDir = System.getProperty("user.dir")+System.getProperty("file.separator")+
-            "src"+System.getProperty("file.separator")+TaskC.class.getName().
-            replaceAll("[.]", System.getProperty("file.separator")).replaceAll(System.getProperty("file.separator")
+    private static String currentDir = System.getProperty("user.dir")+ File.separator+
+            "src"+File.separator+TaskC.class.getName().
+            replace(".", File.separator).replaceAll(File.separator
             +TaskC.class.getSimpleName(),"");
 
     public static void main(String[] args) {
@@ -46,7 +47,7 @@ public class TaskC {
                 if (att != null) {
                     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
                     return String.format("%19s %15s %s",
-                            att.creationTime().toString().substring(0,19).replaceAll("T", " "),
+                            att.creationTime().toString().substring(0,19).replace("T", " "),
                             (att.isDirectory() ? "<DIR>" : String.format("%s",nf.format(att.size()))),
                             path.getFileName());
                 } else return "<can't access attributes>"+'\t' + path.getFileName();
@@ -80,7 +81,7 @@ public class TaskC {
             currentDir = p.getParent().toAbsolutePath().toString();
         }else if(line.matches("^cd\\s.*")){
             line = line.substring(3).trim();
-            if(line.matches("^["+System.getProperty("file.separator")+"].*")) {
+            if(line.matches("^["+File.separator+"].*")) {
                 Path p = Paths.get(line);
                 if (Files.exists(p)) {
                     if (Files.isDirectory(p)) {
@@ -90,13 +91,13 @@ public class TaskC {
                     System.out.printf("there is nothing at %s \n", line);
                 }
             }else{
-                Path p = Paths.get(currentDir+System.getProperty("file.separator")+line);
+                Path p = Paths.get(currentDir+File.separator+line);
                 if (Files.exists(p)) {
                     if (Files.isDirectory(p)) {
                         currentDir = p.toAbsolutePath().toString();
-                    } else System.out.printf("%s is not a directory \n", currentDir+System.getProperty("file.separator")+line);
+                    } else System.out.printf("%s is not a directory \n", currentDir+File.separator+line);
                 } else {
-                    System.out.printf("there is nothing at %s \n", currentDir+System.getProperty("file.separator")+line);
+                    System.out.printf("there is nothing at %s \n", currentDir+File.separator+line);
                 }
             }
         }
