@@ -13,7 +13,7 @@ public class TaskA {
             }
         }
         File f = new File(System.getProperty("user.dir")+File.separator+"src"+File.separator+
-                TaskA.class.getName().replaceAll("[.]", File.separator).replaceAll(TaskA.class.getSimpleName(),"")
+                TaskA.class.getName().replace(".", File.separator).replaceAll(TaskA.class.getSimpleName(),"")
                 +File.separator+"matrix.txt");
 
         try(BufferedWriter buffR = new BufferedWriter(new FileWriter(f))){
