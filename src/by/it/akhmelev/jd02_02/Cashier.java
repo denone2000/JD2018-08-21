@@ -4,7 +4,7 @@ class Cashier implements Runnable {
 
     private int number;
 
-    public Cashier(int number) {
+    Cashier(int number) {
         this.number = number;
     }
 
