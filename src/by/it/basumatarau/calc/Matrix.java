@@ -27,6 +27,7 @@ public class Matrix extends Var {
         }
     }
     public Matrix(String strMatrix){
+        //noinspection RegExpRedundantEscape built-in regex chek doesn't work correctly...
         Pattern NumLine= Pattern.compile("(\\{[^{}]+\\})");
         Matcher NumLineMatcher = NumLine.matcher(strMatrix);
         int lines = 0;
@@ -56,11 +57,11 @@ public class Matrix extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var addTo(Vector vector) {
+    public Var addTo(Vector vector) throws CalcException{
         return super.add(vector);
     }
     @Override
-    public Var addTo(Matrix matrix) {
+    public Var addTo(Matrix matrix) throws CalcException{
         if (value.length!=matrix.getValue().length&&value[0].length!=matrix.getValue()[0].length){
             return super.add(matrix);
         }
@@ -73,13 +74,13 @@ public class Matrix extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var add(Var other) {
+    public Var add(Var other)throws CalcException {
         return other.addTo(this);
     }
 
     @Override
-    public Var subAnother(Matrix matrix) {
-        if (value.length!=matrix.getValue().length&&value[0].length!=matrix.getValue()[0].length){
+    public Var subAnother(Matrix matrix) throws CalcException{
+        if (value.length!=matrix.getValue().length||value[0].length!=matrix.getValue()[0].length){
             return super.sub(matrix);
         }
         double[][] result = new double[value.length][value[0].length];
@@ -91,11 +92,11 @@ public class Matrix extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var subAnother(Scalar scalar) {
+    public Var subAnother(Scalar scalar)throws CalcException {
         return super.sub(scalar);
     }
     @Override
-    public Var subAnother(Vector vector) {
+    public Var subAnother(Vector vector) throws CalcException{
         if(value.length>1) {
             return super.sub(vector);
         }else{
@@ -107,7 +108,7 @@ public class Matrix extends Var {
         }
     }
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other)throws CalcException {
         return other.subAnother(this);
     }
 
@@ -122,7 +123,7 @@ public class Matrix extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var mulBy(Vector vector) {
+    public Var mulBy(Vector vector)throws CalcException {
         if(this.value.length!=vector.getValue().length&&value[0].length!=1) {
             return super.mul(vector);
         }else{
@@ -136,7 +137,7 @@ public class Matrix extends Var {
         }
     }
     @Override
-    public Var mulBy(Matrix matrix) {
+    public Var mulBy(Matrix matrix) throws CalcException{
         if(matrix.value[0].length!=value.length){
             return super.mul(matrix);
         }
@@ -151,25 +152,25 @@ public class Matrix extends Var {
         return new Matrix(result);
     }
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other)throws CalcException {
         return other.mulBy(this);
     }
 
     @Override
-    public Var divBy(Matrix matrix) {
+    public Var div(Var other) throws CalcException {
+        return other.divBy(this);
+    }
+    @Override
+    public Var divBy(Matrix matrix)throws CalcException {
         return super.div(matrix);
     }
     @Override
-    public Var divBy(Scalar scalar) {
+    public Var divBy(Scalar scalar)throws CalcException {
         return super.div(scalar);
     }
     @Override
-    public Var divBy(Vector vector) {
+    public Var divBy(Vector vector)throws CalcException {
         return super.div(vector);
-    }
-    @Override
-    public Var div(Var other) {
-        return super.div(other);
     }
 
     @Override
