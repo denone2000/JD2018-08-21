@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -46,8 +48,10 @@ public class TaskC {
                 }
                 if (att != null) {
                     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
-                    return String.format("%19s %15s %s",
-                            att.creationTime().toString().substring(0,19).replace("T", " "),
+                    DateFormat df = DateFormat.getDateInstance();
+                    return String.format("%12s %15s %s",
+                            df.format(att.creationTime().toMillis()),
+                            //att.creationTime().toString().substring(0,19).replace("T", " "),
                             (att.isDirectory() ? "<DIR>" : String.format("%s",nf.format(att.size()))),
                             path.getFileName());
                 } else return "<can't access attributes>"+'\t' + path.getFileName();
