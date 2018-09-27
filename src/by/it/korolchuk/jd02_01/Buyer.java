@@ -47,7 +47,19 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
                 }
             }
         }
-        System.out.println(this + " положил " + basket.getKeys().size() + " товара в корзину");
+
+String good;
+        switch (basket.getKeys().size()) {
+            case 0: good = "товаров";
+            break;
+
+            case 1: good = "товар";
+            break;
+
+            default: good = "товара";
+            break;
+        }
+        System.out.println(this + " положил " + basket.getKeys().size() + " " + good);
     }
 
 
