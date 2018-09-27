@@ -7,7 +7,7 @@ import java.util.List;
 public class TaskA {
     public static void main(String[] args) {
         String pathToPJDir = System.getProperty("user.dir");
-        String pathToCurrentDir = pathToPJDir+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")+
+        String pathToCurrentDir = pathToPJDir+File.separator+"src"+File.separator+
                 TaskA.class.getName().replace(TaskA.class.getSimpleName(), "").replaceAll("[.]","/");
 
         String fileName = pathToCurrentDir + "dataTaskA.bin";
