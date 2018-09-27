@@ -48,8 +48,8 @@ public class TaskC {
                 }
                 if (att != null) {
                     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
-                    DateFormat df = DateFormat.getDateInstance();
-                    return String.format("%12s %15s %s",
+                    DateFormat df = DateFormat.getDateTimeInstance();
+                    return String.format("%-19s %15s %s",
                             df.format(att.creationTime().toMillis()),
                             //att.creationTime().toString().substring(0,19).replace("T", " "),
                             (att.isDirectory() ? "<DIR>" : String.format("%s",nf.format(att.size()))),
