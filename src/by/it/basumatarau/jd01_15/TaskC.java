@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -46,8 +48,10 @@ public class TaskC {
                 }
                 if (att != null) {
                     NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
-                    return String.format("%19s %15s %s",
-                            att.creationTime().toString().substring(0,19).replace("T", " "),
+                    DateFormat df = DateFormat.getDateTimeInstance();
+                    return String.format("%-19s %15s %s",
+                            df.format(att.creationTime().toMillis()),
+                            //att.creationTime().toString().substring(0,19).replace("T", " "),
                             (att.isDirectory() ? "<DIR>" : String.format("%s",nf.format(att.size()))),
                             path.getFileName());
                 } else return "<can't access attributes>"+'\t' + path.getFileName();
@@ -64,7 +68,7 @@ public class TaskC {
                     e.printStackTrace();
                 }
                 return att!=null?att.size():0;
-            }).reduce((item1,item2)->item1+item2).orElse(0L)));
+            }).reduce(0L,(item1,item2)->item1+item2)));
             System.out.printf("%19d Dir(s)  %15s bytes free\n",(Files.list(p).filter(path->Files.isDirectory(path)).count()),
                     nf.format(Files.getFileStore(p).getUsableSpace()));
 
