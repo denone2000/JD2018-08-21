@@ -16,8 +16,12 @@ public class TaskB {
         ArrayList<String> lines = new ArrayList<>();
         String[] arr = readFile(src).split("\n");
         for (int i = 0; i < arr.length; i++) {
-            if (!(arr[i].contains("/*") || arr[i].contains("//") ||
-                    arr[i].contains("*/"))) {
+            if (arr[i].contains("/*")) {
+                while (!(arr[i].contains("*/") ))
+                    i++;
+            }
+            else if (!(arr[i].contains("//")) || (arr[i].contains("*/"))
+            || (arr[i].contains("/*"))) {
                 lines.add(arr[i]);
                 System.out.println(arr[i]);
             }
@@ -38,7 +42,8 @@ public class TaskB {
         String line;
         StringBuilder stringBuilder = new StringBuilder();
         String ls = System.getProperty("line.separator");
-    /*это двустрочный
+    /*это
+    многострочный
     комментарий*/
 
         /**@Param a это javadoc*/
