@@ -24,14 +24,9 @@ public class Cashier implements Runnable {
     boolean isWorking() {
         return isWorking;
     }
-
-    String getCurrentBuyerName() {
-        return currentBuyerName;
-    }
     Buyer getCurrBuyer(){
         return currBuyer;
     }
-
 
     Object getCASHIER_MONITOR(){
         return CASHIER_MONITOR;
@@ -43,12 +38,12 @@ public class Cashier implements Runnable {
         while(Dispatcher.isNotOnTarget()){
             Buyer buyer = Buyer.pollBuyer();
             if(buyer!=null) {
-                currentBuyerName =buyer.getName();
+
                 currBuyer=buyer;
                 //System.out.println(this + " is servicing " + buyer);
                 double charge = buyer.putGoodsOutOfBasket().stream().map((good) -> {
                     Double result = 0.0;
-                    for (Map.Entry<String, Double> entry : Good.getGoods().entrySet()) {
+                    for (Map.Entry<String, Double> entry : Goods.getGoods().entrySet()) {
                         if (entry.getKey().equals(good)) {
                             result = entry.getValue();
                         }
@@ -63,9 +58,9 @@ public class Cashier implements Runnable {
                 synchronized (buyer) {
                     buyer.notify();
                 }
-                currentBuyerName =null;
-                currBuyer=null;
-                if(Dispatcher.getOpenCashiers()*5>Dispatcher.getBuyersInMarket()&&
+
+                //currBuyer=null;
+                if(Dispatcher.getOpenCashiers()>Dispatcher.getBuyersInMarket()/5&&
                 Dispatcher.isOpen()){
                     synchronized (CASHIER_MONITOR){
                         try {

@@ -3,7 +3,7 @@ package by.it.basumatarau.jd02_02;
 import java.util.HashMap;
 
 class Dispatcher {
-    static final int KSPEED = 100;
+    static final int KSPEED = 10;
     private static final int TARGET = 100;
     private static volatile int buyersInMarket = 0;
     private static volatile int buyersLeftMarket = 0;

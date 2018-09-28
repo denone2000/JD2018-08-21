@@ -48,9 +48,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         for (int i = 0; i < Util.random(1,4); i++) {
             Util.sleep(Util.random((int)(100* BUYER_KSPEED),(int) (200* BUYER_KSPEED)));
 
-            int dice = Util.random(0, Good.getGoods().size()-1);
+            int dice = Util.random(0, Goods.getGoods().size()-1);
             int iterator = 0;
-            for (Map.Entry<String, Double> entry: Good.getGoods().entrySet()) {
+            for (Map.Entry<String, Double> entry: Goods.getGoods().entrySet()) {
                 if (dice==iterator++){
                     basket.addGood(entry.getKey());
                     //System.out.println(getName()+" has put "+entry.getKey()+" in the basket");

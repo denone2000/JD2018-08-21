@@ -27,26 +27,27 @@ class Util {
 
         for (Map.Entry<Object, Cashier> entry : Dispatcher.getCashierMonitors().entrySet()) {
             synchronized (entry.getKey()){
-                sb[0].append(String.format("%-13s",entry.getValue().toString()));
-                if(entry.getValue().isWorking()&&entry.getValue().getCurrentBuyerName()!=null){
-                    sb[1].append(String.format("%-13s","open"));
-                    sb[2].append(String.format("%-13s","is servicing"));
-                    sb[3].append(String.format("%-13s", entry.getValue().getCurrentBuyerName()));
-                    sb[4].append(String.format("%-13s", entry.getValue().getCurrBuyer().isPensioneer()?"pensioner":"not pens"));
+                sb[0].append(String.format("%-15s",entry.getValue().toString()));
+                if(entry.getValue().isWorking()&&entry.getValue().getCurrBuyer()!=null){
+
+                    sb[1].append(String.format("%-15s","open"));
+                    sb[2].append(String.format("%-15s","is servicing"));
+                    sb[3].append(String.format("%-15s", entry.getValue().getCurrBuyer().getName()));
+                    sb[4].append(String.format("%-15s", entry.getValue().getCurrBuyer().isPensioneer()?"pensioner":"not pensioner"));
                 }
                 else{
-                    sb[1].append(String.format("%-13s","closed"));
-                    sb[2].append(String.format("%-13s",""));
-                    sb[3].append(String.format("%-13s", ""));
-                    sb[4].append(String.format("%-13s", ""));
+                    sb[1].append(String.format("%-15s","closed"));
+                    sb[2].append(String.format("%-15s",""));
+                    sb[3].append(String.format("%-15s", ""));
+                    sb[4].append(String.format("%-15s", ""));
                 }
             }
         }
-        sb[0].append(String.format("%-13s", "Queue size"));
-        sb[1].append(String.format("%-13d", Buyer.queuingBuyers()));
+        sb[0].append(String.format("%-15s", "Queue size"));
+        sb[1].append(String.format("%-15d", Buyer.queuingBuyers()));
 
-        sb[0].append(String.format("%-13s", "Revenue"));
-        sb[1].append(String.format("%-13s$", Cashier.getTotalRevenue()));
+        sb[0].append(String.format("%-15s", "Revenue"));
+        sb[1].append(String.format("%-15s$", Cashier.getTotalRevenue()));
 
         StringBuilder result = new StringBuilder();
         for (StringBuilder aSb : sb) {
