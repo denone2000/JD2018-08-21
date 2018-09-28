@@ -18,7 +18,6 @@ public class Cashier implements Runnable {
 
     private static double totalRevenue=0.0;
     private boolean isWorking=true;
-    private String currentBuyerName =null;
     private Buyer currBuyer = null;
 
     boolean isWorking() {
@@ -59,9 +58,10 @@ public class Cashier implements Runnable {
                     buyer.notify();
                 }
 
-                //currBuyer=null;
-                if(Dispatcher.getOpenCashiers()>Dispatcher.getBuyersInMarket()/5&&
-                Dispatcher.isOpen()){
+                /* close the cashier if(condition1&&condition2)
+                 * condition1: not enough customers in the market
+                 */
+                if(Dispatcher.getOpenCashiers()>Math.ceil((double)Dispatcher.getBuyersInMarket()/5)){
                     synchronized (CASHIER_MONITOR){
                         try {
                             //System.out.println(this + " is waiting for more customers to come to the market");

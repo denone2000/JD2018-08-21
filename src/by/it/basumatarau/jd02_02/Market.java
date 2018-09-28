@@ -12,7 +12,7 @@ public class Market {
         List<Thread> threads = new ArrayList<>();
         HashMap<Thread,Object> monitors = new HashMap<>();
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 4; i++) {
             Cashier cashier = new Cashier(i);
             Thread th = new Thread(cashier);
             monitors.put(th,cashier.getCASHIER_MONITOR());
@@ -25,10 +25,9 @@ public class Market {
             timeSec++;
             int buyersInDaShop = Dispatcher.getBuyersInMarket();
 
-
-            //System.out.println("Cashiers working: "+Dispatcher.getOpenCashiers());
+            System.out.println("Cashiers working: "+Dispatcher.getOpenCashiers());
             //System.out.println("Cashiers on shift: "+Dispatcher.getCashiersOnShift());
-            //System.out.printf("---->Buyers in the shop: %d at %ds\n", buyersInDaShop, timeSec);
+            System.out.printf("---->Buyers in the shop: %d at %ds\n", buyersInDaShop, timeSec);
             System.out.println(Util.printMarketStatus());
 
             if (timeSec % 60 > 30) {
@@ -41,6 +40,11 @@ public class Market {
                 }
             }
 
+            /* open one of the closed cashiers if(condition1&&condition2&&condition3)
+             * condition1: too much customers
+             * condition2: not all the cashiers on shift are working
+             * condition3: there is somebody in the queue
+            */
             if(Dispatcher.getOpenCashiers()*5<Dispatcher.getBuyersInMarket() &&
                     Dispatcher.getOpenCashiers()!=Dispatcher.getCashiersOnShift() &&
                     Buyer.queuingBuyers()>0){
@@ -58,7 +62,9 @@ public class Market {
             Util.sleep(1000);
         }
 
-
+        /*notify all the waiting Cashier threads, so they can be joined to the main thread
+        * and then eventually terminate on their own
+        * */
         for (Map.Entry<Thread, Object> entry: monitors.entrySet()) {
             if(entry.getKey().getState().equals(Thread.State.WAITING)){
                 synchronized (entry.getValue()){
