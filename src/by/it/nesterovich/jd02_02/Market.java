@@ -6,26 +6,36 @@ import java.util.List;
 public class Market {
 
     //private static List<Buyer> buyers = new ArrayList<>();
+    private static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        List<Thread> threads = new ArrayList<>();
+        //List<Thread> threads = new ArrayList<>();
         int counterBuyer = 0;
 
-        for (int i = 1; i <= 2; i++) {
-            Cashier cashier = new Cashier(i);
-            Thread thread = new Thread(cashier);
-            thread.start();
-            threads.add(thread);
-        }
+//        if (QueueBuyers.getCount() > 0) {
+//            for (int i = 1; i <= 2; i++) {
+//                Cashier cashier = new Cashier(1);
+//                Thread thread = new Thread(cashier);
+//                thread.start();
+//                threads.add(thread);
+//            }
+//        }
+
+//        for (int i = 1; i <= 2; i++) {
+//            Cashier cashier = new Cashier(i);
+//            Thread thread = new Thread(cashier);
+//            thread.start();
+//            threads.add(thread);
+//        }
 
         while (Dispatcher.marketIsOpened()) {
-            for (int i = 0; i < Util.random(0,2); i++) {
+            for (int i = 0; i < Util.random(0, 2); i++) {
                 if (Dispatcher.marketIsOpened()) {
                     Buyer buyer = new Buyer(++counterBuyer);
                     threads.add(buyer);
                     buyer.start();
-                    System.out.println("In market total:" + Dispatcher.getBuyersInMarket());
+                    System.out.println(" In market total:" + Dispatcher.getBuyersInMarket());
                 }
             }
             Util.sleep(1000);
@@ -63,6 +73,28 @@ public class Market {
 //        }
 //        System.out.println("In market total: " + Dispatcher.getBuyersInMarket());
 //        System.out.println("Market closed");
+    }
+
+    static synchronized void openCashier(int number) {
+        //for (int i = 1; i <= 2; i++) {
+        Cashier cashier = new Cashier(number);
+        Thread thread = new Thread(cashier);
+        thread.start();
+        threads.add(thread);
+        //}
+    }
+
+    static void closeCashier(int number) {
+        //threads.indexOf();
+        String nameTread ="Cashier №" + String.valueOf(number);
+        for (Thread thread : threads) {
+            if (thread.toString().equals(nameTread)) {
+                System.out.println("+++++++++++");
+
+                //nameTread = thread.getName();
+            }
+        }
+        //System.out.println("+++++++++++" + nameTread);
     }
 
 //    private static void addBuyer() {
