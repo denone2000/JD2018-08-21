@@ -1,6 +1,7 @@
 package by.it.korolchuk.jd02_02;
 
 class Util {
+
     static int random(int from, int to) {
         return (int) (Math.random() * (to - from + 1));
     }

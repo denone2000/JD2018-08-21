@@ -6,20 +6,18 @@ import java.util.Deque;
 class QueueBuyers {
     private final static Deque<Buyer> buyerDeque = new ArrayDeque<>();
 
-    static void addBuyer (Buyer buyer) {
+    static void addBuyer(Buyer buyer) {
         synchronized (buyerDeque) {
             buyerDeque.addLast(buyer);
-            System.out.println(buyer + "добавился в очередь");
+            System.out.println(buyer + " добавился в очередь");
         }
     }
 
-    static  Buyer pollBuyer() {
+    static Buyer pollBuyer() {
         synchronized (buyerDeque) {
             Buyer buyer = buyerDeque.pollFirst();
-            if (buyer != null) {
-
-            }
-            System.out.println(buyer + "покинул очередь");
+            if (buyer != null)
+                System.out.println(buyer + " покинул очередь");
             return buyer;
         }
     }

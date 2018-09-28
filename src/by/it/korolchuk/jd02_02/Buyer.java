@@ -15,7 +15,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     Buyer(int number) {
+
         super("Покупатель № " + number);
+        Dispatcher.addBuyer();
     }
 
     @Override
@@ -24,10 +26,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         takeBasket();
         putGoodsToBasket();
         chooseGoods();
+        toQueue();
         goOut();
     }
 
-    @Override
+   @Override
     public void takeBasket() {
 
         Util.sleep(random(100, 200));
@@ -68,7 +71,7 @@ String good;
     @Override
     public void enterToMarket() {
         System.out.println(this + " вошел в магазин");
-        Dispatcher.addBuyer();
+
     }
 
     @Override
