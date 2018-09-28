@@ -1,14 +1,12 @@
 package by.it.nesterovich.jd02_02;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
-    public HashMap<String, Integer> getBasket() {
-        return basket;
-    }
-
+    private static List<Buyer> buyers = new ArrayList<>();
     private HashMap<String, Integer> basket = new HashMap<>();
 
     private boolean pensioner;
@@ -17,6 +15,18 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         super("Buyer № " + number);
         Dispatcher.addBuyer();
         this.pensioner = number % 4 == 0;
+    }
+
+    HashMap<String, Integer> getBasket() {
+        return basket;
+    }
+
+    public static List<Buyer> getBuyers() {
+        return buyers;
+    }
+
+    static void addBuyersToList(Buyer buyers) {
+        Buyer.buyers.add(buyers);
     }
 
     @Override
@@ -36,13 +46,13 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        System.out.println(this + " started take basket");
+        System.out.println(this + " started take basket ");
         int timeout = Util.random(100, 200);
         if (pensioner) {
             timeout = (int) (1.5 * Util.random(100, 200));
         }
         Util.sleep(timeout);
-        System.out.println(this + " finished take basket");
+        System.out.println(this + " finished take basket ");
     }
 
     @Override
@@ -84,8 +94,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
             Util.sleep(timeout);
         }
         System.out.println(this + " finished put good to basket");
-        //для вывода товаров находящихся в корзине
-
     }
 
     @Override
