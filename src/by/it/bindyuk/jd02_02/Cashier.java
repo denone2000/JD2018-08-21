@@ -15,7 +15,7 @@ class Cashier implements Runnable {
     @Override
     public void run() {
         System.out.println(this + " started");
-        while (!Dispatcher.planComplete()) {
+        while (QueueBuyers.getSizeDeque()!=0) {
             Buyer buyer = QueueBuyers.pollBuyer();
             if (buyer != null) {
                 System.out.println(this + " started to service " + buyer);

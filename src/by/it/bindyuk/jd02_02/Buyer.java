@@ -76,7 +76,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         } else {
             Utils.sleep(Utils.random(100, 200));
         }
-        System.out.println(this + " put good to backet");
+        System.out.println(this + " put goods to backet");
     }
 
     @Override

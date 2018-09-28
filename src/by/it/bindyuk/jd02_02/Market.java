@@ -1,37 +1,17 @@
 package by.it.bindyuk.jd02_02;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Market {
     public static void main(String[] args) {
 
-        Goods.goods.put("Bread", 1.5);
-        Goods.goods.put("Salt", 2.0);
-        Goods.goods.put("Potatoes", 3.5);
-        Goods.goods.put("Chocolate", 2.0);
-        Goods.goods.put("Tomatoes", 4.3);
-        Goods.goods.put("Carrot", 3.6);
-        Goods.goods.put("Water", 0.7);
-        Goods.goods.put("Beer", 2.5);
-        Goods.goods.put("Meat", 10.7);
-        Goods.goods.put("Apple", 5.2);
-
-        List<Thread> threads = new ArrayList<>();
-        int counterBuyer = 0;
-
-        for (int i = 0; i < 5; i++) {
-            Cashier cashier = new Cashier(i);
-            Thread thread = new Thread(cashier);
-            thread.start();
-            threads.add(thread);
-        }
+        Controller ctrl = new Controller();
+        ctrl.setDaemon(true);
+        ctrl.start();
 
         while (Dispatcher.isMarketOpen()) {
             for (int i = 0; i < Utils.random(0, 2); i++) {
                 if (Dispatcher.isMarketOpen()) {
-                    Buyer buyer = new Buyer(++counterBuyer);
-                    threads.add(buyer);
+                    Buyer buyer = new Buyer(++Controller.counterBuyer);
+                    Controller.threads.add(buyer);
                     buyer.start();
                     System.out.println("Now in Market: " + Dispatcher.getBuyersInMarket());
                 }
@@ -39,7 +19,7 @@ public class Market {
             Utils.sleep(1000);
         }
 
-        for (Thread thread : threads) {
+        for (Thread thread : Controller.threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
