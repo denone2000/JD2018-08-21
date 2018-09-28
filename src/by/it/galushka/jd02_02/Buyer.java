@@ -6,6 +6,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     Buyer(int number) {
         super("Buyer #" + number);
+        Dispatcher.buyerEnterToMarket();
     }
 
     static boolean pensioneer;
@@ -16,7 +17,20 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         enterToMarket();
         takeBacket();
         chooseGoods();
+        goToQueue();
         goOut();
+    }
+
+    private void goToQueue() {
+        Queue.addBuyerInQueue(this);
+        synchronized (this) {
+            try {
+                System.out.println(this + " is waiting.");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     //========================================================================
@@ -25,10 +39,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void enterToMarket() {
         if (pensioneer) {
             System.out.println(this + "(pensioneer) enter to market.");
-            Dispatcher.buyerEnterToMarket();
         } else {
             System.out.println(this + " enter to market.");
-            Dispatcher.buyerEnterToMarket();
         }
     }
 

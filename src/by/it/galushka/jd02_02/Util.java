@@ -12,7 +12,7 @@ class Util {
 
     static void sleep(int timeMillis){
         try {
-            Thread.sleep(timeMillis);
+            Thread.sleep(timeMillis/Dispatcher.getXspeed());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
