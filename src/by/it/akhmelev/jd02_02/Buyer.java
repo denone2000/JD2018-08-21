@@ -4,7 +4,7 @@ class Buyer extends Thread implements IBuyer {
 
     Buyer(int number) {
         super("Buyer № " + number);
-        Dispathcer.addBuyer();
+        Dispatcher.addBuyer();
     }
 
     @Override
@@ -44,7 +44,7 @@ class Buyer extends Thread implements IBuyer {
     @Override
     public void goOut() {
         System.out.println(this + " out from market");
-        Dispathcer.buyerLeaveMarket();
+        Dispatcher.buyerLeaveMarket();
     }
 
     @Override

@@ -17,13 +17,13 @@ public class Market {
             threads.add(thread);
         }
 
-        while (Dispathcer.marketIsOpened()) {
+        while (Dispatcher.marketIsOpened()) {
             for (int i = 0; i < Util.random(2); i++) {
-                if (Dispathcer.marketIsOpened()) {
+                if (Dispatcher.marketIsOpened()) {
                     Buyer buyer = new Buyer(++counterBuyer);
                     threads.add(buyer);
                     buyer.start();
-                    System.out.println("In market total:" + Dispathcer.getBuyesInMarket());
+                    System.out.println("In market total:" + Dispatcher.getBuyesInMarket());
                 }
             }
             Util.sleep(1000);
@@ -36,7 +36,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        System.out.println("In market total:" + Dispathcer.getBuyesInMarket());
+        System.out.println("In market total:" + Dispatcher.getBuyesInMarket());
         System.out.println("Market closed");
 
     }

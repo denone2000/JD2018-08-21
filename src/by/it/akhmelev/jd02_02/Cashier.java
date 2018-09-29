@@ -11,7 +11,7 @@ class Cashier implements Runnable {
     @Override
     public void run() {
         System.out.println(this+" started");
-        while (!Dispathcer.planComplete()) {
+        while (!Dispatcher.planComplete()) {
             Buyer buyer = QueueBuyers.pollBuyer();
             if (buyer != null) {
                 int timeout = Util.random(2000, 5000);
