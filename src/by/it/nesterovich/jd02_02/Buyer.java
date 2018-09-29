@@ -81,19 +81,19 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void putGoodsToBasket() {
-        System.out.println(this + " started put good to basket");
+        System.out.println(this + " started put goods to basket");
         for (int i = 0; i < Util.random(1, 4); i++) {
-            int price = Util.random(1, 100);
-            String good = "good" + String.valueOf(price);
-            basket.put(good, price);
-            //System.out.println(this + " put to basket good " + good + " with price " + price);
+            Goods goods = new Goods();
+            //Basket basket = new Basket(goods.getGoods(), goods.getPrice());
+            basket.put(goods.getGoods(), goods.getPrice());
+            //System.out.println(this + " put to basket goods: " + goods.getGoods() + " with price " + goods.getPrice());
             int timeout = Util.random(100, 200);
             if (pensioner) {
                 timeout = (int) (1.5 * Util.random(100, 200));
             }
             Util.sleep(timeout);
         }
-        System.out.println(this + " finished put good to basket");
+        System.out.println(this + " finished put goods to basket");
     }
 
     @Override
