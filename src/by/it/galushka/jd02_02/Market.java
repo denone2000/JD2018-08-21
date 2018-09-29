@@ -32,7 +32,7 @@ public class Market {
                 return;
         }
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 5; i++) {
             Cashier cashier = new Cashier(i);
             Thread thread = new Thread(cashier);
             thread.start();
@@ -43,7 +43,7 @@ public class Market {
             for (int i = 0; i < 2; i++) {
                 if (Dispatcher.marketIsOpened()) {
                     newBuyer();
-                    Util.sleep(1000);
+                    Util.sleep(100);
                 }
             }
         }
