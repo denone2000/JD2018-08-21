@@ -10,6 +10,7 @@ public class Market {
         List<Thread> threads = new ArrayList<>();
         int counterBuyer = 0;
 
+        System.out.println("MAIN: магазин открыт");
         for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
             Thread thread = new Thread(cashier);
@@ -23,7 +24,7 @@ public class Market {
                     Buyer buyer = new Buyer(++counterBuyer);
                     threads.add(buyer);
                     buyer.start();
-                    System.out.println("In market total:" + Dispatcher.getBuyesInMarket());
+                    System.out.println("MAIN: Всего в магазине:" + Dispatcher.getBuyesInMarket());
                 }
             }
             Util.sleep(1000);
@@ -36,8 +37,8 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        System.out.println("In market total:" + Dispatcher.getBuyesInMarket());
-        System.out.println("Market closed");
+        System.out.println("MAIN: Всего в магазине:" + Dispatcher.getBuyesInMarket());
+        System.out.println("MAIN: магазин закрыт");
 
     }
 }
