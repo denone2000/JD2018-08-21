@@ -16,7 +16,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     Buyer(int number) {
 
-        super("Покупатель № " + number);
+        super("Buyer № " + number);
         Dispatcher.addBuyer();
     }
 
@@ -35,7 +35,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
         Util.sleep(random(100, 200));
         this.basket = new Basket();
-        System.out.println(this + " взял корзину");
+        System.out.println(this + " took a basket");
     }
 
     @Override
@@ -48,39 +48,39 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
                 for (String good : goodsKeySet()) {
                    if (randomKey == counter++) {
                         basket.put(good);
-                        System.out.println(this + " взял " + good);
+                        System.out.println(this + " took " + good);
                     }
                 }
             }
 
 String good;
         switch (basket.getKeys().size()) {
-            case 0: good = "товаров";
+            case 0: good = "goods";
             break;
 
-            case 1: good = "товар";
+            case 1: good = "good";
             break;
 
-            default: good = "товара";
+            default: good = "goods";
             break;
         }
-        System.out.println(this + " положил " + basket.getKeys().size() + " " + good);
+        System.out.println(this + " put " + basket.getKeys().size() + " " + good + " to the basket");
     }
 
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " вошел в магазин");
+        System.out.println(this + " entered to the market");
 
     }
 
     @Override
     public void chooseGoods() {
 
-        System.out.println(this + " начал выбирать товары");
+        System.out.println(this + " start choosing goods");
         int timeout = random(500, 2000);
         Util.sleep(timeout);
-        System.out.println(this + " закончил выбирать товары");
+        System.out.println(this + " finished choosing goods");
     }
 
     @Override
@@ -89,7 +89,7 @@ String good;
         QueueBuyers.addBuyer(this);
         synchronized (this) {
             try {
-                System.out.println(this + " ждет");
+                System.out.println(this + " is waiting");
                 this.wait();
             }
             catch ( InterruptedException e) {
@@ -101,7 +101,7 @@ String good;
     @Override
     public void goOut() {
         Dispatcher.buyerLeftMarket();
-        System.out.println(this + " вышел из магазина");
+        System.out.println(this + " exit from the market");
     }
 
 

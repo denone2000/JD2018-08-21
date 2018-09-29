@@ -16,7 +16,7 @@ public class Market {
                     Buyer buyer = new Buyer(++counterBuyer);
                     threads.add(buyer);
                     buyer.start();
-                    System.out.println("Всего в магазине" + Dispatcher.getBuyersInMarket());
+                    System.out.println("Total in the market: " + Dispatcher.getBuyersInMarket());
                 }
             }
             Util.sleep(1000);
@@ -37,7 +37,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
-        System.out.println("Всего в магазине:" + Dispatcher.getBuyersInMarket());
-        System.out.println("Магазин закрыт");
+        System.out.println("Total in the market: " + Dispatcher.getBuyersInMarket());
+        System.out.println("Marker is closed");
     }
 }

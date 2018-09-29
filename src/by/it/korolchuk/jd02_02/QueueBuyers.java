@@ -9,7 +9,7 @@ class QueueBuyers {
     static void addBuyer(Buyer buyer) {
         synchronized (buyerDeque) {
             buyerDeque.addLast(buyer);
-            System.out.println(buyer + " добавился в очередь");
+            System.out.println(buyer + " added to queue");
         }
     }
 
@@ -17,7 +17,7 @@ class QueueBuyers {
         synchronized (buyerDeque) {
             Buyer buyer = buyerDeque.pollFirst();
             if (buyer != null)
-                System.out.println(buyer + " покинул очередь");
+                System.out.println(buyer + " poll from queue");
             return buyer;
         }
     }
