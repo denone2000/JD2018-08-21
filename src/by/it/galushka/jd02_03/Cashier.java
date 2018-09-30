@@ -2,10 +2,10 @@ package by.it.galushka.jd02_03;
 
 public class Cashier implements Runnable {
 
-    private int numberCahier;
+    private int numberCashier;
 
     public Cashier(int num) {
-        this.numberCahier = num;
+        this.numberCashier = num;
     }
 
     @Override
@@ -34,6 +34,6 @@ public class Cashier implements Runnable {
 
     @Override
     public String toString() {
-        return "Cashier №" + numberCahier;
+        return "Cashier №" + numberCashier;
     }
 }
