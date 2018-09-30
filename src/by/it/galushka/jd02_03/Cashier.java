@@ -19,6 +19,7 @@ public class Cashier implements Runnable {
                 Util.sleep(100);
             }
         }
+
         System.out.println(this + " ended work today.");
     }
 

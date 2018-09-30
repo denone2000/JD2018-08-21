@@ -1,4 +1,4 @@
-package by.it.galushka.draft.BlockingQueue;
+package by.it.galushka.demo.blockingQueue;
 
 import java.util.concurrent.LinkedBlockingDeque;
 

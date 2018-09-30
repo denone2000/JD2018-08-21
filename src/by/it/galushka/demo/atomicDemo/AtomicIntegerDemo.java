@@ -1,4 +1,4 @@
-package by.it.galushka.draft.atomicDemo;
+package by.it.galushka.demo.atomicDemo;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

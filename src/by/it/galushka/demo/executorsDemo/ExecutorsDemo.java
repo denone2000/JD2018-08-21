@@ -1,4 +1,4 @@
-package by.it.galushka.draft.executorsDemo;
+package by.it.galushka.demo.executorsDemo;
 
 import java.util.concurrent.ExecutorService;
 
