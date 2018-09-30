@@ -12,7 +12,6 @@ public class Market {
     private static List<Buyer> buyers = new ArrayList<>();
     private static List<Thread> threads = new ArrayList<>();
 
-
     public static void main(String[] args) {
 
         Scanner scanner=new Scanner(System.in);
