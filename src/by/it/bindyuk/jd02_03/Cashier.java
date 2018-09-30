@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd02_02;
+package by.it.bindyuk.jd02_03;
 
 class Cashier implements Runnable {
     private String name;
@@ -16,7 +16,8 @@ class Cashier implements Runnable {
     @SuppressWarnings("all")
     public void run() {
         System.out.println(this + " started");
-        while (QueueBuyers.getSizeDeque()!=0) {
+        Controller.counterCashier.incrementAndGet();
+        while ((QueueBuyers.getSizeDeque() > 0) | (Controller.counterCashier.get() / (QueueBuyers.getSizeDeque() + 1)) >= 1) {
             Buyer buyer = QueueBuyers.pollBuyer();
             if (buyer != null) {
                 System.out.println(this + " started to service " + buyer);
@@ -28,6 +29,7 @@ class Cashier implements Runnable {
                 }
             } else Utils.sleep(100);
         }
+        Controller.counterCashier.decrementAndGet();
         System.out.println(this + " stopped");
     }
 }
