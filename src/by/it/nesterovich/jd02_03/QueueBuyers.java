@@ -10,7 +10,7 @@ class QueueBuyers {
     static void addBuyer(Buyer buyer) {
         try {
             BUYER_BLOCKING_DEQUE.putLast(buyer);
-            System.out.println("\t\tОЧЕРЕДЬ: " + buyer + " добавлен в очередь");
+            System.out.println("\tОЧЕРЕДЬ: " + buyer + " добавлен в очередь");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -19,7 +19,7 @@ class QueueBuyers {
     static Buyer pollBuyer() {
         Buyer buyer = BUYER_BLOCKING_DEQUE.pollFirst();
         if (buyer != null)
-            System.out.println("\t\tОЧЕРЕДЬ: " + buyer + " извлечен из очереди");
+            System.out.println("\tОЧЕРЕДЬ: " + buyer + " извлечен из очереди");
         return buyer;
 
     }
