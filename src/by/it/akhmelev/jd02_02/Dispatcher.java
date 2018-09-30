@@ -1,8 +1,8 @@
 package by.it.akhmelev.jd02_02;
 
-class Dispathcer {
-    static final int KSPEED = 100;
+class Dispatcher {
 
+    static final int KSPEED = 100;
 
     private static volatile int buyesInMarket = 0;
     private static volatile int factCount = 0;

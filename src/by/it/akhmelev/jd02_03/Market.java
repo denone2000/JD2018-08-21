@@ -1,7 +1,9 @@
-package by.it.akhmelev.jd02_02;
+package by.it.akhmelev.jd02_03;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Market {
 
@@ -11,11 +13,12 @@ public class Market {
         int counterBuyer = 0;
 
         System.out.println("MAIN: магазин открыт");
+
+        ExecutorService executors = Executors.newFixedThreadPool(5);
+
         for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
-            Thread thread = new Thread(cashier);
-            thread.start();
-            threads.add(thread);
+            executors.execute(cashier);
         }
 
         while (Dispatcher.marketIsOpened()) {
@@ -37,6 +40,8 @@ public class Market {
                 e.printStackTrace();
             }
         }
+        executors.shutdown();
+        while (!executors.isTerminated()) Util.sleep(100);
         System.out.println("MAIN: Всего в магазине:" + Dispatcher.getBuyesInMarket());
         System.out.println("MAIN: магазин закрыт");
 
