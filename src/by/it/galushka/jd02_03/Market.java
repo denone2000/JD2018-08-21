@@ -3,6 +3,8 @@ package by.it.galushka.jd02_03;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Market {
 
@@ -32,11 +34,11 @@ public class Market {
                 return;
         }
 
-        for (int i = 1; i <= 5; i++) {
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+        for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
-            Thread thread = new Thread(cashier);
-            thread.start();
-            threads.add(thread);
+            executorService.execute(cashier);
         }
 
         while (Dispatcher.marketIsOpened()) {
@@ -55,6 +57,9 @@ public class Market {
                 e.printStackTrace();
             }
         }
+        executorService.shutdown();
+        while (!executorService.isTerminated())
+            Util.sleep(100);
         System.out.println("Total buyers in market: " + Dispatcher.getBuyersInMarket());
         System.out.println("Market is closed.");
     }
