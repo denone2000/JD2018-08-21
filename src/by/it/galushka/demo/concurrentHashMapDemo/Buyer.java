@@ -32,16 +32,14 @@ public class Buyer extends Thread {
             System.out.println(this + " choosed " + good + ", cost - " + cost + " rubles.");
             putGoodsToBacket(good);
         }
-        System.out.println(this + " end choosing goods today.");
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        System.out.println("\t" + this + " check:");
         printCheck(goodsMap);
-        System.out.printf("\tTotal cost: %-5.2f\n" , getTotalCost(goodsMap));
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
     }
 
     private void printCheck(ConcurrentHashMap<String, Double> goodsMap) {
         Set<Map.Entry<String, Double>> entries = goodsMap.entrySet();
+        System.out.println(this + " end choosing goods today.");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("\t" + this + " check:");
         System.out.println("\t------------------");
         System.out.printf("\t%-10s == %4s\n", "Goods name", "Cost");
         System.out.println("\t------------------");
@@ -51,6 +49,8 @@ public class Buyer extends Thread {
             System.out.printf("\t%-10s == %3.2f\n", key, value);
         }
         System.out.println("\t------------------");
+        System.out.printf("\tTotal cost: %-5.2f\n" , getTotalCost(goodsMap));
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
     }
 
     private void addCost(String good, double cost, ConcurrentHashMap<String, Double> goodsMap) {
@@ -64,11 +64,6 @@ public class Buyer extends Thread {
         }
     }
 
-    private void putGoodsToBacket(String good) {
-        Util.sleep((Util.getRandom(100, 200)));
-        System.out.println(this + " put " + good + " to backet.");
-    }
-
     private static double getTotalCost(ConcurrentHashMap<String, Double> map) {
         double sum = 0;
         Set<Map.Entry<String, Double>> entries = map.entrySet();
@@ -76,6 +71,11 @@ public class Buyer extends Thread {
             sum += entry.getValue();
         }
         return sum;
+    }
+
+    private void putGoodsToBacket(String good) {
+        Util.sleep((Util.getRandom(100, 200)));
+        System.out.println(this + " put " + good + " to backet.");
     }
 
     @Override

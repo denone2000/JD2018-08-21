@@ -1,6 +1,7 @@
 package by.it.galushka.jd02_03;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
 
@@ -16,8 +17,9 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void run() {
         enterToMarket();
         takeBacket();
-        chooseGoods();
+        Map<String, Double> goods = chooseGoods();
         goToQueue();
+        Check.printCheck(this, goods);
         goOut();
     }
 
@@ -44,19 +46,25 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         }
     }
 
-    @Override
-    public void chooseGoods() {
+    public Map<String, Double> chooseGoods() {
+        ConcurrentHashMap<String, Double> goodsMap = new ConcurrentHashMap<>();
         int quantityGoods = Util.getRandom(1, 4);
         for (int goods = 0; goods < quantityGoods; goods++) {
             System.out.println(this + " start choosing goods.");
-            Util.sleep((int) (Util.getRandom(500, 2000) * KSPEED));
+            Util.sleep((Util.getRandom(500, 2000)));
             Map<String, Double> choosedGood = Goods.getRandomGood();
             String good = Goods.getGoodName(choosedGood);
             double cost = Goods.getGoodCost(choosedGood);
+            if (!goodsMap.containsKey(good))
+                goodsMap.putAll(choosedGood);
+            else {
+                Check.addCost(good, cost, goodsMap);
+            }
             System.out.println(this + " choosed " + good + ", cost - " + cost + " rubles.");
             putGoodsToBacket(good);
         }
         System.out.println(this + " end choosing goods today.");
+        return goodsMap;
     }
 
     @Override
