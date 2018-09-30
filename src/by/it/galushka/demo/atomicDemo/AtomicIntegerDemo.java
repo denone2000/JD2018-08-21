@@ -13,5 +13,6 @@ public class AtomicIntegerDemo {
         System.out.println("decr: " + atomic);
         int i = atomic.get();
         System.out.println("get(): " + i);
+
     }
 }
