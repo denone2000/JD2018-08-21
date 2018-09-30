@@ -1,9 +1,13 @@
 package by.it.galushka.jd02_03;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Semaphore;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
+
+    private static Semaphore semaphore = new Semaphore(20);
 
     Buyer(int number) {
         super("Buyer #" + number);
@@ -17,7 +21,16 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void run() {
         enterToMarket();
         takeBacket();
-        Map<String, Double> goods = chooseGoods();
+        Map<String, Double> goods = new HashMap<>();
+        try {
+            semaphore.acquire();
+             goods = chooseGoods();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            semaphore.release();
+        }
         goToQueue();
         Check.printCheck(this, goods);
         goOut();
@@ -46,12 +59,13 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         }
     }
 
+    @Override
     public Map<String, Double> chooseGoods() {
+        System.out.println(this + " start choosing goods.");
+        Util.sleep((Util.getRandom(500, 2000)));
         ConcurrentHashMap<String, Double> goodsMap = new ConcurrentHashMap<>();
         int quantityGoods = Util.getRandom(1, 4);
         for (int goods = 0; goods < quantityGoods; goods++) {
-            System.out.println(this + " start choosing goods.");
-            Util.sleep((Util.getRandom(500, 2000)));
             Map<String, Double> choosedGood = Goods.getRandomGood();
             String good = Goods.getGoodName(choosedGood);
             double cost = Goods.getGoodCost(choosedGood);

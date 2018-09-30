@@ -25,7 +25,7 @@ public class Cashier implements Runnable {
 
     private void startService(Buyer buyer){
         System.out.println(this + " started service " + buyer + ".");
-        System.out.println("------>Total buyers in queue: " + Queue.getQueueSize() + ".");
+        System.out.println("------> QUEUE: Total buyers in queue: " + Queue.getQueueSize() + ".");
         Util.sleep(Util.getRandom(2000, 5000));
         System.out.println(this + " ended service " + buyer + ".");
         synchronized (buyer) {
