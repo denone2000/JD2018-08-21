@@ -16,6 +16,5 @@ public class BlockingQueue {
         System.out.println(queue);
         queue.putLast(3);
         System.out.println(queue);
-
     }
 }
