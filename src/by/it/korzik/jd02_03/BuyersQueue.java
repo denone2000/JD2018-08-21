@@ -1,33 +1,34 @@
 package by.it.korzik.jd02_03;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 
-public class BuyersQueue {
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
-    private final static Deque<Buyer> BUYER_DEQUE = new ArrayDeque<>();
+ class BuyersQueue {
+
+    private final static BlockingDeque<Buyer> BUYER_BLOCKING_DEQUE = new LinkedBlockingDeque<>(30);
 
     static void addBuyer(Buyer buyer) {
-        synchronized (BUYER_DEQUE) {
-            BUYER_DEQUE.addLast(buyer);
-            System.out.println(buyer + " стал в очередь");
+        try {
+            BUYER_BLOCKING_DEQUE.putLast(buyer);
+            System.out.println(buyer + " добавлен в очередь");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
     static Buyer pollBuyer() {
-        synchronized (BUYER_DEQUE) {
-            Buyer buyer = BUYER_DEQUE.pollFirst();
-            if (buyer != null)
-                System.out.println(buyer + " вышел из очереди");
-            return buyer;
-        }
+        Buyer buyer = BUYER_BLOCKING_DEQUE.pollFirst();
+        if (buyer != null)
+            System.out.println(buyer + " извлечен из очереди");
+        return buyer;
+
     }
 
     static int getCount() {
-        synchronized (BUYER_DEQUE) {
-            return BUYER_DEQUE.size();
-        }
+        return BUYER_BLOCKING_DEQUE.size();
     }
+
 
 
 }
