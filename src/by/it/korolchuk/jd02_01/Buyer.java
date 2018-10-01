@@ -37,16 +37,16 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     public void putGoodsToBasket() {
 
         Util.sleep(Util.random(100, 200));
-        for (int i = 0; i < Util.random(goodsKeySet().size()); i++) {
-            int counter = 0;
-            int randomKey = Util.random(0, goodsKeySet().size());
-            for (String good : goodsKeySet()) {
-                if (randomKey == counter++) {
-                    basket.put(good);
-                    System.out.println(this + " взял " + good);
+        for (int i = 1; i <= goodsKeySet().size(); i++) {
+                int counter = 0;
+                int randomKey = Util.random(goodsKeySet().size());
+                for (String good : goodsKeySet()) {
+                   if (randomKey == counter++) {
+                        basket.put(good);
+                        System.out.println(this + " взял " + good);
+                    }
                 }
             }
-        }
 
 String good;
         switch (basket.getKeys().size()) {
