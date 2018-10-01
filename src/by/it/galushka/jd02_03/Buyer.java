@@ -24,11 +24,11 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         Map<String, Double> goods = new HashMap<>();
         try {
             semaphore.acquire();
-             goods = chooseGoods();
+            goods = chooseGoods();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             semaphore.release();
         }
         goToQueue();
