@@ -5,11 +5,15 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 class QueueBuyers {
 
-    private final static BlockingDeque<Buyer> BUYER_BLOCKING_DEQUE = new LinkedBlockingDeque<>(15);
+    private final static BlockingDeque<Buyer> BUYER_BLOCKING_DEQUE = new LinkedBlockingDeque<>(30);
 
     static void addBuyer(Buyer buyer) {
         try {
-            BUYER_BLOCKING_DEQUE.putLast(buyer);
+            if (buyer.isPensioner()){
+                BUYER_BLOCKING_DEQUE.putFirst(buyer);
+            }else {
+                BUYER_BLOCKING_DEQUE.putLast(buyer);
+            }
             System.out.println("\tОЧЕРЕДЬ: " + buyer + " добавлен в очередь");
         } catch (InterruptedException e) {
             e.printStackTrace();
