@@ -2,9 +2,8 @@ package by.it.korzik.jd02_02;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
-public class BuyersQueue {
+ class BuyersQueue {
 
     private final static Deque<Buyer> BUYER_DEQUE = new ArrayDeque<>();
 
