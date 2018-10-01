@@ -1,0 +1,73 @@
+package by.it.galushka.jd01_15;
+
+import java.io.*;
+
+public class TaskB {
+
+    
+    public static void main(String[] args) {
+        
+        String pathToFile = getDirectory(TaskB.class) + "TaskB.java";
+        
+        StringBuilder textTaskB = readJavaFile(pathToFile);
+        
+        writeResultInFileTxtAndConsole(textTaskB, getDirectory(TaskB.class));
+    }
+
+    
+    private static void writeResultInFileTxtAndConsole(StringBuilder sb, String dir) {
+        
+        try (PrintWriter writer =
+                     new PrintWriter(
+                             new FileWriter(dir + "TaskB.txt"))
+        ) {
+            writer.print(sb);
+            System.out.print(sb);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    private static StringBuilder readJavaFile(String pathToFile) {
+        
+        StringBuilder sb = new StringBuilder();
+        StringBuilder removedComments = new StringBuilder();
+        
+        try (BufferedReader reader =
+                     new BufferedReader(new FileReader(pathToFile))
+        ) {
+            while (reader.ready()) {
+                String line = reader.readLine();
+                if (line.contains(SymbolsForTaskB.getJavaDoc())) {
+                    int startCommentIndex = line.indexOf("/");
+                    String tmp = line.substring(startCommentIndex);
+                    String result = line.replace(tmp, "");
+                    sb.append(result).append("\n");
+                } else if (line.contains(SymbolsForTaskB.getComment())) {
+                    int startCommentIndex = line.indexOf("/");
+                    String tmp = line.substring(startCommentIndex);
+                    String result = line.replace(tmp, "");
+                    sb.append(result).append("\n");
+                } else if (line.contains(SymbolsForTaskB.getJavaDocEnd())) {
+                    removedComments.append(line).append("\n");
+                } else if (line.contains(SymbolsForTaskB.getJavaDocMidle())) {
+                    removedComments.append(line).append("\n");
+                } else {
+                    sb.append(line).append("\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb;
+    }
+
+    private static String getDirectory(Class<?> clss) {
+        StringBuilder path = new StringBuilder();
+        String dir = clss.getName().replace(".", File.separator).replace(clss.getSimpleName(), "");
+        path.append(System.getProperty("user.dir")).append(File.separator);
+        path.append("src" + File.separator).append(dir);
+        return path.toString();
+    }
+}
