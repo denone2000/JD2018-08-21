@@ -7,7 +7,8 @@ class Basket {
 
     private final Buyer nameBuyer;
     private HashMap<String, Integer> basket = new HashMap<>();
-    private ArrayBlockingQueue<Buyer> arrayBlockingQueue = new ArrayBlockingQueue<>(20);
+    //блокировка на количество взятых корзин
+    private static ArrayBlockingQueue<Buyer> arrayBlockingQueue = new ArrayBlockingQueue<>(50);
 
     Basket(Buyer nameBuyer) {
         this.nameBuyer = nameBuyer;
@@ -24,7 +25,7 @@ class Basket {
     void takeBasket() {
         try {
             arrayBlockingQueue.put(nameBuyer);
-            System.out.println(nameBuyer + " взял корзину. Всего взято корзин: " + arrayBlockingQueue.size() + "<<<<<<<");
+            System.out.println(nameBuyer + " взял корзину." + "\t\t\t\t\t\t\t" + " Всего взято корзин: " + arrayBlockingQueue.size());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -33,7 +34,7 @@ class Basket {
     void returnBasket() {
         try {
             arrayBlockingQueue.take();
-            System.out.println(nameBuyer + " вернул корзину. Всего взято корзин: " + arrayBlockingQueue.size() + "<<<<<<<");
+            System.out.println(nameBuyer + " вернул корзину." + "\t\t\t\t\t\t\t" + " Всего взято корзин: " + arrayBlockingQueue.size());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 class QueueBuyers {
 
-    private final static BlockingDeque<Buyer> BUYER_BLOCKING_DEQUE = new LinkedBlockingDeque<>(30);
+    private final static BlockingDeque<Buyer> BUYER_BLOCKING_DEQUE = new LinkedBlockingDeque<>(15);
 
     static void addBuyer(Buyer buyer) {
         try {

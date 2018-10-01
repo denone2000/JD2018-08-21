@@ -1,9 +1,11 @@
 package by.it.nesterovich.jd02_03;
 
 import java.util.HashMap;
+import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
+    private static Semaphore semaphoreChooseGoods = new Semaphore(20);
     private Basket basket = new Basket(this);
 
     Buyer(int number) {
@@ -19,7 +21,14 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void run() {
         enterToMarket();
         takeBasket();
-        chooseGoods();
+        try {
+            semaphoreChooseGoods.acquire();
+            chooseGoods();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphoreChooseGoods.release();
+        }
         putGoodsToBasket();
         goToQueue();
         goOut();
@@ -41,10 +50,12 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " начал выбор товаров");
-        int timeout = Util.random(500, 2000);
-        Util.sleep(timeout);
-        System.out.println(this + " завершил выбор товаров");
+
+            System.out.println(this + " начал выбор товаров");
+            int timeout = Util.random(500, 2000);
+            Util.sleep(timeout);
+            System.out.println(this + " завершил выбор товаров");
+
     }
 
     @Override
@@ -53,7 +64,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         for (int i = 0; i < Util.random(1, 4); i++) {
             Goods goods = new Goods();
             basket.addGoodsInBasket(goods.getGoods(), goods.getPrice());
-            System.out.println(this + ": положил в свою корзину товар " + goods.getGoods() + ", цена " + goods.getPrice());
+            //System.out.println(this + ": положил в свою корзину товар " + goods.getGoods() + ", цена " + goods.getPrice());
             int timeout = Util.random(100, 200);
             Util.sleep(timeout);
         }
