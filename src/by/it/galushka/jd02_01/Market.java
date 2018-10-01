@@ -31,6 +31,7 @@ public class Market {
                 e.printStackTrace();
             }
         }
+        System.out.println("Total buyers in market: " + Dispatcher.getBuyersInMarket());
         System.out.println("Market is closed.");
     }
 

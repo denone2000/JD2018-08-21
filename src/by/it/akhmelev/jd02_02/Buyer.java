@@ -3,8 +3,8 @@ package by.it.akhmelev.jd02_02;
 class Buyer extends Thread implements IBuyer {
 
     Buyer(int number) {
-        super("Buyer № " + number);
-        Dispathcer.addBuyer();
+        super("Покупатель № " + number);
+        Dispatcher.addBuyer();
     }
 
     @Override
@@ -17,15 +17,15 @@ class Buyer extends Thread implements IBuyer {
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " entered to market");
+        System.out.println(this + " вошел в магазин");
     }
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " started to choose goods");
+        System.out.println(this + " начал выбор товаров");
         int timeout= Util.random(500,2000);
         Util.sleep(timeout);
-        System.out.println(this + " finished to choose goods");
+        System.out.println(this + " завершил выбор товаров");
     }
 
     @Override
@@ -33,7 +33,7 @@ class Buyer extends Thread implements IBuyer {
         QueueBuyers.addBuyer(this);
         synchronized (this) {
             try {
-                System.out.println(this+" is wait.");
+                System.out.println(this+" ожидает в очереди.");
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -43,8 +43,8 @@ class Buyer extends Thread implements IBuyer {
 
     @Override
     public void goOut() {
-        System.out.println(this + " out from market");
-        Dispathcer.buyerLeaveMarket();
+        System.out.println(this + " вышел из магазина");
+        Dispatcher.buyerLeaveMarket();
     }
 
     @Override

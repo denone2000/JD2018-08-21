@@ -10,14 +10,14 @@ class Cashier implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(this+" started");
-        while (!Dispathcer.planComplete()) {
+        System.out.println(this+" открыл кассу");
+        while (!Dispatcher.planComplete()) {
             Buyer buyer = QueueBuyers.pollBuyer();
             if (buyer != null) {
+                System.out.println(this + " начал обслуживание: " + buyer);
                 int timeout = Util.random(2000, 5000);
-                System.out.println(this + " started service " + buyer);
                 Util.sleep(timeout);
-                System.out.println(this + " stop service " + buyer);
+                System.out.println(this + " завершил обслуживание: " + buyer);
                 //wake buyer
                 synchronized (buyer){
                     buyer.notify();
@@ -26,13 +26,13 @@ class Cashier implements Runnable {
                 Util.sleep(100);
             }
         }
-        System.out.println(this+" stopped");
+        System.out.println(this+" закрыл кассу");
     }
 
 
     @Override
     public String toString() {
-        return "Cashier №" + number;
+        return "\tКассир №" + number;
     }
 
 }

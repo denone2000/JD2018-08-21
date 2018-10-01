@@ -12,7 +12,7 @@ class Util {
 
     static void sleep(int millis){
         try {
-            Thread.sleep(millis/Dispathcer.KSPEED);
+            Thread.sleep(millis/ Dispatcher.KSPEED);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
