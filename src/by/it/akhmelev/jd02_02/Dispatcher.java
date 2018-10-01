@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd02_02;
 
-class Dispathcer {
+class Dispatcher {
 
     static final int KSPEED = 100;
 
