@@ -24,11 +24,11 @@ class Util {
         }
     }
 
-    public synchronized static void addBuyer() {
+    public  static void addBuyer() {
         buyerCount.addAndGet(1);
     }
 
-    synchronized static boolean marketOpen() {
+    static boolean marketOpen() {
         return buyerCount.get() < 100;
     }
 
