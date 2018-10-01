@@ -3,12 +3,18 @@ package by.it.basumatarau.jd02_03;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
+
     private Basket basket = null;
     private final boolean isPensioneer = Util.random(3)==3;
     private final double BUYER_KSPEED = isPensioneer? 1.5:1.0;
+    private final static Lock lockBuyersQueue = new ReentrantLock();
+
 
     boolean isPensioneer() {
         return isPensioneer;
@@ -87,14 +93,35 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void goToQueue() {
-        BUYERS_QUEUE.put(this);
+        if(BUYERS_QUEUE.size()>=30){
+            try{
+                System.out.println("######");
+                lockBuyersQueue.lock();
 
-        synchronized (this) {
-            try {
-                //System.out.println(this + " has joined the queue");
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                BUYERS_QUEUE.put(this);
+
+                synchronized (this) {
+                    try {
+                        //System.out.println(this + " has joined the queue");
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }finally{
+                lockBuyersQueue.unlock();
+            }
+        }else{
+            BUYERS_QUEUE.put(this);
+
+            synchronized (this) {
+                try {
+                    //System.out.println(this + " has joined the queue");
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
