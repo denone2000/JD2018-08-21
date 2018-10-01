@@ -3,6 +3,7 @@ package by.it.bindyuk.jd02_03;
 public class Market {
     public static void main(String[] args) {
 
+
         Controller controller = new Controller();
         controller.start();
 

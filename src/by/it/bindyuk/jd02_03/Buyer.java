@@ -1,10 +1,12 @@
 package by.it.bindyuk.jd02_03;
 
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
     private Bucket bucket;
     private boolean pensioneer;
+    private Semaphore semaphore = new Semaphore(20);
 
     {
         int noLucky = 4;
@@ -49,6 +51,11 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void chooseGoods() {
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println(this + " started to choose goods");
         for (int i = 0; i < Utils.random(1, 4); i++) {
             Map.Entry<String, Double> chooseGood = Goods.getRandomGoodWithPrice();
@@ -85,6 +92,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         synchronized (this) {
             try {
                 System.out.println(this + " is waiting");
+                System.out.println("IN DEQUE NOW: " + QueueBuyers.getSizeDeque() + " PEOPLES\n");
+                semaphore.release();
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -97,9 +106,9 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         System.out.println("In " + this + " Bucket: " + bucket.getChoosenGoodsWithPrice());
         double check = 0.0;
         for (Map.Entry<String, Double> entry : bucket.getChoosenGoodsWithPrice().entrySet()) {
-           check += entry.getValue();
+            check += entry.getValue();
         }
-        System.out.println(this + " own me " + check + " rubles ");
+        System.out.println(this + " own " + Math.rint(100.0 * check) / 100.0 + " rubles ");
     }
 
     @Override

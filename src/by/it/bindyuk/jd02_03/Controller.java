@@ -10,7 +10,7 @@ public class Controller extends Thread {
 
     static ExecutorService executors = Executors.newFixedThreadPool(5);
 
-    static AtomicInteger counterCashier = new AtomicInteger(1);
+    static AtomicInteger counterCashier = new AtomicInteger(0);
 
     static List<Thread> threads = new ArrayList<>();
     static int counterBuyer = 0;
@@ -19,18 +19,21 @@ public class Controller extends Thread {
     @Override
     public void run() {
         while (!Dispatcher.planComplete()) {
-            if ((QueueBuyers.getSizeDeque() > 0) & counterCashier.get() == 1) {
+            if ((QueueBuyers.getSizeDeque() > 0) & counterCashier.get() == 0) {
                 createCashier();
+                counterCashier.incrementAndGet();
             }
-            if (((QueueBuyers.getSizeDeque()) / (counterCashier.get()) + 1) > 6) {
-                createCashier();
+            if (counterCashier.get() > 0) {
+                if ((QueueBuyers.getSizeDeque() / counterCashier.get()) >= 5) {
+                    createCashier();
+                    counterCashier.incrementAndGet();
+                }
             }
         }
     }
 
     private void createCashier() {
         Cashier cashier = new Cashier(buff++);
-        CashiersCollection.addCashier(cashier);
         executors.execute(cashier);
     }
 }

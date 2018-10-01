@@ -15,9 +15,8 @@ class Cashier implements Runnable {
     @Override
     @SuppressWarnings("all")
     public void run() {
-        System.out.println(this + " started");
-        Controller.counterCashier.incrementAndGet();
-        while ((QueueBuyers.getSizeDeque() > 0) | (Controller.counterCashier.get() / (QueueBuyers.getSizeDeque() + 1)) >= 1) {
+        System.out.println(this + " STARTED\n");
+        while ((QueueBuyers.getSizeDeque() > 0)) {
             Buyer buyer = QueueBuyers.pollBuyer();
             if (buyer != null) {
                 System.out.println(this + " started to service " + buyer);
@@ -30,6 +29,7 @@ class Cashier implements Runnable {
             } else Utils.sleep(100);
         }
         Controller.counterCashier.decrementAndGet();
-        System.out.println(this + " stopped");
+        System.out.println(this + " STOPPED\n");
     }
+  //   | (Controller.counterCashier.get() / QueueBuyers.getSizeDeque()) >= 1
 }
