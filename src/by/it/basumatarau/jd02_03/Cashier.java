@@ -14,15 +14,15 @@ public class Cashier implements Runnable {
     private String name;
     private final Object CASHIER_MONITOR = new Object();
     private static double totalRevenue=0.0;
-    private double currentBuerBill=0.0;
+    private double currentBuyerBill =0.0;
     private boolean isWorking=true;
     private Buyer currBuyer = null;
 
     static double getTotalRevenue() {
         return totalRevenue;
     }
-    double getCurrentBuerBill() {
-        return currentBuerBill;
+    double getCurrentBuyerBill() {
+        return currentBuyerBill;
     }
 
     boolean isWorking() {
@@ -40,6 +40,7 @@ public class Cashier implements Runnable {
         /*
          * Cashier goes to brake when right after the shift has started and there's nobody queuing
          * Controller thread (main) will notify one of the waiting Cashier threads when necessary
+         * (a bit too slow...)
         * */
         if(Buyer.queuingBuyers()==0) {
             goToBreak();
@@ -50,7 +51,7 @@ public class Cashier implements Runnable {
             if(buyer!=null) {
 
                 currBuyer=buyer;
-                currentBuerBill = buyer.putGoodsOutOfBasket().stream().map((good) -> {
+                currentBuyerBill = buyer.putGoodsOutOfBasket().stream().map((good) -> {
                     Double result = 0.0;
                     for (Map.Entry<String, Double> entry : Goods.getGoods().entrySet()) {
                         if (entry.getKey().equals(good)) {
@@ -59,7 +60,7 @@ public class Cashier implements Runnable {
                     }
                     return result;
                 }).reduce(0.0, (price1, price2) -> price1 + price2);
-                totalRevenue+=currentBuerBill;
+                totalRevenue+= currentBuyerBill;
 
                 Util.sleep(Util.random(2000, 5000));
                 //System.out.println(this + " has finished servicing " + buyer);

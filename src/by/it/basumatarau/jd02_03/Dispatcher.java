@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 class Dispatcher {
     static final int KSPEED = 100;
-    private static final int TARGET = 200;
+    private static final int TARGET = 100;
     private static AtomicInteger buyersInMarket = new AtomicInteger(0);
     private static AtomicInteger buyersLeftMarket = new AtomicInteger(0);
 

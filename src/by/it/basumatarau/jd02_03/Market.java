@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Market {
-    private final static int CASHIERS_NUM = 2;
+    private final static int CASHIERS_NUM = 5;
     private static int customerCounter = 0;
     public static void main(String[] args) {
 

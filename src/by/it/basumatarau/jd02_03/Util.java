@@ -39,7 +39,7 @@ class Util {
                     for (String good : entry.getValue().getCurrBuyer().putGoodsOutOfBasket()) {
                         sb[++i].append(String.format("%d.%-13s",i-5,good));
                     }
-                    sb[++i].append(String.format("%-15s",String.format("Bill:%.2f$",entry.getValue().getCurrentBuerBill())));
+                    sb[++i].append(String.format("%-15s",String.format("Bill:%.2f$",entry.getValue().getCurrentBuyerBill())));
                     while(i<10){
                         sb[++i].append(String.format("%-15s",""));
                     }
