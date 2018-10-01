@@ -1,9 +1,9 @@
-package by.it.korzik.jd02_02;
+package by.it.korzik.jd02_03;
 
 import java.util.Map;
 import java.util.Set;
 
-import static by.it.korzik.jd02_02.Market.goodsMap;
+import static by.it.korzik.jd02_03.Market.goodsMap;
 
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {

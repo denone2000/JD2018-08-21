@@ -1,4 +1,4 @@
-package by.it.korzik.jd02_02;
+package by.it.korzik.jd02_03;
 
 public class Cashier implements Runnable{
 
@@ -18,17 +18,19 @@ public class Cashier implements Runnable{
                 System.out.println(this + " начал обслуживание " + buyer.getName());
                 Util.sleep(timeout);
                 System.out.println(this + " закончил обслуживание " + buyer.getName());
-                synchronized (buyer){
+                synchronized
+                        (buyer){
                     buyer.notify();
                 }
             } else {
                 Util.sleep(100);
             }
             synchronized (Util.class){
-            Util.plan++;}
+            Util.plan.addAndGet(1);}
         }
         System.out.println(this+" закончил работу");
     }
+
 
     @Override
     public String toString() {

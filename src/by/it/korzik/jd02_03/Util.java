@@ -1,10 +1,12 @@
-package by.it.korzik.jd02_02;
+package by.it.korzik.jd02_03;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Util {
     private static final int SPEED = 100;
-    static volatile int plan = 0;
+    static AtomicInteger plan = new AtomicInteger(0);
 
-    private static volatile int buyerCount = 0;
+    private static AtomicInteger buyerCount = new AtomicInteger(0);
 
     static int random(int from, int to) {
         return (int) (Math.random() * (to - from) + (from + 1));
@@ -23,14 +25,14 @@ class Util {
     }
 
     public synchronized static void addBuyer() {
-        buyerCount++;
+        buyerCount.addAndGet(1);
     }
 
     synchronized static boolean marketOpen() {
-        return buyerCount < 100;
+        return buyerCount.get() < 100;
     }
 
     static boolean planComplete() {
-        return plan == buyerCount;
+        return plan.get() == buyerCount.get();
     }
 }

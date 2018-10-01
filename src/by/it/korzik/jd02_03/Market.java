@@ -1,4 +1,4 @@
-package by.it.korzik.jd02_02;
+package by.it.korzik.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;

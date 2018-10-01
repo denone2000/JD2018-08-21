@@ -1,4 +1,4 @@
-package by.it.korzik.jd02_02;
+package by.it.korzik.jd02_03;
 
 public interface IBuyer {
     void enterToMarket();
