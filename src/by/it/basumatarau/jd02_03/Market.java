@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Market {
-    private final static int CASHIERS_NUM = 1;
+    private final static int CASHIERS_NUM = 2;
     private static int customerCounter = 0;
     public static void main(String[] args) {
 
@@ -22,11 +22,12 @@ public class Market {
         int timeSec=0;
         while (Dispatcher.isNotOnTarget()) {
             timeSec++;
-            int buyersInDaShop = Dispatcher.getBuyersInMarket();
+            int buyersInDaShop;
 
             System.out.println("Cashiers working: "+Dispatcher.getOpenCashiers());
             //System.out.println("Cashiers on shift: "+Dispatcher.getCashiersOnShift());
-            System.out.printf("---->Buyers in the shop: %d at %ds\n", buyersInDaShop, timeSec);
+            System.out.printf("---->Buyers in the shop: %d at %ds\n",
+                    buyersInDaShop=Dispatcher.getBuyersInMarket(), timeSec);
             System.out.println(Util.printMarketStatus());
 
             if (timeSec % 60 > 30) {
@@ -42,11 +43,11 @@ public class Market {
             /* open one of the closed cashiers if(condition1&&condition2&&condition3)
              * condition1: too much customers
              * condition2: not all the cashiers on shift are working
-             * condition3: there is somebody in the queue
+             * condition3: there is somebody in the market
             */
-            if(Dispatcher.getOpenCashiers()*5<Dispatcher.getBuyersInMarket() &&
+            if(Dispatcher.getOpenCashiers()*5<Buyer.queuingBuyers()&&
                     Dispatcher.getOpenCashiers()!=Dispatcher.getCashiersOnShift() &&
-                    Buyer.queuingBuyers()>0){
+                    Dispatcher.getBuyersInMarket()>0){
                 for (Cashier cashier : cashiers) {
                     if(!cashier.isWorking()){
                         synchronized (cashier.getCASHIER_MONITOR()){

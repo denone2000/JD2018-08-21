@@ -2,9 +2,8 @@ package by.it.basumatarau.jd02_03;
 
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,8 +14,19 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     private final double BUYER_KSPEED = isPensioneer? 1.5:1.0;
     private final static Lock lockBuyersQueue = new ReentrantLock();
 
+    /**
+     * amount of buyers (threads) allowed to choose goods at the same time
+     * is limited to 20 (all the rest threads are blocked by semaphoreMarketCapacity)
+     * */
+    private static Semaphore semaphoreMarketCapacity = new Semaphore(20);
+    /**
+     * amount of baskets is limited to 50, so the amount of threads Buyers (threads)
+     * simultaneously handling an instance of a Basket is limited to 50
+     * (all the rest threads are blocked by semaphoreBaskets)
+     * */
+    private static Semaphore semaphoreBaskets = new Semaphore(50);
 
-    boolean isPensioneer() {
+    boolean isPensioner() {
         return isPensioneer;
     }
 
@@ -44,7 +54,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void takeBasket() {
         Util.sleep(Util.random((int)(100* BUYER_KSPEED),(int) (200* BUYER_KSPEED)));
-        this.basket = Basket.getBasket();
+        this.basket = new Basket();
         //System.out.println(getName()+" took a basket");
     }
 
@@ -73,8 +83,22 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void run() {
         enterToMarket();
-        takeBasket();
-        chooseGoods();
+        try {
+            semaphoreBaskets.acquire();
+            takeBasket();
+            try {
+                semaphoreMarketCapacity.acquire();
+                chooseGoods();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                semaphoreMarketCapacity.release();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphoreBaskets.release();
+        }
         putGoodsToBasket();
         goToQueue();
         goOut();
@@ -93,35 +117,27 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void goToQueue() {
-        if(BUYERS_QUEUE.size()>=30){
+        if(BUYERS_QUEUE.size()>=29){
             try{
-                System.out.println("######");
                 lockBuyersQueue.lock();
-
-                BUYERS_QUEUE.put(this);
-
-                synchronized (this) {
-                    try {
-                        //System.out.println(this + " has joined the queue");
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
+                takePlaceInQueue();
             }finally{
                 lockBuyersQueue.unlock();
             }
         }else{
-            BUYERS_QUEUE.put(this);
+            takePlaceInQueue();
+        }
+    }
 
-            synchronized (this) {
-                try {
-                    //System.out.println(this + " has joined the queue");
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    private void takePlaceInQueue() {
+        BUYERS_QUEUE.put(this);
+
+        synchronized (this) {
+            try {
+                //System.out.println(this + " has joined the queue");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -129,7 +145,6 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void goOut() {
         Dispatcher.removeBuyer();
-        Basket.returnBasket();
         //System.out.println(getName()+" has gone out");
     }
 
