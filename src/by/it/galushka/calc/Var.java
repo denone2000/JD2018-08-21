@@ -14,9 +14,8 @@ abstract class Var implements Operation {
     static String printVar() {
         StringBuilder sb = new StringBuilder();
         Set<Map.Entry<String, Var>> entries = Var.vars.entrySet();
-        Iterator<Map.Entry<String, Var>> i = entries.iterator();
-        while (i.hasNext()) {
-            sb.append(i.next().toString()).append("\n");
+        for (Map.Entry<String, Var> entry : entries) {
+            sb.append(entry.toString()).append("\n");
         }
         return sb.toString();
     }
