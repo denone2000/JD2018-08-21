@@ -44,8 +44,10 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
 
         Util.sleep(timeout);
 
-        for (int i = 1; i < 5; i++) {
-            Map.Entry<String, Double> good= Good.getGood(i);
+        int amount = Util.random(1, 4);
+        for (int i = 0; i < amount; i++) {
+            int index = Util.random(0, Good.goods.size() - 1);
+            Map.Entry<String, Double> good= Good.getGood(index);
             if(good != null) {
                 System.out.println("------" + this + " choose " + good.getKey() + " price: " + good.getValue());
                 putGoodsToBacket(good.getKey(), good.getValue());

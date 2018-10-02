@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Good {
 
-    private static Map<String, Double> goods = new HashMap<>();
+    static Map<String, Double> goods = new HashMap<>();
 
     static{
         goods.put("good1", 12.0);
@@ -20,7 +20,7 @@ public class Good {
         goods.put("good8", 0.99);
     }
 
-        static Map.Entry<String, Double> getGood(int i){
+    static Map.Entry<String, Double> getGood(int i){
         Iterator<Map.Entry<String, Double>> iterator  = goods.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, Double> good = iterator.next();
