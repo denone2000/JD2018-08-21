@@ -3,7 +3,7 @@ package by.it.yaroshchuk.jd02_01;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Basket {
+class Basket {
 
     private static Map<String, Double> goodsInBasket = new HashMap<>();
 
