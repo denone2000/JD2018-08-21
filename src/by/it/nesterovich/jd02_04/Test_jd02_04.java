@@ -103,6 +103,13 @@ public class Test_jd02_04 {
     }
 
     @Test
+    public void matrixMulVector() throws Exception {
+        Parser parser = new Parser();
+        Var var = parser.calc("{{1,2},{8,3}}*{1,2}");
+        assertEquals("{5.0, 14.0}", var.toString());
+    }
+
+    @Test
     public void matrixAddMatrix() throws Exception {
         Parser parser = new Parser();
         assertEquals("{{4.0, 7.0}, {9.0, 7.0}}", parser.calc("{{3,5},{1,4}}+{{1,2},{8,3}}").toString());
