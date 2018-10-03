@@ -1,4 +1,4 @@
-package by.it.basumatarau.calc;
+package by.it.basumatarau.calc.v3;
 
 import java.io.*;
 import java.util.LinkedList;

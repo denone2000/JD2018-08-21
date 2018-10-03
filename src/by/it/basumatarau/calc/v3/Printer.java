@@ -1,4 +1,4 @@
-package by.it.basumatarau.calc;
+package by.it.basumatarau.calc.v3;
 
 public class Printer {
     public String print(Var var) throws CalcException{

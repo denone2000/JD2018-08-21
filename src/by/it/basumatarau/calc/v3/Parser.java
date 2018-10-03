@@ -1,4 +1,4 @@
-package by.it.basumatarau.calc;
+package by.it.basumatarau.calc.v3;
 
 import java.util.Stack;
 import java.util.regex.Matcher;

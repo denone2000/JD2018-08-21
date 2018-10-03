@@ -1,4 +1,4 @@
-package by.it.basumatarau.calc;
+package by.it.basumatarau.calc.v2;
 
 class RegExPatterns {
 

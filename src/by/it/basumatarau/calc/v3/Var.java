@@ -1,4 +1,4 @@
-package by.it.basumatarau.calc;
+package by.it.basumatarau.calc.v3;
 
 import java.io.*;
 import java.util.*;
@@ -10,13 +10,15 @@ public abstract class Var implements Operation {
         String path = System.getProperty("user.dir")+System.getProperty("file.separator")+"src"+System.getProperty("file.separator")
                 + Var.class.getName().replaceAll("[.]", System.getProperty("file.separator")).replaceAll(Var.class.getSimpleName(),"");
         File file = new File(path+"vars.txt");
-        try(BufferedReader buffR = new BufferedReader(new FileReader(file))){
-            String line;
-            while((line=buffR.readLine())!=null){
-                varHashMap.put(line.split("=")[0],createVar(line.split("=")[1]));
+        if(file.exists()){
+            try(BufferedReader buffR = new BufferedReader(new FileReader(file))){
+                String line;
+                while((line=buffR.readLine())!=null){
+                    varHashMap.put(line.split("=")[0],createVar(line.split("=")[1]));
+                }
+            }catch (IOException | CalcException e){
+                e.printStackTrace();
             }
-        }catch (IOException | CalcException e){
-            e.printStackTrace();
         }
     }
 
