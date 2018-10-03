@@ -22,11 +22,11 @@ public class Cashier implements Runnable{
                         (buyer){
                     buyer.notify();
                 }
+                synchronized (Util.class){
+                    Util.plan.incrementAndGet();}
             } else {
                 Util.sleep(100);
             }
-            synchronized (Util.class){
-            Util.plan.incrementAndGet();}
         }
         System.out.println(this+" закончил работу");
     }

@@ -12,6 +12,10 @@ public class Market {
     public static void main(String[] args) {
         fillMap();
         process();
+        }
+
+
+    private static void process() {
         ExecutorService executors = Executors.newFixedThreadPool(5);
 
         for (int i = 1; i <= 2; i++) {
@@ -30,13 +34,6 @@ public class Market {
             Util.sleep(1000);
         }
         executors.shutdown();
-        while (!executors.isShutdown()){
-            executors.shutdown();
-        }
-    }
-
-    private static void process() {
-
     }
 
 
