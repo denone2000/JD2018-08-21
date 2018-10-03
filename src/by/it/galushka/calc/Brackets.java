@@ -31,13 +31,15 @@ class Brackets {
     }
 
     private static double countBrackets(String str) throws CalcException {
-        Matcher matcher = Pattern.compile(Patterns.SCALAR).matcher(str);
-        List<String> scalars = new ArrayList<>();
-        while (matcher.find()) {
-            scalars.add(matcher.group());
-        }
-        Var var2 = Var.createVar(scalars.get(1));
-        Var var1 = Var.createVar(scalars.get(0));
+        String[] split = str.split(Patterns.OPERATORS);
+        List<String> operands = removeBrackets(split);
+//        Matcher matcher = Pattern.compile(Patterns.SCALAR).matcher(str);
+//        List<String> scalars = new ArrayList<>();
+//        while (matcher.find()) {
+//            scalars.add(matcher.group());
+//        }
+        Var var2 = Var.createVar(operands.get(1));
+        Var var1 = Var.createVar(operands.get(0));
         double result = 0;
         Var varRes = null;
         if (str.contains("+")) {
@@ -52,6 +54,20 @@ class Brackets {
             System.out.println("Ошибка!");
         result = Double.parseDouble(varRes.toString());
         return result;
+    }
+
+    private static List<String> removeBrackets(String[] operands) {
+        List<String> list = new ArrayList<>();
+        for (String operand : operands) {
+            if (operand.contains("(")) {
+                String replace = operand.replace("(", "");
+                list.add(replace);
+            } else if (operand.contains(")")) {
+                String replace = operand.replace(")", "");
+                list.add(replace);
+            }
+        }
+        return list;
     }
 }
 
