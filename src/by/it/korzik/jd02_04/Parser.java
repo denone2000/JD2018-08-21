@@ -8,8 +8,7 @@ import java.util.regex.Pattern;
 
 
 public class Parser {
-    List<String> strOperands;
-    List<String> operations = new ArrayList<>();
+    private  List<String> operations = new ArrayList<>();
 
     Var calcOneOperation(String one, String operation, String two) throws CalcException {
         if (operation.equals("=")) {
@@ -35,7 +34,7 @@ public class Parser {
 
     Var calc(String expression) throws CalcException {
         String[] operand = expression.split(Patterns.operation);
-        strOperands = new ArrayList<>(Arrays.asList(operand));
+        List<String> strOperands = new ArrayList<>(Arrays.asList(operand));
         Pattern pattern = Pattern.compile(Patterns.operation);
         Matcher matcher = pattern.matcher(expression);
         while (matcher.find()) {
@@ -43,7 +42,7 @@ public class Parser {
         }
         while (operations.size()>0){
         int index = PriorityMap.chooseoperation(operations);
-        strOperands.add(index,calcOneOperation(strOperands.remove(index),operations.remove(index),strOperands.remove(index)).toString());}
+        strOperands.add(index,calcOneOperation(strOperands.remove(index),operations.remove(index), strOperands.remove(index)).toString());}
     return Var.createVar(strOperands.get(0));
     }
 }

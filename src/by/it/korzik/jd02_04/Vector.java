@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Vector extends Var {
     private double[] value;
 
-    Vector(double[] value) {
+    private Vector(double[] value) {
         this.value = value;
     }
 
@@ -115,7 +115,6 @@ public class Vector extends Var {
             delimit = ", ";
         }
         sb.append("}");
-        String result = sb.toString();
-        return result;
+        return sb.toString();
     }
 }

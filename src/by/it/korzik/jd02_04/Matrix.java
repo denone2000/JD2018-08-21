@@ -26,7 +26,6 @@ public class Matrix extends Var {
             }
         }
         sb.append("}");
-        String result = sb.toString();
-        return result;
+        return sb.toString();
     }
 }

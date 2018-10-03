@@ -4,21 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PriorityMap {
-    static private Map<String, Integer> priorityMap;
-
-    public static void main(String[] args) {
-        priorityMap = new HashMap<>();
-        priorityMap.put("=", 0);
-        priorityMap.put("+", 1);
-        priorityMap.put("-", 1);
-        priorityMap.put("*", 2);
-        priorityMap.put("/", 2);
-    }
+ class PriorityMap {
 
 
-    public static int chooseoperation(List<String> operations) {
-        priorityMap = new HashMap<>();
+    static int chooseoperation(List<String> operations) {
+        Map<String, Integer> priorityMap = new HashMap<>();
         priorityMap.put("=", 0);
         priorityMap.put("+", 1);
         priorityMap.put("-", 1);

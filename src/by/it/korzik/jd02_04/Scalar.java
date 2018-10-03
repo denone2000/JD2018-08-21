@@ -3,8 +3,6 @@ package by.it.korzik.jd02_04;
 class Scalar extends Var {
     private double value;
 
-    Scalar() {
-    }
 
     Scalar(double value) {
         this.value = value;
