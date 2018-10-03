@@ -1,7 +1,11 @@
 package by.it.korolchuk.jd02_03;
 
+import java.util.List;
+
 public interface IUseBasket {
     void takeBasket();
 
-    void putGoodsToBasket();
+    void putGood();
+
+    List<String> takeOutGood();
 }

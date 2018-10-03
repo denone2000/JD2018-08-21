@@ -1,9 +1,13 @@
 package by.it.korolchuk.jd02_03;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Semaphore;
 
-import static by.it.korolchuk.jd02_03.Good.goodsKeySet;
+import static by.it.korolchuk.jd02_03.Good.getGoodsMap;
+import static by.it.korolchuk.jd02_03.Good.getGoodsMap;
 import static by.it.korolchuk.jd02_03.Util.random;
+
 
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
@@ -26,26 +30,18 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void run() {
         enterToMarket();
-        chooseGoods();
-        try {
-            basketSemaphore.acquire();
-            takeBasket();
+        takeBasket();
+        chooseGood();
+        System.out.println(this + "IS WAITING"); //пометка для меня, чтоб посмотреть, работает ли семафор
             try {
                 marketSemaphore.acquire();
-                //putGoodsToBasket();
+                System.out.println(this + "BEGAN TO CHOOSE GOODS"); //все та же пометка
+                putGood();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 marketSemaphore.release();
             }
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            basketSemaphore.release();
-        }
-
-
         toQueue();
         goOut();
     }
@@ -59,49 +55,33 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
-    public void putGoodsToBasket() {
+    public void putGood() {
 
         Util.sleep(random(100, 200));
-        Double sum = 0.0;
-        for (int i = 1; i <= goodsKeySet().size(); i++) {
+        //Double sum = 0.0;
+        for (int i = 1; i <= getGoodsMap().size(); i++) {
             int counter = 0;
-            int randomKey = random(goodsKeySet().size());
-            Double value;
+            int randomKey = random(getGoodsMap().size());
 
-            for (String good : goodsKeySet()) {
+            for (Map.Entry<String, Double> entry: Good.getGoodsMap().entrySet()) {
                 if (randomKey == counter++) {
-                    basket.put(good);
-                    value = Good.goodsMap.get(good);
-                    sum += value;
-                    System.out.println(this + " took " + good + " " + value);
+                    basket.put(entry.getKey());
+                    //System.out.println(this + " put " + entry.getKey() +  " " + entry.getValue());
                 }
             }
         }
-        System.out.println("sum for " + this + " = " + sum);
-/*String good;
-        switch (basket.getKeys().size()) {
-            case 0: good = "goods";
-            break;
-
-            case 1: good = "good";
-            break;
-
-            default: good = "goods";
-            break;
-        }
-        System.out.println(this + " put " + basket.getKeys().size() + " " + good + " to the basket");*/
+       // System.out.println("sum for " + this + " = " + sum);
     }
 
     @Override
     public void enterToMarket() {
         System.out.println(this + " entered to the market");
-
     }
 
     @Override
-    public void chooseGoods() {
+    public void chooseGood() {
 
-        System.out.println(this + " start choosing goods");
+        System.out.println(this + " began to choose goods");
         int timeout = random(500, 2000);
         Util.sleep(timeout);
         System.out.println(this + " finished choosing goods");
@@ -119,6 +99,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
                 e.printStackTrace();
             }
         }
+    }
+
+@Override
+           public List<String> takeOutGood() {
+            return basket.getKeys();
     }
 
     @Override

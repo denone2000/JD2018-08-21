@@ -1,11 +1,11 @@
 package by.it.korolchuk.jd02_03;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class Basket {
-    private List<String> keys = new ArrayList<>();
+
+    private static List<String> keys = new ArrayList<>();
 
     public void put(String name) {
 

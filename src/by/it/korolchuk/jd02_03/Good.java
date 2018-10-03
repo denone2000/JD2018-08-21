@@ -16,9 +16,11 @@ class Good {
         goodsMap.put("biscuits", 5.00);
     }
 
-    static Set<String> goodsKeySet() {
-        return goodsMap.keySet();
+   // static Set<String> goodsKeySet() {
+    //    return goodsMap.keySet();
+    //}
+    static Map<String, Double> getGoodsMap(){
+        return goodsMap;
     }
-
 }
 
