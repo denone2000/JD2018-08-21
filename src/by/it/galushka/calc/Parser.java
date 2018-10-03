@@ -42,10 +42,15 @@ public class Parser {
     }
 
     Var calc(String expression) throws CalcException {
-        String[] tmp = expression.split(Patterns.OPERATORS);
+        String str = "";
+        if (expression.contains(Patterns.BRACKET)) {
+            str = Brackets.findBracket(expression);
+        } else
+            str = expression;
+        String[] tmp = str.split(Patterns.OPERATORS);
         List<String> operands = new ArrayList<>(Arrays.asList(tmp));
         List<String> operations = new ArrayList<>();
-        Matcher matcher = Pattern.compile(Patterns.OPERATORS).matcher(expression);
+        Matcher matcher = Pattern.compile(Patterns.OPERATORS).matcher(str);
         while (matcher.find())
             operations.add(matcher.group());
         while (operands.size() > 1) {
@@ -73,6 +78,7 @@ public class Parser {
                     if (actualPrioroty > higherPriorityIndex) {
                         higherPriorityIndex = actualPrioroty;
                         indexHighPriorValue = j;
+                        break;
                     }
                 }
             }
