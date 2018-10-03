@@ -33,11 +33,6 @@ class Brackets {
     private static double countBrackets(String str) throws CalcException {
         String[] split = str.split(Patterns.OPERATORS);
         List<String> operands = removeBrackets(split);
-//        Matcher matcher = Pattern.compile(Patterns.SCALAR).matcher(str);
-//        List<String> scalars = new ArrayList<>();
-//        while (matcher.find()) {
-//            scalars.add(matcher.group());
-//        }
         Var var2 = Var.createVar(operands.get(1));
         Var var1 = Var.createVar(operands.get(0));
         double result = 0;
