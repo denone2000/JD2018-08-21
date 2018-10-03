@@ -41,10 +41,9 @@ public class Parser {
         while (matcher.find()) {
             operations.add(matcher.group());
         }
-        for (int i = 0; i < strOperands.size(); i++) {
+        while (operations.size()>0){
         int index = PriorityMap.chooseoperation(operations);
-        strOperands.add(index,calcOneOperation(strOperands.remove(index),operations.remove(index),strOperands.remove(index)).toString());
-    }
+        strOperands.add(index,calcOneOperation(strOperands.remove(index),operations.remove(index),strOperands.remove(index)).toString());}
     return Var.createVar(strOperands.get(0));
     }
 }
