@@ -16,12 +16,12 @@ abstract class Var implements Operation {
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения "  +this + " * " +other + " невозможна");
+        throw new CalcException("Операция умножения " + this + " * " + other + " невозможна");
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления "  +this + " / " +other + " невозможна");
+        throw new CalcException("Операция деления " + this + " / " + other + " невозможна");
     }
 
     public static Map<String, Var> getVars() {
@@ -38,11 +38,11 @@ abstract class Var implements Operation {
     static Var createVar(String strVar) throws CalcException {
         strVar = strVar.trim();
         if (strVar.matches(Patterns.SCALAR)) return new Scalar(strVar);
-        else if (strVar.matches(Patterns.VECTOR)) return new Vector(strVar);
-        else if (strVar.matches(Patterns.MATRIX)) return new Matrix(strVar);
-        else if (vars.containsKey(strVar)) return vars.get(strVar);
-        else return Var.vars.get(strVar);
-        //throw  new CalcException("Невозможно создать переменную " + strVar);
+        if (strVar.matches(Patterns.VECTOR)) return new Vector(strVar);
+        if (strVar.matches(Patterns.MATRIX)) return new Matrix(strVar);
+        if (vars.containsKey(strVar)) return vars.get(strVar);
+
+        throw new CalcException("Невозможно создать переменную " + strVar);
     }
 
 }

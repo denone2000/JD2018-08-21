@@ -7,16 +7,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
+    private static final List<String> priority = new ArrayList<>(Arrays.asList("=,+,-,*,/".split(",")));
 
-    private Var oneOperationCalc(String v1, String op, String v2) throws CalcException {
+    private Var oneOperationCalc(String s1, String oper, String s2) throws CalcException {
 
-        Var two = Var.createVar(v2);
-        if (op.equals("=")) {
-            Var.saveVars(v1, two);
+        Var two = Var.createVar(s2);
+        if (oper.equals("=")) {
+            Var.saveVars(s1, two);
             return two;
         }
-        Var one = Var.createVar(v1);
-        switch (op) {
+        Var one = Var.createVar(s1);
+        if (one == null || two == null) {
+            throw new CalcException("Неизвестное значение одной из переменной");
+        }
+        switch (oper) {
             case "+":
                 return one.add(two);
             case "-":
@@ -26,13 +30,9 @@ class Parser {
             case "/":
                 return one.div(two);
         }
-        if (one == null || two == null) {
-            throw new CalcException("Неизвестное значение одной из переменной");
-        }
+
         return null;
     }
-
-    private static final List<String> priority = new ArrayList<>(Arrays.asList("=,+,-,*,/".split(",")));
 
     private int getPosOperation(List<String> operations) {
         int currentResult = -1;
