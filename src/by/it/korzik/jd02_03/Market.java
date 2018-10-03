@@ -12,30 +12,33 @@ public class Market {
     public static void main(String[] args) {
         fillMap();
         process();
-    }
-
-    private static void process() {
-        ExecutorService executors = Executors.newFixedThreadPool(2);
+        ExecutorService executors = Executors.newFixedThreadPool(5);
 
         for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
             executors.execute(cashier);
         }
 
-        for (int i = 0; i < 120; i++) {
-                while (Util.marketOpen()) {
-                int x = Util.random(2);
-                for (int j = 0; j < x; j++) {
-                    if (Util.marketOpen()) {
-                        Buyer buyer = new Buyer(++buyerCounter);
-                        buyer.start();
-                    }
+        while (Util.marketOpen()) {
+            for (int i = 0; i < Util.random(2); i++) {
+                if (Util.marketOpen()) {
+                    Buyer buyer = new Buyer(++buyerCounter);
+                    buyer.start();
+
                 }
-                Util.sleep(1000);
             }
+            Util.sleep(1000);
         }
         executors.shutdown();
+        while (!executors.isShutdown()){
+            executors.shutdown();
+        }
     }
+
+    private static void process() {
+
+    }
+
 
     private static void fillMap() {
         goodsMap.put("Хлеб", 12);

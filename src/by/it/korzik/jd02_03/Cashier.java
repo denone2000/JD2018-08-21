@@ -26,7 +26,7 @@ public class Cashier implements Runnable{
                 Util.sleep(100);
             }
             synchronized (Util.class){
-            Util.plan.addAndGet(1);}
+            Util.plan.incrementAndGet();}
         }
         System.out.println(this+" закончил работу");
     }
