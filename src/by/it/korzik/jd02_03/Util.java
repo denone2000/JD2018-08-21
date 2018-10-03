@@ -33,6 +33,6 @@ class Util {
     }
 
     static boolean planComplete() {
-        return plan.get() == buyerCount.get();
+        return plan.get() >= 100;
     }
 }
