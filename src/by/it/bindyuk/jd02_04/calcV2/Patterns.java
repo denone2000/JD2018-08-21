@@ -1,4 +1,4 @@
-package by.it.bindyuk.calc;
+package by.it.bindyuk.jd02_04.calcV2;
 
 public class Patterns {
     static final String OPERATION = "(?<=[^+*/,{-])[=*+/-]";
