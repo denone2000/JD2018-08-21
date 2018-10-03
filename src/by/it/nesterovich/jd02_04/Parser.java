@@ -11,6 +11,33 @@ class Parser {
     private final String[] priority = {"=", "+", "-", "*", "/"};
     private String string;
 
+    private void setValue(String str) {
+        this.string = str;
+    }
+
+    public String getString() {
+        return string;
+    }
+
+    private void expressionSimplification(String str) throws CalcException {
+        Parser parser = new Parser();
+        if (!str.contains("(") || !str.contains(")")) {
+            setValue(str);
+        } else {
+            Pattern patternExpressionsInBrackets = Pattern.compile("\\([^\\(\\)]+\\)");
+            Matcher matcher = patternExpressionsInBrackets.matcher(str);
+            if (matcher.find()) {
+                String expressionsInBrackets = matcher.group();
+                String expr = expressionsInBrackets.substring(1, expressionsInBrackets.length() - 1);
+                String resultExpressionsInBrackets = String.valueOf(parser.calc(expr));
+                int start = matcher.start();
+                int end = matcher.end();
+                String result = str.substring(0, start) + resultExpressionsInBrackets + str.substring(end);
+                expressionSimplification(result);
+            }
+        }
+    }
+
     private Var calcOneOperation(String strOne, String strOperation, String strTwo) throws CalcException {
         Var two = Var.createVar(strTwo);
         if (strOperation.equals("=")) {
@@ -52,35 +79,6 @@ class Parser {
             }
         }
         return currentResult;
-    }
-
-    String expressionSimplification(String str) throws CalcException {
-        Parser parser = new Parser();
-        if (!str.contains("(") || !str.contains(")")) {
-            setValue(str);
-            return "n";
-        } else {
-            Pattern patternExpressionsInBrackets = Pattern.compile("\\([^\\(\\)]+\\)");
-            Matcher matcher = patternExpressionsInBrackets.matcher(str);
-            if (matcher.find()) {
-                String expressionsInBrackets = matcher.group();
-                String expr = expressionsInBrackets.substring(1, expressionsInBrackets.length() - 1);
-                String resultExpressionsInBrackets = String.valueOf(parser.calc(expr));
-                int start = matcher.start();
-                int end = matcher.end();
-                String result = str.substring(0, start) + resultExpressionsInBrackets + str.substring(end);
-                expressionSimplification(result);
-            }
-        }
-        return str;
-    }
-
-    private void setValue(String str) {
-        this.string = str;
-    }
-
-    public String getString() {
-        return string;
     }
 
     Var calc(String expression) throws CalcException {
