@@ -30,7 +30,6 @@ class Parser {
             case "/":
                 return one.div(two);
         }
-
         return null;
     }
 
