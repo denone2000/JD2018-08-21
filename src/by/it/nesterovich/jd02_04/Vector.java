@@ -16,7 +16,7 @@ class Vector extends Var {
 
     Vector(String strVector) {
         strVector = strVector.replace('{', ' ').replace('}', ' ').trim();
-        String[] strArray = strVector.split(",");
+        String[] strArray = strVector.split(","); //,\\s?
         value = new double[strArray.length];
         for (int i = 0; i < value.length; i++) {
             value[i] = Double.parseDouble(strArray[i]);
@@ -103,7 +103,7 @@ class Vector extends Var {
             }
             return new Vector(res);
         } else {
-            return super.add(other);
+            return super.div(other);
         }
     }
 

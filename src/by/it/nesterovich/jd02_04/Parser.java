@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 class Parser {
 
     private final String[] priority = {"=", "+", "-", "*", "/"};
+    private String string;
 
     private Var calcOneOperation(String strOne, String strOperation, String strTwo) throws CalcException {
         Var two = Var.createVar(strTwo);
@@ -49,9 +50,37 @@ class Parser {
                 currentPrior = pr;
                 currentResult = i;
             }
-
         }
         return currentResult;
+    }
+
+    String expressionSimplification(String str) throws CalcException {
+        Parser parser = new Parser();
+        if (!str.contains("(") || !str.contains(")")) {
+            setValue(str);
+            return "n";
+        } else {
+            Pattern patternExpressionsInBrackets = Pattern.compile("\\([^\\(\\)]+\\)");
+            Matcher matcher = patternExpressionsInBrackets.matcher(str);
+            if (matcher.find()) {
+                String expressionsInBrackets = matcher.group();
+                String expr = expressionsInBrackets.substring(1, expressionsInBrackets.length() - 1);
+                String resultExpressionsInBrackets = String.valueOf(parser.calc(expr));
+                int start = matcher.start();
+                int end = matcher.end();
+                String result = str.substring(0, start) + resultExpressionsInBrackets + str.substring(end);
+                expressionSimplification(result);
+            }
+        }
+        return str;
+    }
+
+    private void setValue(String str) {
+        this.string = str;
+    }
+
+    public String getString() {
+        return string;
     }
 
     Var calc(String expression) throws CalcException {
@@ -63,12 +92,17 @@ class Parser {
             Var.sortVar();
             return null;
         }
+        if (expression.contains("(") || expression.contains(")")) {
+            expressionSimplification(expression);
+            expression = getString();
+        }
         String[] tmp = expression.split(Patterns.OPERATION);
         List<String> operands = new ArrayList<>(Arrays.asList(tmp));
         List<String> operations = new ArrayList<>();
         Matcher matcher = Pattern.compile(Patterns.OPERATION).matcher(expression);
-        while (matcher.find())
+        while (matcher.find()) {
             operations.add(matcher.group());
+        }
         while (operations.size() > 0) {
             int index = currentOperationIndex(operations);
             String op = operations.remove(index);
