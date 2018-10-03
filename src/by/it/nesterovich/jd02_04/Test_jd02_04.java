@@ -122,4 +122,14 @@ public class Test_jd02_04 {
         Var var = parser.calc("{{4,5},{9,7}}-{{1,2},{8,3}}");
         assertEquals("{{3.0, 3.0}, {1.0, 4.0}}", var.toString());
     }
+
+    @Test
+    public void matrixExpression() throws Exception {
+        Parser parser = new Parser();
+        assertEquals("7.3", parser.calc("A=2+5.3").toString());
+        assertEquals("25.55", parser.calc("B=A*3.5").toString());
+        assertEquals("40.15", parser.calc("C=B+(A*2)").toString());
+        assertEquals("{{38.0, 20.0}, {68.0, 54.0}}", parser.calc("({{1,2},{8,3}}*{{1,2},{8,3}}+2)*2").toString());
+        assertEquals("{{9.0, 13.0}, {37.0, 17.0}}", parser.calc("({{1,2},{8,3}}+{{1,2},{8,3}})*(A-5.3)+(B/5-0.11)").toString());
+    }
 }
