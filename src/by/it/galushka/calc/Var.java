@@ -2,7 +2,7 @@ package by.it.galushka.calc;
 
 import java.util.*;
 
-abstract class Var implements Operation {
+class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 

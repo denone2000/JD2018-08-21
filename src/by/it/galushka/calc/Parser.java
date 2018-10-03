@@ -48,7 +48,7 @@ public class Parser {
         Matcher matcher = Pattern.compile(Patterns.OPERATORS).matcher(expression);
         while (matcher.find())
             operations.add(matcher.group());
-        while (operands.size() > 0) {
+        while (operands.size() > 1) {
             int indexPriorityOperation = priorityForCalc(operations);
             String one = operands.remove(indexPriorityOperation);
             String operation = operations.remove(indexPriorityOperation);
