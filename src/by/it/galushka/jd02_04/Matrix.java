@@ -22,7 +22,7 @@ public class Matrix extends Var {
         int lengthColomns = rowsMatrix.length;
         for (String str : rowsMatrix) {
             StringBuilder sb = new StringBuilder(str);
-            Pattern compile = Pattern.compile("[0-9]+");
+            Pattern compile = Pattern.compile("[0-9]+(\\.[0-9]+)?");
             Matcher matcher = compile.matcher(str);
             while (matcher.find()) {
                 lengthRows++;

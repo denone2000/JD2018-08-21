@@ -4,6 +4,7 @@ package by.it.galushka.jd02_04;
 public class Patterns {
 
     static final String OPERATORS = "(?<=[^{,=*/+-])([+/*=-])";
+    static final String OPERATORS_MATRIX = "[+/*-]";
     static final String SCALAR = "-?\\d+(\\.\\d+)?";
 //    static final String SCALAR = "(\\d+(\\.\\d+)?)?";
     static final String VECTOR = "(\\{(\\d+(\\.\\d+)?\\,?\\s?)+})?";
