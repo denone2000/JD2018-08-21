@@ -5,15 +5,11 @@ import java.util.concurrent.Semaphore;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
     private Bucket bucket;
-    private boolean pensioneer;
+    //private static AtomicInteger buffBucket = new AtomicInteger(0);
+
+
+
     private Semaphore semaphore = new Semaphore(20);
-
-    {
-        int noLucky = 4;
-        int pensioneerDetected = Utils.random(0, 4);
-        if (pensioneerDetected == noLucky) pensioneer = true;
-    }
-
 
     Buyer(int number) {
         super("Buyer № " + number);
@@ -32,20 +28,15 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void enterToMarket() {
         Dispatcher.addBuyer();
-        if (pensioneer) {
-            System.out.println(this + " (pensioneer) entered to the market");
-        } else
-            System.out.println(this + " entered to the market");
+        System.out.println(this + " entered to the market");
     }
 
     @Override
     public void takeBacket() {
-        this.bucket = new Bucket();
-        if (pensioneer) {
-            Utils.sleep(Utils.random(150, 300));
-        } else {
-            Utils.sleep(Utils.random(100, 200));
-        }
+        this.bucket = Market.bucketCollect.takeBucket();
+        System.out.println("BUCKETS LEFT: " + Market.bucketCollect.sizeOfBuckets());
+        //this.bucket = new Bucket();
+        Utils.sleep(Utils.random(100, 200));
         System.out.println(this + " put the Backet");
     }
 
@@ -53,36 +44,27 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void chooseGoods() {
         try {
             semaphore.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(this + " started to choose goods");
-        for (int i = 0; i < Utils.random(1, 4); i++) {
-            Map.Entry<String, Double> chooseGood = Goods.getRandomGoodWithPrice();
-            bucket.putGoodWithPrice(chooseGood);
-            System.out.println(this + " choose the " + (chooseGood != null ? chooseGood.getKey() : null) +
-                    " with price: " + (chooseGood != null ? chooseGood.getValue() : null));
-            if (pensioneer) {
-                Utils.sleep(Utils.random(150, 300));
-            } else {
+            System.out.println(this + " started to choose goods");
+            for (int i = 0; i < Utils.random(1, 4); i++) {
+                Map.Entry<String, Double> chooseGood = Goods.getRandomGoodWithPrice();
+                bucket.putGoodWithPrice(chooseGood);
+                System.out.println(this + " choose the " + (chooseGood != null ? chooseGood.getKey() : null) +
+                        " with price: " + (chooseGood != null ? chooseGood.getValue() : null));
                 Utils.sleep(Utils.random(100, 200));
             }
-        }
-        if (pensioneer) {
-            Utils.sleep(Utils.random(750, 3000));
-        } else {
             Utils.sleep(Utils.random(500, 2000));
+            System.out.println(this + " ended to choose goods");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphore.release();
         }
-        System.out.println(this + " ended to choose goods");
+
     }
 
     @Override
     public void putGoodsToBacket() {
-        if (pensioneer) {
-            Utils.sleep(Utils.random(150, 300));
-        } else {
-            Utils.sleep(Utils.random(100, 200));
-        }
+        Utils.sleep(Utils.random(100, 200));
         System.out.println(this + " put goods to backet");
     }
 
@@ -93,7 +75,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             try {
                 System.out.println(this + " is waiting");
                 System.out.println("IN DEQUE NOW: " + QueueBuyers.getSizeDeque() + " PEOPLES\n");
-                semaphore.release();
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -109,6 +90,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             check += entry.getValue();
         }
         System.out.println(this + " own " + Math.rint(100.0 * check) / 100.0 + " rubles ");
+        //bucket.clearBucket();//remove
+        Market.bucketCollect.bucketReturn(bucket);
     }
 
     @Override
