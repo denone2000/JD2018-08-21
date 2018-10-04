@@ -9,20 +9,11 @@ import java.util.regex.Pattern;
 class Parser {
 
     private final String[] priority = {"=", "+", "-", "*", "/"};
-    private String string;
 
-    private void setValue(String str) {
-        this.string = str;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    private void expressionSimplification(String str) throws CalcException {
+    private String expressionSimplification(String str) throws CalcException {
         Parser parser = new Parser();
         if (!str.contains("(") || !str.contains(")")) {
-            setValue(str);
+            return str;
         } else {
             Pattern patternExpressionsInBrackets = Pattern.compile("\\([^\\(\\)]+\\)");
             Matcher matcher = patternExpressionsInBrackets.matcher(str);
@@ -33,8 +24,9 @@ class Parser {
                 int start = matcher.start();
                 int end = matcher.end();
                 String result = str.substring(0, start) + resultExpressionsInBrackets + str.substring(end);
-                expressionSimplification(result);
+                return expressionSimplification(result);
             }
+            return str;
         }
     }
 
@@ -90,9 +82,9 @@ class Parser {
             Var.sortVar();
             return null;
         }
+        checkingTheCorrectnessOfTheExpression(expression);
         if (expression.contains("(") || expression.contains(")")) {
-            expressionSimplification(expression);
-            expression = getString();
+            expression = expressionSimplification(expression);
         }
         String[] tmp = expression.split(Patterns.OPERATION);
         List<String> operands = new ArrayList<>(Arrays.asList(tmp));
@@ -110,5 +102,64 @@ class Parser {
             operands.add(index, var.toString());
         }
         return Var.createVar(operands.get(0));
+    }
+
+    private static boolean checkingTheCorrectnessOfTheExpression(String expression) {
+        Pattern patternError = Pattern.compile("(\\(|\\[|\\{)(\\)|\\+|\\/|\\*|\\]|\\})");
+        Matcher matcherError = patternError.matcher(expression);
+        if (matcherError.find()) {
+            System.out.println("проверьте корректность выражения в скобках ");
+            return false;
+        }
+        Pattern patternZn = Pattern.compile("(,|\\*|\\+|\\/|\\-)(,|\\*|\\+|\\/)");
+        Matcher matcherZn = patternZn.matcher(expression);
+        if (matcherZn.find()) {
+            System.out.println("проверьте корректность расстановки знаков * + , / -");
+            return false;
+        }
+        Pattern patternZ = Pattern.compile("(\\(|\\[|\\{)(,|\\+|\\*|\\/)");
+        Matcher matcherZ = patternZ.matcher(expression);
+        if (matcherZ.find()) {
+            System.out.println("после открытия скобки символы * + , / не допускаются");
+            return false;
+        }
+        Pattern patternBracket = Pattern.compile("[\\(\\[\\{\\)\\]\\}]");
+        List<String> arrayBracket = new ArrayList<>();
+        Matcher match = patternBracket.matcher(expression);
+        while (match.find()) {
+            String bracket = match.group();
+            if (arrayBracket.size() == 0) {
+                arrayBracket.add(bracket);
+            } else if (bracket.equals("(") || bracket.equals("[") || bracket.equals("{")) {
+                arrayBracket.add(bracket);
+            } else if (bracket.equals(")")) {
+                if (arrayBracket.get(arrayBracket.size() - 1).equals("(")) {
+                    arrayBracket.remove(arrayBracket.size() - 1);
+                } else {
+                    System.out.println("некорректное закрытие скобки  " + arrayBracket.get(arrayBracket.size() - 1));
+                    return false;
+                }
+            } else if (bracket.equals("]")) {
+                if (arrayBracket.get(arrayBracket.size() - 1).equals("[")) {
+                    arrayBracket.remove(arrayBracket.size() - 1);
+                } else {
+                    System.out.println("некорректное закрытие скобки  " + arrayBracket.get(arrayBracket.size() - 1));
+                    return false;
+                }
+            } else if (bracket.equals("}")) {
+                if (arrayBracket.get(arrayBracket.size() - 1).equals("{")) {
+                    arrayBracket.remove(arrayBracket.size() - 1);
+                } else {
+                    System.out.println("некорректное закрытие скобки  " + arrayBracket.get(arrayBracket.size() - 1));
+                    return false;
+                }
+            }
+        }
+        if (arrayBracket.isEmpty()) {
+            return true;
+        } else {
+            System.out.println("в выражении присутствуют лишнии скобки");
+        }
+        return false;
     }
 }
