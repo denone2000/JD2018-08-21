@@ -11,21 +11,20 @@ public class Parser {
 
 
     private Var calcOneOperation (String strOne, String strOperation, String strTwo) {
-        //String[] strVars = cmd.split(Patterns.OPERATION);
 
+        Var one = Var.createVar(strOne);
 
-        //Var one = Var.createVar(strVars[0]);
+        Var two = Var.createVar(strTwo);
+        if (strOperation.equals("=")) {
+            Var.saveVar(strOne, two);
+            return two;
+        }
 
-        //Var two = Var.createVar(strVars[1]);
-        //if (cmd.contains("=")) {
-        //   return Var.saveVar(strVars[0], two);
-        //}
-
-        //if (one == null || two == null) {
+        if (one == null || two == null) {
         System.out.println("Переменная не распознана");
         return null;
         }
-           /* switch (strOperation) {
+           switch (strOperation) {
                 case "+": return one.add(two);
                 case "-": return one.sub(two);
                 case "*": return one.mul(two);
@@ -36,9 +35,9 @@ public class Parser {
         //TODO Create error unknown operation
         System.out.println("Опреация не распознана");
         return null;
-    }*/
+    }
 
-    private  final String[] priopity = {"=", "+", "-", "*", "/"};
+    private  final String[] priority = {"=", "+", "-", "*", "/"};
 
     private int currentOperationIndex(List<String> operations) {
         int currentResult = -1;
@@ -46,21 +45,23 @@ public class Parser {
         for (int i = 0; i < operations.size(); i++) {
             int pr = -1;
             String op = operations.get(i);
-            for (int j = 0; j < priopity.length; j++) {
-                if(priopity[j].equals(op)){
+            for (int j = 0; j < priority.length; j++) {
+                if (priority[j].equals(op)) {
                     pr = j;
                     break;
                 }
-                if(currentPrior < pr) {
+            }
+                if (currentPrior < pr) {
                     currentPrior = pr;
                     currentResult = i;
                 }
-                return currentResult;
+
             }
 
-        }
-        return 0;
+
+        return currentResult;
     }
+
 
 
     Var calc(String expression) {
