@@ -35,7 +35,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             System.out.println(this.getName() + " выбирает товар");
             putGoodsToBacket();
         }
-        goToQueue();
     }
 
     @Override
@@ -85,6 +84,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         enterToMarket();
         takeBacket();
         chooseGoods();
+        goToQueue();
         goOut();
     }
 }

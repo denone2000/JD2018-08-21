@@ -31,5 +31,4 @@ class Cashier implements Runnable {
         Controller.counterCashier.decrementAndGet();
         System.out.println(this + " STOPPED\n");
     }
-  //   | (Controller.counterCashier.get() / QueueBuyers.getSizeDeque()) >= 1
 }

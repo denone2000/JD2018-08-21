@@ -1,0 +1,55 @@
+[output]{1.0, 2.0, 3.0}
+[input]{2,3,4}-5
+[output]{-3.0, -2.0, -1.0}
+[input]4+{2,3,4}
+[output]{6.0, 7.0, 8.0}
+[input]{2,3,4}+{5,6,7}
+[output]{7.0, 9.0, 11.0}
+[input]{5,6,7}-{2,3,4}
+[output]{3.0, 3.0, 3.0}
+[input]a=4*4
+[output]16.0
+[input]a=4*4
+[output]16.0
+[input]matrix = {{1,2,3},{4,5,6}}
+[output]{{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}}
+[input]{{1,2},{8,3}}-{{2,3,3},{2,3,3}}
+[error]ERROR: sub operation: {{1.0, 2.0}, {8.0, 3.0}} - {{2.0, 3.0, 3.0}, {2.0, 3.0, 3.0}} is not allowed
+[input]{{1,2},{8,3}}*{{1,2},{8,3}}
+[output]{{17.0, 8.0}, {32.0, 25.0}}
+[input]{2,3,4}*2
+[output]{4.0, 6.0, 8.0}
+[input]{2,3}+{1,2,3}
+[error]ERROR: sum operation: {2.0, 3.0} + {1.0, 2.0, 3.0} is not allowed
+[input]{2,3}-{1,2,3}
+[error]ERROR: sub operation: {2.0, 3.0} - {1.0, 2.0, 3.0} is not allowed
+[input]2/{1,2,3}
+[error]ERROR: div operation: 2.0 / {1.0, 2.0, 3.0} is not allowed
+[input]3.8+26.2
+[output]30.0
+[input]3.8/0
+[error]ERROR: division by zero
+[input]5*incorrect_string
+[error]ERROR: operand has not been parsed...
+[input]{{1,2},{8,3}}-{{2,3,3},{2,3,3}}
+[error]ERROR: sub operation: {{1.0, 2.0}, {8.0, 3.0}} - {{2.0, 3.0, 3.0}, {2.0, 3.0, 3.0}} is not allowed
+
+[input]{{1,2},{8,3}}*{{1,2},{8,3}}
+[output]{{17.0, 8.0}, {32.0, 25.0}}
+[input]{2,3,4}*2
+[output]{4.0, 6.0, 8.0}
+[input]{2,3}+{1,2,3}
+[error]ERROR: sum operation: {2.0, 3.0} + {1.0, 2.0, 3.0} is not allowed
+
+[input]{2,3}-{1,2,3}
+[error]ERROR: sub operation: {2.0, 3.0} - {1.0, 2.0, 3.0} is not allowed
+
+[input]2/{1,2,3}
+[error]ERROR: div operation: 2.0 / {1.0, 2.0, 3.0} is not allowed
+
+[input]3.8+26.2
+[output]30.0
+[input]3.8/0
+[error]ERROR: division by zero
+[input]5*incorrect_string
+[error]ERROR: operand has not been parsed...

@@ -1,7 +1,9 @@
 package by.it.bindyuk.jd02_03;
 
 public class Market {
+    static BucketCollect bucketCollect = new BucketCollect();
     public static void main(String[] args) {
+
 
 
         Controller controller = new Controller();
