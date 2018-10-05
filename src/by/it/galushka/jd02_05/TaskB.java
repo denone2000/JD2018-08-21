@@ -45,7 +45,7 @@ public class TaskB {
 
     private static void chooseLocal(Res res, String loc) {
         Dat date = Dat.INSTANCE;
-        Locale locale = null;
+        Locale locale;
         if (loc.equalsIgnoreCase("en")) {
             locale = new Locale("en", "EN");
             res.setLocale(locale);
