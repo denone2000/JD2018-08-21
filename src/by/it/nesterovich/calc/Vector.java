@@ -105,7 +105,7 @@ class Vector extends Var {
             }
             return new Vector(res);
         } else {
-            return super.add(other);
+            return super.div(other);
         }
     }
 

@@ -25,8 +25,10 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void enterToMarket() {
         if (pensioneer) {
             System.out.println(this + "(pensioneer) enter to market.");
+            Dispatcher.buyerEnterToMarket();
         } else {
             System.out.println(this + " enter to market.");
+            Dispatcher.buyerEnterToMarket();
         }
     }
 
@@ -48,6 +50,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void goOut() {
         System.out.println(this + " go out.");
+        Dispatcher.buyerLeaveMarket();
     }
     //=========================================================================
 
@@ -61,7 +64,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void putGoodsToBacket() {
-
+        Util.sleep((int) (Util.getRandom(100, 200) * KSPEED));
+        System.out.println(this + " put good to backet.");
     }
 
     private void putGoodsToBacket(String good) {
