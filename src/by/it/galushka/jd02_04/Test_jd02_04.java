@@ -7,16 +7,13 @@ import static org.junit.Assert.assertEquals;
 public class Test_jd02_04 {
 
     @Test
-    public void AddScalar() throws CalcException {
+    public void testAll() throws CalcException {
         Parser parser = new Parser();
         Var var1 = (Var) parser.calc("A=2+5.3");
         assertEquals("7.3", var1.toString());
-        System.out.println(var1.toString());
         Var var2 = parser.calc("B=A*3.5");
         assertEquals("25.55", var2.toString());
-        System.out.println(var2.toString());
         Var var3 = parser.calc("B1=B+0.11*-5");
-        System.out.println(var3.toString());
         assertEquals("25.0", var3.toString());
         Var var4 = parser.calc("B2=A/2-1");
         assertEquals("2.65", var4.toString());
@@ -33,6 +30,6 @@ public class Test_jd02_04 {
         Var var10 = parser.calc("{{1,2},{8,3}}*{{1,2},{8,3}}");
         assertEquals("{{17.0, 8.0}, {32.0, 25.0}}", var10.toString());
         Var var11 = parser.calc("{{1,2},{8,3}}+{{1,2},{8,3}}");
-        assertEquals("{{2.0, 4.0}, {32.0, 25.0}}", var11.toString());
+        assertEquals("{{2.0, 4.0}, {16.0, 6.0}}", var11.toString());
     }
 }

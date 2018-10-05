@@ -49,7 +49,7 @@ public class Parser {
             str = Brackets.findBracket(expression);
         } else
             str = expression;
-        if (str.contains(Patterns.MATRIX)){
+        if (str.contains("{{")){
             String[] split = str.split(Patterns.OPERATORS_MATRIX);
             List<String> operations = new ArrayList<>();
             Matcher matcher = Pattern.compile(Patterns.OPERATORS).matcher(str);

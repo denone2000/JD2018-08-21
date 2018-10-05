@@ -8,7 +8,7 @@ public class Patterns {
     static final String SCALAR = "-?\\d+(\\.\\d+)?";
 //    static final String SCALAR = "(\\d+(\\.\\d+)?)?";
     static final String VECTOR = "(\\{(\\d+(\\.\\d+)?\\,?\\s?)+})?";
-    static final String MATRIX = "\\{\\s?(\\{(\\d+(\\.\\d+)?\\,?\\s?)+}\\,?\\s?)+\\s?}";
+    static final String MATRIX = "\\{(\\{(-?[0-9]+(\\.[0-9]+)?\\,?\\s?)+\\}\\,?\\s?)+\\}";
     static final String SINGLE_BRACKETS = "\\([A-z0-9]+(\\.[A-z0-9]+)?[-+/*][A-z0-9]+(\\.[A-z0-9]+)?\\)";
     static final String BRACKET = "(";
 }

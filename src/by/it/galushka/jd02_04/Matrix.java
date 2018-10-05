@@ -35,7 +35,7 @@ public class Matrix extends Var {
         for (int i = 0; i < rowsMatrix.length; i++) {
             double[] colomnsMatrix = {};
             StringBuilder sb = new StringBuilder(rowsMatrix[i]);
-            Pattern compile = Pattern.compile("[0-9]+");
+            Pattern compile = Pattern.compile("\\-?[0-9]+(\\.[0-9]+)?");
             Matcher matcher = compile.matcher(sb);
             while (matcher.find()) {
                 String group = matcher.group();
