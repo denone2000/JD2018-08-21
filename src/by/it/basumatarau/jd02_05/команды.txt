@@ -1,0 +1,12 @@
+#переход c tty в необходимую директорию (unix):
+
+cd ~/IdeaProjects/JD2018-08-21/src/by/it/basumatarau/jd02_05/text/
+
+#для перекодировки текствых файлов в ASCII формат:
+
+native2ascii Strings_be_BY.txt ../resources/Strings_be_BY.properties
+native2ascii Strings_be.txt ../resources/Strings_be.properties
+native2ascii Strings_en.txt ../resources/Strings_en.properties
+native2ascii Strings_ru_RU.txt ../resources/Strings_ru_RU.properties
+native2ascii Strings_ru.txt ../resources/Strings_ru.properties
+native2ascii Strings.txt ../resources/Strings.properties
