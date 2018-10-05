@@ -2,15 +2,17 @@ package by.it.galushka.jd02_04;
 
 public class CalcException extends Exception {
 
+    private static Res res = Res.INSTANCE;
+
     public CalcException() {
     }
 
     public CalcException(String message) {
-        super("ERROR: " + message);
+        super(res.get(Messages.MSG_ERROR) + message);
     }
 
     public CalcException(String message, Throwable cause) {
-        super("ERROR: " + message, cause);
+        super(res.get(Messages.MSG_ERROR) + message, cause);
     }
 
     public CalcException(Throwable cause) {

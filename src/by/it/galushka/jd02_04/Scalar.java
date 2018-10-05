@@ -2,6 +2,8 @@ package by.it.galushka.jd02_04;
 
 class Scalar extends Var {
 
+    private static Res res = Res.INSTANCE;
+
     private double value;
 
     public double getValue() {
@@ -51,7 +53,7 @@ class Scalar extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException("Деление на ноль!");
+                throw new CalcException(res.get(Messages.MSG_ERROR_DIV_BY_ZERO));
             double div = this.value / ((Scalar) other).value;
             return new Scalar(div);
         }

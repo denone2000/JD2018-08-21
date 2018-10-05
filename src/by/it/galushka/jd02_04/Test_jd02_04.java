@@ -9,7 +9,7 @@ public class Test_jd02_04 {
     @Test
     public void AddScalar() throws CalcException {
         Parser parser = new Parser();
-        Var var1 = parser.calc("A=2+5.3");
+        Var var1 = (Var) parser.calc("A=2+5.3");
         assertEquals("7.3", var1.toString());
         System.out.println(var1.toString());
         Var var2 = parser.calc("B=A*3.5");

@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 class Brackets {
 
+    private static Res res = Res.INSTANCE;
+
     static String findBracket(String ex) throws CalcException {
         StringBuilder sb = new StringBuilder(ex);
         List<String> brackets = new ArrayList<>();
@@ -46,7 +48,7 @@ class Brackets {
         } else if (str.contains("/")) {
             varRes = var1.div(var2);
         } else
-            System.out.println("Ошибка!");
+            System.out.println(res.get(Messages.MSG_ERROR));
         result = Double.parseDouble(varRes.toString());
         return result;
     }

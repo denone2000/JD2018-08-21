@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 class Vector extends Var {
 
+    private static Res res = Res.INSTANCE;
+
     private double[] value = {};
 
     public double[] getValue() {
@@ -46,7 +48,7 @@ class Vector extends Var {
             int thisLength = this.value.length;
             int otherLength = ((Vector) other).value.length;
             if (thisLength != otherLength)
-                throw new CalcException("Размер векторов не совподает!");
+                throw new CalcException(res.get(Messages.MSG_ERROR_SIZE_VECTOR));
             for (int i = 0; i < this.value.length; i++) {
                 result[i] = result[i] + ((Vector) other).value[i];
             }
@@ -65,15 +67,15 @@ class Vector extends Var {
             return new Vector(resSub);
         }
         if (other instanceof Vector) {
-            double[] res = Arrays.copyOf(value, value.length);
+            double[] result = Arrays.copyOf(value, value.length);
             int thisLength = this.value.length;
             int otherLength = ((Vector) other).value.length;
             if (thisLength != otherLength)
-                throw new CalcException("Размер векторов не совподает!");
-            for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] - ((Vector) other).value[i];
+                throw new CalcException(res.get(Messages.MSG_ERROR_SIZE_VECTOR));
+            for (int i = 0; i < result.length; i++) {
+                result[i] = result[i] - ((Vector) other).value[i];
             }
-            return new Vector(res);
+            return new Vector(result);
         }
         return super.sub(other);
     }

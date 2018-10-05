@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 public class Matrix extends Var {
 
+    private static Res res = Res.INSTANCE;
+
     private double[][] value;
 
     Matrix(double[][] value) {
@@ -87,7 +89,7 @@ public class Matrix extends Var {
             int thisLength = this.value.length;
             int otherLength = ((Matrix) other).value[0].length;
             if (thisLength != otherLength)
-                throw new CalcException("Размер матриц не совподает!");
+                throw new CalcException(res.get(Messages.MSG_ERROR_SIZE_MATRIX));
             for (int i = 0; i < resSubMatrix.length; i++) {
                 for (int j = 0; j < resSubMatrix[0].length; j++) {
                     resSubMatrix[i][j] = value[i][j] - ((Matrix) other).value[i][j];

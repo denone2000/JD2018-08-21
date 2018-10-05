@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
+    private static Res res = Res.INSTANCE;
+
     private Var calcOneOperation(String firstOperand, String operation, String secondOperand) throws CalcException {
         Var var2 = Var.createVar(secondOperand);
         if (operation.equals("=")) {
@@ -26,7 +28,7 @@ public class Parser {
             case "/":
                 return var1.div(var2);
             default:
-                System.out.println("Ошибка!");
+                System.out.println(res.get(Messages.MSG_ERROR));
                 return null;
         }
     }
