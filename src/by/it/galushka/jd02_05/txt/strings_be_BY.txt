@@ -1,0 +1,7 @@
+message.hello=Прывітанне!
+message.meet=Прыемна пазнаёміцца!
+message.name=Мяне клічуць Ігар.
+message.today=Сёння:
+message.exit=Калі ласка, увядзіце "канец" каб выйсці ці зменіце мову каб працягнуць.
+message.enter=Увядзіце «ru», «be» ці «en», каб выбраць мову.
+message.warning=Гэтая мова не падтрымліваецца!
