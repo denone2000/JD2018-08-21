@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LanguageThread extends Thread {
     private Scanner scanner = new Scanner(System.in);
-    String lan;
+    private String lan;
     @Override
     public void run() {
         while (!(lan=scanner.nextLine()).equals("end")) {

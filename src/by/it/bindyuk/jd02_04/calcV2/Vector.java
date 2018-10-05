@@ -45,7 +45,8 @@ class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = this.value[i] + ((Vector) other).value[i];
             }
-            if(this.value.length!=((Vector) other).value.length) throw new CalcException("Разные длины векторов");
+            if(this.value.length!=((Vector) other).value.length) throw new CalcException(ConsoleRunner.res.getKeys
+                    (Messages.ERROR_LENGHT_VECTOR));
             return new Vector(res);
 
         } else if (other instanceof Scalar) {
@@ -71,7 +72,8 @@ class Vector extends Var {
             for (int i = 0; i < res.length; i++) {
                 res[i] = this.value[i] - ((Vector) other).value[i];
             }
-            if(this.value.length!=((Vector) other).value.length) throw new CalcException("Разные длины векторов");
+            if(this.value.length!=((Vector) other).value.length) throw new CalcException(ConsoleRunner.res.getKeys
+                    (Messages.ERROR_LENGHT_VECTOR));
             return new Vector(res);
         } else return super.sub(other);
     }

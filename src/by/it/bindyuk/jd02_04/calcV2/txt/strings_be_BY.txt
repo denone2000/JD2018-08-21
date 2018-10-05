@@ -1,0 +1,11 @@
+message.add=Аперацыя складання
+message.sub=Аперацыя аднімання
+message.mul=Аперацыя множання
+message.div=Аперацыя дзялення
+message.unknown=Невядомае значэнне адной з зменнай
+message.incredible=немагчымая
+error.variable=немагчыма стварыць зменную
+error.error=ПАМЫЛКА:
+error.null=Дзяленне на нуль
+error.lenghtMatrix=Розныя даўжыні матрыц
+error.lenghtVector=Розныя даўжыні вектараў
