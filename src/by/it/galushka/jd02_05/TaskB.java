@@ -17,19 +17,14 @@ public class TaskB {
         }
         System.out.println(res.get(Messages.MSG_ENTER));
         String inputLocal;
-        while (!(inputLocal = scanner.nextLine()).equalsIgnoreCase("end")) {
-            if (inputLocal.equals("конец")) {
-                break;
-            } else if (inputLocal.equals("канец")) {
-                break;
-            } else
-                chooseLocal(res, inputLocal);
+        while (!(inputLocal = scanner.nextLine()).equalsIgnoreCase(res.get(Messages.INPUT_END))) {
+            chooseLocal(res, inputLocal);
         }
     }
 
     private static void chooseLocal(Res res, String loc) {
         Dat date = Dat.INSTANCE;
-        
+
         Locale locale = null;
         if (loc.equalsIgnoreCase("en")) {
             locale = new Locale("en", "EN");

@@ -9,4 +9,5 @@ interface Messages {
     String MSG_EXIT = "message.exit";
     String MSG_ENTER = "message.enter";
     String MSG_WARNING = "message.warning";
+    String INPUT_END = "input.end";
 }
