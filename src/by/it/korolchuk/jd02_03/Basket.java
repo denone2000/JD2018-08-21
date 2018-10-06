@@ -3,17 +3,23 @@ package by.it.korolchuk.jd02_03;
 import java.util.*;
 
 
-public class Basket {
+class Basket {
 
-    private static List<String> keys = new ArrayList<>();
+    private Map<String, Double> someBasket = new HashMap<>();
 
-    public void put(String name) {
+    void putGood(Map.Entry<String, Double> entry) {
 
-        keys.add(name);
+        someBasket.put(entry.getKey(), entry.getValue());
     }
 
-    List<String> getKeys() {
-        return keys;
+   Map<String, Double> putGoodOut() {
+
+        return someBasket;
+    }
+
+    static void clear(Map<String, Double> basket){
+
+        basket.clear();
     }
 
 }

@@ -19,13 +19,13 @@ class QueueBuyers {
     static Buyer pollBuyer() {
         Buyer buyer = buyerBlockingDeque.pollFirst();
 
-            if (buyer != null){
-                System.out.println(buyer + " poll from queue");
+        if (buyer != null) {
+            System.out.println(buyer + " poll from queue");
         }
         return buyer;
     }
 
     static int getCount() {
-            return buyerBlockingDeque.size();
+        return buyerBlockingDeque.size();
     }
 }

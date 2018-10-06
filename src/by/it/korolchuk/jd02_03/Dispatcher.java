@@ -19,7 +19,7 @@ class Dispatcher {
         factCount.incrementAndGet();
     }
 
-   static int getBuyersInMarket() {
+    static int getBuyersInMarket() {
 
         return buyersInMarket.get();
     }

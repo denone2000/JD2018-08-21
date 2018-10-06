@@ -1,7 +1,7 @@
 package by.it.korolchuk.jd02_03;
 
 
-import java.util.Map;
+
 
 class Cashier implements Runnable {
 
@@ -12,7 +12,7 @@ class Cashier implements Runnable {
     }
 
     @Override
-    @SuppressWarnings("all")
+
     public void run() {
         System.out.println(this + " started");
         while (!Dispatcher.completePlan()) {
@@ -20,9 +20,7 @@ class Cashier implements Runnable {
             if (buyer != null) {
                 int timeout = Util.random(2000, 5000);
                 System.out.println(this + " started servicing " + buyer);
-
-                for (Map.Entry<String, Double> entry : Good.getGoodsMap().entrySet()) {
-                }
+                buyer.takeOutGoods();
                 Util.sleep(timeout);
                 System.out.println(this + " stopped servicing " + buyer);
                 //wake buyer

@@ -8,6 +8,8 @@ public interface IBuyer {
 
     void toQueue();
 
+    void takeOutGoods();
+
     void goOut();
 
 
