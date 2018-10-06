@@ -35,7 +35,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     public void takeBacket() {
         this.bucket = Market.bucketCollect.takeBucket();
         System.out.println("BUCKETS LEFT: " + Market.bucketCollect.sizeOfBuckets());
-        //this.bucket = new Bucket();
         Utils.sleep(Utils.random(100, 200));
         System.out.println(this + " put the Backet");
     }
@@ -90,7 +89,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             check += entry.getValue();
         }
         System.out.println(this + " own " + Math.rint(100.0 * check) / 100.0 + " rubles ");
-        //bucket.clearBucket();//remove
+        Bucket.clearBucket(bucket.getChoosenGoodsWithPrice());//remove
         Market.bucketCollect.bucketReturn(bucket);
     }
 

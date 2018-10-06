@@ -1,0 +1,3 @@
+message.welcome=Привет!
+message.question=Как твои дела?
+text.name=Меня зовут Павел...

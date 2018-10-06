@@ -77,7 +77,9 @@ public class Scalar extends Var {
     @Override
     public Var divBy(Scalar scalar)throws CalcException {
         if (this.getVal()==0){
-            throw new CalcException("division by zero");
+            throw new CalcException(
+                    CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.VAR_EXCEPTION_DIV_BY_ZERO)
+            );
         }
         return new Scalar(scalar.getVal()/this.getVal());
     }
