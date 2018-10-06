@@ -53,7 +53,8 @@ class Matrix extends Var {
                    addMatrix[i][j] = this.value[i][j] + ((Matrix) other).value[i][j];
                }
            }
-           if(this.value.length!=((Matrix) other).value.length) throw new CalcException("Разные длины матриц");
+           if(this.value.length!=((Matrix) other).value.length) throw new CalcException(ConsoleRunner.res.getKeys
+                   (Messages.ERROR_LENGHT_MATRIX));
            return new Matrix(addMatrix);
        } else return other.add(this);
    }
@@ -74,7 +75,8 @@ class Matrix extends Var {
            return new Matrix(subScalar);
 
        } else if (other instanceof Matrix) {
-           if(this.value[0].length!=((Matrix) other).value[0].length) throw new CalcException("Разные длины матриц");
+           if(this.value[0].length!=((Matrix) other).value[0].length) throw new CalcException(ConsoleRunner.res.getKeys
+                   (Messages.ERROR_LENGHT_MATRIX));
            double[][] subMatrix = new double[this.value.length][this.value[0].length];
            for (int i = 0; i < this.value.length; i++) {
                subMatrix[i] = Arrays.copyOf(this.value[i], this.value[i].length);

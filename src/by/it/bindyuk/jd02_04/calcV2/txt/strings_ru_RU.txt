@@ -1,0 +1,11 @@
+message.add=Операция сложения
+message.sub=Операция вычитания
+message.mul=Операция умножения
+message.div=Операция деления
+message.unknown=Неизвестное значение одной из переменной
+message.incredible=невозможна
+error.variable=Невозможно создать переменную
+error.error=ОШИБКА:
+error.null=Деление на ноль
+error.lenghtMatrix=Разные длины матриц
+error.lenghtVector=Разные длины векторов

@@ -7,11 +7,11 @@ public class CalcException extends Exception {
     }
 
     public CalcException(String message) {
-        super("ERROR: " + message);
+        super(ConsoleRunner.res.getKeys(Messages.ERROR_ERROR) + message);
     }
 
     public CalcException(String message, Throwable cause) {
-        super("ERROR: " + message, cause);
+        super(ConsoleRunner.res.getKeys(Messages.ERROR_ERROR) + message, cause);
     }
 
     public CalcException(Throwable cause) {

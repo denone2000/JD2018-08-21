@@ -18,7 +18,8 @@ class Parser {
         }
         Var one = Var.createVar(s1);
         if (one == null || two == null) {
-            throw new CalcException("Неизвестное значение одной из переменной");
+            throw new CalcException(ConsoleRunner.res.getKeys
+                    (Messages.MSG_UNKNOWN_VARIABLE));
         }
         switch (oper) {
             case "+":

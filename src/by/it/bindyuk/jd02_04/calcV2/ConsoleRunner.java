@@ -1,5 +1,6 @@
 package by.it.bindyuk.jd02_04.calcV2;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -7,12 +8,31 @@ import static by.it.bindyuk.jd02_04.calcV2.Var.vars;
 
 
 public class ConsoleRunner {
+    static ResCalc res = ResCalc.INSTANCE;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String cmd;
         Parser parser = new Parser();
         Printer printer = new Printer();
+        res.setLocale(new Locale("en", "US"));
         while (!(cmd = scanner.nextLine()).equals("end")) {
+
+            switch (cmd) {
+                case "ru": {
+                    res.setLocale(new Locale("ru", "RU"));
+                    break;
+                }
+                case "en": {
+                    res.setLocale(new Locale("en", "US"));
+                    break;
+                }
+                case "be": {
+                    res.setLocale(new Locale("be", "BY"));
+                    break;
+                }
+            }
+
             if (cmd.equals("printvar")) {
                 for (Map.Entry<String, Var> entries : vars.entrySet()) {
                     System.out.println(entries.getKey() + "=" + entries.getValue());
