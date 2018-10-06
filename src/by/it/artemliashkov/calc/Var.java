@@ -3,7 +3,7 @@ package by.it.artemliashkov.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-abstract class Var implements Operation{
+abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 
@@ -48,27 +48,27 @@ abstract class Var implements Operation{
             return vars.get(operand);
         }
         //ODO add exception create vars
-        throw  new CalcException("Невозможно создать "+operand);
+        throw new CalcException("Невозможно создать " + operand);
     }
 
     @Override
-    public Var add(Var other)  throws CalcException {
-        throw  new CalcException("Операция сложения " + this + "+" + other + " невозможна");
+    public Var add(Var other) throws CalcException {
+        throw new CalcException("Операция сложения " + this + "+" + other + " невозможна");
     }
 
     @Override
-    public Var sub(Var other)  throws CalcException {
-        throw  new CalcException("Операция вычитания " + this + "-" + other + " невозможна");
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException("Операция вычитания " + this + "-" + other + " невозможна");
     }
 
     @Override
-    public Var mul(Var other)  throws CalcException {
-        throw  new CalcException("Операция умножения " + this + "*" + other + " невозможна");
+    public Var mul(Var other) throws CalcException {
+        throw new CalcException("Операция умножения " + this + "*" + other + " невозможна");
     }
 
     @Override
-    public Var div(Var other)  throws CalcException {
-        throw  new CalcException("Операция деления " + this + "/" + other + " невозможна");
+    public Var div(Var other) throws CalcException {
+        throw new CalcException("Операция деления " + this + "/" + other + " невозможна");
     }
 
     @Override

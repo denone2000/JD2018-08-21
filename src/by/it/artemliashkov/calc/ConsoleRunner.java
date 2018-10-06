@@ -2,6 +2,7 @@ package by.it.artemliashkov.calc;
 
 import java.util.Scanner;
 
+
 public class ConsoleRunner{
 
     public static void main(String[] args) {
