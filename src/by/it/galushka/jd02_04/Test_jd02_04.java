@@ -7,9 +7,172 @@ import static org.junit.Assert.assertEquals;
 public class Test_jd02_04 {
 
     @Test
-    public void testAll() throws CalcException {
+    public void scalarAdd() throws CalcException {
         Parser parser = new Parser();
-        Var var1 = (Var) parser.calc("A=2+5.3");
+        String expression = "2+2";
+        Var var1 = parser.calc(expression);
+        assertEquals("4.0", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void scalarSub() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "4-2";
+        Var var1 = parser.calc(expression);
+        assertEquals("2.0", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void scalarMul() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "3*4";
+        Var var1 = parser.calc(expression);
+        assertEquals("12.0", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void scalarDiv() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "12/4";
+        Var var1 = parser.calc(expression);
+        assertEquals("3.0", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void vectorAdd() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{1,2,3} + {4,5,6}";
+        Var var1 = parser.calc(expression);
+        assertEquals("{5.0, 7.0, 9.0}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{1,2,3} + 1.0";
+        Var var2 = parser.calc(expression);
+        assertEquals("{2.0, 3.0, 4.0}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void vectorSub() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{1,2,3} - {4,5,6}";
+        Var var1 = parser.calc(expression);
+        assertEquals("{-3.0, -3.0, -3.0}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{1,2,3} - 1.0";
+        Var var2 = parser.calc(expression);
+        assertEquals("{0.0, 1.0, 2.0}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void vectorMul() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{1,2,3} * {4,5,6}";
+        Var var1 = parser.calc(expression);
+        assertEquals("32.0", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{1,2,3} * 2.0";
+        Var var2 = parser.calc(expression);
+        assertEquals("{2.0, 4.0, 6.0}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void vectorDiv() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{1,2,3} / 2.0";
+        Var var1 = parser.calc(expression);
+        assertEquals("{0.5, 1.0, 1.5}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void matrixAdd() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{{1, 2}, {3, 4}} + {{4, 5}, {7, 8}}";
+        Var var1 = parser.calc(expression);
+        assertEquals("{{5.0, 7.0}, {10.0, 12.0}}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{{1, 2}, {3, 4}} + 1.0";
+        Var var2 = parser.calc(expression);
+        assertEquals("{{2.0, 3.0}, {4.0, 5.0}}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void matrixSub() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{{1, 2}, {3, 4}} - {{4, 5}, {7, 8}}";
+        Var var1 = parser.calc(expression);
+        assertEquals("{{-3.0, -3.0}, {-4.0, -4.0}}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{{1, 2}, {3, 4}} - 1.0";
+        Var var2 = parser.calc(expression);
+        assertEquals("{{0.0, 1.0}, {2.0, 3.0}}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void matrixMul() throws CalcException {
+        Parser parser = new Parser();
+        String expression = "{{1, 2}, {3, 4}} * {{4, 5}, {7, 8}}";
+        Var var1 = parser.calc(expression);
+        assertEquals("{{18.0, 21.0}, {40.0, 47.0}}", var1.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var1);
+        System.out.println("------------------------------");
+        expression = "{{1, 2}, {3, 4}} * {5, 6}";
+        Var var2 = parser.calc(expression);
+        assertEquals("{17.0, 39.0}", var2.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var2);
+        System.out.println("------------------------------");
+        expression = "{{1, 2}, {3, 4}} * 2.0";
+        Var var3 = parser.calc(expression);
+        assertEquals("{{2.0, 4.0}, {6.0, 8.0}}", var3.toString());
+        System.out.println("Ввод: " + expression
+                + "\nРезультат: " + var3);
+        System.out.println("------------------------------");
+    }
+
+    @Test
+    public void expressTest() throws CalcException {
+        Parser parser = new Parser();
+        Var var1 = parser.calc("A=2+5.3");
         assertEquals("7.3", var1.toString());
         Var var2 = parser.calc("B=A*3.5");
         assertEquals("25.55", var2.toString());

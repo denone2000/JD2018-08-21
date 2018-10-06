@@ -8,11 +8,11 @@ public class CalcException extends Exception {
     }
 
     public CalcException(String message) {
-        super(res.get(Messages.MSG_ERROR) + message);
+        super(res.get(Messages.MSG_ERROR) + ": " + message);
     }
 
     public CalcException(String message, Throwable cause) {
-        super(res.get(Messages.MSG_ERROR) + message, cause);
+        super(res.get(Messages.MSG_ERROR) + ": " + message, cause);
     }
 
     public CalcException(Throwable cause) {

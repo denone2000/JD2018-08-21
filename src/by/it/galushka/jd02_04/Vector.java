@@ -20,7 +20,7 @@ class Vector extends Var {
 
     Vector(String strVector) {
         StringBuilder sb = new StringBuilder(strVector);
-        Pattern compile = Pattern.compile("[0-9]+(\\.[0-9]+)?");
+        Pattern compile = Pattern.compile("\\-?[0-9]+(\\.[0-9]+)?");
         Matcher matcher = compile.matcher(sb);
         while (matcher.find()) {
             String group = matcher.group();

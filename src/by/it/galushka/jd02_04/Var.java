@@ -44,21 +44,21 @@ class Var implements Operation {
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " + " + other);
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " - " + other);
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " + " + other);
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " * " + other);
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " + " + other);
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " / " + other);
     }
 
     @Override
     public String toString() {
-        return "Это класс Var";
+        return null;
     }
 }
