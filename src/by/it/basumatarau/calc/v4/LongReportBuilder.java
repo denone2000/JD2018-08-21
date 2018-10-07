@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class ShortReportBuilder extends ReportBuilder{
+public class LongReportBuilder extends ReportBuilder {
 
     @Override
     public void buildHeader() {
-        report.setHeader("------Short Header------");
+        report.setHeader("======Long Header======");
     }
 
     @Override
     public void buildDateTimeFormat() {
-        report.setDateTimeFormat(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT));
+        report.setDateTimeFormat(DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG));
     }
 
     @Override
@@ -37,12 +37,7 @@ public class ShortReportBuilder extends ReportBuilder{
             try (BufferedReader buffR = new BufferedReader(new FileReader(file))) {
                 String line;
                 while (buffR.ready() && (line = buffR.readLine()) != null) {
-                    if (line.matches("(^\\[input\\].*)|(^\\[error\\].*)|(^\\[output\\].*)")) {
-                        if(line.matches("(^\\[input\\].*)")) body.append("input msg").append("\n");
-                        if(line.matches("(^\\[error\\].*)")) body.append("error msg").append("\n");
-                        if(line.matches("(^\\[output\\].*)")) body.append("output msg").append("\n");
-
-                    }
+                    body.append(line).append("\n");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -54,4 +49,5 @@ public class ShortReportBuilder extends ReportBuilder{
         return System.getProperty("user.dir") + File.separator + "src" + File.separator
                 + Logger.class.getName().replaceAll("[.]", File.separator).replaceAll(Logger.class.getSimpleName(), "");
     }
+
 }

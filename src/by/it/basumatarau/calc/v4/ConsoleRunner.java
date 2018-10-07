@@ -35,5 +35,11 @@ public class ConsoleRunner {
                 }
             }
         }
+
+        ReportBldDirector director = new ReportBldDirector();
+        director.setReportBuilder(new ShortReportBuilder());
+        director.buildNewReport();
+        System.out.println(director.getReport());
+
     }
 }

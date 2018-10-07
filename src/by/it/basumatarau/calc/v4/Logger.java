@@ -83,9 +83,8 @@ class Logger {
                 new FileWriter(getPath()+"log.txt")
             )
         ){
-            int index = 0;
             for (String message : logHeap) {
-                buffW.write(String.format("%2d.%s%s", ++index, message, "\n"));
+                buffW.write(String.format("%s%s", message, "\n"));
             }
         }catch (IOException e){
             e.printStackTrace(); //hm...
