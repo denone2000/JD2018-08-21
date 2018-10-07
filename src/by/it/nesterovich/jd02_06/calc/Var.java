@@ -4,9 +4,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-abstract class Var implements Operation {
+public abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
+
+    public static Var getVars(String operand) {
+        return vars.get(operand);
+    }
+
+    public static Map<String, Var> getVars() {
+        return vars;
+    }
 
     static void saveVar(String name, Var var) {
         vars.put(name, var);
@@ -35,21 +43,24 @@ abstract class Var implements Operation {
     }
 
     static Var createVar(String operand) throws CalcException {
-        operand = operand.trim().replace("\\s+", "");
-        if (operand.matches(Patterns.SCALAR)) {
-            return new Scalar(operand);
-        }
-        if (operand.matches(Patterns.VECTOR)) {
-            return new Vector(operand);
-        }
-        if (operand.matches(Patterns.MATRIX)) {
-            return new Matrix(operand);
-        }
-        if (vars.containsKey(operand)) {
-            return vars.get(operand);
-        }
-        Logger.getInstance().log(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
-        throw new CalcException(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
+        Var var = Creator.creator(operand);
+//        if (operand.matches(Patterns.SCALAR)) {
+////            Var var = CreatorScalar.
+////            return var;
+//            return new Scalar(operand);
+//        }
+//        if (operand.matches(Patterns.VECTOR)) {
+//            return new Vector(operand);
+//        }
+//        if (operand.matches(Patterns.MATRIX)) {
+//            return new Matrix(operand);
+//        }
+//        if (vars.containsKey(operand)) {
+//            return vars.get(operand);
+//        }
+//        Logger.getInstance().log(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
+//        throw new CalcException(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
+        return var;
     }
 
     @Override
