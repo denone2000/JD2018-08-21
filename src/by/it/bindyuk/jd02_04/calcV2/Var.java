@@ -6,22 +6,30 @@ import java.util.Map;
 abstract class Var implements Operation {
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Операция сложения " + this + " + " + other + " невозможна");
+        throw new CalcException(ConsoleRunner.res.getKeys
+                (Messages.MSG_OPERATION_ADD) + this + " + " + other + ConsoleRunner.res.getKeys
+                (Messages.MSG_INCREDIBLE));
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычитания " + this + " - " + other + " невозможна");
+        throw new CalcException(ConsoleRunner.res.getKeys
+                (Messages.MSG_OPERATION_SUB) + this + " - " + other + ConsoleRunner.res.getKeys
+                (Messages.MSG_INCREDIBLE));
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения " + this + " * " + other + " невозможна");
+        throw new CalcException(ConsoleRunner.res.getKeys
+                (Messages.MSG_OPERATION_MUL) + this + " * " + other + ConsoleRunner.res.getKeys
+                (Messages.MSG_INCREDIBLE));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления " + this + " / " + other + " невозможна");
+        throw new CalcException(ConsoleRunner.res.getKeys
+                (Messages.MSG_OPERATION_DIV) + this + " / " + other + ConsoleRunner.res.getKeys
+                (Messages.MSG_INCREDIBLE));
     }
 
     public static Map<String, Var> getVars() {
@@ -42,7 +50,7 @@ abstract class Var implements Operation {
         if (strVar.matches(Patterns.MATRIX)) return new Matrix(strVar);
         if (vars.containsKey(strVar)) return vars.get(strVar);
 
-        throw new CalcException("Невозможно создать переменную " + strVar);
+        throw new CalcException(ConsoleRunner.res.getKeys(Messages.ERROR_VARIABLE) + strVar);
     }
 
 }

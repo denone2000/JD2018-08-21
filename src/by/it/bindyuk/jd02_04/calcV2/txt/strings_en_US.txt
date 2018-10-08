@@ -1,0 +1,11 @@
+message.add=Add operation
+message.sub=Subtract operation
+message.mul=Multiply operation
+message.div=Division operation
+message.unknown=Unknown value of one of the variable
+message.incredible=impossible
+error.variable=Impossible to create a variable
+error.error=ERROR:
+error.null=division by zero
+error.lenghtMatrix=Different matrix lengths
+error.lenghtVector=Different vector lengths
