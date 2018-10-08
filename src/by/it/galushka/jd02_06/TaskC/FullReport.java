@@ -32,7 +32,7 @@ public class FullReport extends ReportBuilder {
     @Override
     public void exceptions() {
         List<CalcException> exceptions = RecordBook.getExceptions();
-        report.setEcxeptions("\nСообщения об ошибках\n"
+        report.setEcxeptions("Сообщения об ошибках:\n"
                 + convertExceptions(exceptions));
     }
 

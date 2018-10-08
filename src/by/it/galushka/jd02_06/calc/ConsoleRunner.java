@@ -2,6 +2,9 @@ package by.it.galushka.jd02_06.calc;
 
 import by.it.galushka.jd02_06.TaskC.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -48,7 +51,7 @@ public class ConsoleRunner {
         }
         //you can choose Full or Short report
         createShortReport();
-//        createFullReport();
+        //createFullReport();
     }
 
     private static void createFullReport() {
@@ -57,6 +60,7 @@ public class ConsoleRunner {
         writter.setReportBuilder(rb);
         writter.constructReport();
         System.out.println(writter.getReport());
+        createReportFile(writter.getReport());
     }
 
     private static void createShortReport() {
@@ -65,6 +69,19 @@ public class ConsoleRunner {
         writter.setReportBuilder(rb);
         writter.constructReport();
         System.out.println(writter.getReport());
+        createReportFile(writter.getReport());
+    }
+
+    private static void createReportFile(Report report) {
+        String directory = getDirectory(ConsoleRunner.class);
+        try (PrintWriter writer =
+                     new PrintWriter(
+                             new FileWriter(directory.concat("report.txt")))
+        ) {
+            writer.println(report);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private static boolean chooseLocal(String loc) {
@@ -84,5 +101,13 @@ public class ConsoleRunner {
             local = false;
         }
         return local;
+    }
+
+    private static String getDirectory(Class<?> clss) {
+        StringBuilder path = new StringBuilder();
+        String dir = clss.getName().replace(".", File.separator).replace(clss.getSimpleName(), "");
+        path.append(System.getProperty("user.dir")).append(File.separator);
+        path.append("src").append(File.separator).append(dir);
+        return path.toString();
     }
 }

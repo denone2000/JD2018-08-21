@@ -3,6 +3,7 @@ package by.it.galushka.jd02_06.TaskC;
 import by.it.galushka.jd02_06.calc.CalcException;
 import by.it.galushka.jd02_06.calc.ConsoleRunner;
 import by.it.galushka.jd02_06.calc.RecordBook;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ShortReport extends ReportBuilder {
         for (int i = 0; i < exceptions.size(); i++) {
             sb.append(i).append(": ").append(exceptions.get(i).getClass().getSimpleName()).append("\n");
         }
-        report.setEcxeptions(sb.toString());
+        report.setEcxeptions("Сообщения об ошибках:\n" + sb.toString());
     }
 
     @Override
