@@ -3,19 +3,19 @@ package by.it.nesterovich.jd02_06.calc;
 import java.io.IOException;
 import java.util.Arrays;
 
-class Vector extends Var {
+class VarVector extends Var {
 
     private double[] value;
 
-    Vector(double[] vector) {
+    VarVector(double[] vector) {
         value = Arrays.copyOf(vector, vector.length);
     }
 
-    Vector(Vector vector) {
+    VarVector(VarVector vector) {
         this.value = vector.value;
     }
 
-    Vector(String strVector) {
+    VarVector(String strVector) {
         strVector = strVector.replace('{', ' ').replace('}', ' ').trim();
         String[] strArray = strVector.split(","); //,\\s?
         value = new double[strArray.length];
@@ -30,22 +30,22 @@ class Vector extends Var {
 
     @Override
     public Var add(Var other) throws CalcException, IOException {
-        if (other instanceof Scalar) {
+        if (other instanceof VarScalar) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] + ((Scalar) other).getValue();
+                res[i] = res[i] + ((VarScalar) other).getValue();
             }
-            return new Vector(res);
-        } else if (other instanceof Vector) {
-            if (((Vector) other).value.length != this.value.length) {
-                Logger.getInstance().log(Res.INSTANCE.get(StrConst.VECTOR_ADD_VECTOR));
+            return new VarVector(res);
+        } else if (other instanceof VarVector) {
+            if (((VarVector) other).value.length != this.value.length) {
+                Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.VECTOR_ADD_VECTOR),TitleType.ERROR);
                 throw new CalcException(Res.INSTANCE.get(StrConst.VECTOR_ADD_VECTOR));
             }
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] + ((Vector) other).value[i];
+                res[i] = res[i] + ((VarVector) other).value[i];
             }
-            return new Vector(res);
+            return new VarVector(res);
         } else {
             return super.add(other);
         }
@@ -53,22 +53,22 @@ class Vector extends Var {
 
     @Override
     public Var sub(Var other) throws CalcException, IOException {
-        if (other instanceof Scalar) {
+        if (other instanceof VarScalar) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] - ((Scalar) other).getValue();
+                res[i] = res[i] - ((VarScalar) other).getValue();
             }
-            return new Vector(res);
-        } else if (other instanceof Vector) {
-            if (((Vector) other).value.length != this.value.length) {
-                Logger.getInstance().log(Res.INSTANCE.get(StrConst.VECTOR_SUB_VECTOR));
+            return new VarVector(res);
+        } else if (other instanceof VarVector) {
+            if (((VarVector) other).value.length != this.value.length) {
+                Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.VECTOR_SUB_VECTOR),TitleType.ERROR);
                 throw new CalcException(Res.INSTANCE.get(StrConst.VECTOR_SUB_VECTOR));
             }
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] - ((Vector) other).value[i];
+                res[i] = res[i] - ((VarVector) other).value[i];
             }
-            return new Vector(res);
+            return new VarVector(res);
         } else {
             return super.sub(other);
         }
@@ -76,22 +76,22 @@ class Vector extends Var {
 
     @Override
     public Var mul(Var other) throws CalcException {
-        if (other instanceof Scalar) {
+        if (other instanceof VarScalar) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] * ((Scalar) other).getValue();
+                res[i] = res[i] * ((VarScalar) other).getValue();
             }
-            return new Vector(res);
-        } else if (other instanceof Vector) {
+            return new VarVector(res);
+        } else if (other instanceof VarVector) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] * ((Vector) other).value[i];
+                res[i] = res[i] * ((VarVector) other).value[i];
             }
             double result = 0;
             for (double element : res) {
                 result += element;
             }
-            return new Scalar(result);
+            return new VarScalar(result);
         } else {
             return super.mul(other);
         }
@@ -99,12 +99,12 @@ class Vector extends Var {
 
     @Override
     public Var div(Var other) throws CalcException {
-        if (other instanceof Scalar) {
+        if (other instanceof VarScalar) {
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
-                res[i] = res[i] / ((Scalar) other).getValue();
+                res[i] = res[i] / ((VarScalar) other).getValue();
             }
-            return new Vector(res);
+            return new VarVector(res);
         } else {
             return super.div(other);
         }

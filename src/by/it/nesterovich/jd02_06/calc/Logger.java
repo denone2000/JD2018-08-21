@@ -25,14 +25,15 @@ class Logger {
         return instance;
     }
 
-    synchronized void log(String message) {
+    synchronized void writeReport(String message, TitleType titleType) {
         String path = System.getProperty("user.dir");
-        path = path.concat("/src/by/it/nesterovich/jd02_06/calc/log.txt");
+        path = path.concat("/src/by/it/nesterovich/jd02_06/calc/report.txt");
         Date now = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, 2, Locale.getDefault());
 
         try (PrintWriter out = new PrintWriter(new FileWriter(path, true))) {
-            out.print(dateFormat.format(now));
+            out.print(titleType);
+            out.print("\t" + dateFormat.format(now));
             out.println("\t" + message);
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,6 +4,7 @@ class Printer {
 
     void print(Var variable) {
         if (variable != null) {
+            Logger.getInstance().writeReport(String.valueOf(variable),TitleType.OUTPUT);
             System.out.println(variable);
         }
     }

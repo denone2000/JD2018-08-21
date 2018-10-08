@@ -40,6 +40,7 @@ class Parser {
         }
         Var one = Var.createVar(strOne);
         if (one == null || two == null) {
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.NO_VARIABLE),TitleType.ERROR);
             throw new CalcException(Res.INSTANCE.get(StrConst.NO_VARIABLE));
         }
         switch (strOperation) {
@@ -52,7 +53,7 @@ class Parser {
             case "/":
                 return one.div(two);
         }
-        Logger.getInstance().log(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION));
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION),TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION));
     }
 
@@ -80,18 +81,21 @@ class Parser {
         if (expression.trim().equals("en")) {
             Locale en = new Locale("en", "US");
             Res.INSTANCE.setLocale(en);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
         if (expression.trim().equals("ru")) {
             Locale ru = new Locale("ru", "RU");
             Res.INSTANCE.setLocale(ru);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
         if (expression.trim().equals("be")) {
             Locale be = new Locale("be", "BY");
             Res.INSTANCE.setLocale(be);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
