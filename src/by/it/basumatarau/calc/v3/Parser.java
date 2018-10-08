@@ -8,7 +8,9 @@ public class Parser {
 
     public Var calc(String infixLine) throws CalcException{
         if (!parenthOrderChecker(infixLine)) {
-            throw new CalcException("wrong parentheses order");
+            throw new CalcException(
+                    CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.PARSER_EXCEPTION_WRONG_PARENTH)
+            );
         }
         StringBuilder postfixLine = new StringBuilder();
         String token;
@@ -71,7 +73,11 @@ public class Parser {
                     rightVar = Var.createVar(tokenStack.pop());
                     leftVar = Var.createVar(tokenStack.pop());
                     tokenStack.push(leftVar.mul(rightVar).toString());
-                } else throw new CalcException(String.format("operation %s is yet to be implemented", token));
+                } else throw new CalcException(
+                        String.format(
+                                CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.PARSER_EXCEPTION_OPERATION_NOT_IMPLEMENTED),
+                                token)
+                );
             }
         }
         return Var.createVar(tokenStack.pop());
@@ -86,7 +92,12 @@ public class Parser {
             precedence = 2;
         }else if(operatorToken.matches("=")){
             precedence = 3;
-        }else throw new CalcException(String.format("operator %s precedence unknown", operatorToken));
+        }else throw new CalcException(
+                String.format(
+                        CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.PARSER_EXCEPTION_UNKNOWN_OPERATOR_PRECEDENCE),
+                        operatorToken
+                )
+        );
 
         return precedence;
     }

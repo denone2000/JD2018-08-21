@@ -1,5 +1,6 @@
 package by.it.basumatarau.calc.v3;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ConsoleRunner {
@@ -19,7 +20,10 @@ public class ConsoleRunner {
             }else if(str.contains("sortvar")){
                 System.out.println(Var.sortvar());
                 logger.addMsg(Var.sortvar(), Logger.MsgType.OUTPUT);
-            }else{
+            }else if(str.contains("ru")||str.contains("be")||str.contains("en")){
+                CalcExceptionResManager.ENTITY.setLocale(new Locale(str));
+            }
+            else{
                 try {
                     Var var = parser.calc(str);
                     System.out.println(printer.print(var));
