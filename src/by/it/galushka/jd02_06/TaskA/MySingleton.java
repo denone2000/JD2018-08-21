@@ -1,4 +1,4 @@
-package by.it.galushka.jd02_06;
+package by.it.galushka.jd02_06.TaskA;
 
 import java.io.File;
 import java.io.FileWriter;
