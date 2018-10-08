@@ -27,8 +27,6 @@ class MySingleton {
         return localMySimgleLink;
     }
 
-    private static int counter = 0;
-
     synchronized void log(String message) {
         String path = getDirectory(MySingleton.class).concat("log.txt");
         Date now = new Date();
@@ -38,7 +36,7 @@ class MySingleton {
                      new PrintWriter(
                              new FileWriter(path, true))
         ) {
-            writer.printf("№%-3d[%s] - %s\n", ++counter, dateTime, message);
+            writer.printf("[%s] - %s\n", dateTime, message);
         } catch (IOException e) {
             e.printStackTrace();
         }
