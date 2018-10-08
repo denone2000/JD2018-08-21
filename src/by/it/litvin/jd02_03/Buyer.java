@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBacket {
     private Backet backet;
+    private Semaphore semaphore=new Semaphore(20);
 
     Buyer(int number) {
         super("Buyer № " + number);
@@ -31,11 +33,18 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void chooseGoods() {
+        try {
+            semaphore.acquire();
         System.out.println(this + " started to choose goods");
         int timeout = Util.randomInt(500, 2000);
         Util.sleep(timeout);
         System.out.println(this + " finished to choose goods");
-    }
+    }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            semaphore.release();
+        }
+        }
 
     @Override
     public void goOut() {

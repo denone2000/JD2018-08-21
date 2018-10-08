@@ -1,0 +1,9 @@
+ExceptionMessage.Parser.operationNotImplemented=операция %s еще не реализована
+ExceptionMessage.Parser.unknownOperatorPrecedence=приоритет оператора %s неизвестен
+ExceptionMessage.Printer.nullPointerInput=null был передан для вывода
+ExceptionMessage.Var.operandNotParsed=операнд не распознан...
+ExceptionMessage.Var.illegalSumOperation=операция суммирования: %s + %s не разрешена\n
+ExceptionMessage.Var.illegalSubOperation=операция вычитания: %s + %s не разрешена\n
+ExceptionMessage.Var.illegalMulOperation=операция умножения: %s + %s не разрешена\n
+ExceptionMessage.Var.illegalDivOperation=операция деления: %s + %s не разрешена\n
+ExceptionMessage.Var.divisionByZero=деление на ноль

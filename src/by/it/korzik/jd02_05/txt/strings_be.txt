@@ -1,0 +1,3 @@
+message.welcome=Прывитанне!
+message.question=Як твае справы?
+message.name=Меня зовут Дмитрий
