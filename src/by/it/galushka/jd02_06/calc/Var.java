@@ -1,8 +1,12 @@
-package by.it.galushka.calc;
+package by.it.galushka.jd02_06.calc;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 class Var implements Operation {
+
+    private static Res res = Res.INSTANCE;
 
     private static Map<String, Var> vars = new HashMap<>();
 
@@ -30,31 +34,31 @@ class Var implements Operation {
             return new Matrix(inputLine);
         } else if (vars.containsKey(inputLine))
             return vars.get(inputLine);
-        throw new CalcException("Невозможно создать " + inputLine);
+        throw new CalcException(res.get(Messages.MSG_ERROR_UN_TO_CREATE) + " " + inputLine);
     }
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Операция сложения " + this + " + " + other + " невозможна!");
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " + " + other);
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычетания " + this + " - " + other + " невозможна!");
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " - " + other);
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения " + this + " * " + other + " невозможна!");
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " * " + other);
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления " + this + " / " + other + " невозможна!");
+        throw new CalcException(res.get(Messages.MSG_ERROR_IMPOSSIBLE) + " " + this + " / " + other);
     }
 
     @Override
     public String toString() {
-        return "Это класс Var";
+        return null;
     }
 }

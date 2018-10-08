@@ -1,10 +1,12 @@
-package by.it.galushka.calc;
+package by.it.galushka.jd02_04;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+
+    private static Res res = Res.INSTANCE;
 
     private Var calcOneOperation(String firstOperand, String operation, String secondOperand) throws CalcException {
         Var var2 = Var.createVar(secondOperand);
@@ -26,7 +28,7 @@ public class Parser {
             case "/":
                 return var1.div(var2);
             default:
-                System.out.println("Ошибка!");
+                System.out.println(res.get(Messages.MSG_ERROR));
                 return null;
         }
     }
@@ -47,6 +49,16 @@ public class Parser {
             str = Brackets.findBracket(expression);
         } else
             str = expression;
+        if (str.contains("{{")){
+            String[] split = str.split(Patterns.OPERATORS_MATRIX);
+            List<String> operations = new ArrayList<>();
+            Matcher matcher = Pattern.compile(Patterns.OPERATORS).matcher(str);
+            while (matcher.find())
+                operations.add(matcher.group());
+            int size = operations.size();
+            Var var = calcOneOperation(split[0], operations.get(size - 1), split[1]);
+            return Var.createVar(var.toString());
+        }
         String[] tmp = str.split(Patterns.OPERATORS);
         List<String> operands = new ArrayList<>(Arrays.asList(tmp));
         List<String> operations = new ArrayList<>();

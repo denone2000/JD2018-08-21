@@ -1,0 +1,8 @@
+message.hello=Hello!
+message.meet=Nice to meet you!
+message.name=My name is Igor.
+message.today=Today:
+message.exit=Enter "end" to exit or select language to continue.
+message.enter=Enter "ru", "be" or "en" to select the language.
+message.warning=This language is not supported!
+input.end=end
