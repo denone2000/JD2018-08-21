@@ -6,21 +6,27 @@ import java.util.Locale;
 
 class ReportEntireBuilder extends ReportBuilder {
 
+    private TitleType titleType;
+
     @Override
-    String titleReport(TitleType titleType) {
-        return String.valueOf(titleType);
+    void titleReport(TitleType titleType) {
+        this.titleType = titleType;
+        report.append(titleType);
     }
 
     @Override
-    String currentTime() {
+    void currentTime() {
         Date now = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(1, 1, Locale.getDefault());
-        return dateFormat.format(now);
+        report.append("\t").append(dateFormat.format(now));
     }
 
     @Override
-    String massage(String message) {
+    void massage(String message) {
         String mes = message;
-        return mes;
+        if (this.titleType.equals(TitleType.ERROR)) {
+            mes = String.valueOf(TitleType.ERROR) + ": " + message;
+        }
+        report.append("\t").append(mes);
     }
 }

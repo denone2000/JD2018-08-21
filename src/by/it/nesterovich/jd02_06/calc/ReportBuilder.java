@@ -2,9 +2,15 @@ package by.it.nesterovich.jd02_06.calc;
 
 abstract class ReportBuilder {
 
-    abstract String titleReport(TitleType titleType);
+    StringBuilder report = new StringBuilder();
 
-    abstract String currentTime();
+    abstract void titleReport(TitleType titleType);
 
-    abstract String massage(String message);
+    abstract void currentTime();
+
+    abstract void massage(String message);
+
+    String getReport() {
+        return report.toString();
+    }
 }
