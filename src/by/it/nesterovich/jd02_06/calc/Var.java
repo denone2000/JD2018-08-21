@@ -8,11 +8,11 @@ public abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 
-    public static Var getVars(String operand) {
+    static Var getVars(String operand) {
         return vars.get(operand);
     }
 
-    public static Map<String, Var> getVars() {
+    static Map<String, Var> getVars() {
         return vars;
     }
 
@@ -46,48 +46,27 @@ public abstract class Var implements Operation {
         }
     }
 
-    static Var createVar(String operand) throws CalcException {
-        Var var = Creator.creator(operand);
-//        if (operand.matches(Patterns.SCALAR)) {
-////            Var var = CreatorScalar.
-////            return var;
-//            return new Scalar(operand);
-//        }
-//        if (operand.matches(Patterns.VECTOR)) {
-//            return new Vector(operand);
-//        }
-//        if (operand.matches(Patterns.MATRIX)) {
-//            return new Matrix(operand);
-//        }
-//        if (vars.containsKey(operand)) {
-//            return vars.get(operand);
-//        }
-//        Logger.getInstance().log(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
-//        throw new CalcException(Res.INSTANCE.get(StrConst.UNABLE_TO_CREATE) + " " + operand);
-        return var;
-    }
-
     @Override
     public Var add(Var other) throws CalcException, IOException {
-        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.ADDITION_OPERATION) + this + "+" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE),TitleType.ERROR);
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.ADDITION_OPERATION) + this + "+" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE), TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.ADDITION_OPERATION) + this + "+" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE));
     }
 
     @Override
     public Var sub(Var other) throws CalcException, IOException {
-        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.SUBTRACTION_OPERATION) + this + "-" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE),TitleType.ERROR);
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.SUBTRACTION_OPERATION) + this + "-" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE), TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.SUBTRACTION_OPERATION) + this + "-" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE));
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.MULTIPLICATION_OPERATION) + this + "*" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE),TitleType.ERROR);
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.MULTIPLICATION_OPERATION) + this + "*" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE), TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.MULTIPLICATION_OPERATION) + this + "*" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.DIVISION_OPERATION) + this + "/" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE),TitleType.ERROR);
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.DIVISION_OPERATION) + this + "/" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE), TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.DIVISION_OPERATION) + this + "/" + other + Res.INSTANCE.get(StrConst.IMPOSSIBLE));
     }
 

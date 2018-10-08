@@ -33,14 +33,14 @@ class Parser {
     }
 
     private Var calcOneOperation(String strOne, String strOperation, String strTwo) throws CalcException, IOException {
-        Var two = Var.createVar(strTwo);
+        Var two = CreatorVar.creator(strTwo);
         if (strOperation.equals("=")) {
             Var.saveVar(strOne, two);
             return two;
         }
-        Var one = Var.createVar(strOne);
+        Var one = CreatorVar.creator(strOne);
         if (one == null || two == null) {
-            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.NO_VARIABLE),TitleType.ERROR);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.NO_VARIABLE), TitleType.ERROR);
             throw new CalcException(Res.INSTANCE.get(StrConst.NO_VARIABLE));
         }
         switch (strOperation) {
@@ -53,7 +53,7 @@ class Parser {
             case "/":
                 return one.div(two);
         }
-        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION),TitleType.ERROR);
+        Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION), TitleType.ERROR);
         throw new CalcException(Res.INSTANCE.get(StrConst.UNABLE_TO_DEFINE_OPERATION));
     }
 
@@ -81,21 +81,21 @@ class Parser {
         if (expression.trim().equals("en")) {
             Locale en = new Locale("en", "US");
             Res.INSTANCE.setLocale(en);
-            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH), TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
         if (expression.trim().equals("ru")) {
             Locale ru = new Locale("ru", "RU");
             Res.INSTANCE.setLocale(ru);
-            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH), TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
         if (expression.trim().equals("be")) {
             Locale be = new Locale("be", "BY");
             Res.INSTANCE.setLocale(be);
-            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH),TitleType.INFO);
+            Logger.getInstance().writeReport(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH), TitleType.INFO);
             System.out.println(Res.INSTANCE.get(StrConst.FINISH_PROGRAM) + " " + Res.INSTANCE.get(StrConst.WORD_FINISH));
             return null;
         }
@@ -125,7 +125,7 @@ class Parser {
             Var var = calcOneOperation(one, op, two);
             operands.add(index, var.toString());
         }
-        return Var.createVar(operands.get(0));
+        return CreatorVar.creator(operands.get(0));
     }
 
 }

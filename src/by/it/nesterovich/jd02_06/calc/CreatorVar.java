@@ -1,8 +1,6 @@
 package by.it.nesterovich.jd02_06.calc;
 
-class Creator {
-
-    //public abstract Var factoryMethod(String string);
+class CreatorVar {
 
     static Var creator(String operand) throws CalcException {
         operand = operand.trim().replace("\\s+", "");
