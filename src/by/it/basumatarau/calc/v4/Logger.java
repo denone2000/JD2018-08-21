@@ -1,18 +1,31 @@
 package by.it.basumatarau.calc.v4;
 
 import java.io.*;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Locale;
 
 class Logger {
     private static Deque<String> logHeap= new LinkedList<>();
-
+    private static Date statrtTime;
     private static Logger instance;
 
     private Logger(){
-
+        statrtTime = new Date();
+        try(BufferedWriter buffW = new BufferedWriter(
+                new FileWriter(getPath()+"log.txt")
+        )
+        ){
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH);
+            buffW.write("[session start]"+sdf.format(statrtTime)+"\n");
+            for (String message : logHeap) {
+                buffW.write(String.format("%s%s", message, "\n"));
+            }
+        }catch (IOException e){
+            e.printStackTrace(); //hm...
+        }
     }
     public static Logger getInstance(){
         if (instance==null){
@@ -34,15 +47,21 @@ class Logger {
             try (BufferedReader buffR = new BufferedReader(new FileReader(file))) {
                 String line;
                 StringBuilder msg = new StringBuilder();
+                boolean isLogged = false;
                 while (buffR.ready() && (line = buffR.readLine()) != null) {
-                    if (!msg.toString().equals("") && line.matches("(^\\[input\\].*)|(^\\[error\\].*)|(^\\[output\\].*)")) {
-                        logHeap.add(msg.toString());
-                        if (logHeap.size() >= 50) break;
+                    if (line.matches("(^\\[input\\].*)|(^\\[error\\].*)|(^\\[output\\].*)")) {
+                        if(isLogged) logHeap.add(msg.toString());
+
+                        isLogged = true;
                         msg = new StringBuilder();
                         msg.append(line);
-                    }else msg.append(line);
+                    }else {
+                        if(line.matches("^\\[session start\\].*")) isLogged=false;
+
+                        if(isLogged) msg.append(line);
+                    }
                 }
-                if(!msg.toString().equals("")){
+                if(isLogged){
                     logHeap.add(msg.toString());
                 }
             } catch (IOException e) {
@@ -57,8 +76,9 @@ class Logger {
     }
 
     synchronized void addMsg(String msg, MsgType type){
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH);
 
-        String date = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.MEDIUM).format(new Date());
+        String date = sdf.format(new Date());
         switch (type){
             case INPUT:
                 msg=String.format("%s %s: %s","[input]: ", date, msg);
@@ -83,6 +103,7 @@ class Logger {
                 new FileWriter(getPath()+"log.txt")
             )
         ){
+            buffW.write("[session start]"+sdf.format(statrtTime)+"\n");
             for (String message : logHeap) {
                 buffW.write(String.format("%s%s", message, "\n"));
             }

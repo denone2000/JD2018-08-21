@@ -34,9 +34,9 @@ class Report {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(header).append("\n");
-        //sb.append("Application start time:").append(dtf.format(startTime)).append("\n");
-        sb.append(body).append("\n");
+        sb.append("Application start time:").append(dtf.format(startTime)).append("\n");
         sb.append("Application finish time:").append(dtf.format(finishTime)).append("\n");
+        sb.append(body).append("\n");
 
         return sb.toString();
     }

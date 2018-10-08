@@ -6,7 +6,7 @@ public abstract class ReportBuilder {
     Report getReport(){
         return report;
     }
-    public void createNewReport(){
+    void createNewReport(){
         report = new Report();
     }
 

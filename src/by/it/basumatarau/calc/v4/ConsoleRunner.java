@@ -37,6 +37,9 @@ public class ConsoleRunner {
         }
 
         ReportBldDirector director = new ReportBldDirector();
+        director.setReportBuilder(new LongReportBuilder());
+        director.buildNewReport();
+        System.out.println(director.getReport());
         director.setReportBuilder(new ShortReportBuilder());
         director.buildNewReport();
         System.out.println(director.getReport());
