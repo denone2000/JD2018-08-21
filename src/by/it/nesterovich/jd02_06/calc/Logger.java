@@ -26,15 +26,19 @@ class Logger {
     }
 
     synchronized void writeReport(String message, TitleType titleType) {
+        ReportBuilder reportBuilder = new ReportShortBuilder();
+        //ReportBuilder reportBuilder = new ReportEntireBuilder();
+        String title = reportBuilder.titleReport(titleType);
+        String data = reportBuilder.currentTime();
+        String mes = reportBuilder.massage(message);
+
         String path = System.getProperty("user.dir");
         path = path.concat("/src/by/it/nesterovich/jd02_06/calc/report.txt");
-        Date now = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, 2, Locale.getDefault());
 
         try (PrintWriter out = new PrintWriter(new FileWriter(path, true))) {
-            out.print(titleType);
-            out.print("\t" + dateFormat.format(now));
-            out.println("\t" + message);
+            out.print(title);
+            out.print("\t" + data);
+            out.println("\t\t" + mes);
         } catch (IOException e) {
             e.printStackTrace();
         }
