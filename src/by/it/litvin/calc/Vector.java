@@ -43,6 +43,7 @@ class Vector extends Var {
         } else if (other instanceof Vector) {
             if(this.value.length!=((Vector)other).value.length)
                 throw new CalcException("Размеры не совпадают");
+
             double[] res = Arrays.copyOf(value, value.length);
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] + ((Vector) other).value[i];

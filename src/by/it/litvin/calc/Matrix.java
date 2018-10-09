@@ -13,9 +13,9 @@ class Matrix extends Var {
     public String toString() {
         StringBuilder result = new StringBuilder("{{");
         String delimiter = "";
-        for (int i = 0; i < value.length; i++) {
+        for (double[] aValue : value) {
             for (int j = 0; j < value.length; j++) {
-                result.append(delimiter).append(value[i][j]);
+                result.append(delimiter).append(aValue[j]);
                 delimiter = ", ";
             }
             delimiter = "}, {";
@@ -200,7 +200,7 @@ class Matrix extends Var {
                 }
 
             }
-            
+
             return new Vector(z);
         }
      else {
