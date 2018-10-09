@@ -1,0 +1,10 @@
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<!ELEMENT Persons (Persons)+>-->
+<!--<!ELEMENT Person (Email, Nickname, Password, ads)>-->
+<!--<!ELEMENT Email (#PCDATA)>-->
+        <!--<!ELEMENT Email (#PCDATA)>-->
+        <!--<!ELEMENT Nickname (#PCDATA)>-->
+        <!--<!ELEMENT Password (#PCDATA)>-->
+        <!--<!ELEMENT Ads (ad)+>-->
+        <!--<!ELEMENT ad (Descrption, Address)>-->
+            <!--<!ATTLIST Ad >-->

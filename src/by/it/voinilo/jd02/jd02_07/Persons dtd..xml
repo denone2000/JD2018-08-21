@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Persons SYSTEM "Person.dtd">
+<Persons>
+
+    <Person>
+        <Email>asd@mail.ru</Email>
+        <Nickname>asd</Nickname>
+        <Password>1234</Password>
+        <Ads>
+            <Ad Rooms="2">
+                <Description>Квартира в центре г</Description>
+                <Addres> Пр.Пушкина 2-3-4</Addres>
+                <Floor>2</Floor>
+                <Floors>5</Floors>
+                <Square>21</Square>
+                <Price>21k</Price>
+            </Ad>
+            <Ad Rooms="3">
+                <Description>Квартира </Description>
+                <Addres> Jljtdcrjuj 212</Addres>
+                <Floor>4</Floor>
+                <Floors>10</Floors>
+                <Square>43</Square>
+                <Price>221k</Price>
+            </Ad>
+            <Ad Rooms="1">
+                <Description>Квартира рядом с метро </Description>
+                <Addres> qwerty</Addres>
+                <Floor>1</Floor>
+                <Floors>10</Floors>
+                <Square>25</Square>
+                <Price>221k</Price>
+            </Ad>
+        </Ads>
+    </Person>
+
+</Persons>
