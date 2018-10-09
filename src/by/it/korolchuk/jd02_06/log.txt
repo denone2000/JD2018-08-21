@@ -1,4 +1,0 @@
-input operation 5*8
-result 40.0
-input operation 2*2+5-1
-result 8.0
