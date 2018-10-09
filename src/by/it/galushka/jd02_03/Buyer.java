@@ -7,7 +7,9 @@ import java.util.concurrent.Semaphore;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
 
-    private static Semaphore semaphore = new Semaphore(20);
+    private static Semaphore buyersChoosingGoods = new Semaphore(20);
+
+    private static Semaphore basketsInMarket = new Semaphore(50);
 
     Buyer(int number) {
         super("Buyer #" + number);
@@ -20,16 +22,23 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void run() {
         enterToMarket();
-        takeBacket();
-        Map<String, Double> goods = new HashMap<>();
         try {
-            semaphore.acquire();
-             goods = chooseGoods();
+            basketsInMarket.acquire();
+            takeBacket();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            basketsInMarket.release();
         }
-        finally {
-            semaphore.release();
+        Map<String, Double> goods = new HashMap<>();
+        try {
+            buyersChoosingGoods.acquire();
+            goods = chooseGoods();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            buyersChoosingGoods.release();
         }
         goToQueue();
         Check.printCheck(this, goods);

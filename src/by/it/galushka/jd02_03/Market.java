@@ -33,9 +33,9 @@ public class Market {
                 return;
         }
 
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 5; i++) {
             Cashier cashier = new Cashier(i);
             executorService.execute(cashier);
         }

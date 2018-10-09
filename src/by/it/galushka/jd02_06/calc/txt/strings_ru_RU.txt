@@ -1,0 +1,10 @@
+message.error=ОШИБКА
+message.end=конец
+message.sizeMatrix=Размер матриц не совпадает
+message.divByZero=Деление на ноль
+message.unToCreate=Невозможно создать
+message.impossible=Невозможно выполнить операцию:
+message.sizeVector=Размер векторов не совпадает
+message.exit=Введите "конец" чтобы выйти
+message.enter=Введите «ru», «be» или «en», чтобы выбрать язык.
+input.end=конец

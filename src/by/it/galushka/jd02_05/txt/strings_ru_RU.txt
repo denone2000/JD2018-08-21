@@ -1,0 +1,8 @@
+message.hello=Привет!
+message.meet=Приятно познакомиться!
+message.name=Меня зовут Игорь.
+message.today=Сегодня:
+message.exit=Введите "конец" чтобы выйти или смените язык чтобы продолжить.
+message.enter=Введите «ru», «be» или «en», чтобы выбрать язык.
+message.warning=Данный язык не поддерживается!
+input.end=конец
