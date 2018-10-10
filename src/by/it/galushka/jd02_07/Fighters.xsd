@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://galushka.it.by/"
+        xmlns:tns="http://galushka.it.by/"
+        elementFormDefault="qualified">
+    <element name="Weight">
+        <complexType>
+            <sequence>
+                <element name="Lightweight" type="tns:Lightweight"/>
+                <element name="Middleweight" type="tns:Middleweight"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Lightweight">
+        <sequence>
+            <element
+                    name="Fighter"
+                    type="tns:Fighter"
+                    minOccurs="1"
+                    maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+
+    <complexType name="Middleweight">
+        <sequence>
+            <element
+                    name="Fighter"
+                    type="tns:Fighter"
+                    minOccurs="1"
+                    maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+
+    <complexType name="Fighter">
+        <sequence>
+            <element name="Rank" type="string"/>
+            <element name="Name" type="string"/>
+            <element name="Nickname" type="string"/>
+            <element name="From" type="string"/>
+            <element name="Age" type="int"/>
+            <element name="Summary" type="string"/>
+            <element name="Record" type="tns:Record"/>
+            <element name="Events" type="tns:Events"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Record">
+        <sequence>
+            <element name="Win" type="int"/>
+            <element name="Lose" type="int"/>
+            <element name="Draw" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Events">
+        <sequence>
+            <element
+                    name="Event"
+                    type="tns:Event"
+                    minOccurs="1"
+                    maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+
+    <complexType name="Event">
+        <sequence>
+            <element name="Date" type="string"/>
+            <element name="Enemy" type="string"/>
+            <element name="Result" type="string"/>
+        </sequence>
+    </complexType>
+
+</schema>
