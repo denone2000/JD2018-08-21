@@ -5,11 +5,11 @@ package by.it.yaroshchuk.jd02_01;
 
     private static int buyersInMarket = 0;
 
-    static void addBuyer() {
+    static synchronized void addBuyer() {
         buyersInMarket++;
     }
 
-    static void removeBuyer() {
+    static synchronized void removeBuyer() {
         buyersInMarket--;
     }
 

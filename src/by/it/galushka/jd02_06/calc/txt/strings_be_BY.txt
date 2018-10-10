@@ -1,0 +1,10 @@
+message.error=ПАМЫЛКА
+message.end=канец
+message.sizeMatrix=Памер матрыц не супадае
+message.divByZero=Дзяленне на нуль
+message.unToCreate=немагчыма стварыць
+message.impossible=Немагчыма выканаць аперацыю:
+message.sizeVector=Памер вектараў не супадае
+message.exit=Калі ласка, увядзіце "канец" каб выйсці
+message.enter=Увядзіце «ru», «be» ці «en», каб выбраць мову
+input.end=канец

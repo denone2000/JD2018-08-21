@@ -1,0 +1,3 @@
+message.welcome=ПРЫВИТАННЕ!
+message.question=Як твае справы?
+text.name=Мяне завут Марына
