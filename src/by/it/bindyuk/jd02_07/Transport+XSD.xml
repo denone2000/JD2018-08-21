@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<transport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://bindyuk.by/"
+           xsi:schemaLocation="http://bindyuk.by/ Transport.xsd"
+>
+    <transportType type="поезд">
+        <from>
+            <cityOf>Минск</cityOf>
+            <railwayStOf>Минск-Пассажирский</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Гродно</cityTo>
+            <railwayStTo>Гродно-ЖД</railwayStTo>
+        </pointTo>
+        <date>
+            <day>20</day>
+            <month>Ноябрь</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Взрослый</typeTicket>
+        <price>4.20</price>
+    </transportType>
+
+    <transportType type="поезд">
+        <from>
+            <cityOf>Витебск</cityOf>
+            <railwayStOf>Витебск-Пассажирский</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Минск</cityTo>
+            <railwayStTo>Минск-ПСЖ</railwayStTo>
+        </pointTo>
+        <date>
+            <day>13</day>
+            <month>Декабрь</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Взрослый</typeTicket>
+        <price>9.5</price>
+    </transportType>
+</transport>
