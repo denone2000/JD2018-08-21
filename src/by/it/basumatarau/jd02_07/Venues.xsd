@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://basumatarau.it.by/"
+        xmlns:tns="http://basumatarau.it.by/"
+        elementFormDefault="qualified">
+    <element name="Venues">
+        <complexType>
+            <sequence>
+                <element name="Venue"
+                         type="tns:Venue"
+                         maxOccurs="unbounded"
+                />
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Venue">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="TypeTags" type="tns:TypeTags"/>
+            <element name="Description" type="string"/>
+            <element name="Place" type="tns:Place"/>
+            <element name="OpeningHours" type="string"/>
+            <element name="OpeningDates" type="string"/>
+            <element name="ParticipationFee" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="TypeTags">
+        <sequence>
+            <element name="TypeTag"
+                     type="string"
+                     maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+    <complexType name="Place">
+        <sequence>
+            <element name="PlaceName" type="string"/>
+            <element name="Address" type="string"/>
+            <element name="IsOpenNow" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Venues SYSTEM "Venues.dtd">
+<Venues>
+    <Venue>
+        <Name>"Mozgoboynya"</Name>
+        <TypeTags>
+            <TypeTag>"quiz"</TypeTag>
+            <TypeTag>"game"</TypeTag>
+            <TypeTag>"show"</TypeTag>
+        </TypeTags>
+        <Description>"some venue description"</Description>
+        <Place>
+            <PlaceName>"Мулен Руж"</PlaceName>
+            <Address>"Ulitsa Kal'variyskaya 1, Minsk 220004"</Address>
+            <IsOpenNow>"no"</IsOpenNow>
+        </Place>
+        <OpeningHours>"20:30 - 22:00"</OpeningHours>
+        <OpeningDates>17 Oct</OpeningDates>
+        <ParticipationFee>"6.0 BYN"</ParticipationFee>
+    </Venue>
+
+    <Venue>
+        <Name>"Wine Tasting"</Name>
+        <TypeTags>
+            <TypeTag>"wine"</TypeTag>
+            <TypeTag>"fine-dining"</TypeTag>
+        </TypeTags>
+        <Description>"some venue description"</Description>
+        <Place>
+            <PlaceName>"Bistro de Luxe"</PlaceName>
+            <Address>"Ulitsa Gorodskoy Val 10, Minsk 220030"</Address>
+            <IsOpenNow>"yes"</IsOpenNow>
+        </Place>
+        <OpeningHours>"18:30 - 23:00"</OpeningHours>
+        <OpeningDates>18 Oct</OpeningDates>
+        <ParticipationFee>"10.0 BYN"</ParticipationFee>
+    </Venue>
+</Venues>
