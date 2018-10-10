@@ -14,7 +14,7 @@ public class Validator {
     public static void main(String[] args) throws IOException {
         String lang = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         String root = System.getProperty("user.dir");
-        String xml = root + "/src/by/it/korolchuk/jd02_07/Persons+XSD.xml";
+        String xml = root + "/src/by/it/korolchuk/jd02_07/Persons+XSD";
         String xsd = root + "/src/by/it/korolchuk/jd02_07/Persons.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(lang);
 
