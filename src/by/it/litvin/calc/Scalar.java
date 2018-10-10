@@ -1,6 +1,8 @@
 package by.it.litvin.calc;
 
 class Scalar extends Var {
+    private Logger logger = Logger.getInstance();
+
     public double getValue() {
         return value;
     }
@@ -23,7 +25,7 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other)throws CalcException {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double sum = this.value + otherScalar.value;
@@ -34,17 +36,18 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var sub(Var other)throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double sub = this.value - ((Scalar) other).value;
             return new Scalar(sub);
-        } else{
-            Var minus=new Scalar(-1);
+        } else {
+            Var minus = new Scalar(-1);
             return minus.mul(other).add(this);
-    }}
+        }
+    }
 
     @Override
-    public Var mul(Var other)throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double mul = this.value * ((Scalar) other).value;
             return new Scalar(mul);
@@ -53,10 +56,11 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var div(Var other)throws CalcException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
-            if (((Scalar)other).value==0)
-                throw new CalcException("Деление на ноль");
+            if (((Scalar) other).value == 0)
+                System.out.println("Деление на ноль");
+            logger.log("Div on zero");
             double div = this.value / ((Scalar) other).value;
             return new Scalar(div);
         } else

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Dota (Team)+>
+        <!ELEMENT Team (Region, Name, Birth, PlayerRoster)>
+        <!ELEMENT Region (#PCDATA)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Birth (#PCDATA)>
+        <!ELEMENT PlayerRoster (Temporary)+>
+        <!ELEMENT Temporary (Support, SemiSupport, HardLane, Mid, EasyLane)>
+        <!ELEMENT Support (#PCDATA)>
+        <!ELEMENT SemiSupport (#PCDATA)>
+        <!ELEMENT HardLane (#PCDATA)>
+        <!ELEMENT Mid (#PCDATA)>
+        <!ELEMENT EasyLane (#PCDATA)>
+
+
+

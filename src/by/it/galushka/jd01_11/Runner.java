@@ -6,7 +6,7 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
-        //Runner ListA
+        //TaskA ListA
         List<String> myList = new ListA<>();
         List<String> arList = new ArrayList<>();
         myList.add("ONE"); arList.add("ONE");
@@ -28,7 +28,7 @@ public class Runner {
         System.out.println("myList get(index 1): " + myList.get(1) +
                         "\n" + "arList get(index 1): " + arList.get(1));
 
-        //Runner ListB
+        //TaskA ListB
         List<String> myListB = new ListB<>();
         List<String> arListB = new ArrayList<>();
         List<String> arEmptyList = new ArrayList<>();
