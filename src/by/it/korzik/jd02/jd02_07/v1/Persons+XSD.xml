@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persons xmlns:xmln="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns= "http://www.by/it/korzik"
-         xmln:schemaLocation="http://www.by/it/korzik">
+         xmlns= "http://www.by.it.korzik/"
+         xmln:schemaLocation="http://www.by.it.korzik/ Persons_XSD.xsd">
     <Person>
         <Name>Peter</Name>
         <NickName>Peter</NickName>
