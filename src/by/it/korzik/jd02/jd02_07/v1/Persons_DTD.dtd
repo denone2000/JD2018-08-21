@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Name,NickName,Email,Password,Number,Ads)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT NickName (#PCDATA)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Number (#PCDATA)>
+        <!ELEMENT Ads (Ad)+>
+        <!ELEMENT Ad (Model,CarType,FuelType,FuelPer100KM,Doors,Price)>
+        <!ATTLIST Ad year CDATA #REQUIRED>
+        <!ELEMENT Model (#PCDATA)>
+        <!ELEMENT CarType (#PCDATA)>
+        <!ELEMENT FuelType (#PCDATA)>
+        <!ELEMENT FuelPer100KM (#PCDATA)>
+        <!ELEMENT Doors (#PCDATA)>
+        <!ELEMENT Price (#PCDATA)>
+

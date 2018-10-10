@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Persons SYSTEM "Persons_DTD.dtd" >
+<Persons>
+    <Person>
+        <Name>Peter</Name>
+        <NickName>Peter</NickName>
+        <Email>peter@gmail.com</Email>
+        <Password>iampeter</Password>
+        <Number>+3751929394</Number>
+        <Ads>
+            <Ad year="1996">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>diesel</FuelType>
+                <FuelPer100KM>10.3</FuelPer100KM>
+                <Doors>5</Doors>
+                <Price>2400</Price>
+            </Ad>
+            <Ad year="1999">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>92</FuelType>
+                <FuelPer100KM>8.3</FuelPer100KM>
+                <Doors>5</Doors>
+                <Price>3600</Price>
+            </Ad>
+            <Ad year="1982">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>92</FuelType>
+                <FuelPer100KM>11.8</FuelPer100KM>
+                <Doors>5</Doors>
+                <Price>1000</Price>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Name>asda</Name>
+        <NickName>sda</NickName>
+        <Email>paaaasdwwwes@gmail.com</Email>
+        <Password>qweasdzxcasdewq123</Password>
+        <Number>+78898889554</Number>
+        <Ads>
+            <Ad year="2012">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>98</FuelType>
+                <FuelPer100KM>6.9</FuelPer100KM>
+                <Doors>3</Doors>
+                <Price>24000</Price>
+            </Ad>
+            <Ad year="1996">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>diesel</FuelType>
+                <FuelPer100KM>10.3</FuelPer100KM>
+                <Doors>5</Doors>
+                <Price>2400</Price>
+            </Ad>
+            <Ad year="1996">
+                <Model>someCar</Model>
+                <CarType>sedan</CarType>
+                <FuelType>diesel</FuelType>
+                <FuelPer100KM>10.3</FuelPer100KM>
+                <Doors>5</Doors>
+                <Price>2400</Price>
+            </Ad>
+        </Ads>
+    </Person>
+</Persons>
