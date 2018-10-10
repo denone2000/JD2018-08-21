@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Films SYSTEM "Films.dtd">
+<Films>
+    <Film>
+        <Name>Расплата</Name>
+        <Genre>боевик, триллер, драмма</Genre>
+        <Country>США</Country>
+        <YearOfIssue>2016</YearOfIssue>
+        <Duration>128</Duration>
+        <Cinemas>
+            <Cinema>
+                <NameCinema>Беларусь</NameCinema>
+                <Address>ул. Романовская Слобода 28</Address>
+            </Cinema>
+            <Cinema>
+                <NameCinema>Октябрь</NameCinema>
+                <Address>пр. Независимости 73</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+    <Film>
+        <Name>Робот по имени Чаппи</Name>
+        <Genre>фантастика, боевик, триллер, драма, криминал</Genre>
+        <Country>США, ЮАР</Country>
+        <YearOfIssue>2015</YearOfIssue>
+        <Duration>120</Duration>
+        <Cinemas>
+            <Cinema>
+                <NameCinema>Аврора</NameCinema>
+                <Address>ул. Притыцкого 23</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+</Films>

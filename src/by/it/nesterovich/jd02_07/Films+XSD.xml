@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Films xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns = "http://nesterovich.it.by/"
+       xsi:schemaLocation="http://nesterovich.it.by/ Films.xsd"
+>
+    <Film>
+        <Name>Расплата</Name>
+        <Genre>боевик, триллер, драмма</Genre>
+        <Country>США</Country>
+        <YearOfIssue>2016</YearOfIssue>
+        <Duration>128</Duration>
+        <Cinemas>
+            <Cinema>
+                <Name>Беларусь</Name>
+                <Address>ул. Романовская Слобода 28</Address>
+            </Cinema>
+            <Cinema>
+                <Name>Октябрь</Name>
+                <Address>пр. Независимости 73</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+    <Film>
+        <Name>Робот по имени Чаппи</Name>
+        <Genre>фантастика, боевик, триллер, драма, криминал</Genre>
+        <Country>США, ЮАР</Country>
+        <YearOfIssue>2015</YearOfIssue>
+        <Duration>120</Duration>
+        <Cinemas>
+            <Cinema>
+                <Name>Аврора</Name>
+                <Address>ул. Притыцкого 23</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+</Films>
