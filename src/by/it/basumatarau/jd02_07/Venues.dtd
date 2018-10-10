@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT Venues (Venue)+>
+        <!ELEMENT Venue (Name, TypeTags, Description, Place, OpeningHours, OpeningDates, ParticipationFee)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT TypeTags (TypeTag)+>
+            <!ELEMENT TypeTag (#PCDATA)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT Place (PlaceName, Address, IsOpenNow)>
+            <!ELEMENT PlaceName (#PCDATA)>
+            <!ELEMENT Address (#PCDATA)>
+            <!ELEMENT IsOpenNow (#PCDATA)>
+        <!ELEMENT OpeningHours (#PCDATA)>
+        <!ELEMENT OpeningDates (#PCDATA)>
+        <!ELEMENT ParticipationFee (#PCDATA)>
