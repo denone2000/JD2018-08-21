@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Weight (Lightweight, Middleweight)>
+        <!ELEMENT Lightweight (Fighter)+>
+        <!ELEMENT Middleweight (Fighter)+>
+        <!ELEMENT Fighter (Rank, Name, Nickname, From, Age, Summary, Record, Events)>
+        <!ELEMENT Rank (#PCDATA)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT From (#PCDATA)>
+        <!ELEMENT Age (#PCDATA)>
+        <!ELEMENT Summary (#PCDATA)>
+        <!ELEMENT Record (Win, Lose, Draw)>
+        <!ELEMENT Win (#PCDATA)>
+        <!ELEMENT Lose (#PCDATA)>
+        <!ELEMENT Draw (#PCDATA)>
+        <!ELEMENT Events (Event)+>
+        <!ELEMENT Event (Date, Enemy, Result)>
+        <!ELEMENT Date (#PCDATA)>
+        <!ELEMENT Enemy (#PCDATA)>
+        <!ELEMENT Result (#PCDATA)>
