@@ -1,0 +1,7 @@
+input operation 2/0
+null
+input operation 2*2
+result 4.0
+input operation 2/0
+Деление невозможно
+null

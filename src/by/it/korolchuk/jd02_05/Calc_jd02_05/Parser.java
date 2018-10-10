@@ -1,4 +1,4 @@
-package by.it.korolchuk.jd02_06;
+package by.it.korolchuk.jd02_05.Calc_jd02_05;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,22 +6,22 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public class Parser implements Str{
 
-
+    CalcLogger logger = CalcLogger.getInstance();
 
     private Var calcOneOperation (String strOne, String strOperation, String strTwo) {
 
-        Var one = CreateVar.createVar(strOne);
+        Var one = Var.createVar(strOne);
 
-        Var two = CreateVar.createVar(strTwo);
+        Var two = Var.createVar(strTwo);
         if (strOperation.equals("=")) {
             Var.saveVar(strOne, two);
             return two;
         }
 
         if (one == null || two == null) {
-        System.out.println("Переменная не распознана");
+        System.out.println(MSG_VAR_UNDEFINED);
         return null;
         }
            switch (strOperation) {
@@ -33,7 +33,8 @@ public class Parser {
             }
 
         //TODO Create error unknown operation
-        System.out.println("Опреация не распознана");
+        System.out.println(MSG_VAR_UNDEFINED);
+        logger.log(MSG_VAR_UNDEFINED);
         return null;
     }
 
@@ -58,6 +59,7 @@ public class Parser {
 
             }
 
+
         return currentResult;
     }
 
@@ -79,7 +81,7 @@ public class Parser {
             operands.add(index, var.toString());
 
         }
-        return CreateVar.createVar(operands.get(0));
+        return Var.createVar(operands.get(0));
     }
 
 }

@@ -1,4 +1,4 @@
-package by.it.korolchuk.jd02_06;
+package by.it.korolchuk.jd02_05.Calc_jd02_05;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,7 +25,7 @@ class CalcLogger {
 
     synchronized void log (String message) {
         String path = System.getProperty("user.dir");
-        path = path.concat("/src/by/it/korolchuk/jd02_06/Calc_log/log.txt");
+        path = path.concat("/src/by/it/korolchuk/jd02_05/Calc_jd02_05/txt/log.txt");
 
         try (PrintWriter out = new PrintWriter(new FileWriter(path, true))){
             out.println(message);
