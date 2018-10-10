@@ -1,0 +1,2 @@
+words=157
+punctuation marks=32

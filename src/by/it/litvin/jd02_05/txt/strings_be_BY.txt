@@ -1,0 +1,3 @@
+message.welcome=Прывiанне!!!
+message.question=Як твае справы?
+text.name=Мяне завут Эдвард

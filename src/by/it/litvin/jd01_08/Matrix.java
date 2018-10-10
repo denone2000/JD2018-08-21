@@ -159,15 +159,24 @@ class Matrix extends Var {
             for (int i = 0; i < value.length; i++) {
                 res[i] = Arrays.copyOf(value[i], value[i].length);
             }
-            for (int i = 0; i < res.length; i++) {
-                for (int j = 0; j < res[i].length; j++) {
-                    res[i][j] = res[i][j]*((Matrix) other).getValue()[i][j];
+            //for (int i = 0; i < res.length; i++) {
+               // for (int j = 0; j < res[i].length; j++) {
+                    //res[i][j] = res[i][j]*((Matrix) other).getValue()[i][j];
+
+
+                double [][]z=new double[res.length][((Matrix) other).value[0].length] ;
+            for (int i = 0; i <res.length ; i++) {
+                for (int j = 0; j <res[i].length ; j++) {
+                    for (int k = 0; k <res.length ; k++) {
+                        z[i][j]+=res[i][k]*((Matrix) other).getValue()[k][j];
+
+                    }
+
 
                 }
 
             }
-            return new Matrix(res);
-
+            return new Matrix(z);
         }
      else if (other instanceof Vector) {
             double[][] res = Arrays.copyOf(value, value.length);
@@ -176,11 +185,20 @@ class Matrix extends Var {
             }
             for (int i = 0; i < res.length; i++) {
                 for (int j = 0; j < res[i].length; j++) {
-                    res[i][j] = res[i][j] *((Vector) other).getValue()[i];
+                    res[i][j] = res[i][j] *((Vector) other).getValue()[j];
                 }
             }
-            
-            return new Matrix(res);
+            double[] result = new double[res.length];
+            for (int i = 0; i <res.length ; i++) {
+                for (int j = 0; j <res[i].length ; j++) {
+                    result[i]+=res[i][j];
+
+                }
+
+            }
+
+
+            return new Vector(result);
         }
      else {
 

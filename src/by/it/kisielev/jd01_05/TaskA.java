@@ -24,7 +24,8 @@ public class TaskA {
         double a=1.21;
         double b=0.371;
         double y= Math.tan((a+b)*(a+b));
-        y=y-Math.sqrt(3*(a+1.5)+a*Math.pow(b,5));
+       // y=y-Math.pow(3,(a+1.5));
+        y=y+a*Math.pow(b,5);
         y=y+(b/Math.log10(a*a));
         System.out.println(y);
 
