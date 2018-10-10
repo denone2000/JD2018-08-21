@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Weight>
+<Fighters>
     <Lightweight>
         <Fighter>
             <Rank>Champion</Rank>
@@ -154,4 +154,4 @@
             </Events>
         </Fighter>
     </Middleweight>
-</Weight>
+</Fighters>

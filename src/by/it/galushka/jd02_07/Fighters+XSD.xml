@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Weight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<Fighters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://galushka.it.by/"
         xsi:schemaLocation="http://galushka.it.by/ Fighters.xsd"
 >
@@ -157,4 +157,4 @@
             </Events>
         </Fighter>
     </Middleweight>
-</Weight>
+</Fighters>

@@ -3,7 +3,7 @@
         targetNamespace="http://galushka.it.by/"
         xmlns:tns="http://galushka.it.by/"
         elementFormDefault="qualified">
-    <element name="Weight">
+    <element name="Fighters">
         <complexType>
             <sequence>
                 <element name="Lightweight" type="tns:Lightweight"/>
@@ -73,5 +73,4 @@
             <element name="Result" type="string"/>
         </sequence>
     </complexType>
-
 </schema>

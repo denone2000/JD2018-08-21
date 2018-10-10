@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE Weight SYSTEM "Fighters.dtd">
-<Weight>
+<!DOCTYPE Fighters SYSTEM "Fighters.dtd">
+<Fighters>
     <Lightweight>
         <Fighter>
             <Rank>Champion</Rank>
@@ -155,4 +155,4 @@
             </Events>
         </Fighter>
     </Middleweight>
-</Weight>
+</Fighters>

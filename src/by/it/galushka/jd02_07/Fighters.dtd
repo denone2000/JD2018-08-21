@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-        <!ELEMENT Weight (Lightweight, Middleweight)>
+        <!ELEMENT Fighters (Lightweight, Middleweight)>
         <!ELEMENT Lightweight (Fighter)+>
         <!ELEMENT Middleweight (Fighter)+>
         <!ELEMENT Fighter (Rank, Name, Nickname, From, Age, Summary, Record, Events)>
