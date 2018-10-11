@@ -43,7 +43,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         try {
             semaphore.acquire();
 
-        System.out.println("----" + this + " is choosing");
+             System.out.println("----" + this + " is choosing");
              int timeout = Util.random(500, 2000);
              Util.sleep(timeout);
              int amount = Util.random(1, 4);

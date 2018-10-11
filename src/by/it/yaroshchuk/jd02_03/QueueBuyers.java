@@ -11,7 +11,7 @@ class QueueBuyers {
     static void addBuyer (Buyer buyer) {
         try {
             buyerBlockingDeque.putLast(buyer);
-            System.out.println(buyer + " added to deque");
+            System.out.println(buyer + " added to Deque");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

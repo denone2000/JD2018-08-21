@@ -1,7 +1,6 @@
 package by.it.yaroshchuk.jd02_03;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 class Basket {
@@ -18,9 +17,8 @@ class Basket {
 
     double totalPrice(){
         double total = 0;
-        Iterator<Map.Entry<String, Double>> iterator = goodsInBasket.entrySet().iterator();
-        while (iterator.hasNext()){
-            total += iterator.next().getValue();
+        for (Map.Entry<String, Double> stringDoubleEntry : goodsInBasket.entrySet()) {
+            total += stringDoubleEntry.getValue();
         }
         return total;
     }

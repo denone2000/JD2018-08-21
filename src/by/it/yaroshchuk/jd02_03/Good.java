@@ -11,7 +11,7 @@ public class Good {
     static{
         goods.put("good1", 12.0);
         goods.put("good2", 5.2);
-        goods.put("good3", 2.0);
+        goods.put("good3", 8.0);
         goods.put("good4", 5.3);
         goods.put("good5", 0.3);
         goods.put("good6", 2.1);

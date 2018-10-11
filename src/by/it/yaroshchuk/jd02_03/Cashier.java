@@ -20,7 +20,7 @@ class Cashier implements Runnable {
 
         while (Dispathcer.checkWork() || this.number != Dispathcer.requiedWorkCash()) {
 
-            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<номер кассира " + this.number + " надо " + Dispathcer.requiedWorkCash()
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<номер кассира " + this.number + " надо " + Dispathcer.requiedWorkCash()
                     + ">>>>>>>>>>>>>>>>>>>>>>>buers in market = " + " " + Dispathcer.getBuyersInMarket() + " buyers in queue = " + QueueBuyers.getCount());
 
             Buyer buyer = QueueBuyers.pollBuyer();

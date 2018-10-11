@@ -26,7 +26,7 @@ class Dispathcer {
     }
 
     static boolean marketIsOpened() {
-        return (buyersInMarket.get() + factCount.get()) < PLAN_COUNT.get();
+        return (factCount.get() + buyersInMarket.get()) < PLAN_COUNT.get();
     }
 
     static void addCashier() {
