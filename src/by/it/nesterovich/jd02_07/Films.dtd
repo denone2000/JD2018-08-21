@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Films (Film)+>
+        <!ELEMENT Film (Name, Genre, Country, YearOfIssue, Duration, Cinemas )>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Genre (#PCDATA)>
+        <!ELEMENT Country (#PCDATA)>
+        <!ELEMENT YearOfIssue (#PCDATA)>
+        <!ELEMENT Duration (#PCDATA)>
+        <!ELEMENT Cinemas (Cinema)+>
+        <!ELEMENT Cinema (NameCinema, Address)>
+        <!ELEMENT NameCinema (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+

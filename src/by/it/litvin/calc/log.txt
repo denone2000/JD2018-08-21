@@ -1,0 +1,14 @@
+result 4.0
+result 12.0
+result 4.0
+result 24.0
+Div on zero
+Out of size
+result {{4.0, 6.0}, {6.0, 8.0}}
+result {{4.0, 6.0}, {6.0, 8.0}}
+result {{4.0, 6.0}, {6.0, 8.0}}
+result {{17.0, 8.0}, {32.0, 25.0}}
+result {{2.0, 4.0}, {16.0, 6.0}}
+result 4.0
+result 65536.0
+result 123.0

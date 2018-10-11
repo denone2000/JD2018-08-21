@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 abstract class Var implements Operation {
+    Logger logger=Logger.getInstance();
 
     private static Map<String,Var> vars=new HashMap<> ();
     static Var saveVar(String name, Var var){
@@ -29,6 +30,7 @@ abstract class Var implements Operation {
     @Override
     public Var add(Var other) throws CalcException {
         throw new CalcException("Операция сложения " + this + "+" + other + " невозможна");
+
     }
 
     @Override

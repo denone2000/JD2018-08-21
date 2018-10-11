@@ -12,9 +12,9 @@ public class Parser {
 
     private Var calcOneOperation (String strOne, String strOperation, String strTwo) {
 
-        Var one = Var.createVar(strOne);
+        Var one = CreateVar.createVar(strOne);
 
-        Var two = Var.createVar(strTwo);
+        Var two = CreateVar.createVar(strTwo);
         if (strOperation.equals("=")) {
             Var.saveVar(strOne, two);
             return two;
@@ -58,7 +58,6 @@ public class Parser {
 
             }
 
-
         return currentResult;
     }
 
@@ -80,7 +79,7 @@ public class Parser {
             operands.add(index, var.toString());
 
         }
-        return Var.createVar(operands.get(0));
+        return CreateVar.createVar(operands.get(0));
     }
 
 }
