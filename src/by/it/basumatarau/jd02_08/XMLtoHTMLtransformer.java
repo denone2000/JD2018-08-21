@@ -5,7 +5,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.File;
+import java.io.*;
 
 public class XMLtoHTMLtransformer {
 
@@ -13,15 +13,18 @@ public class XMLtoHTMLtransformer {
         String fileName=getXmlFileName("Venues.xml");
         String fileHTML=getXmlFileName("Venues.html");
 
-        try {
+        try (InputStream xslStream = new FileInputStream(getXmlFileName("VenuesXMLtoHTML.xsl"));
+             InputStream inputStream = new FileInputStream(fileName);
+             OutputStream outputStream = new FileOutputStream(fileHTML)
+        ){
             TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer transformer = tf.newTransformer(new StreamSource(getXmlFileName("VenuesXMLtoHTML.xsl")));
+            Transformer transformer = tf.newTransformer(new StreamSource(xslStream));
 
-            transformer.transform(new StreamSource(fileName),
-                    new StreamResult(fileHTML));
+            transformer.transform(new StreamSource(inputStream),
+                    new StreamResult(outputStream));
 
             System.out.println("success!");
-        } catch(TransformerException e) {
+        } catch(TransformerException | IOException e) {
             System.err.println("fail: " + e);
         }
     }
