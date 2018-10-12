@@ -17,7 +17,7 @@ public class SAX extends DefaultHandler {
 
     public static void main(String[] args) {
         String root = System.getProperty("user.dir");
-        String fileName = root + "/src/by/it/nesterovich/jd02_07/Films.xml";
+        String fileName = root + "/src/by/it/nesterovich/jd02_07/Films+XSD.xml";
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();

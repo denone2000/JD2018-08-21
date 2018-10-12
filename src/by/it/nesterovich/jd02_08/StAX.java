@@ -11,8 +11,8 @@ public class StAX {
 
     public static void main(String[] args) {
         String root = System.getProperty("user.dir");
-        String fileName = root + "/src/by/it/nesterovich/jd02_07/Films.xml";
-        try (FileInputStream input = new FileInputStream(fileName)){
+        String fileName = root + "/src/by/it/nesterovich/jd02_07/Films+XSD.xml";
+        try (FileInputStream input = new FileInputStream(fileName)) {
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             String element = "";
@@ -33,7 +33,6 @@ public class StAX {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +52,8 @@ public class StAX {
         tab = tab + "\t";
         int countAttr = reader.getAttributeCount();
         for (int i = 0; i < countAttr; i++) {
-            System.out.print(" " + reader.getAttributeLocalName(i) + "=");
+            System.out.print(" "+reader.getAttributePrefix(i)+":" + reader.getAttributeLocalName(i) + "=");
+            System.out.print("\"" + reader.getAttributeValue(i) + "\"");
         }
         System.out.println(">");
     }

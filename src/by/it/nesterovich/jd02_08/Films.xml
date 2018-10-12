@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Films>
+    <Film>
+        <Name>Accountant</Name>
+        <Genre>action, thriller, drama</Genre>
+        <Country>USA</Country>
+        <YearOfIssue>2016</YearOfIssue>
+        <Duration>128</Duration>
+        <Cinemas>
+            <Cinema>
+                <Name>Belarus</Name>
+                <Address>st. Romanov Sloboda 28</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+    <Film>
+        <Name>A robot named Chappy</Name>
+        <Genre>fiction, thriller, thriller, drama, crime</Genre>
+        <Country>USA, South Africa</Country>
+        <YearOfIssue>2015</YearOfIssue>
+        <Duration>120</Duration>
+        <Cinemas>
+            <Cinema>
+                <Name>Aurora</Name>
+                <Address>st. Pritytskogo 23</Address>
+            </Cinema>
+        </Cinemas>
+    </Film>
+</Films>
