@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Companies (Company)+>
+        <!ELEMENT Company (Name, Role, Country, AmountAgents,Agents)>
+        <!ELEMENT Name  (#PCDATA)>
+        <!ELEMENT Role (#PCDATA)>
+        <!ELEMENT Country (#PCDATA)>
+        <!ELEMENT AmountAgents (#PCDATA)>
+        <!ELEMENT Agents (Agent)+>
+        <!ELEMENT Agent (Name, Address)>
+        <!ELEMENT NameAgent (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>

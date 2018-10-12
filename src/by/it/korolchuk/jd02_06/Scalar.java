@@ -1,6 +1,7 @@
 package by.it.korolchuk.jd02_06;
 
 public class Scalar extends Var {
+    CalcLogger logger = CalcLogger.getInstance();
     public double getValue() {
         return value;
     }
@@ -52,6 +53,11 @@ public class Scalar extends Var {
     @Override
     public Var div(Var other) {
         if (other instanceof Scalar) {
+            if (((Scalar) other).value == 0) {
+                Res res = Res.INSTANCE;
+                logger.log(res.get(by.it.korolchuk.jd02_05.Calc_jd02_05.Str.MSG_DIV_IMPOSSIBLE));
+                System.out.println(res.get(by.it.korolchuk.jd02_05.Calc_jd02_05.Str.MSG_DIV_IMPOSSIBLE));
+            }
             double result = this.value / ((Scalar) other).value;
             return new Scalar(result);
         } else

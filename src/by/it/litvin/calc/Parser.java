@@ -7,7 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+    private Logger logger = Logger.getInstance();
     private final String[] priority = {"=", "+", "-", "*", "/"};
+
     private Var calcOneOperation(String strOne, String strOperation, String strTwo) throws CalcException {
         Var two = Var.createVar(strTwo);
         if (strOperation.equals("=")) {
@@ -28,8 +30,11 @@ public class Parser {
             case "/":
                 return one.div(two);
         }
-        throw new CalcException("Невозможно определить операцию");
+        logger.log("Impossible to define operation");
+        System.out.println("Невозможно определить операцию");
+        return null;
     }
+
     private int currentOperationIndex(List<String> operations) {
         int currentResult = -1;
         int currentPrior = -1;
@@ -50,7 +55,7 @@ public class Parser {
         return currentResult;
     }
 
-        Var calc(String expression) throws CalcException{
+    Var calc(String expression) throws CalcException {
         String[] tmp = expression.split(Patterns.OPERATION);
         List<String> operands = new ArrayList<>(Arrays.asList(tmp));
         List<String> operations = new ArrayList<>();
@@ -64,6 +69,7 @@ public class Parser {
             String one = operands.remove(index);
             String two = operands.remove(index);
             Var var = calcOneOperation(one, op, two);
+            assert var != null;
             operands.add(index, var.toString());
         }
         return Var.createVar(operands.get(0));

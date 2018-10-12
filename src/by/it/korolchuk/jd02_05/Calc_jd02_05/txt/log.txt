@@ -1,0 +1,9 @@
+input operation 6*8
+result 48.0
+input operation be
+null
+input operation 22/0
+Дзяленне немагчымае
+null
+input operation 3+5*5/4
+result 9.25

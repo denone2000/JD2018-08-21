@@ -1,13 +1,51 @@
-[session start]Mon Oct 8 13:38:25 MSK 2018
-[input]:  Mon Oct 8 13:35:44 MSK 2018: 2+2
-[output]: Mon Oct 8 13:35:44 MSK 2018: 4.0
-[input]:  Mon Oct 8 13:35:51 MSK 2018: 5*5
-[output]: Mon Oct 8 13:35:51 MSK 2018: 25.0
-[input]:  Mon Oct 8 13:35:52 MSK 2018: asdf
-[error]:  Mon Oct 8 13:35:52 MSK 2018: ERROR: операнд не распознан...
-[input]:  Mon Oct 8 13:38:29 MSK 2018: 3+3
-[output]: Mon Oct 8 13:38:29 MSK 2018: 6.0
-[input]:  Mon Oct 8 13:38:32 MSK 2018: 5*4
-[output]: Mon Oct 8 13:38:32 MSK 2018: 20.0
-[input]:  Mon Oct 8 13:38:34 MSK 2018: asdf
-[error]:  Mon Oct 8 13:38:34 MSK 2018: ERROR: операнд не распознан...
+[session start]Mon Oct 8 14:22:24 MSK 2018
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 5*incorrect_string
+[error]:  Mon Oct 8 14:18:09 MSK 2018: ERROR: операнд не распознан...
+[input]:  Mon Oct 8 14:18:09 MSK 2018: {{1,2},{8,3}}-2
+[output]: Mon Oct 8 14:18:09 MSK 2018: {{-1.0, 0.0}, {6.0, 1.0}}
+[input]:  Mon Oct 8 14:18:09 MSK 2018: {{1,2},{8,3}}*{1,2}
+[output]: Mon Oct 8 14:18:09 MSK 2018: {5.0, 14.0}
+[input]:  Mon Oct 8 14:18:09 MSK 2018: {{1,2},{8,3}}*{{1,2},{8,3}}
+[output]: Mon Oct 8 14:18:09 MSK 2018: {{17.0, 8.0}, {32.0, 25.0}}
+[input]:  Mon Oct 8 14:18:09 MSK 2018: {{1,2},{8,3}}+{{1,2},{8,3}}
+[output]: Mon Oct 8 14:18:09 MSK 2018: {{2.0, 4.0}, {16.0, 6.0}}
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 3.8+26.2
+[output]: Mon Oct 8 14:18:09 MSK 2018: 30.0
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 87.4-23.1
+[output]: Mon Oct 8 14:18:09 MSK 2018: 64.30000000000001
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 1.04*5.9
+[output]: Mon Oct 8 14:18:09 MSK 2018: 6.136000000000001
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 12.7*5
+[output]: Mon Oct 8 14:18:09 MSK 2018: 63.5
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 6+12
+[output]: Mon Oct 8 14:18:09 MSK 2018: 18.0
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 7*3.1
+[output]: Mon Oct 8 14:18:09 MSK 2018: 21.7
+[input]:  Mon Oct 8 14:18:09 MSK 2018: 4/8
+[output]: Mon Oct 8 14:18:10 MSK 2018: 0.5
+[input]:  Mon Oct 8 14:18:10 MSK 2018: 9-0.9
+[output]: Mon Oct 8 14:18:10 MSK 2018: 8.1
+[input]:  Mon Oct 8 14:18:10 MSK 2018: {2,3,4}*2
+[output]: Mon Oct 8 14:18:10 MSK 2018: {4.0, 6.0, 8.0}
+[input]:  Mon Oct 8 14:18:10 MSK 2018: {3,6,9}/3
+[output]: Mon Oct 8 14:18:10 MSK 2018: {1.0, 2.0, 3.0}
+[input]:  Mon Oct 8 14:18:10 MSK 2018: {2,3,4}-5
+[output]: Mon Oct 8 14:18:10 MSK 2018: {-3.0, -2.0, -1.0}
+[input]:  Mon Oct 8 14:18:10 MSK 2018: 4+{2,3,4}
+[output]: Mon Oct 8 14:18:10 MSK 2018: {6.0, 7.0, 8.0}
+[input]:  Mon Oct 8 14:18:10 MSK 2018: {2,3,4}+{5,6,7}
+[output]: Mon Oct 8 14:18:10 MSK 2018: {7.0, 9.0, 11.0}
+[input]:  Mon Oct 8 14:18:10 MSK 2018: {5,6,7}-{2,3,4}
+[output]: Mon Oct 8 14:18:10 MSK 2018: {3.0, 3.0, 3.0}
+[input]:  Mon Oct 8 14:18:58 MSK 2018: утв
+[input]:  Mon Oct 8 14:19:30 MSK 2018: fasdf
+[error]:  Mon Oct 8 14:19:30 MSK 2018: ERROR: операнд не распознан...
+[input]:  Mon Oct 8 14:19:31 MSK 2018: 43f
+[error]:  Mon Oct 8 14:19:31 MSK 2018: ERROR: операнд не распознан...
+[input]:  Mon Oct 8 14:19:34 MSK 2018: выдало
+[input]:  Mon Oct 8 14:22:31 MSK 2018: фыва
+[error]:  Mon Oct 8 14:22:31 MSK 2018: ERROR: операнд не распознан...
+[input]:  Mon Oct 8 14:22:34 MSK 2018: dfsdkjf
+[error]:  Mon Oct 8 14:22:34 MSK 2018: ERROR: операнд не распознан...
+[input]:  Mon Oct 8 14:22:38 MSK 2018: ebd
+[error]:  Mon Oct 8 14:22:38 MSK 2018: ERROR: операнд не распознан...

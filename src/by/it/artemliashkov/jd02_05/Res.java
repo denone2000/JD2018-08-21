@@ -20,7 +20,7 @@ public enum  Res {
 
     void setLocale(Locale locale){
         this.locale=locale;
-        bundle = ResourceBundle.getBundle("by.it.artemliashkov.jd02_05.res.strings", locale);
+        bundle = ResourceBundle.getBundle("by.it.artemliashkov.jd02_05res.strings", locale);
     }
 
     String get(String key){
