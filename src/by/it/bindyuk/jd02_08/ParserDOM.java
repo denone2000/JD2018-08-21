@@ -1,11 +1,7 @@
 package by.it.bindyuk.jd02_08;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,15 +23,30 @@ class ParserDOM {
     }
 
     private static void printDom(String prefix, Node node) {
-        String text = node.getNodeValue();
-        if (text != null) {
-            System.out.println(prefix + "\n" + text.trim());
+        if (node.hasChildNodes()) {
+            System.out.print(prefix + "[" + node.getNodeName());
+            if (node.hasAttributes()) {
+                NamedNodeMap attributes = node.getAttributes();
+                for (int i = 0; i < attributes.getLength(); i++) {
+                    System.out.print(" " + attributes.item(i).getNodeName()
+                            + "=" + attributes.item(i).getNodeValue());
+                }
+            }
+            System.out.println("]");
+        } else {
+            if (!node.getTextContent().trim().isEmpty()) {
+                System.out.println(prefix + node.getTextContent().trim());
+            }
         }
-
 
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
-            printDom(prefix + node.getNodeName(), childNodes.item(i));
+            prefix = "\t" + prefix;
+            printDom(prefix, childNodes.item(i));
+            prefix = prefix.substring(1);
+        }
+        if (node.hasChildNodes()) {
+            System.out.println(prefix + "[/" + node.getNodeName() + "]");
         }
     }
 }
