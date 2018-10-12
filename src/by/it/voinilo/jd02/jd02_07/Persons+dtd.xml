@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Persons SYSTEM "Persons.dtd" >
 <Persons>
 
     <Person>
@@ -6,25 +7,26 @@
         <Nickname>asd</Nickname>
         <Password>1234</Password>
         <Ads>
-            <Ad Rooms="2">
+            <Ad >
+                <Rooms>2</Rooms>
                 <Description>Квартира в центре города</Description>
-                <Addres>Пр.Пушкина 2-3-4</Addres>
+                <Adress>Пр.Пушкина 2-3-4</Adress>
                 <Floor>2</Floor>
                 <Floors>5</Floors>
                 <Square>21</Square>
                 <Price>300k</Price>
             </Ad>
-            <Ad Rooms="3">
+            <Ad ><Rooms>3</Rooms>
                 <Description>Квартира в спальном районе</Description>
-                <Addres>Центральная, 212</Addres>
+                <Adress>Центральная, 212</Adress>
                 <Floor>4</Floor>
                 <Floors>10</Floors>
                 <Square>43</Square>
                 <Price>250k</Price>
             </Ad>
-            <Ad Rooms="1">
+            <Ad ><Rooms>1</Rooms>
                 <Description>Квартира рядом с метро</Description>
-                <Addres>Победителей,24</Addres>
+                <Adress>Победителей,24</Adress>
                 <Floor>1</Floor>
                 <Floors>10</Floors>
                 <Square>25</Square>
