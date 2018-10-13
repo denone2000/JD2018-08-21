@@ -2,7 +2,7 @@ package by.it.voinilo.jd02.jd02_02;
 
 
 
-public class Cashier extends Thread implements Runnable {
+public class Cashier implements Runnable {
 private String name;
     public Cashier(int number) {
         name = "Cashier №" + number + " ";

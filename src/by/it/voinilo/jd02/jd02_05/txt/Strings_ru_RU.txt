@@ -1,0 +1,3 @@
+messages.welcome = Привет
+messages.question = Как дела?
+txt.name = Меня зовут Дмитрий

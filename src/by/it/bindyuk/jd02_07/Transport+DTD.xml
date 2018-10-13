@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE transport [
+        <!ELEMENT transport (train)+>
+        <!ELEMENT train (from,pointTo,date,typeTicket,price)>
+        <!ATTLIST train
+        firstName CDATA #REQUIRED
+        lastName CDATA #REQUIRED>
+        <!ELEMENT from (cityOf,railwayStOf)>
+        <!ELEMENT cityOf (#PCDATA)>
+        <!ELEMENT railwayStOf (#PCDATA)>
+        <!ELEMENT pointTo (cityTo,railwayStTo)>
+        <!ELEMENT cityTo (#PCDATA)>
+        <!ELEMENT railwayStTo (#PCDATA)>
+        <!ELEMENT date (day,month,year)>
+        <!ELEMENT day (#PCDATA)>
+        <!ELEMENT month (#PCDATA)>
+        <!ELEMENT year (#PCDATA)>
+        <!ELEMENT typeTicket (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        ]>
+<transport>
+    <train firstName="Евгений" lastName="Биндюк">
+        <from>
+            <cityOf>Минск</cityOf>
+            <railwayStOf>Минск-Пассажирский</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Гродно</cityTo>
+            <railwayStTo>Гродно-ЖД</railwayStTo>
+        </pointTo>
+        <date>
+            <day>20</day>
+            <month>Ноябрь</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Взрослый</typeTicket>
+        <price>4.20</price>
+    </train>
+
+    <train firstName="Анна" lastName="Дулесова">
+        <from>
+            <cityOf>Витебск</cityOf>
+            <railwayStOf>Витебск-Пассажирский</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Минск</cityTo>
+            <railwayStTo>Минск-ПСЖ</railwayStTo>
+        </pointTo>
+        <date>
+            <day>13</day>
+            <month>Декабрь</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Взрослый</typeTicket>
+        <price>9.5</price>
+    </train>
+
+</transport>

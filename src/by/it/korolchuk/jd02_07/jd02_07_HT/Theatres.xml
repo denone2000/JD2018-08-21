@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Theatres>
+    <Theatre>
+        <TheatreName>РТБД</TheatreName>
+        <Address>Кропоткина, 44</Address>
+        <Shows>
+            <Show>
+                <Name>Паляванне на сябе</Name>
+                <Genre>Не комедия</Genre>
+                <Director>Стас Жирков</Director>
+            </Show>
+            <Show>
+                <Name>Цiхi шэпат сыходзячых крокау</Name>
+                <Genre>Сон в двух действиях</Genre>
+            <Director>Шамиль Дыйканбаев</Director>
+            </Show>
+            <Show>
+                <Name>Сiндром Медэi</Name>
+                <Genre>Трагедия</Genre>
+                <Director>Екатерина Аверкова</Director>
+            </Show>
+        </Shows>
+    </Theatre>
+    <Theatre>
+        <TheatreName>АртКорпорейшн</TheatreName>
+        <Address>Октябрьская, 16</Address>
+        <Shows>
+            <Show>
+                <Name>Опиум</Name>
+                <Genre>-</Genre>
+                <Director>Александр Марченко</Director>
+            </Show>
+            <Show>
+                <Name>Крестовый поход детей</Name>
+                <Genre>экспериментальный театр</Genre>
+                <Director>Юра Диваков</Director>
+            </Show>
+            <Show>
+                <Name>С училища</Name>
+                <Genre>-</Genre>
+                <Director>Александр Марченко</Director>
+            </Show>
+        </Shows>
+    </Theatre>
+</Theatres>
