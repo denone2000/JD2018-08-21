@@ -57,22 +57,46 @@ public abstract class Var implements Operation {
         return sb.toString();
     }
 
-    private static class VarFactory{
-        Var getVar(String strVar) throws CalcException{
-            if (strVar.trim().matches(RegExPatterns.SCALAR)) return new Scalar(strVar);
-            if (strVar.trim().matches(RegExPatterns.VECTOR)) return new Vector(strVar);
-            if (strVar.trim().matches(RegExPatterns.MATRIX)) return new Matrix(strVar);
-            if (varHashMap.containsKey(strVar)) {
-                return varHashMap.get(strVar);
-            }
-            throw new CalcException(
-                    CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.VAR_EXCEPTION_OPERAND_NOT_PARSED)
-            );
+    private static abstract class VarCreator {
+        abstract Var getVar(String strVar);
+    }
+
+    private static class ScalarCreator extends VarCreator {
+        @Override
+        Var getVar(String strVar) {
+            return new Scalar(strVar);
+        }
+    }
+
+    private static class VectorCreator extends VarCreator {
+        @Override
+        Var getVar(String strVar) {
+            return new Vector(strVar);
+        }
+    }
+
+    private static class MatrixCreator extends VarCreator {
+        @Override
+        Var getVar(String strVar) {
+            return new Matrix(strVar);
         }
     }
 
     static Var createVar(String strOperand) throws CalcException{
-        return new VarFactory().getVar(strOperand);
+        VarCreator someCreator=null;
+        if (strOperand.trim().matches(RegExPatterns.SCALAR)) someCreator=new ScalarCreator();
+        if (strOperand.trim().matches(RegExPatterns.VECTOR)) someCreator=new VectorCreator();
+        if (strOperand.trim().matches(RegExPatterns.MATRIX)) someCreator=new MatrixCreator();
+        if (varHashMap.containsKey(strOperand)) {
+            return varHashMap.get(strOperand);
+        }
+        if (someCreator!=null) {
+            return someCreator.getVar(strOperand);
+        }else {
+            throw new CalcException(
+                    CalcExceptionResManager.ENTITY.getMsgByKey(I18nKeys.VAR_EXCEPTION_OPERAND_NOT_PARSED)
+            );
+        }
     }
 
     @Override
