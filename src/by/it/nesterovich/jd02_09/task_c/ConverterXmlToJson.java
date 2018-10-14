@@ -1,16 +1,20 @@
 package by.it.nesterovich.jd02_09.task_c;
 
-public class ConverterXmlToJson<T> extends Converter<T> {
+import com.google.gson.GsonBuilder;
 
-    public ConverterXmlToJson(Class<T> beanClass) {
+class ConverterXmlToJson<Bean> extends Converter<Bean> {
+
+    ConverterXmlToJson(Class<Bean> beanClass) {
         super(beanClass);
     }
 
+    //возврат текста с результатом конвертации
     @Override
     String getText() {
-        return null;
+        return new GsonBuilder().serializeNulls().setPrettyPrinting().create().toJson(getBean());
     }
 
+    //в полиморфный метод load конвертора может передаваться String text или File file для обработки.
     @Override
     void load(String text) {
 
