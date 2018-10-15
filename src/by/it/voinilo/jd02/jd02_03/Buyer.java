@@ -39,7 +39,7 @@ class Buyer extends Thread implements IBuyer {
                 e.printStackTrace();
             }
         }
-    }
+             }
 
     @Override
     public void goOut() {
