@@ -75,4 +75,10 @@ public class Persons {
         return this.person;
     }
 
+    @Override
+    public String toString() {
+        return "Persons{\n" +
+                "person=" + person +
+                "\n}";
+    }
 }

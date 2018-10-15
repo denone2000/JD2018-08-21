@@ -223,4 +223,16 @@ public class Ad {
         this.rooms = value;
     }
 
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "description='" + description + '\'' +
+                ", addsess='" + addsess + '\'' +
+                ", floor=" + floor +
+                ", floors=" + floors +
+                ", square=" + square +
+                ", price=" + price +
+                ", rooms=" + rooms +
+                '}';
+    }
 }

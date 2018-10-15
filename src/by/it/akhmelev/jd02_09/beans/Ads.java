@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Ads {
 
+
     @XmlElement(name = "Ad", required = true)
     protected List<Ad> ad;
 
@@ -71,6 +72,13 @@ public class Ads {
             ad = new ArrayList<Ad>();
         }
         return this.ad;
+    }
+
+    @Override
+    public String toString() {
+        return "Ads{" +
+                "ad=" + ad +
+                '}';
     }
 
 }

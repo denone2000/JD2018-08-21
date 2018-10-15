@@ -150,4 +150,14 @@ public class Person {
         this.ads = value;
     }
 
+    @Override
+    public String toString() {
+
+        return "Person{\n" +
+                "\nemail='" + email + '\'' +
+                "\n, nickname='" + nickname + '\'' +
+                "\n, password='" + password + '\'' +
+                "\n, ads=" + ads +
+                "\n}";
+    }
 }
