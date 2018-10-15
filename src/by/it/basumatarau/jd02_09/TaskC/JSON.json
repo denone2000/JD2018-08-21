@@ -1,0 +1,41 @@
+{
+  "venue": [
+    {
+      "name": "\"Mozgoboynya\"",
+      "typeTags": {
+        "typeTag": [
+          "\"quiz\"",
+          "\"game\"",
+          "\"show\""
+        ]
+      },
+      "description": "\"some venue description\"",
+      "place": {
+        "placeName": "\"Мулен Руж\"",
+        "address": "\"Ulitsa Kal\u0027variyskaya 1, Minsk 220004\"",
+        "isOpenNow": "\"no\""
+      },
+      "openingHours": "\"20:30 - 22:00\"",
+      "openingDates": "\"17 Oct\"",
+      "participationFee": "\"6.0 BYN\""
+    },
+    {
+      "name": "\"Wine Tasting\"",
+      "typeTags": {
+        "typeTag": [
+          "\"wine\"",
+          "\"fine-dining\""
+        ]
+      },
+      "description": "\"some venue description\"",
+      "place": {
+        "placeName": "\"Bistro de Luxe\"",
+        "address": "\"Ulitsa Gorodskoy Val 10, Minsk 220030\"",
+        "isOpenNow": "\"yes\""
+      },
+      "openingHours": "\"18:30 - 23:00\"",
+      "openingDates": "\"18 Oct\"",
+      "participationFee": "\"10.0 BYN\""
+    }
+  ]
+}
