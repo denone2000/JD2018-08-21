@@ -153,7 +153,7 @@ public class Person {
     @Override
     public String toString() {
 
-        return "Person{\n" +
+        return "Person{" +
                 "\nemail='" + email + '\'' +
                 "\n, nickname='" + nickname + '\'' +
                 "\n, password='" + password + '\'' +
