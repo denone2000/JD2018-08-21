@@ -11,20 +11,25 @@ class ConverterFactory<Bean> {
                 converter = new ConverterXmlToJson<>(beanClass);
                 File file = new File(Path.getPathFile("Films+XSD.xml"));
                 System.out.println(">>>>>>>>>>>>>>> XML <<<<<<<<<<<<<<<<");
-                PrintToConsole.printFile(file);
+                System.out.println(ReadFile.readFile(file));
                 converter.load(file);
                 File resultFile = new File(Path.getPathFile("resultJSON.json"));
                 converter.save(resultFile);
                 System.out.println(">>>>>>>>>>>>>>> JSON from XML <<<<<<<<<<<<<<<<");
-                PrintToConsole.printFile(resultFile);
+                System.out.println(ReadFile.readFile(resultFile));
                 break;
             }
             case JSON_TO_XML: {
-                converter = new ConverterXmlToJson<>(beanClass);
+                converter = new ConverterJsonToXml<>(beanClass);
                 File file = new File(Path.getPathFile("resultJSON.json"));
-                converter.load(file);
+                String text = ReadFile.readFile(file);
+                System.out.println(">>>>>>>>>>>>>>> JSON <<<<<<<<<<<<<<<<");
+                System.out.println(text);
+                converter.load(text);
                 File resultFile = new File(Path.getPathFile("resultXML.xml"));
                 converter.save(resultFile);
+                System.out.println(">>>>>>>>>>>>>>> XML from JSON <<<<<<<<<<<<<<<<");
+                System.out.println(ReadFile.readFile(resultFile));
                 break;
             }
             default: {

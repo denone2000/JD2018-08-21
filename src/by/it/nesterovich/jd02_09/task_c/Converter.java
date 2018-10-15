@@ -1,12 +1,10 @@
 package by.it.nesterovich.jd02_09.task_c;
 
-import by.it.nesterovich.jd02_09.beans.Films;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,7 +15,6 @@ abstract class Converter<Bean> {
 
     private Bean bean;
     private Class<Bean> beanClass;
-    private static Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
     Converter(Class<Bean> beanClass) {
         this.beanClass = beanClass;
@@ -27,7 +24,10 @@ abstract class Converter<Bean> {
         return bean;
     }
 
-    //создаёт файл с результатом конвертации
+    public void setBean(Bean bean) {
+        this.bean = bean;
+    }
+
     void save(File file) {
         String string = String.valueOf(file);
         try (PrintWriter bufferedWriter = new PrintWriter(
@@ -40,13 +40,10 @@ abstract class Converter<Bean> {
         }
     }
 
-    //возврат текста с результатом конвертации
     abstract String getText();
 
-    //в полиморфный метод load конвертора может передаваться String text для обработки.
     abstract void load(String text);
 
-    //в полиморфный метод load конвертора может передаваться File file для обработки.
     void load(File file) {
         try {
             JAXBContext context = JAXBContext.newInstance(beanClass);

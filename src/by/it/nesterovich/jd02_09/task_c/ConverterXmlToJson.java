@@ -8,15 +8,12 @@ class ConverterXmlToJson<Bean> extends Converter<Bean> {
         super(beanClass);
     }
 
-    //возврат текста с результатом конвертации
     @Override
     String getText() {
         return new GsonBuilder().serializeNulls().setPrettyPrinting().create().toJson(getBean());
     }
 
-    //в полиморфный метод load конвертора может передаваться String text или File file для обработки.
     @Override
     void load(String text) {
-
     }
 }

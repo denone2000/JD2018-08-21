@@ -5,23 +5,23 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-class PrintToConsole {
+class ReadFile {
 
-    static void printFile(File file) {
+    static String readFile(File file) {
         String path = String.valueOf(file);
+        StringBuilder text = new StringBuilder();
         try (BufferedReader bufferedReader =
                      new BufferedReader(
                              new FileReader(path))
         ) {
-            StringBuilder text = new StringBuilder();
             String line = bufferedReader.readLine();
             while (line != null) {
                 text.append(line).append('\n');
                 line = bufferedReader.readLine();
             }
-            System.out.println(text);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return String.valueOf(text);
     }
 }
