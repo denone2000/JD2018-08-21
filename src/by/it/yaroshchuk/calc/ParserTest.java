@@ -33,7 +33,7 @@ public class ParserTest {
         Var var = parser.calc("15/3");
         assertEquals("5.0", var.toString());
     }
-    
+
     @Test
     public void testAddVector() throws Exception {
         Parser parser = new Parser();
