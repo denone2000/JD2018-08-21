@@ -10,8 +10,8 @@ public class Path {
         return root + "/src/by/it/galushka/jd02_09/Fighters+XSD.xml";
     }
 
-    static String getXMLResult(){
+    static String getXMLResult(String fileName){
         String root = System.getProperty("user.dir");
-        return root + "/src/by/it/galushka/jd02_09/Fighters+XSD+generate.xml";
+        return root + "/src/by/it/galushka/jd02_09/" + fileName;
     }
 }

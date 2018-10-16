@@ -16,10 +16,10 @@ public class TaskA {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Object o = unmarshaller.unmarshal(new File(Path.getXML()));
             Fighters fighters = (Fighters) o;
-            System.out.println(fighters);
+//            System.out.println(fighters);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(fighters, new File(Path.getXMLResult()));
+            marshaller.marshal(fighters, new File(Path.getXMLResult("ResultTaskA.xml")));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
