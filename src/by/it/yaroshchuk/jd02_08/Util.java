@@ -4,9 +4,19 @@ public class Util {
 
     private Util(){}
 
+    static String root() {
+        return System.getProperty("user.dir");
+    }
+
     static String xml(){
-        String root = System.getProperty("user.dir");
-        String xml = root + "/src/by/it/yaroshchuk/jd02_07/resumes.xml";
-        return xml;
+        return  path() + "resumes.xml";
+    }
+
+    static String xsl(){
+        return  path() + "XSL.xml";
+    }
+
+    static String path(){
+        return root() + "/src/by/it/yaroshchuk/jd02_08/";
     }
 }

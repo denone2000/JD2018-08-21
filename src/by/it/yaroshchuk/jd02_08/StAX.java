@@ -1,9 +1,5 @@
 package by.it.yaroshchuk.jd02_08;
 
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -11,7 +7,7 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class StAX extends DefaultHandler {
+public class StAX {
 
     private static String tab = "";
     private static StringBuilder buffer = new StringBuilder();
@@ -26,24 +22,14 @@ public class StAX extends DefaultHandler {
                 int type = reader.next();
                 switch (type) {
                     case XMLStreamConstants.START_ELEMENT:
-                        int length = reader.getAttributeCount();
-                        System.out.println(tab + "<" + reader.getLocalName());
-                        for (int i = 0; i < length; i++) {
-                            String name = reader.getAttributeLocalName(i);
-                            String value = reader.getAttributeValue(i);
-                            System.out.print(" " + name + "=" + value);
-
-                        }
-                        System.out.println(">");
-                        tab = tab + "\t";
-                        buffer.setLength(0);
-                        System.out.println("START ELEMENT");
+                        start(reader);
                         break;
-                        case XMLStreamConstants.CHARACTERS:
-                            System.out.println("CARACTERS");
-                            case XMLStreamConstants.END_ELEMENT:
-                                System.out.println("END ELEMENT");
-
+                    case XMLStreamConstants.CHARACTERS:
+                        characters(reader);
+                        break;
+                    case XMLStreamConstants.END_ELEMENT:
+                        stop(reader);
+                        break;
                 }
             }
 
@@ -53,46 +39,32 @@ public class StAX extends DefaultHandler {
 
     }
 
-
-
-    @Override
-    public void startDocument() throws SAXException {
-        System.out.println("startDocument()");
-    }
-
-    @Override
-    public void endDocument() throws SAXException {
-        System.out.println("endDocument()");
-    }
-
-    @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        int length = attributes.getLength();
-        System.out.print(tab + "<" + qName );
+    private static void start(XMLStreamReader reader) {
+        int length = reader.getAttributeCount();
+        System.out.print(tab + "<" + reader.getLocalName());
         if(length > 0) {
             for (int i = 0; i < length; i++) {
-                String name = attributes.getLocalName(i);
-                String value = attributes.getValue(i);
+                String name = reader.getAttributeLocalName(i);
+                String value = reader.getAttributeValue(i);
                 System.out.print(" " + name + "=" + value);
+
             }
         }
         System.out.println(">");
-        tab = tab + "\t";
+        tab = "\t" + tab;
         buffer.setLength(0);
     }
 
-    @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    private static void characters(XMLStreamReader reader) {
+        String part = reader.getText();
+        buffer.append(part.trim());
+    }
+
+    private static void stop(XMLStreamReader reader) {
         if(buffer.length() > 0)
             System.out.println(tab + buffer.toString());
         buffer.setLength(0);
         tab = tab.substring(1);
-        System.out.println(tab + "</" + qName + ">");
-    }
-
-    @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
-        String part = new String(ch, start, length);
-        buffer.append(part.trim());
+        System.out.println(tab + "</" + reader.getLocalName() + ">");
     }
 }
