@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    private Var calcOneOperation(String strOne, String strOperation, String strTwo){
+    private Var calcOneOperation(String strOne, String strOperation, String strTwo) throws CalcException {
         Var two = Var.createVar(strTwo);
         if(strOperation.equals("=")) {
             Var.saveVar(strOne, two);
@@ -17,8 +17,7 @@ class Parser {
         Var one = Var.createVar(strOne);
         if(one == null || two == null) {
             //todo create error unknown operation
-            System.out.println("Переменная не распознана");
-            return null;
+            throw new CalcException("Переменная не распознана");
         }
 
         switch (strOperation) {
@@ -58,7 +57,7 @@ class Parser {
         return currentResult;
     }
 
-     public Var calc(String expression){
+     public Var calc(String expression) throws CalcException {
          String[] tmp = expression.split(Patterns.OPERATION);
          List<String> operands = new ArrayList<>(Arrays.asList(tmp));
          List<String> operations = new ArrayList<>();

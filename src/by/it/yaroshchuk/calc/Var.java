@@ -12,35 +12,32 @@ abstract class Var implements Operation {
     }
 
     @Override
-    public Var add(Var other){
-        System.out.println("Операция сложения невозможна");
-        return null;
+    public Var add(Var other) throws CalcException {
+        throw new CalcException("Операция сложения невозможна");
     }
 
     @Override
-    public Var sub(Var other) {
-        System.out.println("Операция вычитания невозможна");
-        return null;
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException("Операция вычитания невозможна");
     }
 
     @Override
-    public Var mul(Var other) {
-        System.out.println("Операция умножения невозможна");
-        return null;
+    public Var mul(Var other) throws CalcException {
+        throw new CalcException("Операция умножения невозможна");
     }
 
     @Override
-    public Var div(Var other) {
-        System.out.println("Операция деления невозможна");
-        return null;
+    public Var div(Var other) throws CalcException {
+        throw new CalcException("Операция деления невозможна");
     }
 
     public static Var createVar(String strVar){
         if(strVar.matches(Patterns.SCALAR)) return new Scalar(strVar);
         if(strVar.matches(Patterns.VECTOR)) return new Vector(strVar);
         if(strVar.matches(Patterns.MATRIX)) return new Matrix(strVar);
+        Var result = vars.get(strVar);
         //TODO add exception create vars
-        return null;
+        return result;
     }
 
     @Override

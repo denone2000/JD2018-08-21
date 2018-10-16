@@ -36,7 +36,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if(other instanceof Scalar){
 
             double [][] result = new double [value.length][value[0].length];
@@ -89,7 +89,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if(other instanceof Scalar){
             double [][] result = new double [value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
@@ -126,7 +126,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if(other instanceof Scalar){
             double [][] result = new double [value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
@@ -182,7 +182,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 
@@ -195,11 +195,11 @@ class Matrix extends Var {
             for (int j = 0; j < value[0].length; j++) {
                 sb.append(delimiter).append(value[i][j]);
                 if(j + 1 < value[0].length)
-                    sb.append(", ");
+                    sb.append(",");
             }
             sb.append("}");
             if(i + 1 <  value.length)
-                sb.append(", ");
+                sb.append(",");
         }
         sb.append("}");
         return sb.toString();

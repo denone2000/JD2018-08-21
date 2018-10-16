@@ -39,7 +39,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if(other instanceof Scalar){
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -50,6 +50,8 @@ class Vector extends Var {
         }
         else if(other instanceof Vector){
             double[] result = Arrays.copyOf(value, value.length);
+            if(result.length != ((Vector) other).value.length)
+                throw new CalcException("операция невозможна");
             for (int i = 0; i < result.length; i++) {
                 result[i] += ((Vector) other).value[i];
             }
@@ -61,7 +63,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if(other instanceof Scalar){
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -72,6 +74,8 @@ class Vector extends Var {
         }
         else if(other instanceof Vector){
             double[] result = Arrays.copyOf(value, value.length);
+            if(result.length != ((Vector) other).value.length)
+                throw new CalcException("операция невозможна");
             for (int i = 0; i < result.length; i++) {
                 result[i] -= ((Vector) other).value[i];
             }
@@ -82,7 +86,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if(other instanceof Scalar){
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
@@ -107,10 +111,11 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if(other instanceof Scalar){
             double[] result = Arrays.copyOf(value, value.length);
             double scalar = ((Scalar) other).getValue();
+            if(scalar == 0) throw new CalcException("деление на ноль");
             for (int i = 0; i < result.length; i++) {
                 result[i] /= scalar;
             }
@@ -126,7 +131,7 @@ class Vector extends Var {
         String delimiter ="";
         for (double element : value) {
             sb.append(delimiter).append(element);
-            delimiter = ", ";
+            delimiter = ",";
         }
         sb.append("}");
         return sb.toString();
