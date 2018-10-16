@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Dota>
+    <Team>
+        <Region>EU</Region>
+        <Name>OG</Name>
+        <Birth>2015</Birth>
+        <PlayerRoster>
+            <Temporary>
+                <Support>NOtail</Support>
+                <SemiSupport>JerAx</SemiSupport>
+                <HardLane>Seb</HardLane>
+                <Mid>Topson</Mid>
+                <EasyLane>ana</EasyLane>
+            </Temporary>
+        </PlayerRoster>
+    </Team>
+    <Team>
+        <Region>RU</Region>
+        <Name>VirtusPro</Name>
+        <Birth>2012</Birth>
+        <PlayerRoster>
+            <Temporary>
+                <Support>Solo</Support>
+                <SemiSupport>Rodjer</SemiSupport>
+                <HardLane>pasha</HardLane>
+                <Mid>Noone</Mid>
+                <EasyLane>RAMZES</EasyLane>
+            </Temporary>
+        </PlayerRoster>
+    </Team>
+</Dota>

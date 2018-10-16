@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.by.it.korzik/"
+        xmlns:tns="http://www.by.it.korzik/"
+        elementFormDefault="qualified">
+    <element name="Persons">
+        <complexType>
+            <sequence>
+                <element name="Person"
+                         type="tns:Person"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Person">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="NickName" type="string"/>
+            <element name="Email" type="string"/>
+            <element name="Password" type="string"/>
+            <element name="Number" type="string"/>
+            <element name="Ads" type="tns:Ads"/>
+        </sequence>
+    </complexType>
+    <complexType name="Ads">
+        <sequence>
+            <element name="Ad"
+                     type="tns:Ad"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Ad">
+        <sequence>
+        <element name="Model" type="string"/>
+            <element name="CarType" type="string"/>
+            <element name="FuelType" type="string"/>
+            <element name="FuelPer100KM" type="float"/>
+            <element name="Doors" type="positiveInteger"/>
+            <element name="Price" type="positiveInteger"/>
+        </sequence>
+        <attribute name="year" type="positiveInteger" use="required"/>
+    </complexType>
+</schema>

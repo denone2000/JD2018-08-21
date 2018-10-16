@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<transport>
+    <transportType type="поезд">
+        <from>
+            <cityOf>Minsk</cityOf>
+            <railwayStOf>Minsk-PSZ</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Grodno</cityTo>
+            <railwayStTo>Grodno-PSZ</railwayStTo>
+        </pointTo>
+        <date>
+            <day>20</day>
+            <month>November</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Adult</typeTicket>
+        <price>4.20</price>
+    </transportType>
+
+    <transportType type="поезд">>
+        <from>
+            <cityOf>Vetiebsk</cityOf>
+            <railwayStOf>Vitiebsk-PSZ</railwayStOf>
+        </from>
+        <pointTo>
+            <cityTo>Minsk</cityTo>
+            <railwayStTo>Minsk-PSZ</railwayStTo>
+        </pointTo>
+        <date>
+            <day>13</day>
+            <month>December</month>
+            <year>2018</year>
+        </date>
+        <typeTicket>Adult</typeTicket>
+        <price>9.5</price>
+    </transportType>
+
+</transport>

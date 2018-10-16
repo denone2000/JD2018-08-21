@@ -11,7 +11,7 @@ class RegExPatterns {
 
     static final String SEPARATOR = "(("+OPENING_SEPARATOR+")|("+CLOSING_SEPARATOR+"))";
     static final String LITERAL = "("+SCALAR+")|("+VECTOR+")|("+MATRIX+")";
-    static final String IDENTIFIER = "[\\w_]+";
+    static final String IDENTIFIER = "[\\w_[А-Яа-яЁё]]+";
     static final String TOKEN = "("+LITERAL+")|("+OPERATOR+")|("+SEPARATOR+")|("+IDENTIFIER+")";
     static final String SIMPLE_TOKEN = "((-)?\\d+[.]?\\d*)|(\\{\\s?((((-)?\\d+[.]?\\d*)(,\\s?)?)+)\\s?\\})|\\{\\s?((\\{\\s?((((-)?\\d+[.]?\\d*)(,\\s?)?)+)\\s?\\})(,\\s?)?)+\\s?\\}|(((?<=([-*+/\\w{}]\\s?))[-+=*/])|(^[-+=*/]))|([\\w_]+)";
 }

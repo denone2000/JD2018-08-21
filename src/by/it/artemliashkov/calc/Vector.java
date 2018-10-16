@@ -2,7 +2,7 @@ package by.it.artemliashkov.calc;
 
 import java.util.Arrays;
 
-class Vector extends Var{
+class Vector extends Var {
 
     private double[] value;
 
@@ -39,11 +39,11 @@ class Vector extends Var{
             if (((Vector) other).value.length!=this.value.length){
                 throw new CalcException("Невозможно сложить вектора разной длины");
             }
-                double[] res = Arrays.copyOf(value, value.length);
-                for (int i = 0; i < res.length; i++) {
-                    res[i] = res[i] + ((Vector) other).value[i];
-                }
-                return new Vector(res);
+            double[] res = Arrays.copyOf(value, value.length);
+            for (int i = 0; i < res.length; i++) {
+                res[i] = res[i] + ((Vector) other).value[i];
+            }
+            return new Vector(res);
 
 
         } else {
@@ -105,7 +105,7 @@ class Vector extends Var{
             }
             return new Vector(res);
         } else {
-            return super.add(other);
+            return super.div(other);
         }
     }
 

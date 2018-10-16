@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Theatres (Theatre)+>
+        <!ELEMENT Theatre (TheatreName, Address, Shows)>
+        <!ELEMENT TheatreName (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+        <!ELEMENT Shows (Show)+>
+        <!ELEMENT Show (Name, Genre, Director)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Genre (#PCDATA)>
+        <!ELEMENT Director (#PCDATA)>
+
+
+

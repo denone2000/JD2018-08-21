@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT transport (transportType)+>
+        <!ELEMENT transportType (from,pointTo,date,typeTicket,price)>
+        <!ATTLIST transportType
+                type CDATA #REQUIRED>
+        <!ELEMENT from (cityOf,railwayStOf)>
+        <!ELEMENT cityOf (#PCDATA)>
+        <!ELEMENT railwayStOf (#PCDATA)>
+        <!ELEMENT pointTo (cityTo,railwayStTo)>
+        <!ELEMENT cityTo (#PCDATA)>
+        <!ELEMENT railwayStTo (#PCDATA)>
+        <!ELEMENT date (day,month,year)>
+        <!ELEMENT day (#PCDATA)>
+        <!ELEMENT month (#PCDATA)>
+        <!ELEMENT year (#PCDATA)>
+        <!ELEMENT typeTicket (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>

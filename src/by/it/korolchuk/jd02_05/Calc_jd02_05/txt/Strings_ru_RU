@@ -1,0 +1,5 @@
+messages.undefined=Переменная не распознана
+messages.add=Сложение невозможно
+messages.sub=Вычитание невозможно
+messages.mul=Умножение невозможно
+messages.div=Деление невозможно
