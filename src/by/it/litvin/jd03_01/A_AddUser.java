@@ -7,11 +7,6 @@ import java.sql.*;
 
 public class A_AddUser {
 
-    static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
-            "?useUnicode=true&characterEncoding=UTF-8";
-    static String USER_DB = "root";
-    static String PASSWORD_DB = "";
-
     static void addUser(String login, String password, String email, int roles_id) {
 
         try {
@@ -27,10 +22,14 @@ public class A_AddUser {
             System.out.println("Error loading driver: " + e);
         }
 
+        String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
+                "?useUnicode=true&characterEncoding=UTF-8";
+        String USER_DB = "root";
+        String PASSWORD_DB = "";
         try (Connection connection =
                      DriverManager.getConnection
-                             (URL_DB, USER_DB, PASSWORD_DB)){;
-             Statement statement = connection.createStatement();
+                             (URL_DB, USER_DB, PASSWORD_DB)){
+            Statement statement = connection.createStatement();
 
 
             statement.executeUpdate(

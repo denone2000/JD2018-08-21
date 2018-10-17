@@ -6,11 +6,6 @@ import java.sql.*;
 
 public class B_AddRoles {
 
-    static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
-            "?useUnicode=true&characterEncoding=UTF-8";
-    static String USER_DB = "root";
-    static String PASSWORD_DB = "";
-
     static void addRoles(String roleName) {
 
         try {
@@ -26,6 +21,10 @@ public class B_AddRoles {
             System.out.println("Error loading driver: " + e);
         }
 
+        String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
+                "?useUnicode=true&characterEncoding=UTF-8";
+        String USER_DB = "root";
+        String PASSWORD_DB = "";
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB)){
