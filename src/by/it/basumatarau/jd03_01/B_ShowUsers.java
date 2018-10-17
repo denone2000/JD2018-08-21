@@ -1,11 +1,13 @@
 package by.it.basumatarau.jd03_01;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class B_ShowUsers {
 
     static void showUsers(){
-        String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
+        String URL_DB = "jdbc:mysql://127.0.0.1:2016/basumatarau" +
                 "?useUnicode=true&characterEncoding=UTF-8";
         String USER_DB = "root";
         String PASSWORD_DB = "";
@@ -22,17 +24,24 @@ class B_ShowUsers {
             Statement statement = connection.createStatement();
             System.out.println("User list:");
 
-            System.out.println(statement.isClosed());
+            HashMap<Integer, String> roles= new HashMap<>();
+            ResultSet usrRoles = statement.executeQuery("SELECT * FROM `Roles`;");
+            while(usrRoles.next()) {
+                roles.put(usrRoles.getInt("ID"), usrRoles.getString("Role"));
+            }
 
-            ResultSet resultSet = statement.executeQuery("select * from Users;");
-
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM `Users`;");
             while(resultSet.next()){
-                int userID = resultSet.getInt("ID");
+                String currUsrRole="n/a";
+                for (Map.Entry<Integer, String> role : roles.entrySet()) {
+                    if(role.getKey()==resultSet.getInt("Roles_ID")){
+                        currUsrRole=role.getValue();
+                        break;
+                    }
+                }
+
                 System.out.printf("Role: %s, username: %s, email: %s",
-                        statement.executeQuery(
-                                String.format("SELECT * FROM `Roles` WHERE `ID`=%d;",
-                                        userID)
-                        ).getString("Role"),
+                        currUsrRole,
                         resultSet.getString("Login"),
                         resultSet.getString("Email")+
                                 "\n");
