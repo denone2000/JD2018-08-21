@@ -5,19 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TaskC_Reset {
+public class C_Reset {
 
     static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
             "?useUnicode=true&characterEncoding=UTF-8";
     static String USER_DB = "root";
     static String PASSWORD_DB = "";
 
-    public static void main(String[] args) {
+    static void reset() {
         try(Connection connection=
                     DriverManager.getConnection(URL_DB,USER_DB,PASSWORD_DB);
             Statement statement=connection.createStatement();){
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `litvin` ;");
-            System.out.println("Schema is deleted");
+//            statement.executeUpdate("DROP SCHEMA IF EXISTS `litvin` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `litvin`.`form` ;");
+//            statement.executeUpdate("DROP TABLE IF EXISTS `litvin`.`roles` ;");
+//            statement.executeUpdate("DROP TABLE IF EXISTS `litvin`.`users` ;");
+            System.out.println("Schema or choosen table is deleted");
         }catch (SQLException e){
             e.printStackTrace();
         }

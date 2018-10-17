@@ -4,14 +4,14 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-public class TaskC_Init {
+public class C_Init {
 
     static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
             "?useUnicode=true&characterEncoding=UTF-8";
     static String USER_DB = "root";
     static String PASSWORD_DB = "";
 
-    public static void main(String[] args) {
+    static void init(){
 
         try {
             Driver driver = new FabricMySQLDriver();
