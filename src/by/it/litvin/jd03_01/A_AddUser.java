@@ -5,7 +5,7 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.*;
 
 
-public class A_AddUser {
+ class A_AddUser {
 
     static void addUser(String login, String password, String email, int roles_id) {
 

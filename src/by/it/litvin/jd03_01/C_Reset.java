@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Reset {
+ class C_Reset {
 
     static void reset() {
         String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +

@@ -4,14 +4,9 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-public class A_AddData {
+ class A_AddData {
 
-    static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
-            "?useUnicode=true&characterEncoding=UTF-8";
-    static String USER_DB = "root";
-    static String PASSWORD_DB = "";
-
-    static void addData(String address, String description, int age, String information, String aim, int users_id) {
+     static void addData(String address, String description, int age, String information, String aim, int users_id) {
         try {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
@@ -25,10 +20,14 @@ public class A_AddData {
             System.out.println("Error loading driver: " + e);
         }
 
-        try (Connection connection =
+        String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
+                "?useUnicode=true&characterEncoding=UTF-8";
+        String USER_DB = "root";
+         String PASSWORD_DB = "";
+         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB)) {
-            ;
+
             Statement statement = connection.createStatement();
 
 

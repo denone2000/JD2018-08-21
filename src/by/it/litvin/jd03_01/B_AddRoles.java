@@ -4,7 +4,7 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-public class B_AddRoles {
+ class B_AddRoles {
 
     static void addRoles(String roleName) {
 
