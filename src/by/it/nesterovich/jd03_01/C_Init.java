@@ -4,24 +4,19 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-public class C_Init {
+class C_Init {
 
-    public static void main(String[] args) {
+    static void cInit() {
         try {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         try (Connection connection =
                      DriverManager.getConnection
                              (CN_DB.URL_DB, CN_DB.USER_DB, CN_DB.PASSWORD_DB);
              Statement statement = connection.createStatement()) {
-
-            if (!connection.isClosed()) {
-                System.out.println("Соединение установлено");
-            }
 
             statement.executeUpdate(
                     "DROP SCHEMA IF EXISTS `nesterovich` ;"
@@ -162,9 +157,6 @@ public class C_Init {
 
             statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 12345678, 5.2, 2, 1, 1);");
 
-            connection.close();
-            if (connection.isClosed())
-                System.out.println("Соединение прервано");
         } catch (Exception e) {
             e.printStackTrace();
         }
