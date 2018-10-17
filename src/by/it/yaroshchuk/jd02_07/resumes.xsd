@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://yaroshchuk.it.by/"
+        xmlns:tns="http://yaroshchuk.it.by/"
+        elementFormDefault="qualified">
+    <element name="resumes">
+        <complexType>
+            <sequence>
+                <element name="resume"
+                         type="tns:resume"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="resume">
+        <sequence>
+            <element name="fullName" type="string" />
+            <element name="dob" type="date"/>
+            <element name="address" type="tns:address"/>
+            <element name="phone" type="string" maxOccurs="unbounded"/>
+            <element name="education" type="tns:education" maxOccurs="unbounded"/>
+            <element name="experience" type="tns:experience" maxOccurs="unbounded"/>
+            <element name="comments" type="string"/>
+        </sequence>
+        <attribute name="login" type="tns:Login" use="required"/>
+    </complexType>
+    <simpleType name="Login">
+        <restriction base="ID"/>
+    </simpleType>
+
+    <complexType name="address">
+        <sequence>
+            <element name="country" type="string"/>
+            <element name="city" type="string"/>
+            <element name="street" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="education">
+        <sequence>
+            <element name="institution" type="string"/>
+            <element name="degree">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="degree1"/>
+                        <enumeration value="degree2"/>
+                        <enumeration value="degree3"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="startYear" type="gYear"/>
+            <element name="graduateYear" type="gYear"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="experience">
+        <sequence>
+            <element name="workplace" type="string"/>
+            <element name="post" type="string"/>
+            <element name="workPeriodStart" type="gYearMonth"/>
+            <element name="workPeriodEnd" type="gYearMonth"/>
+        </sequence>
+    </complexType>
+</schema>
