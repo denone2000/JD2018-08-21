@@ -29,8 +29,11 @@ public class TaskC_Init {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement=connection.createStatement();
 
-        ) { Statement statement=connection.createStatement();
+        ) { if (!connection.isClosed())
+            System.out.println("Connection established");
+
             statement.executeUpdate("DROP SCHEMA IF EXISTS `litvin` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `litvin` DEFAULT CHARACTER SET utf8 ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `litvin`.`roles` (\n" +
@@ -68,7 +71,7 @@ public class TaskC_Init {
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;\n");
-            statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
+            statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.ru', 1);");

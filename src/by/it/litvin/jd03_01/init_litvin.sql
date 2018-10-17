@@ -74,7 +74,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `litvin`;
-INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');
+INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');
 INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');
 INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');
 
