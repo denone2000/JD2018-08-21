@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.litvin.it.by/"
+        xmlns:tns="http://beans.jd02_09.litvin.it.by/"
+        elementFormDefault="qualified">
+    <element name="Dota">
+        <complexType>
+            <sequence>
+                <element name="Team"
+                         type="tns:Team"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Team">
+        <sequence>
+            <element name="Region" type="string"/>
+            <element name="Name" type="string"/>
+            <element name="Birth" type="positiveInteger"/>
+            <element name="PlayerRoster" type="tns:PlayerRoster"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="PlayerRoster">
+        <sequence>
+            <element
+                    name="Temporary"
+                    type="tns:Temporary"
+                    maxOccurs="unbounded"
+            />
+        </sequence>
+    </complexType>
+
+    <complexType name="Temporary">
+        <sequence>
+            <element name="Support" type="string"/>
+            <element name="SemiSupport" type="string"/>
+            <element name="HardLane" type="string"/>
+            <element name="Mid" type="string"/>
+            <element name="EasyLane" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

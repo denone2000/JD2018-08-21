@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Theatres>
+    <Theatre>
+        <TheatreName>РТБД</TheatreName>
+        <Address>Кропоткина, 44</Address>
+
+        <Show>
+            <Name>Паляванне на сябе</Name>
+            <Genre>Не комедия</Genre>
+            <Director>Стас Жирков</Director>
+        </Show>
+    </Theatre>
+    <Theatre>
+        <TheatreName>АртКорпорейшн</TheatreName>
+        <Address>Октябрьская, 16</Address>
+        <Show>
+            <Name>Крестовый поход детей</Name>
+            <Genre>Реальная средневекова история</Genre>
+            <Director>Юра Диваков</Director>
+        </Show>
+    </Theatre>
+    <Theatre>
+        <TheatreName>Молодежный театр</TheatreName>
+        <Address>Козлова, 17</Address>
+        <Show>
+            <Name>Человек из Подольска</Name>
+            <Genre>Оперативная разработка в 1-м действии</Genre>
+            <Director>Дмитрий Богославский</Director>
+        </Show>
+    </Theatre>
+</Theatres>

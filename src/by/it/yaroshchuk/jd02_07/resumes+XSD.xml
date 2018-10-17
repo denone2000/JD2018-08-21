@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resumes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://yaroshchuk.it.by/"
+        xsi:schemaLocation="http://yaroshchuk.it.by/ resumes.xsd">
+    <resume login="login1">
+        <fullName>Full Name</fullName>
+        <dob>1990-05-12</dob>
+
+        <address>
+            <country>Country</country>
+            <city>City</city>
+            <street>Street 51</street>
+        </address>
+
+        <phone>45845654</phone>
+
+        <education>
+            <institution>Institution name</institution>
+            <degree>degree1</degree>
+            <startYear>2010</startYear>
+            <graduateYear>2015</graduateYear>
+        </education>
+
+        <experience>
+            <workplace>Workplace</workplace>
+            <post>Post</post>
+            <workPeriodStart>2008-10</workPeriodStart>
+            <workPeriodEnd>2010-10</workPeriodEnd>
+        </experience>
+
+        <comments>Some comments</comments>
+    </resume>
+
+    <resume login="login2">
+        <fullName>Full Name2</fullName>
+        <dob>1992-05-12</dob>
+
+        <address>
+            <country>Country2</country>
+            <city>City2</city>
+            <street>Street 52</street>
+        </address>
+
+        <phone>2222222222</phone>
+
+        <education>
+            <institution>Institution name2</institution>
+            <degree>degree2</degree>
+            <startYear>2012</startYear>
+            <graduateYear>2017</graduateYear>
+        </education>
+
+        <experience>
+            <workplace>Workplace2</workplace>
+            <post>Post2</post>
+            <workPeriodStart>2008-10</workPeriodStart>
+            <workPeriodEnd>2010-10</workPeriodEnd>
+        </experience>
+
+        <comments>Some comments2</comments>
+    </resume>
+</resumes>
