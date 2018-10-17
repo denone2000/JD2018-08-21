@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Companies>
+    <Company>
+        <Name>TASK company</Name>
+        <Role>Insurance</Role>
+        <Country>Belarus</Country>
+        <AmountAgents>3278</AmountAgents>
+        <Agents>
+            <Agent>
+                <Name>Vera Nikolaevna</Name>
+                <Address>st. Ostroshitskaya 11</Address>
+            </Agent>
+            <Agent>
+                <Name>Anna Sergeyevna</Name>
+                <Address>73 Independence Ave.</Address>
+            </Agent>
+        </Agents>
+    </Company>
+    <Company>
+        <Name>Belneftestrah Company</Name>
+        <Role>Insurance</Role>
+        <Country>Belarus</Country>
+        <AmountAgents>612</AmountAgents>
+        <Agents>
+            <Agent>
+                <Name>Galina Alexandrova</Name>
+                <Address>st. Gorodetskaya 36</Address>
+            </Agent>
+            <Agent>
+                <Name>Inna Tarasovna</Name>
+                <Address>st. Akademika Kuprevich 27</Address>
+            </Agent>
+        </Agents>
+    </Company>
+</Companies>
