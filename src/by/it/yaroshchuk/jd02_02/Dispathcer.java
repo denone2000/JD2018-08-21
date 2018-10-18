@@ -6,10 +6,10 @@ class Dispathcer {
 
 
 
-    private static int buyersInMarket = 0;
-    private static int factCount = 0;
-    private static int PLAN_COUNT = 0;
-    private static int cashierWork = 0;
+    private static volatile int buyersInMarket = 0;
+    private static volatile int factCount = 0;
+    private static final int PLAN_COUNT = 100;
+    private static volatile int cashierWork = 0;
 
 
     static synchronized void addBuyer() {
@@ -25,7 +25,7 @@ class Dispathcer {
         return buyersInMarket;
     }
 
-    static boolean marketIsOpened() {
+    static synchronized boolean marketIsOpened() {
         return (buyersInMarket + factCount) < PLAN_COUNT;
     }
 

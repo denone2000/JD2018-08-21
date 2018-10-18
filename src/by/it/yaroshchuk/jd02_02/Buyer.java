@@ -35,7 +35,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void chooseGoods() {
         System.out.println("----" + this + " is choosing");
-        int timeout = Util.random(500, 2000);
+        int timeout = Util.random(200, 500);
 
         Util.sleep(timeout);
 
@@ -74,6 +74,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void goOut() {
+
         System.out.println(this + " OUT");
         Dispathcer.removeBuyer();
     }
