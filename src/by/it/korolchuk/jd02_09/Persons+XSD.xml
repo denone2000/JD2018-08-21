@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Persons xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xmlns = "http://beans.jd02_09.korolchuk.it.by/"
+    xsi:schemaLocation="http://beans.jd02_09.korolchuk.it.by/ Persons.xsd">
+        <Person>
+            <Email>123@mail.ru</Email>
+            <Nickname>абырвалг</Nickname>
+            <Password>1236578</Password>
+            <Ads>
+                <Ad Rooms = "2">
+                    <Description>Квартира в центре города</Description>
+                    <Adress>Проспект Независимости, д.33б кв.25</Adress>
+                    <Floor>2</Floor>
+                    <Floors>5</Floors>
+                    <Square>55</Square>
+                    <Price>666</Price>
+                </Ad>
+                <Ad Rooms = "1">
+                    <Description>Квартира не в центре города</Description>
+                    <Adress>Проспект Мухина, д.2 кв.1</Adress>
+                    <Floor>1</Floor>
+                    <Floors>1</Floors>
+                    <Square>25</Square>
+                    <Price>100</Price>
+                </Ad>
+            </Ads>
+        </Person>
+        <Person>
+            <Email>456@mail.ru</Email>
+            <Nickname>главрыба</Nickname>
+            <Password>87654321</Password>
+            <Ads>
+                <Ad Rooms = "3">
+                    <Description>Квартира в Шабанах</Description>
+                    <Adress>Проспект Партизанский, д.165 кв.12</Adress>
+                    <Floor>4</Floor>
+                    <Floors>12</Floors>
+                    <Square>70</Square>
+                    <Price>500</Price>
+                </Ad>
+                <Ad Rooms = "3">
+                    <Description>Дом в Новинках</Description>
+                    <Adress>Улица Выготского, д.6</Adress>
+                    <Floor>1</Floor>
+                    <Floors>1</Floors>
+                    <Square>60</Square>
+                    <Price>400</Price>
+                </Ad>
+            </Ads>
+        </Person>
+    </Persons>
