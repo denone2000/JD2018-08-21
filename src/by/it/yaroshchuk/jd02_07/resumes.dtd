@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT resumes (resume)+>
+        <!ELEMENT resume (fullName, dob, address, phone, email, education, experience, comments)>
+        <!ATTLIST resume
+                login ID #REQUIRED>
+        <!ELEMENT fullName (#PCDATA)>
+        <!ELEMENT dob (#PCDATA)>
+        <!ELEMENT address (country, city, street)>
+        <!ELEMENT country (#PCDATA)>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT street (#PCDATA)>
+        <!ELEMENT phone (#PCDATA)+>
+        <!ELEMENT email (#PCDATA)>
+        <!ELEMENT education (institution, degree, startYear, graduateYear)+>
+        <!ELEMENT institution (#PCDATA)>
+        <!ELEMENT degree (#PCDATA)>
+        <!ELEMENT startYear (#PCDATA)>
+        <!ELEMENT graduateYear (#PCDATA)>
+        <!ELEMENT experience (workplace, post, workPeriodStart, workPeriodEnd)*>
+        <!ELEMENT workplace (#PCDATA)>
+        <!ELEMENT post (#PCDATA)>
+        <!ELEMENT workPeriodStart (#PCDATA)>
+        <!ELEMENT comments (#PCDATA)>
+        <!ELEMENT workPeriodEnd (#PCDATA)>

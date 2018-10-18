@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Fighters xmlns="http://beans.jd02_09.galushka.it.by/">
+    <Lightweight>
+        <Fighter>
+            <Rank>Champion</Rank>
+            <Name>Khabib Nurmagomedov</Name>
+            <Nickname>The Eagle</Nickname>
+            <From>Dagestan Russia</From>
+            <Age>30</Age>
+            <Summary>Wrestling</Summary>
+            <Record>
+                <Win>27</Win>
+                <Lose>0</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Oct 6, 2018</Date>
+                    <Enemy>Conor McGregor</Enemy>
+                    <Result>Win, Submission</Result>
+                </Event>
+                <Event>
+                    <Date>Apr 7, 2018</Date>
+                    <Enemy>Al Iaquinta</Enemy>
+                    <Result>Win, Decision - Unanimous</Result>
+                </Event>
+            </Events>
+        </Fighter>
+        <Fighter>
+            <Rank>1</Rank>
+            <Name>Tony Ferguson</Name>
+            <Nickname>El Cucuy</Nickname>
+            <From>Oxnard, California United States</From>
+            <Age>34</Age>
+            <Summary>Wrestling, Boxing, Ground and Pound, Conditioning</Summary>
+            <Record>
+                <Win>26</Win>
+                <Lose>3</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Oct 6, 2018</Date>
+                    <Enemy>Anthony Pettis</Enemy>
+                    <Result>Win, R2 KO/TKO</Result>
+                </Event>
+                <Event>
+                    <Date>Oct 7, 2017</Date>
+                    <Enemy>Kevin Lee</Enemy>
+                    <Result>Win, R3 Submission</Result>
+                </Event>
+            </Events>
+        </Fighter>
+        <Fighter>
+            <Rank>2</Rank>
+            <Name>Conor McGregor</Name>
+            <Nickname>The Notorious</Nickname>
+            <From>Dublin Ireland</From>
+            <Age>30</Age>
+            <Summary>My Belief</Summary>
+            <Record>
+                <Win>21</Win>
+                <Lose>4</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Oct 6, 2018</Date>
+                    <Enemy>Khabib Nurmagomedov</Enemy>
+                    <Result>Lose, R4 Submission</Result>
+                </Event>
+                <Event>
+                    <Date>Nov 12, 2016</Date>
+                    <Enemy>Eddie Alvarez</Enemy>
+                    <Result>Win, R2 KO/TKO</Result>
+                </Event>
+            </Events>
+        </Fighter>
+    </Lightweight>
+    <Middleweight>
+        <Fighter>
+            <Rank>Champion</Rank>
+            <Name>Robert Whittaker</Name>
+            <Nickname>The Reaper</Nickname>
+            <From>Middlemore New Zealand</From>
+            <Age>27</Age>
+            <Summary>Unorthodox striking</Summary>
+            <Record>
+                <Win>21</Win>
+                <Lose>4</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Jun 9, 2018</Date>
+                    <Enemy>Yoel Romero</Enemy>
+                    <Result>Win, R5 Decision - Split</Result>
+                </Event>
+                <Event>
+                    <Date>Jul 8, 2017</Date>
+                    <Enemy>Yoel Romero</Enemy>
+                    <Result>Win, R5 Decision - Unanimous</Result>
+                </Event>
+            </Events>
+        </Fighter>
+        <Fighter>
+            <Rank>1</Rank>
+            <Name>Yoel Romero</Name>
+            <Nickname>Soldier of God</Nickname>
+            <From>Pinar del Rio Cuba</From>
+            <Age>41</Age>
+            <Summary>Wrestling, BJJ</Summary>
+            <Record>
+                <Win>13</Win>
+                <Lose>3</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Jun 9, 2018</Date>
+                    <Enemy>Robert Whittaker</Enemy>
+                    <Result>Lose, R5 Decision - Split</Result>
+                </Event>
+                <Event>
+                    <Date>Feb 10, 2018</Date>
+                    <Enemy>Luke Rockhold</Enemy>
+                    <Result>Win, R3 KO/TKO</Result>
+                </Event>
+            </Events>
+        </Fighter>
+        <Fighter>
+            <Rank>2</Rank>
+            <Name>Luke Rockhold</Name>
+            <Nickname>no</Nickname>
+            <From>Santa Cruz, California United States</From>
+            <Age>33</Age>
+            <Summary>Kickboxing, jiu jitsu, wrestling</Summary>
+            <Record>
+                <Win>16</Win>
+                <Lose>4</Lose>
+                <Draw>0</Draw>
+            </Record>
+            <Events>
+                <Event>
+                    <Date>Nov 3, 2018</Date>
+                    <Enemy>Chris Weidman</Enemy>
+                    <Result>Upcoming</Result>
+                </Event>
+                <Event>
+                    <Date>Feb 10, 2018</Date>
+                    <Enemy>Yoel Romero</Enemy>
+                    <Result>Lose, R3 KO/TKO</Result>
+                </Event>
+            </Events>
+        </Fighter>
+    </Middleweight>
+</Fighters>
