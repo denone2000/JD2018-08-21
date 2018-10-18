@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Companies xmlns="http://beans.jd02_09.artemliashkov.it.by/">
+    <Company>
+        <Name>Компания ТАСК</Name>
+        <Role>Страховая</Role>
+        <Country>Беларусь</Country>
+        <AmountAgents>3278</AmountAgents>
+        <Agents>
+            <Agent>
+                <Name>Вера Николаевна</Name>
+                <Address>ул. Острошицкая 11</Address>
+            </Agent>
+            <Agent>
+                <Name>Анна Сергеевна</Name>
+                <Address>пр. Независимости 73</Address>
+            </Agent>
+        </Agents>
+    </Company>
+    <Company>
+        <Name>Компания Белнефтестрах</Name>
+        <Role>Страховая</Role>
+        <Country>Беларусь</Country>
+        <AmountAgents>612</AmountAgents>
+        <Agents>
+            <Agent>
+                <Name>Галина Александрова</Name>
+                <Address>ул. Городецкая 36</Address>
+            </Agent>
+            <Agent>
+                <Name>Инна Тарасовна</Name>
+                <Address>ул. Академика Купревича 27</Address>
+            </Agent>
+        </Agents>
+    </Company>
+</Companies>

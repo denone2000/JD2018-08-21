@@ -8,7 +8,7 @@
             <sequence>
                 <element name="Person"
                          type="tns:Person"
-                         minOccurs="1"
+                         minOccurs="0"
                          maxOccurs="unbounded">
                 </element>
             </sequence>
@@ -27,7 +27,7 @@
             <element
                 name="Ad"
                 type="tns:Ad"
-                minOccurs="1"
+                minOccurs="0"
                 maxOccurs="unbounded"
             />
         </sequence>

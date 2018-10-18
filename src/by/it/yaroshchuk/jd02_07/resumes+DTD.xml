@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE resumes SYSTEM "resumes.dtd">
+<resumes>
+    <resume login="LOGIN1">
+        <fullName>Фамилия Имя Отчество</fullName>
+        <dob>15.06.1995</dob>
+        <address>
+            <country>Страна</country>
+            <city>Город</city>
+            <street>Улица</street>
+        </address>
+        <phone>568547895</phone>
+        <email>email@email.com</email>
+        <education>
+            <institution>Название учереждения</institution>
+            <degree>degree1</degree>
+            <startYear>2010</startYear>
+            <graduateYear>2015</graduateYear>
+        </education>
+        <experience>
+            <workplace>Место работы</workplace>
+            <post>Должность</post>
+            <workPeriodStart>2008-10</workPeriodStart>
+            <workPeriodEnd>2010-10</workPeriodEnd>
+        </experience>
+        <comments>Комментарии</comments>
+    </resume>
+</resumes>
