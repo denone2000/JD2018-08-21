@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.artemliashkov.it.by/"
+        xmlns:tns="http://beans.jd02_09.artemliashkov.it.by/"
+        elementFormDefault="qualified">
+    <element name="Companies">
+        <complexType>
+            <sequence>
+                <element name="Company"
+                         type="tns:Company"
+                         minOccurs="0"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Company">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Role" type="string"/>
+            <element name="Country" type="string"/>
+            <element name="AmountAgents" type="positiveInteger"/>
+            <element name="Agents" type="tns:Agents"/>
+        </sequence>
+    </complexType>
+    <complexType name="Agents">
+        <sequence>
+            <element name="Agent"
+                     type="tns:Agent"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Agent">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Address" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
