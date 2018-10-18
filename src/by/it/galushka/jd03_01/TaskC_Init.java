@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Init {
+public class TaskC_Init {
 
-    public static void main(String[] args) {
+    public static void init() {
         try (Connection connection =
                      DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB)
         ) {
@@ -74,6 +74,7 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `galushka`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'user', 'puser', 'user@it.by', 2);");
             statement.executeUpdate("INSERT INTO `galushka`.`cars` (`ID`, `Mark`, `Model`, `Color`, `Engine capacity`, `Release date`, `users_ID`) VALUES (DEFAULT, 'Audi', 'A4', 'Grey', 2.0, '2018/01/01', 1);");
             statement.executeUpdate("INSERT INTO `galushka`.`orders` (`ID`, `Passport id`, `Order date`, `Return date`, `Surname`, `Name`, `Middle name`, `Address`, `users_ID`) VALUES (DEFAULT, '123456789oiuyt', '2018.01.01', '2018/11/01', 'Ivanov', 'Ivan', 'Ivanovich', 'Lenina, 3', 2);");
+            System.out.println("--->Init done");
         } catch (SQLException e) {
             e.printStackTrace();
         }
