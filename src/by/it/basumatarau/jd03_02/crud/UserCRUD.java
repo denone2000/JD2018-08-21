@@ -1,5 +1,6 @@
-package by.it.basumatarau.jd03_02;
+package by.it.basumatarau.jd03_02.crud;
 
+import by.it.basumatarau.jd03_02.ConnectionCreator;
 import by.it.basumatarau.jd03_02.beans.User;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 
 public class UserCRUD {
 
-    static boolean create(User usr) throws SQLException {
+    public static boolean create(User usr) throws SQLException {
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement = connection.createStatement()
         ){

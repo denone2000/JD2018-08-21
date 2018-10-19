@@ -20,10 +20,10 @@ public class ConnectionCreator {
 
     private static Connection connection;
 
-    static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         if(connection==null || connection.isClosed()) {
-            System.out.println("####");
             connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
+            System.out.println("connection created...");
         }
         return connection;
     }
