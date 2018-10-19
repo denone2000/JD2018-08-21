@@ -14,9 +14,7 @@ import java.sql.Timestamp;
 
 public class BeanLoader {
     public static void main(String[] args) throws SQLException {
-        DB_reset.resetDB();
-        DB_init.createDB();
-
+        DB_init.createEmptyDB();
 
         RoleCRUD.create(new Role(1,"admin"));
         RoleCRUD.create(new Role(2,"user"));
