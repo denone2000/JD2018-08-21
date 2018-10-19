@@ -16,9 +16,13 @@ class Cashier implements Runnable {
     @Override
     public void run() {
         Dispathcer.addCashier();
+        ListCashiers.addCashier(this);
         System.out.println("-----------------------" + this + " started-------BUYERS IN QUEUE " + QueueBuyers.getCount());
-        while (Dispathcer.checkWork() || this.number != Dispathcer.requiedWorkCash()) {
+        while (Dispathcer.checkWork() )
+        {
             Buyer buyer = QueueBuyers.pollBuyer();
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<номер кассира " + this.number + " надо " + Dispathcer.requiedWorkCash()
+                    + ">>>>>>>>>>>>>>>>>>>>>>>buers in market = " + Dispathcer.getBuyersInMarket() + " buyers in queue = " + QueueBuyers.getCount());
             if(buyer != null) {
                 int timeout = Util.random(200, 500);
                 System.out.println("-----------------------" + this + " STARTED SERVICE " + buyer + "-----------------------");
@@ -31,10 +35,12 @@ class Cashier implements Runnable {
                     buyer.notify();
                 }
             } else {
-                Util.sleep(100);
+                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<wait>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                Util.sleep(1000);
             }
         }
         System.out.println("-----------------------" + this + " stopped-------BUYERS IN QUEUE " + QueueBuyers.getCount());
+        ListCashiers.removeCashier(this);
         Dispathcer.removeCashier();
     }
 
