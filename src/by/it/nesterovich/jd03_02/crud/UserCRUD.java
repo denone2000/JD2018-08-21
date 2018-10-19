@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class UserCRUD {
 
-    static boolean create(User user) throws SQLException {
+    public static boolean create(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -36,7 +36,7 @@ public class UserCRUD {
         return false;
     }
 
-    static User read(long id) throws SQLException {
+    public static User read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -59,7 +59,7 @@ public class UserCRUD {
         }
     }
 
-    static boolean update(User user) throws SQLException {
+    public static boolean update(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -85,7 +85,7 @@ public class UserCRUD {
         }
     }
 
-    static boolean delete(User user) throws SQLException {
+    public static boolean delete(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

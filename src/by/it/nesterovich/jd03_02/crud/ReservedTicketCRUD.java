@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class ReservedTicketCRUD {
 
-    static boolean create(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean create(ReservedTicket ReservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -36,7 +36,7 @@ public class ReservedTicketCRUD {
         return false;
     }
 
-    static ReservedTicket read(long id) throws SQLException {
+    public static ReservedTicket read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -57,7 +57,7 @@ public class ReservedTicketCRUD {
         }
     }
 
-    static boolean update(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean update(ReservedTicket ReservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -79,7 +79,7 @@ public class ReservedTicketCRUD {
         }
     }
 
-    static boolean delete(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean delete(ReservedTicket ReservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

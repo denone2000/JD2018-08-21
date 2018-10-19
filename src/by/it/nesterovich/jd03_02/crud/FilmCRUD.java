@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class FilmCRUD {
 
-    static boolean create(Film film) throws SQLException {
+    public static boolean create(Film film) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -34,7 +34,7 @@ public class FilmCRUD {
         return false;
     }
 
-    static Film read(long id) throws SQLException {
+    public static Film read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -55,7 +55,7 @@ public class FilmCRUD {
         }
     }
 
-    static boolean update(Film film) throws SQLException {
+    public static boolean update(Film film) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -78,7 +78,7 @@ public class FilmCRUD {
         }
     }
 
-    static boolean delete(Film film) throws SQLException {
+    public  static boolean delete(Film film) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

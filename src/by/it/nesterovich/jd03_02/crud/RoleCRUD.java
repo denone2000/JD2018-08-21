@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class RoleCRUD {
 
-    static boolean create(Role role) throws SQLException {
+    public  static boolean create(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -19,7 +19,6 @@ public class RoleCRUD {
                     "INSERT INTO `roles`(`role`)" +
                             " VALUES ('%s'); ",
                     role.getRole());
-            System.out.println(sql);
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -31,7 +30,7 @@ public class RoleCRUD {
         return false;
     }
 
-    static Role read(long id) throws SQLException {
+    public static Role read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -48,7 +47,7 @@ public class RoleCRUD {
         }
     }
 
-    static boolean update(Role role) throws SQLException {
+    public static boolean update(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -62,7 +61,7 @@ public class RoleCRUD {
         }
     }
 
-    static boolean delete(Role role) throws SQLException {
+    public static boolean delete(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
