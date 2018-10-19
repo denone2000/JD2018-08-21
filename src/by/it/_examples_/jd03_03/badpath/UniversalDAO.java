@@ -2,6 +2,7 @@ package by.it._examples_.jd03_03.badpath;
 
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -170,8 +171,8 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
     @SuppressWarnings("unchecked") //подавление warning-а
     private TypeBean newBean() {
         try {
-            return (TypeBean) bean.getClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return (TypeBean) bean.getClass().getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null; //если не создался вернем null
