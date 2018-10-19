@@ -4,10 +4,7 @@ import by.it._examples_.jd03_03.connection.ConnectionCreator;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,24 +50,25 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
                     //перебирая поля бина по очереди извлекаем значения в соответствии с их типом
                     Field f = fields[i - 1];
                     f.setAccessible(true);
-                    String strType = f.getType().toString();
                     try {
-                        if (f.getType() == Boolean.class || strType.equals("boolean"))
+                        if (f.getType() == Boolean.class || f.getType()==boolean.class)
                             f.set(newBean, rs.getBoolean(f.getName()));
-                        if (f.getType() == Byte.class || strType.equals("byte"))
+                        if (f.getType() == Byte.class || f.getType()==byte.class)
                             f.set(newBean, rs.getByte(f.getName()));
-                        if (f.getType() == Integer.class || strType.equals("int"))
+                        if (f.getType() == Integer.class || f.getType()==int.class)
                             f.set(newBean, rs.getInt(f.getName()));
-                        if (f.getType() == Double.class || strType.equals("double"))
+                        if (f.getType() == Double.class || f.getType()==double.class)
                             f.set(newBean, rs.getDouble(f.getName()));
-                        if (f.getType() == Float.class || strType.equals("float"))
+                        if (f.getType() == Float.class || f.getType()==float.class)
                             f.set(newBean, rs.getFloat(f.getName()));
-                        if (f.getType() == Long.class || strType.equals("long"))
+                        if (f.getType() == Long.class || f.getType()==long.class)
                             f.set(newBean, rs.getLong(f.getName()));
-                        if (f.getType() == Short.class || strType.equals("short"))
+                        if (f.getType() == Short.class || f.getType()==short.class)
                             f.set(newBean, rs.getShort(f.getName()));
                         if (f.getType() == String.class)
                             f.set(newBean, rs.getString(f.getName()));
+                        if (f.getType() == Timestamp.class)
+                            f.set(newBean, rs.getTimestamp(f.getName()));
                         if (f.getType() == Date.class)
                             f.set(newBean, rs.getDate(f.getName()));
                         //... и т.д. Но учтите, что протестированы только String int и Integer
