@@ -16,11 +16,12 @@ public class TaskB {
 
     static String getUsersList() throws SQLException {
         String login = null;
+
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format("SELECT * FROM `users`");
+            String sql = String.format("SELECT login FROM `users` ");
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
