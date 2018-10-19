@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class B_AddRoles {
+class B_AddRoles {
     static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
             "?useUnicode=true&characterEncoding=UTF-8";
     static String USER_DB = "root";
     static String PASSWORD_DB = "";
 
-    public static void addRoles() {
+    static void addRoles() {
 
         try {
 

@@ -2,9 +2,9 @@ package by.it.bindyuk.jd03_01;
 
 import java.sql.*;
 
-public class B_ShowUsers {
+class B_ShowUsers {
 
-    public static void showUsers() {
+    static void showUsers() {
 
 //        Driver driver = new FabricMySQLDriver();
 //        DriverManager.registerDriver(driver);
@@ -20,11 +20,15 @@ public class B_ShowUsers {
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
         ) {
 
+
+            //выводим в консоль все поля юзера
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()){
                 String out = resultSet.getString("login") + ", " + resultSet.getString("password")
-                        + ", " + resultSet.getString("email");
+                        + ", " + resultSet.getString("email") + ", " + resultSet.getString("passport series")
+                        + ", " + resultSet.getInt("passport id") + ", " + resultSet.getString("bancard number")
+                        + ", " + resultSet.getInt("cid");
                 System.out.println(out);
             }
 

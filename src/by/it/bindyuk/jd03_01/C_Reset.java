@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Reset {
+class C_Reset {
 
     static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
             "?useUnicode=true&characterEncoding=UTF-8";
     static String USER_DB = "root";
     static String PASSWORD_DB = "";
 
-    public static void resetBase(){
+    static void resetBase() {
 
 //        Driver driver = new FabricMySQLDriver();
 //        DriverManager.registerDriver(driver);
@@ -29,9 +29,12 @@ public class C_Reset {
         ) {
             Statement statement = connection.createStatement();
 
-//            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`users` ;");
-//            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`roles` ;");
-//            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`tickets` ;");
+            //сначала удаляем таблицы, затем всю схему
+            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`tickets` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`users` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`routes` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`roles` ;");
+
             statement.executeUpdate("DROP SCHEMA IF EXISTS `bindyuk` ;");
         } catch (SQLException e) {
             e.printStackTrace();

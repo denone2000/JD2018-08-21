@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class A_AddUser {
+class A_AddUser {
 
-    public static void addUser() {
+    static void addUser() {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,7 +21,8 @@ public class A_AddUser {
         ) {
 
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'fedor', 'yafedor', 'fedorthebest@gmail.com', 2);");
+            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`)" +
+                    "VALUES (DEFAULT, 'igor', 'igorspace', 'igorigor@gmail.com', 'MP', 2566012, '0004 0006 0009 0005', 980, 2);");
 
         } catch (SQLException e) {
             e.printStackTrace();
