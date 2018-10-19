@@ -1,7 +1,7 @@
 package by.it.korolchuk.jd02_09;
 
 
-import by.it.korolchuk.Test.beans.Persons;
+import by.it.korolchuk.jd02_09.beans.Persons;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
