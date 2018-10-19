@@ -1,6 +1,7 @@
 package by.it.artemliashkov.jd03_02.beans;
 
 public class Role {
+
     private long id;
     private String role;
 

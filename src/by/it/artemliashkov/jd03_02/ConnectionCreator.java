@@ -4,12 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-public class ConnectionCreater {
-    String URL_DB = "jdbc:mysql://127.0.0.1:2016/mydb"+
+public class ConnectionCreator {
+    private static String URL_DB = "jdbc:mysql://127.0.0.1:2016/mydb" +
             "?useUnicode=true&characterEncoding=UTF-8";
-    String USER_DB = "root";
-    String PASSWORD_DB = "";
+    private static String USER_DB = "root";
+    private static String PASSWORD_DB = "";
 
     static {
         try {
@@ -18,12 +17,12 @@ public class ConnectionCreater {
             System.out.println("Error loading driver: " + e);
         }
     }
+    //func
 
     private static Connection connection;
 
-    Connection getConnection() throws SQLException {
-        if(connection==null || connection.isClosed()) {
-            System.out.println("####");
+    static Connection getConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
         }
         return connection;
