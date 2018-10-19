@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `akhmelev`.`ads` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(5000) NULL,
   `address` VARCHAR(200) NULL,
-  `rooms` INT NULL,
+  `roomCount` INT NULL,
   `floor` INT NULL,
   `floors` INT NULL,
   `price` DECIMAL NULL,
@@ -95,7 +95,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `akhmelev`;
-INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `rooms`, `floor`, `floors`, `price`, `area`, `users_id`) VALUES (DEFAULT, 'good app', 'Minsk Lenina 2 2', 2, 3, 6, 88888, 55, 2);
+INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `roomCount`, `floor`, `floors`, `price`, `area`, `users_id`) VALUES (DEFAULT, 'good app', 'Minsk Lenina 2 2', 2, 3, 6, 88888, 55, 2);
 
 COMMIT;
 
