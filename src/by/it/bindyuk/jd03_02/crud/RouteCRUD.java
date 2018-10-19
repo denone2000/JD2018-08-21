@@ -1,5 +1,6 @@
-package by.it.bindyuk.jd03_02;
+package by.it.bindyuk.jd03_02.crud;
 
+import by.it.bindyuk.jd03_02.ConnectionCreator;
 import by.it.bindyuk.jd03_02.beans.Route;
 
 import java.sql.Connection;
@@ -9,7 +10,8 @@ import java.sql.Statement;
 
 public class RouteCRUD {
 
-    static boolean create(Route route) throws SQLException {
+    //добавление маршрута в бд
+    public static boolean create(Route route) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -28,7 +30,8 @@ public class RouteCRUD {
         return false;
     }
 
-    static Route read(long id) throws SQLException {
+    //прочитать маршрут из бд по id
+    public static Route read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
@@ -44,7 +47,8 @@ public class RouteCRUD {
         }
     }
 
-    static boolean update(Route route) throws SQLException {
+    //перезеписать маршрут
+    public static boolean update(Route route) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -56,7 +60,8 @@ public class RouteCRUD {
         }
     }
 
-    static boolean delete(Route route) throws SQLException {
+    //удалить маршрут
+    public static boolean delete(Route route) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 

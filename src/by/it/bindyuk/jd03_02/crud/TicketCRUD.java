@@ -1,5 +1,6 @@
-package by.it.bindyuk.jd03_02;
+package by.it.bindyuk.jd03_02.crud;
 
+import by.it.bindyuk.jd03_02.ConnectionCreator;
 import by.it.bindyuk.jd03_02.beans.Ticket;
 
 import java.sql.Connection;
@@ -9,7 +10,8 @@ import java.sql.Statement;
 
 public class TicketCRUD {
 
-    static boolean create(Ticket ticket) throws SQLException {
+    //запись нового билета в бд
+    public static boolean create(Ticket ticket) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -38,7 +40,8 @@ public class TicketCRUD {
         return false;
     }
 
-    static Ticket read(long id) throws SQLException {
+    //прочитать билет из бд по id
+    public static Ticket read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
@@ -60,7 +63,8 @@ public class TicketCRUD {
         }
     }
 
-    static boolean update(Ticket ticket) throws SQLException {
+    //перезаписать билет
+    public static boolean update(Ticket ticket) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -86,7 +90,8 @@ public class TicketCRUD {
         }
     }
 
-    static boolean delete(Ticket ticket) throws SQLException {
+    //удалить билет
+    public static boolean delete(Ticket ticket) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 

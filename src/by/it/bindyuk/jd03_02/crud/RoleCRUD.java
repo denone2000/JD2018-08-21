@@ -1,5 +1,6 @@
-package by.it.bindyuk.jd03_02;
+package by.it.bindyuk.jd03_02.crud;
 
+import by.it.bindyuk.jd03_02.ConnectionCreator;
 import by.it.bindyuk.jd03_02.beans.Role;
 
 import java.sql.Connection;
@@ -9,7 +10,8 @@ import java.sql.Statement;
 
 public class RoleCRUD {
 
-    static boolean create(Role role) throws SQLException {
+    //добавление роли в бд
+    public static boolean create(Role role) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -28,7 +30,8 @@ public class RoleCRUD {
         return false;
     }
 
-    static Role read(long id) throws SQLException {
+    //получить роль по id из бд
+    public static Role read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
@@ -44,7 +47,8 @@ public class RoleCRUD {
         }
     }
 
-    static boolean update(Role role) throws SQLException {
+    //перезаписать роль
+    public static boolean update(Role role) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -56,7 +60,8 @@ public class RoleCRUD {
         }
     }
 
-    static boolean delete(Role role) throws SQLException {
+    //удалить роль
+    public static boolean delete(Role role) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
