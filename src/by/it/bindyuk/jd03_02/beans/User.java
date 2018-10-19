@@ -5,17 +5,25 @@ public class User {
     private long id;
     private String login;
     private String password;
+    private String email;
+    private String passpostSeries;
+    private int passportId;
+    private String bancardNumber;
+    private int cid;
+    private long roles_id;
 
-    public User(long id, String login, String password, String email, long rolesId) {
+    public User(long id, String login, String password, String email,
+                String passpostSeries, int passportId, String bancardNumber, int cid, long rolesId) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        RolesId = rolesId;
+        this.passpostSeries = passpostSeries;
+        this.passportId = passportId;
+        this.bancardNumber = bancardNumber;
+        this.cid = cid;
+        this.roles_id = rolesId;
     }
-
-    private String email;
-    private long RolesId;
 
     @Override
     public String toString() {
@@ -24,7 +32,11 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", RolesId=" + RolesId +
+                ", passpostSeries='" + passpostSeries + '\'' +
+                ", passportId=" + passportId +
+                ", bancardNumber='" + bancardNumber + '\'' +
+                ", cid=" + cid +
+                ", roles_id=" + roles_id +
                 '}';
     }
 
@@ -60,11 +72,43 @@ public class User {
         this.email = email;
     }
 
-    public long getRolesId() {
-        return RolesId;
+    public String getPasspostSeries() {
+        return passpostSeries;
     }
 
-    public void setRolesId(long rolesId) {
-        RolesId = rolesId;
+    public void setPasspostSeries(String passpostSeries) {
+        this.passpostSeries = passpostSeries;
+    }
+
+    public int getPassportId() {
+        return passportId;
+    }
+
+    public void setPassportId(int passportId) {
+        this.passportId = passportId;
+    }
+
+    public String getBancardNumber() {
+        return bancardNumber;
+    }
+
+    public void setBancardNumber(String bancardNumber) {
+        this.bancardNumber = bancardNumber;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public long getRoles_id() {
+        return roles_id;
+    }
+
+    public void setRoles_id(long roles_id) {
+        this.roles_id = roles_id;
     }
 }

@@ -18,9 +18,10 @@ class A_AddUser {
         try (Connection connection =
                      DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
 
-            Statement statement = connection.createStatement();
+
             statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`)" +
                     "VALUES (DEFAULT, 'igor', 'igorspace', 'igorigor@gmail.com', 'MP', 2566012, '0004 0006 0009 0005', 980, 2);");
 

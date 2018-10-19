@@ -18,6 +18,8 @@ public class ConnectionCreator {
         }
     }
 
+    //получаем connection
+
     private static Connection connection;
 
     static Connection getConnection() throws SQLException {

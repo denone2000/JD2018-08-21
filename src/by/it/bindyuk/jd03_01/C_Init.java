@@ -26,10 +26,11 @@ class C_Init {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
 
             //создаем базу данных
-            Statement statement = connection.createStatement();
+
             statement.executeUpdate("DROP SCHEMA IF EXISTS `bindyuk` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `bindyuk` DEFAULT CHARACTER SET utf8 ;");
 

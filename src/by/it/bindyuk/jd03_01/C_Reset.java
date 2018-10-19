@@ -26,8 +26,9 @@ class C_Reset {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
-            Statement statement = connection.createStatement();
+
 
             //сначала удаляем таблицы, затем всю схему
             statement.executeUpdate("DROP TABLE IF EXISTS `bindyuk`.`tickets` ;");

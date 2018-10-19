@@ -26,9 +26,10 @@ class B_AddRoles {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
 
-            Statement statement = connection.createStatement();
+
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");

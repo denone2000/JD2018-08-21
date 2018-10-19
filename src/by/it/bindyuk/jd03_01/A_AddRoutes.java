@@ -25,11 +25,12 @@ class A_AddRoutes {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
 
             //наполнение городами
 
-            Statement statement = connection.createStatement();
+
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Minsk');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Grodno');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Brest');");

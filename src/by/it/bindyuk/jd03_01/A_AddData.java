@@ -22,9 +22,10 @@ class A_AddData {
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
+             Statement statement = connection.createStatement()
         ) {
 
-            Statement statement = connection.createStatement();
+
             statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `month`, `year`, `users_id`)" +
                     "VALUES (DEFAULT, 'train', 2, 3, 6, 11, 2018, 3);");
 
