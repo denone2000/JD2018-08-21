@@ -39,7 +39,7 @@ public class TaskC_Init {
                     "  `Model` VARCHAR(45) NULL,\n" +
                     "  `Color` VARCHAR(45) NULL,\n" +
                     "  `Engine capacity` DOUBLE NULL,\n" +
-                    "  `Release date` DATE NULL,\n" +
+                    "  `Release date` VARCHAR(45) NULL,\n" +
                     "  `users_ID` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`ID`),\n" +
                     "  INDEX `fk_cars_users1_idx` (`users_ID` ASC),\n" +
@@ -52,8 +52,8 @@ public class TaskC_Init {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `galushka`.`orders` (\n" +
                     "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `Passport id` VARCHAR(14) NULL,\n" +
-                    "  `Order date` DATE NULL,\n" +
-                    "  `Return date` DATE NULL,\n" +
+                    "  `Order date` VARCHAR(45) NULL,\n" +
+                    "  `Return date` VARCHAR(45) NULL,\n" +
                     "  `Surname` VARCHAR(45) NULL,\n" +
                     "  `Name` VARCHAR(45) NULL,\n" +
                     "  `Middle name` VARCHAR(45) NULL,\n" +
