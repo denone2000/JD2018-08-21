@@ -46,21 +46,21 @@ public class Runner {
 //            System.out.println("Delete OK: " + car);
 
         //Order test=========================================
-        Order order = new Order(0, "jfkgl5o6hj7nck", "2018/10/01", "2019/01/01",
-                "Petrov", "Petr", "Petrovich", "Sovetskaya, 10", 3);
-        if (OrderCRUD.create(order))
-            System.out.println("Create OK: " + order);
-        long id = order.getID();
-        order = null;
-        order = OrderCRUD.read(id);
-        if (order != null)
-            System.out.println("Read OK: " + order);
-        order.setID(4);
-        order.setName("LJDHLFJ:LFJP:ODJF");
-        if (OrderCRUD.update(order))
-            System.out.println("Update OK: " + order);
-        order.setID(4);
-        if (OrderCRUD.delete(order))
-            System.out.println("Delete OK: " + order);
+//        Order order = new Order(0, "jfkgl5o6hj7nck", "2018/10/01", "2019/01/01",
+//                "Petrov", "Petr", "Petrovich", "Sovetskaya, 10", 3);
+//        if (OrderCRUD.create(order))
+//            System.out.println("Create OK: " + order);
+//        long id = order.getID();
+//        order = null;
+//        order = OrderCRUD.read(id);
+//        if (order != null)
+//            System.out.println("Read OK: " + order);
+//        order.setID(4);
+//        order.setName("LJDHLFJ:LFJP:ODJF");
+//        if (OrderCRUD.update(order))
+//            System.out.println("Update OK: " + order);
+//        order.setID(4);
+//        if (OrderCRUD.delete(order))
+//            System.out.println("Delete OK: " + order);
     }
 }
