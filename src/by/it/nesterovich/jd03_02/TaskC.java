@@ -19,7 +19,6 @@ public class TaskC {
         initTables();
     }
 
-
     private static void deleteTables() throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
@@ -87,22 +86,24 @@ public class TaskC {
                             "  ENGINE = InnoDB;"
             );
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `films_cinemas` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`films_cinemas` (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `films_id` INT NOT NULL,\n" +
                             "  `cinemas_id` INT NOT NULL,\n" +
-                            "  PRIMARY KEY (`films_id`, `cinemas_id`),\n" +
-                            "  INDEX `fk_film_cinema_cinemas1_idx` (`cinemas_id` ASC),\n" +
-                            "  CONSTRAINT `fk_film_cinema_films1`\n" +
-                            "  FOREIGN KEY (`films_id`)\n" +
-                            "  REFERENCES `nesterovich`.`films` (`id`)\n" +
-                            "    ON DELETE RESTRICT\n" +
-                            "    ON UPDATE RESTRICT,\n" +
-                            "  CONSTRAINT `fk_film_cinema_cinemas1`\n" +
-                            "  FOREIGN KEY (`cinemas_id`)\n" +
-                            "  REFERENCES `nesterovich`.`cinemas` (`id`)\n" +
-                            "    ON DELETE RESTRICT\n" +
-                            "    ON UPDATE RESTRICT)\n" +
-                            "  ENGINE = InnoDB;"
+                            "  INDEX `fk_films_cinemas_films1_idx` (`films_id` ASC),\n" +
+                            "  INDEX `fk_films_cinemas_cinemas1_idx` (`cinemas_id` ASC),\n" +
+                            "  PRIMARY KEY (`id`),\n" +
+                            "  CONSTRAINT `fk_films_cinemas_films1`\n" +
+                            "    FOREIGN KEY (`films_id`)\n" +
+                            "    REFERENCES `nesterovich`.`films` (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE,\n" +
+                            "  CONSTRAINT `fk_films_cinemas_cinemas1`\n" +
+                            "    FOREIGN KEY (`cinemas_id`)\n" +
+                            "    REFERENCES `nesterovich`.`cinemas` (`id`)\n" +
+                            "    ON DELETE NO ACTION\n" +
+                            "    ON UPDATE NO ACTION)\n" +
+                            "ENGINE = InnoDB;"
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `reserved_tickets` (\n" +
@@ -163,10 +164,10 @@ public class TaskC {
         ReservedTicketCRUD.create(new ReservedTicket(0, 943565, 5.7, 3, 3, 4));
         ReservedTicketCRUD.create(new ReservedTicket(0, 235655, 9.0, 1, 1, 3));
         //films_cinemas
-        FilmCinemaCRUD.create(new FilmCinema(1,3));
-        FilmCinemaCRUD.create(new FilmCinema(1,1));
-        FilmCinemaCRUD.create(new FilmCinema(3,4));
-        FilmCinemaCRUD.create(new FilmCinema(2,3));
-        FilmCinemaCRUD.create(new FilmCinema(4,2));
+        FilmCinemaCRUD.create(new FilmCinema(0, 1, 3));
+        FilmCinemaCRUD.create(new FilmCinema(0, 1, 1));
+        FilmCinemaCRUD.create(new FilmCinema(0, 3, 4));
+        FilmCinemaCRUD.create(new FilmCinema(0, 2, 3));
+        FilmCinemaCRUD.create(new FilmCinema(0, 4, 2));
     }
 }

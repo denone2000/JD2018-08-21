@@ -2,15 +2,25 @@ package by.it.nesterovich.jd03_02.beans;
 
 public class FilmCinema {
 
+    private long id;
     private long filmId;
     private long cinemaId;
 
     public FilmCinema() {
     }
 
-    public FilmCinema(long filmId, long cinemaId) {
+    public FilmCinema(long id, long filmId, long cinemaId) {
+        this.id = id;
         this.filmId = filmId;
         this.cinemaId = cinemaId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getFilmId() {
@@ -32,7 +42,8 @@ public class FilmCinema {
     @Override
     public String toString() {
         return "FilmCinema{" +
-                "filmId=" + filmId +
+                "id=" + id +
+                ", filmId=" + filmId +
                 ", cinemaId=" + cinemaId +
                 '}';
     }
