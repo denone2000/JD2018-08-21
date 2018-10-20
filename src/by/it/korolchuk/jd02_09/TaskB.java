@@ -12,7 +12,6 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 
-
 public class TaskB {
 
     private static Persons bean;
@@ -25,7 +24,7 @@ public class TaskB {
         readXml();
         System.out.println("BEAN FROM XML: " + bean);
         String json = getJson();
-        json=json.replace("asdasd@mail.ru","qqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+        json = json.replace("123@mail.ru", "qqqqqqqqqq");
         System.out.println("JSON FROM BEAN: " + json);
         readJson(json);
         System.out.println("BEAN FROM JSON" + bean);
@@ -41,7 +40,7 @@ public class TaskB {
     }
 
 
-    static void readXml() {
+    private static void readXml() {
         try {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Object o = unmarshaller.unmarshal(new File(Path.getXML()));
@@ -51,7 +50,8 @@ public class TaskB {
         }
     }
 
-    static void saveXml() {
+    @SuppressWarnings("all")
+    private static void saveXml() {
         Marshaller marshaller = null;
         try {
             marshaller = context.createMarshaller();
@@ -62,11 +62,11 @@ public class TaskB {
         }
     }
 
-    static String getJson() {
+    private static String getJson() {
         return gson.toJson(bean);
     }
 
-    static void readJson(String json) {
+    private static void readJson(String json) {
         bean = gson.fromJson(json, Persons.class);
     }
 
