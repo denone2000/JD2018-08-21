@@ -19,9 +19,9 @@ public class ConnectionCreator {
     }
 
     //func
-    private Connection connection;
+    private static Connection connection;
 
-    Connection getConnection() throws SQLException {
+    static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
 

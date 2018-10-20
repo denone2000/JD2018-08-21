@@ -5,14 +5,18 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private long rolesId;
+    private long roles_id;
+
+    public User(){
+
+    }
 
     public User(long id, String login, String password, String email, long rolesId) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.rolesId = rolesId;
+        this.roles_id = rolesId;
     }
 
     public long getId() {
@@ -47,13 +51,22 @@ public class User {
         this.email = email;
     }
 
-    public long getRolesId() {
-        return rolesId;
+    public long getRoles_id() {
+        return roles_id;
     }
 
-    public void setRolesId(long rolesId) {
-        this.rolesId = rolesId;
+    public void setRoles_id(long roles_id) {
+        this.roles_id = roles_id;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roles_id=" + roles_id +
+                '}';
+    }
 }
