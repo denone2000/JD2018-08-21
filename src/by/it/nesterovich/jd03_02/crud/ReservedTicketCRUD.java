@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class ReservedTicketCRUD {
 
@@ -15,9 +16,7 @@ public class ReservedTicketCRUD {
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format(
-                    //INSERT INTO `reserved_tickets`(`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`)
-                    // VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])
+            String sql = String.format(Locale.ENGLISH,
                     "INSERT INTO `reserved_tickets`(`code`, `cost`, `users_id`, `films_id`, `cinemas_id`)" +
                             " VALUES (%d,%f,%d,%d,%d);",
                     ReservedTicket.getCode(),

@@ -140,24 +140,33 @@ public class TaskC {
 
     private static void initTables() throws SQLException {
         //roles
-        RoleCRUD.create(new Role(0,"admin"));
-        RoleCRUD.create(new Role(0,"user"));
+        RoleCRUD.create(new Role(0, "admin"));
+        RoleCRUD.create(new Role(0, "user"));
         //users
-        UserCRUD.create(new User(0, "admin", "password", "admin@it.by",  1));
-        UserCRUD.create(new User(0, "user2", "password", "user2@it.by", "Alex",2));
+        UserCRUD.create(new User(0, "admin", "password", "admin@it.by", 1));
+        UserCRUD.create(new User(0, "user2", "password", "user2@it.by", "Alex", 2));
         UserCRUD.create(new User(0, "user3", "password", "user3@it.by", "Alex4", "Bush", 2));
-        UserCRUD.create(new User(0, "user4", "password", "user4@it.by", "Alex7", "Bush8",12345678, 2));
+        UserCRUD.create(new User(0, "user4", "password", "user4@it.by", "Alex7", "Bush8", 12345678, 2));
         //films
-        FilmCRUD.create(new Film(0, "name film 1", "country1", "genre1, genre2",2010,123));
-        FilmCRUD.create(new Film(0, "name film 2", "country3", "genre1",2008,113));
-        FilmCRUD.create(new Film(0, "name film 3", "country5, country1", "genre1",2005,120));
-        FilmCRUD.create(new Film(0, "name film 4", "country7", "genre2",2006,103));
+        FilmCRUD.create(new Film(0, "name film 1", "country1", "genre1, genre2", 2010, 123));
+        FilmCRUD.create(new Film(0, "name film 2", "country3", "genre1", 2008, 113));
+        FilmCRUD.create(new Film(0, "name film 3", "country5, country1", "genre1", 2005, 120));
+        FilmCRUD.create(new Film(0, "name film 4", "country7", "genre2", 2006, 103));
         //cinemas
         CinemaCRUD.create(new Cinema(0, "name1", "address1"));
         CinemaCRUD.create(new Cinema(0, "name2", "address2"));
         CinemaCRUD.create(new Cinema(0, "name3", "address3"));
         CinemaCRUD.create(new Cinema(0, "name4", "address4"));
         //reserved_tickets
+        ReservedTicketCRUD.create(new ReservedTicket(0, 126413, 2.5, 1, 2, 3));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 689534, 4.8, 2, 4, 2));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 943565, 5.7, 3, 3, 4));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 235655, 9.0, 1, 1, 3));
         //films_cinemas
+        FilmCinemaCRUD.create(new FilmCinema(1,3));
+        FilmCinemaCRUD.create(new FilmCinema(1,1));
+        FilmCinemaCRUD.create(new FilmCinema(3,4));
+        FilmCinemaCRUD.create(new FilmCinema(2,3));
+        FilmCinemaCRUD.create(new FilmCinema(4,2));
     }
 }
