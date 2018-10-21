@@ -1,9 +1,5 @@
 package by.it.akhmelev.jd03_03;
 
-
-import by.it.akhmelev.jd03_03.ConnectionCreator;
-import by.it.akhmelev.jd03_03.InterfaceDao;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
@@ -144,7 +140,7 @@ public class UniversalDAO<TypeBean> implements InterfaceDao<TypeBean> {
         }
         String sql = "insert INTO " + table + " (" + names + ") values(" + values + ")";
         //System.out.println(sql);
-        int id = executeUpdate(sql, true);
+        long id = executeUpdate(sql, true);
         if (id > 0) try {
             fields[0].setAccessible(true);
             fields[0].set(bean, id);
@@ -190,7 +186,7 @@ public class UniversalDAO<TypeBean> implements InterfaceDao<TypeBean> {
 
     //=======================================================================================================
     //общая команда для Create Update Delete
-    private static int executeUpdate(String sql, boolean returnLastID) throws SQLException {
+    private static long executeUpdate(String sql, boolean returnLastID) throws SQLException {
         int result;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
