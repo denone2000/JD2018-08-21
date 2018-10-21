@@ -1,58 +1,71 @@
 package by.it.voinilo.jd03.jd03_02.beans;
 
-import java.util.Objects;
+public class Roleparam {
+    private long id;
+    private String login;
+    private String password;
+    private String email;
+    private int roles_id;
 
-public class RoleParam {
-
-    static private int id;
-    static private String role;
-
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    static public String getRole() {
-        return role;
+    public String getLogin() {
+        return login;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoleParam role1 = (RoleParam) o;
-        return id == role1.id &&
-                Objects.equals(role, role1.role);
+    public String getPassword() {
+        return password;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, role);
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public RoleParam(int id, String role) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getRoles_id() {
+        return roles_id;
+    }
+
+    public void setRoles_id(int roles_id) {
+        this.roles_id = roles_id;
+    }
+
+    public Roleparam(long id, String login, String password, String email, int roles_id) {
         this.id = id;
-        this.role = role;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.roles_id = roles_id;
     }
 
-    public RoleParam() {
+    public Roleparam() {
     }
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "Roleparam{" +
                 "id=" + id +
-                ", role='" + role + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roles_id=" + roles_id +
                 '}';
     }
-
 }

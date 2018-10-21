@@ -1,24 +1,29 @@
 package by.it.voinilo.jd03.jd03_02.beans;
 
-import java.util.Objects;
-
 public class Ads {
-private  int id;
-  private String description;
-  private  String address;
-  private  String name;
-  private int price;
-  private  String condition;
-  private String number;
-  private int roles_id;
+    private long id;
+    private String description;
+    private String address;
+    private String name;
+    private String price;
+    private String condition;
+    private String cellnumber;
+    private long roles_id;
 
 
+    public String getAddress() {
+        return address;
+    }
 
-    public int getId() {
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -30,14 +35,6 @@ private  int id;
         this.description = description;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getName() {
         return name;
     }
@@ -46,11 +43,11 @@ private  int id;
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -62,51 +59,37 @@ private  int id;
         this.condition = condition;
     }
 
-    public String getNumber() {
-        return number;
+    public String getCellnumber() {
+        return cellnumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setCellnumber(String cellnumber) {
+        this.cellnumber = cellnumber;
     }
 
-    public int getRoles_id() {
+    public long getRoles_id() {
         return roles_id;
     }
 
-    public void setRoles_id(int roles_id) {
+    public void setRoles_id(long roles_id) {
         this.roles_id = roles_id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ads ads = (Ads) o;
-        return id == ads.id &&
-                price == ads.price &&
-                roles_id == ads.roles_id &&
-                Objects.equals(description, ads.description) &&
-                Objects.equals(address, ads.address) &&
-                Objects.equals(name, ads.name) &&
-                Objects.equals(condition, ads.condition) &&
-                Objects.equals(number, ads.number);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, description, address, name, price, condition, number, roles_id);
-    }
-
-
-    public Ads(int id, String description, String address, String name, int price, String condition, String number, int roles_id) {
+    public Ads(long id,
+               String description,
+               String address,
+               String name,
+               String price,
+               String condition,
+               String cellnumber,
+               long roles_id) {
         this.id = id;
         this.description = description;
         this.address = address;
         this.name = name;
         this.price = price;
         this.condition = condition;
-        this.number = number;
+        this.cellnumber = cellnumber;
         this.roles_id = roles_id;
     }
 
@@ -120,9 +103,9 @@ private  int id;
                 ", description='" + description + '\'' +
                 ", address='" + address + '\'' +
                 ", name='" + name + '\'' +
-                ", price=" + price +
+                ", price='" + price + '\'' +
                 ", condition='" + condition + '\'' +
-                ", number='" + number + '\'' +
+                ", cellnumber='" + cellnumber + '\'' +
                 ", roles_id=" + roles_id +
                 '}';
     }
