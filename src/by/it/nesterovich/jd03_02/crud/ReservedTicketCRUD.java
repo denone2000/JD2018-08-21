@@ -73,7 +73,8 @@ public class ReservedTicketCRUD {
                     reservedTicket.getCost(),
                     reservedTicket.getUsersId(),
                     reservedTicket.getFilmsId(),
-                    reservedTicket.getCinemasId());
+                    reservedTicket.getCinemasId(),
+                    reservedTicket.getId());
             return (statement.executeUpdate(sql) == 1);
         }
     }
