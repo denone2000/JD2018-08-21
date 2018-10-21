@@ -56,7 +56,7 @@ public class ReservedTicketCRUD {
         }
     }
 
-    public static boolean update(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean update(ReservedTicket reservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -69,43 +69,43 @@ public class ReservedTicketCRUD {
                             "`films_id`=%d," +
                             "`cinemas_id`=%d" +
                             " WHERE `id`=%d",
-                    ReservedTicket.getCode(),
-                    ReservedTicket.getCost(),
-                    ReservedTicket.getUsersId(),
-                    ReservedTicket.getFilmsId(),
-                    ReservedTicket.getCinemasId());
+                    reservedTicket.getCode(),
+                    reservedTicket.getCost(),
+                    reservedTicket.getUsersId(),
+                    reservedTicket.getFilmsId(),
+                    reservedTicket.getCinemasId());
             return (statement.executeUpdate(sql) == 1);
         }
     }
 
-    public static boolean delete(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean delete(ReservedTicket reservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
             String sql = String.format(
                     "DELETE FROM `reserved_tickets` WHERE `id`=%d",
-                    ReservedTicket.getId());
+                    reservedTicket.getId());
             return (statement.executeUpdate(sql) == 1);
         }
     }
 
     public static void main(String[] args) throws SQLException {
-        ReservedTicket ReservedTicket = new ReservedTicket(0, 126413, 2.5, 3, 2, 2);
-        if (create(ReservedTicket)) {
-            System.out.println("Create OK: " + ReservedTicket);
+        ReservedTicket reservedTicket = new ReservedTicket(0, 126413, 2.5, 3, 2, 2);
+        if (create(reservedTicket)) {
+            System.out.println("Create OK: " + reservedTicket);
         }
-        long id = ReservedTicket.getId();
-        ReservedTicket = read(id);
-        if (ReservedTicket != null) {
-            System.out.println("Read OK: " + ReservedTicket);
+        long id = reservedTicket.getId();
+        reservedTicket = read(id);
+        if (reservedTicket != null) {
+            System.out.println("Read OK: " + reservedTicket);
         }
-        ReservedTicket.setCinemasId(2);
-        if (update(ReservedTicket)) {
-            System.out.println("Update OK: " + ReservedTicket);
+        reservedTicket.setCinemasId(2);
+        if (update(reservedTicket)) {
+            System.out.println("Update OK: " + reservedTicket);
         }
-        if (delete(ReservedTicket)) {
-            System.out.println("Delete OK: " + ReservedTicket);
+        if (delete(reservedTicket)) {
+            System.out.println("Delete OK: " + reservedTicket);
         }
     }
 }
