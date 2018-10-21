@@ -49,9 +49,10 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                         " values('%s','%s','%s',%d);",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_Id()
         );
-        user.setId(executeUpdate(sql));
-        return (user.getId() > 0);
-    }
+        long id = executeUpdate(sql);
+        if (id > 0) user.setId(id);
+        return id > 0;
+}
 
     @Override
     public boolean update(User user) throws SQLException {

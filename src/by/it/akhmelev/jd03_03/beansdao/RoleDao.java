@@ -49,11 +49,8 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
                 "INSERT INTO roles (role) values('%s');", role.getRole()
         );
         long id = executeUpdate(sql);
-        if (id > 0) {
-            role.setId(id);
-            return true;
-        } else
-            return false;
+        if (id > 0) role.setId(id);
+        return id > 0;
     }
 
     @Override
