@@ -28,8 +28,6 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
                 role.setRole(rs.getString("role"));
                 roles.add(role);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return roles;
     }
