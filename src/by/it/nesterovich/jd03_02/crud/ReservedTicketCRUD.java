@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class ReservedTicketCRUD {
 
-    public static boolean create(ReservedTicket ReservedTicket) throws SQLException {
+    public static boolean create(ReservedTicket reservedTicket) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -19,15 +19,15 @@ public class ReservedTicketCRUD {
             String sql = String.format(Locale.ENGLISH,
                     "INSERT INTO `reserved_tickets`(`code`, `cost`, `users_id`, `films_id`, `cinemas_id`)" +
                             " VALUES (%d,%f,%d,%d,%d);",
-                    ReservedTicket.getCode(),
-                    ReservedTicket.getCost(),
-                    ReservedTicket.getUsersId(),
-                    ReservedTicket.getFilmsId(),
-                    ReservedTicket.getCinemasId());
+                    reservedTicket.getCode(),
+                    reservedTicket.getCost(),
+                    reservedTicket.getUsersId(),
+                    reservedTicket.getFilmsId(),
+                    reservedTicket.getCinemasId());
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    ReservedTicket.setId(generatedKeys.getLong(1));
+                    reservedTicket.setId(generatedKeys.getLong(1));
                     return true;
                 }
             }
