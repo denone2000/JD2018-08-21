@@ -1,6 +1,6 @@
 package by.it.basumatarau.jd03_03.customDAO;
 
-import by.it.basumatarau.jd03_03.ConnectionCreator;
+import by.it.basumatarau.jd03_03.connection.ConnectionCreator;
 import by.it.basumatarau.jd03_03.beans.Venue;
 
 import java.sql.Connection;
@@ -33,7 +33,7 @@ public class VenueDAO extends DAO implements InterfaceDAO<Venue> {
                 bean.getOpeningDeteTime(),
                 nf.format(bean.getFee()),
                 bean.getUsers_Id(),
-                bean.getPlace_Id()
+                bean.getPlaces_Id()
         );
         long id;
         if((id=executeUpdate(sqlQuery))>0){
@@ -60,7 +60,7 @@ public class VenueDAO extends DAO implements InterfaceDAO<Venue> {
                 bean.getOpeningDeteTime(),
                 nf.format(bean.getFee()),
                 bean.getUsers_Id(),
-                bean.getPlace_Id(),
+                bean.getPlaces_Id(),
                 bean.getId()
         );
         

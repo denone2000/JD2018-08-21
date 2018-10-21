@@ -15,7 +15,7 @@ public class User {
         this.login = login;
         this.password = password;
         this.email = email;
-        roles_Id = rolesId;
+        this.roles_Id = rolesId;
     }
 
     public long getId() {

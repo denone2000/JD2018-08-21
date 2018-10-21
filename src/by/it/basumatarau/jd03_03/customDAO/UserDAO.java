@@ -1,6 +1,6 @@
 package by.it.basumatarau.jd03_03.customDAO;
 
-import by.it.basumatarau.jd03_03.ConnectionCreator;
+import by.it.basumatarau.jd03_03.connection.ConnectionCreator;
 import by.it.basumatarau.jd03_03.beans.User;
 
 import java.sql.Connection;
