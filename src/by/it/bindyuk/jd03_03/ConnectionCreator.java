@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd03_02;
+package by.it.bindyuk.jd03_03;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,6 @@ public class ConnectionCreator {
         }
     }
 
-    //====================================================================
     //получаем connection
 
     private static Connection connection;

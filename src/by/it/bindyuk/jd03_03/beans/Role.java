@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd03_02.beans;
+package by.it.bindyuk.jd03_03.beans;
 
 
 

@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 public class RouteCRUD {
 
+    //==================================================================================
     //добавление маршрута в бд
     public static boolean create(Route route) throws SQLException {
 
@@ -30,6 +31,7 @@ public class RouteCRUD {
         return false;
     }
 
+    //==================================================================================
     //прочитать маршрут из бд по id
     public static Route read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -47,6 +49,7 @@ public class RouteCRUD {
         }
     }
 
+    //==================================================================================
     //перезеписать маршрут
     public static boolean update(Route route) throws SQLException {
 
@@ -60,6 +63,7 @@ public class RouteCRUD {
         }
     }
 
+    //==================================================================================
     //удалить маршрут
     public static boolean delete(Route route) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

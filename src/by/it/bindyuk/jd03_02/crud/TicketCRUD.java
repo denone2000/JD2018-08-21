@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 public class TicketCRUD {
 
+    //==================================================================================
     //запись нового билета в бд
     public static boolean create(Ticket ticket) throws SQLException {
 
@@ -40,6 +41,7 @@ public class TicketCRUD {
         return false;
     }
 
+    //==================================================================================
     //прочитать билет из бд по id
     public static Ticket read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -63,6 +65,7 @@ public class TicketCRUD {
         }
     }
 
+    //==================================================================================
     //перезаписать билет
     public static boolean update(Ticket ticket) throws SQLException {
 
@@ -90,6 +93,7 @@ public class TicketCRUD {
         }
     }
 
+    //==================================================================================
     //удалить билет
     public static boolean delete(Ticket ticket) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

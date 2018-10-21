@@ -15,6 +15,7 @@ import java.sql.Statement;
 
 public class TaskC {
 
+    //===============================================================================
     //метод для удаления всех таблиц
     static void reset() throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -27,6 +28,7 @@ public class TaskC {
         }
     }
 
+    //===============================================================================
     //создание таблиц по очереди
     static void initializing() throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -99,6 +101,7 @@ public class TaskC {
         }
     }
 
+    //===============================================================================
     //новая роль
     static void addRole(String role) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -108,6 +111,7 @@ public class TaskC {
         }
     }
 
+    //===============================================================================
     //новый пользователь
     static void addUser(String login, String password, String email, String passpostSeries,
                         int passportId, String bancardNumber, int cid, long rolesId) throws SQLException {
@@ -118,6 +122,7 @@ public class TaskC {
         }
     }
 
+    //===============================================================================
     //новый билет
     static void addTicket(String transport, long routesIdFrom, long routesIdTo,
                           int data, int month, int year, long usersId) throws SQLException {
@@ -128,6 +133,7 @@ public class TaskC {
         }
     }
 
+    //===============================================================================
     //новый город в маршрутах
     static void addRoute(String city) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

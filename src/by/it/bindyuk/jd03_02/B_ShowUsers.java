@@ -13,6 +13,7 @@ public class B_ShowUsers {
             int usersCount = 0;
             int rolesCount = 0;
 
+            //==========================================================
             //inner join на две таблицы со всеми метаданными
             ResultSet resultSet = statement.executeQuery("select * from users INNER JOIN roles ON users.roles_id=roles.id");
             while (resultSet.next()) {

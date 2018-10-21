@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 public class RoleCRUD {
 
+    //==================================================================================
     //добавление роли в бд
     public static boolean create(Role role) throws SQLException {
 
@@ -30,6 +31,7 @@ public class RoleCRUD {
         return false;
     }
 
+    //==================================================================================
     //получить роль по id из бд
     public static Role read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -47,6 +49,7 @@ public class RoleCRUD {
         }
     }
 
+    //==================================================================================
     //перезаписать роль
     public static boolean update(Role role) throws SQLException {
 
@@ -60,6 +63,7 @@ public class RoleCRUD {
         }
     }
 
+    //==================================================================================
     //удалить роль
     public static boolean delete(Role role) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

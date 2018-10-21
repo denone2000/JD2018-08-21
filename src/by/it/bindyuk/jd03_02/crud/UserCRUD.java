@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 public class UserCRUD {
 
+    //==================================================================================
     //новый пользователь
     public static boolean create(User user) throws SQLException {
 
@@ -39,6 +40,7 @@ public class UserCRUD {
         return false;
     }
 
+    //==================================================================================
     //прочитать пользователя из бд по id
     public static User read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -63,6 +65,7 @@ public class UserCRUD {
         }
     }
 
+    //==================================================================================
     //перезаписать пользователя
     public static boolean update(User user) throws SQLException {
 
@@ -92,6 +95,7 @@ public class UserCRUD {
         }
     }
 
+    //==================================================================================
     //удалить пользователя
     public static boolean delete(User user) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
