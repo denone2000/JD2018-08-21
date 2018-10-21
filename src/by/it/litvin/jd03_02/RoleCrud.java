@@ -17,6 +17,7 @@ public class RoleCrud {
         role = read(id);
         if (role != null)
             System.out.println("Read " + role);
+        assert role != null;
         role.setRole("creator2");
         if (update(role))
             System.out.println("Update " + role);
@@ -25,7 +26,7 @@ public class RoleCrud {
     }
 
 
-    static Role read(long id) throws SQLException {
+    private static Role read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -43,7 +44,7 @@ public class RoleCrud {
 
     }
 
-    static boolean update(Role role) throws SQLException {
+    private static boolean update(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -57,7 +58,7 @@ public class RoleCrud {
         }
     }
 
-    static boolean delete(Role role) throws SQLException {
+     static boolean delete(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -69,7 +70,7 @@ public class RoleCrud {
         }
     }
 
-    static boolean create(Role role) throws SQLException {
+     static boolean create(Role role) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

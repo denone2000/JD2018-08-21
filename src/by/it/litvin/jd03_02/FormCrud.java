@@ -16,7 +16,6 @@ public class FormCrud {
         if (create(form))
             System.out.println("Create " + form);
         long id = form.getId();
-        form = null;
         form = read(id);
         if (form != null)
             System.out.println("Read " + form);
@@ -28,7 +27,7 @@ public class FormCrud {
     }
 
 
-    static Form read(long id) throws SQLException {
+    private static Form read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -36,15 +35,15 @@ public class FormCrud {
             String sql = String.format("SELECT * FROM `form` WHERE `id`=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-                return new Form(
+                Form form = new Form(
                         resultSet.getLong("id"),
                         resultSet.getString("address"),
                         resultSet.getString("description"),
                         resultSet.getInt("age"),
                         resultSet.getString("information"),
                         resultSet.getString("aim"),
-                        resultSet.getLong("users_id")
-                );
+                        resultSet.getLong("users_id"));
+                return form;
             }
         }return null;
 
@@ -76,7 +75,7 @@ public class FormCrud {
         }
     }
 
-    static boolean delete(Form form) throws SQLException {
+    private static boolean delete(Form form) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -88,7 +87,7 @@ public class FormCrud {
         }
     }
 
-    static boolean create(Form form) throws SQLException {
+     static boolean create(Form form) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

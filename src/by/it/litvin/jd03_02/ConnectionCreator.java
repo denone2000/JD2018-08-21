@@ -5,10 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreator {
-    private static String URL_DB = "jdbc:mysql://127.0.0.1:2016/litvin" +
-            "?useUnicode=true&characterEncoding=UTF-8";
-    private static String USER_DB = "root";
-    private static String PASSWORD_DB = "";
 
     static {
         try {
@@ -23,6 +19,10 @@ public class ConnectionCreator {
 
     static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
+            String URL_DB = "jdbc:mysql://127.0.0.1:2016/litvin" +
+                    "?useUnicode=true&characterEncoding=UTF-8";
+            String USER_DB = "root";
+            String PASSWORD_DB = "";
             connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
 
         }

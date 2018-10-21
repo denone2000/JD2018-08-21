@@ -15,7 +15,6 @@ public class UserCrud {
         if (create(user))
             System.out.println("Create " + user);
         long id = user.getId();
-        user = null;
         user = read(id);
         if (user != null)
             System.out.println("Read " + user);
@@ -27,7 +26,7 @@ public class UserCrud {
     }
 
 
-    static User read(long id) throws SQLException {
+    private static User read(long id) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -49,7 +48,7 @@ public class UserCrud {
 
     }
 
-    static boolean update(User user) throws SQLException {
+    private static boolean update(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -69,7 +68,7 @@ public class UserCrud {
         }
     }
 
-    static boolean delete(User user) throws SQLException {
+    private static boolean delete(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
@@ -81,7 +80,7 @@ public class UserCrud {
         }
     }
 
-    static boolean create(User user) throws SQLException {
+     static boolean create(User user) throws SQLException {
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
