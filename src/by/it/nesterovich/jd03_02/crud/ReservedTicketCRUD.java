@@ -61,7 +61,7 @@ public class ReservedTicketCRUD {
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            String sql = String.format(
+            String sql = String.format(Locale.ENGLISH,
                     "UPDATE `reserved_tickets` SET " +
                             "`code`=%d," +
                             "`cost`=%f," +
