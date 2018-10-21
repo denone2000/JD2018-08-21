@@ -1,7 +1,8 @@
-package by.it.akhmelev.jd03_03.beansdao;
+package by.it.akhmelev.jd03_03;
 
 
 import by.it.akhmelev.jd03_03.ConnectionCreator;
+import by.it.akhmelev.jd03_03.InterfaceDao;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

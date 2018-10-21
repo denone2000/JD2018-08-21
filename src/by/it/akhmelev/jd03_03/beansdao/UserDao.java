@@ -1,6 +1,7 @@
 package by.it.akhmelev.jd03_03.beansdao;
 
 import by.it.akhmelev.jd03_03.ConnectionCreator;
+import by.it.akhmelev.jd03_03.InterfaceDao;
 import by.it.akhmelev.jd03_03.beans.User;
 
 import java.sql.Connection;

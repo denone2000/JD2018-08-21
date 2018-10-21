@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd03_03.beansdao;
+package by.it.akhmelev.jd03_03;
 
 import java.sql.SQLException;
 import java.util.List;
