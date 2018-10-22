@@ -18,8 +18,6 @@ USE `litvin` ;
 -- -----------------------------------------------------
 -- Table `litvin`.`roles`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `litvin`.`roles` ;
-
 CREATE TABLE IF NOT EXISTS `litvin`.`roles` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `role` VARCHAR(50) NULL,
@@ -30,8 +28,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `litvin`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `litvin`.`users` ;
-
 CREATE TABLE IF NOT EXISTS `litvin`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NULL,
@@ -51,8 +47,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `litvin`.`form`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `litvin`.`form` ;
-
 CREATE TABLE IF NOT EXISTS `litvin`.`form` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(500) NULL,
@@ -80,9 +74,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `litvin`;
-INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'Administrator');
-INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'User');
-INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'Guest');
+INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');
+INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');
+INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');
 
 COMMIT;
 
@@ -92,8 +86,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `litvin`;
-INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'padmin', 'admin@it.by', 1);
-INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'puser', 'user@it.by', 2);
+INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.ru', 1);
+INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 2);
 
 COMMIT;
 

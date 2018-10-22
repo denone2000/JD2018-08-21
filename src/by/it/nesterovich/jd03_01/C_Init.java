@@ -86,21 +86,23 @@ class C_Init {
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`films_cinemas` (\n" +
+                            "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `films_id` INT NOT NULL,\n" +
                             "  `cinemas_id` INT NOT NULL,\n" +
-                            "  PRIMARY KEY (`films_id`, `cinemas_id`),\n" +
-                            "  INDEX `fk_film_cinema_cinemas1_idx` (`cinemas_id` ASC),\n" +
-                            "  CONSTRAINT `fk_film_cinema_films1`\n" +
-                            "  FOREIGN KEY (`films_id`)\n" +
-                            "  REFERENCES `nesterovich`.`films` (`id`)\n" +
-                            "    ON DELETE RESTRICT\n" +
-                            "    ON UPDATE RESTRICT,\n" +
-                            "  CONSTRAINT `fk_film_cinema_cinemas1`\n" +
-                            "  FOREIGN KEY (`cinemas_id`)\n" +
-                            "  REFERENCES `nesterovich`.`cinemas` (`id`)\n" +
-                            "    ON DELETE RESTRICT\n" +
-                            "    ON UPDATE RESTRICT)\n" +
-                            "  ENGINE = InnoDB;"
+                            "  INDEX `fk_films_cinemas_films1_idx` (`films_id` ASC),\n" +
+                            "  INDEX `fk_films_cinemas_cinemas1_idx` (`cinemas_id` ASC),\n" +
+                            "  PRIMARY KEY (`id`),\n" +
+                            "  CONSTRAINT `fk_films_cinemas_films1`\n" +
+                            "    FOREIGN KEY (`films_id`)\n" +
+                            "    REFERENCES `nesterovich`.`films` (`id`)\n" +
+                            "    ON DELETE CASCADE\n" +
+                            "    ON UPDATE CASCADE,\n" +
+                            "  CONSTRAINT `fk_films_cinemas_cinemas1`\n" +
+                            "    FOREIGN KEY (`cinemas_id`)\n" +
+                            "    REFERENCES `nesterovich`.`cinemas` (`id`)\n" +
+                            "    ON DELETE NO ACTION\n" +
+                            "    ON UPDATE NO ACTION)\n" +
+                            "ENGINE = InnoDB;"
             );
             statement.executeUpdate(
                     "DROP TABLE IF EXISTS `nesterovich`.`reserved_tickets` ;"
@@ -150,10 +152,11 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `nesterovich`.`cinemas` (`id`, `name`, `address`) VALUES (DEFAULT, 'Aurora', 'Minsk, st. Pritytskogo, 23');");
             statement.executeUpdate("INSERT INTO `nesterovich`.`cinemas` (`id`, `name`, `address`) VALUES (DEFAULT, 'October', 'Minsk, pr. Independence, 73');");
 
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (1, 1);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (1, 2);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (2, 1);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (3, 3);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 2);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 1);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 1);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 3, 3);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 3);");
 
             statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 12345678, 5.2, 2, 1, 1);");
 
