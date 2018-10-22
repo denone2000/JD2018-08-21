@@ -1,0 +1,2 @@
+INSERT INTO `roleparam`(`login`, `password`, `email`, `roles_id`)
+VALUES ('admin','admin','adm@mail.ru', 1);
