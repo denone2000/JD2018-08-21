@@ -20,10 +20,10 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                 user.getLogin(),
                 user.getPassword(),
                 user.getEmail(),
-                user.getFistName(),
+                user.getFirstName(),
                 user.getLastName(),
                 user.getPhoneNumber(),
-                user.getRolesId()
+                user.getRoles_id()
         );
         user.setId(executeUpdate(sql));
         return (user.getId() > 0);
@@ -49,10 +49,10 @@ public class UserDao extends AbstractDao implements InterfaceDao<User> {
                 user.getLogin(),
                 user.getPassword(),
                 user.getEmail(),
-                user.getFistName(),
+                user.getFirstName(),
                 user.getLastName(),
                 user.getPhoneNumber(),
-                user.getRolesId(),
+                user.getRoles_id(),
                 user.getId()
         );
         return (0 < executeUpdate(sql));

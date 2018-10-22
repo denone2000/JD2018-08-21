@@ -6,50 +6,50 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private String fistName;
+    private String firstName;
     private String lastName;
     private int phoneNumber;
-    private long rolesId;
+    private long roles_id;
 
     public User() {
     }
 
-    public User(long id, String login, String password, String email, long rolesId) {
+    public User(long id, String login, String password, String email, long roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.rolesId = rolesId;
+        this.roles_id = roles_id;
     }
 
-    public User(long id, String login, String password, String email, String fistName, long rolesId) {
+    public User(long id, String login, String password, String email, String firstName, long roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.fistName = fistName;
-        this.rolesId = rolesId;
+        this.firstName = firstName;
+        this.roles_id = roles_id;
     }
 
-    public User(long id, String login, String password, String email, String fistName, String lastName, long rolesId) {
+    public User(long id, String login, String password, String email, String firstName, String lastName, long roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.fistName = fistName;
+        this.firstName = firstName;
         this.lastName = lastName;
-        this.rolesId = rolesId;
+        this.roles_id = roles_id;
     }
 
-    public User(long id, String login, String password, String email, String fistName, String lastName, int phoneNumber, long rolesId) {
+    public User(long id, String login, String password, String email, String firstName, String lastName, int phoneNumber, long roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.fistName = fistName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.rolesId = rolesId;
+        this.roles_id = roles_id;
     }
 
     public long getId() {
@@ -84,12 +84,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -108,12 +108,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public long getRolesId() {
-        return rolesId;
+    public long getRoles_id() {
+        return roles_id;
     }
 
-    public void setRolesId(long rolesId) {
-        this.rolesId = rolesId;
+    public void setRoles_id(long roles_id) {
+        this.roles_id = roles_id;
     }
 
     @Override
@@ -123,10 +123,10 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", fistName='" + fistName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", rolesId=" + rolesId +
+                ", roles_id=" + roles_id +
                 '}';
     }
 }

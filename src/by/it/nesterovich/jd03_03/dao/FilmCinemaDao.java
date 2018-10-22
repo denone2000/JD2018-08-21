@@ -17,8 +17,8 @@ public class FilmCinemaDao extends AbstractDao implements InterfaceDao<FilmCinem
         String sql = String.format(
                 "INSERT INTO `films_cinemas`(`films_id`, `cinemas_id`)" +
                         " VALUES (%d,%d);",
-                filmCinema.getFilmId(),
-                filmCinema.getCinemaId()
+                filmCinema.getFilms_id(),
+                filmCinema.getCinemas_id()
         );
         filmCinema.setId(executeUpdate(sql));
         return (filmCinema.getId() > 0);
@@ -37,8 +37,8 @@ public class FilmCinemaDao extends AbstractDao implements InterfaceDao<FilmCinem
                         "`films_id`=%d," +
                         "`cinemas_id`=%d " +
                         "WHERE `id`=%d",
-                filmCinema.getFilmId(),
-                filmCinema.getCinemaId(),
+                filmCinema.getFilms_id(),
+                filmCinema.getCinemas_id(),
                 filmCinema.getId()
         );
         return (0 < executeUpdate(sql));

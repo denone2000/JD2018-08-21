@@ -5,20 +5,20 @@ public class ReservedTicket {
     private long id;
     private int code;
     private double cost;
-    private long usersId;
-    private long filmsId;
-    private long cinemasId;
+    private long users_id;
+    private long films_id;
+    private long cinemas_id;
 
     public ReservedTicket() {
     }
 
-    public ReservedTicket(long id, int code, double cost, long usersId, long filmsId, long cinemasId) {
+    public ReservedTicket(long id, int code, double cost, long users_id, long films_id, long cinemas_id) {
         this.id = id;
         this.code = code;
         this.cost = cost;
-        this.usersId = usersId;
-        this.filmsId = filmsId;
-        this.cinemasId = cinemasId;
+        this.users_id = users_id;
+        this.films_id = films_id;
+        this.cinemas_id = cinemas_id;
     }
 
     public long getId() {
@@ -45,28 +45,28 @@ public class ReservedTicket {
         this.cost = cost;
     }
 
-    public long getUsersId() {
-        return usersId;
+    public long getUsers_id() {
+        return users_id;
     }
 
-    public void setUsersId(long usersId) {
-        this.usersId = usersId;
+    public void setUsers_id(long users_id) {
+        this.users_id = users_id;
     }
 
-    public long getFilmsId() {
-        return filmsId;
+    public long getFilms_id() {
+        return films_id;
     }
 
-    public void setFilmsId(long filmsId) {
-        this.filmsId = filmsId;
+    public void setFilms_id(long films_id) {
+        this.films_id = films_id;
     }
 
-    public long getCinemasId() {
-        return cinemasId;
+    public long getCinemas_id() {
+        return cinemas_id;
     }
 
-    public void setCinemasId(long cinemasId) {
-        this.cinemasId = cinemasId;
+    public void setCinemas_id(long cinemas_id) {
+        this.cinemas_id = cinemas_id;
     }
 
     @Override
@@ -75,9 +75,9 @@ public class ReservedTicket {
                 "id=" + id +
                 ", code=" + code +
                 ", cost=" + cost +
-                ", usersId=" + usersId +
-                ", filmsId=" + filmsId +
-                ", cinemasId=" + cinemasId +
+                ", users_id=" + users_id +
+                ", films_id=" + films_id +
+                ", cinemas_id=" + cinemas_id +
                 '}';
     }
 }

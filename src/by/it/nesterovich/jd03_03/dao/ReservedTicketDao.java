@@ -20,9 +20,9 @@ public class ReservedTicketDao extends AbstractDao implements InterfaceDao<Reser
                         " VALUES (%d,%5.2f,%d,%d,%d);",
                 reservedTicket.getCode(),
                 reservedTicket.getCost(),
-                reservedTicket.getUsersId(),
-                reservedTicket.getFilmsId(),
-                reservedTicket.getCinemasId()
+                reservedTicket.getUsers_id(),
+                reservedTicket.getFilms_id(),
+                reservedTicket.getCinemas_id()
         );
         reservedTicket.setId(executeUpdate(sql));
         return (reservedTicket.getId() > 0);
@@ -46,9 +46,9 @@ public class ReservedTicketDao extends AbstractDao implements InterfaceDao<Reser
                         " WHERE `id`=%d",
                 reservedTicket.getCode(),
                 reservedTicket.getCost(),
-                reservedTicket.getUsersId(),
-                reservedTicket.getFilmsId(),
-                reservedTicket.getCinemasId(),
+                reservedTicket.getUsers_id(),
+                reservedTicket.getFilms_id(),
+                reservedTicket.getCinemas_id(),
                 reservedTicket.getId()
         );
         return (0 < executeUpdate(sql));

@@ -74,7 +74,7 @@ public class Runner {
         if (dao.filmCinema.create(filmCinema)) System.out.println("\nДобавлен:" + filmCinema);
         showFilmCinemas();
         filmCinema = dao.filmCinema.getAll("WHERE ID>5").get(0);
-        filmCinema.setCinemaId(3);
+        filmCinema.setCinemas_id(3);
         if (dao.filmCinema.update(filmCinema)) System.out.println("\nИзменен:" + filmCinema);
         showFilmCinemas();
         if (dao.filmCinema.delete(filmCinema)) System.out.println("\nУдален:" + filmCinema);

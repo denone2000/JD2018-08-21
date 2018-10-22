@@ -3,16 +3,16 @@ package by.it.nesterovich.jd03_03.beans;
 public class FilmCinema {
 
     private long id;
-    private long filmId;
-    private long cinemaId;
+    private long films_id;
+    private long cinemas_id;
 
     public FilmCinema() {
     }
 
-    public FilmCinema(long id, long filmId, long cinemaId) {
+    public FilmCinema(long id, long films_id, long cinemas_id) {
         this.id = id;
-        this.filmId = filmId;
-        this.cinemaId = cinemaId;
+        this.films_id = films_id;
+        this.cinemas_id = cinemas_id;
     }
 
     public long getId() {
@@ -23,28 +23,28 @@ public class FilmCinema {
         this.id = id;
     }
 
-    public long getFilmId() {
-        return filmId;
+    public long getFilms_id() {
+        return films_id;
     }
 
-    public void setFilmId(long filmId) {
-        this.filmId = filmId;
+    public void setFilms_id(long films_id) {
+        this.films_id = films_id;
     }
 
-    public long getCinemaId() {
-        return cinemaId;
+    public long getCinemas_id() {
+        return cinemas_id;
     }
 
-    public void setCinemaId(long cinemaId) {
-        this.cinemaId = cinemaId;
+    public void setCinemas_id(long cinemas_id) {
+        this.cinemas_id = cinemas_id;
     }
 
     @Override
     public String toString() {
         return "FilmCinema{" +
                 "id=" + id +
-                ", filmId=" + filmId +
-                ", cinemaId=" + cinemaId +
+                ", films_id=" + films_id +
+                ", cinemas_id=" + cinemas_id +
                 '}';
     }
 }
