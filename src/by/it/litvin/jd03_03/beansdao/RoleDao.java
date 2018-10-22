@@ -14,7 +14,7 @@ import java.util.List;
 public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
     @Override
     public Role read(long id) throws SQLException {
-        List<Role> roles = getAll("WHERE ID=" + id + "LIMIT 0,1");
+        List<Role> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");
         if (roles.size() > 0) {
             return roles.get(0);
         } else
@@ -51,16 +51,16 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
     }
 
     @Override
-    public List<Role> getAll(String whereString) throws SQLException {
+    public List<Role> getAll(String WHERE) throws SQLException {
         List<Role> roles = new ArrayList<>();
-        String sql = "SELECT*FROM roles" + whereString + ";";
+        String sql = "SELECT * FROM `roles`" + WHERE + " ;";
         try (
-                Connection connection= ConnectionCreator.getConnection();
-                Statement statement=connection.createStatement()
-        ){
-            ResultSet resultSet=statement.executeQuery(sql);
-            while (resultSet.next()){
-                Role role=new Role();
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()
+        ) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                Role role = new Role();
                 role.setId(resultSet.getInt("id"));
                 role.setRole(resultSet.getString("role"));
                 roles.add(role);

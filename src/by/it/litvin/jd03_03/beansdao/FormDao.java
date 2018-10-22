@@ -14,7 +14,7 @@ import java.util.List;
 public class FormDao extends AbstractDao implements InterfaceDao<Form> {
     @Override
     public Form read(long id) throws SQLException {
-        List<Form> forms = getAll("WHERE ID=" + id + "LIMIT 0,1");
+        List<Form> forms = getAll("WHERE ID=" + id + " LIMIT 0,1");
         if (forms.size() > 0) {
             return forms.get(0);
         } else
@@ -65,9 +65,9 @@ public class FormDao extends AbstractDao implements InterfaceDao<Form> {
     }
 
     @Override
-    public List<Form> getAll(String whereString) throws SQLException {
+    public List<Form> getAll(String WHERE) throws SQLException {
         List<Form> forms = new ArrayList<>();
-        String sql = "SELECT*FROM forms" + whereString + ";";
+        String sql = "SELECT * FROM `form`" + WHERE + ";";
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
