@@ -5,7 +5,6 @@ import by.it.galushka.jd03_02.beans.Order;
 import by.it.galushka.jd03_02.beans.Role;
 import by.it.galushka.jd03_02.beans.User;
 import by.it.galushka.jd03_02.taskC.CreateDB;
-import by.it.galushka.jd03_02.taskC.Reset;
 
 import java.sql.SQLException;
 
