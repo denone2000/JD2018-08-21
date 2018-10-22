@@ -1,23 +1,14 @@
-package by.it.nesterovich.jd03_01;
-
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
+package by.it.nesterovich.jd03_03.ulils;
 
 import java.sql.*;
 
-class C_Init {
+public class DataBase {
 
-    static void cInit() {
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try (Connection connection =
-                     DriverManager.getConnection
-                             (CN_DB.URL_DB, CN_DB.USER_DB, CN_DB.PASSWORD_DB);
-             Statement statement = connection.createStatement()) {
-
+    public static void resetAndCreateDBWithTables() {
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()
+        ) {
             statement.executeUpdate(
                     "DROP SCHEMA IF EXISTS `nesterovich` ;"
             );
@@ -25,17 +16,11 @@ class C_Init {
                     "CREATE SCHEMA IF NOT EXISTS `nesterovich` DEFAULT CHARACTER SET utf8 ;"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`roles` ;"
-            );
-            statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`roles` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `role` VARCHAR(45) NOT NULL,\n" +
                             "  PRIMARY KEY (`id`))\n" +
                             "  ENGINE = InnoDB;"
-            );
-            statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`users` ;"
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`users` (\n" +
@@ -57,9 +42,6 @@ class C_Init {
                             "  ENGINE = InnoDB;\n"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`films` ;"
-            );
-            statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`films` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
@@ -71,18 +53,12 @@ class C_Init {
                             "  ENGINE = InnoDB;"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`cinemas` ;"
-            );
-            statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`cinemas` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
                             "  `address` VARCHAR(45) NOT NULL,\n" +
                             "  PRIMARY KEY (`id`))\n" +
                             "  ENGINE = InnoDB;"
-            );
-            statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`films_cinemas` ;"
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`films_cinemas` (\n" +
@@ -103,9 +79,6 @@ class C_Init {
                             "    ON DELETE NO ACTION\n" +
                             "    ON UPDATE NO ACTION)\n" +
                             "ENGINE = InnoDB;"
-            );
-            statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`reserved_tickets` ;"
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`reserved_tickets` (\n" +
@@ -136,7 +109,16 @@ class C_Init {
                             "    ON UPDATE RESTRICT)\n" +
                             "  ENGINE = InnoDB;"
             );
-            //INSERT
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void InitTables() {
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()
+        ) {
             statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest')");
@@ -159,8 +141,10 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 3);");
 
             statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 12345678, 5.2, 2, 1, 1);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 25686533, 5.7, 2, 2, 2);");
+            statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 76532453, 4.2, 2, 3, 3);");
 
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }

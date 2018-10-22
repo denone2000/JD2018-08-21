@@ -7,59 +7,31 @@ import java.sql.*;
 class A_AddUser {
 
     static void addUser(String login, String password, String email) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT");
-        stringBuilder.append(", \'").append(login).append('\'');
-        stringBuilder.append(", \'").append(password).append('\'');
-        stringBuilder.append(", \'").append(email).append('\'');
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", 2);");
-
-        addUserInDB(String.valueOf(stringBuilder));
+        String sql = String.format("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) " +
+                        "VALUES (DEFAULT, '%s', '%s', '%s', NULL, NULL, NULL, 2);",
+                login, password, email);
+        addUserInDB(sql);
     }
 
     static void addUser(String login, String password, String email, String firstName) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT");
-        stringBuilder.append(", \'").append(login).append('\'');
-        stringBuilder.append(", \'").append(password).append('\'');
-        stringBuilder.append(", \'").append(email).append('\'');
-        stringBuilder.append(", \'").append(firstName).append('\'');
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", 2);");
-
-        addUserInDB(String.valueOf(stringBuilder));
+        String sql = String.format("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) " +
+                        "VALUES (DEFAULT, '%s', '%s', '%s', '%s', NULL, NULL, 2);",
+                login, password, email, firstName);
+        addUserInDB(sql);
     }
 
     static void addUser(String login, String password, String email, String firstName, String lastName) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT");
-        stringBuilder.append(", \'").append(login).append('\'');
-        stringBuilder.append(", \'").append(password).append('\'');
-        stringBuilder.append(", \'").append(email).append('\'');
-        stringBuilder.append(", \'").append(firstName).append('\'');
-        stringBuilder.append(", \'").append(lastName).append('\'');
-        stringBuilder.append(", ").append("NULL");
-        stringBuilder.append(", 2);");
-
-        addUserInDB(String.valueOf(stringBuilder));
+        String sql = String.format("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) " +
+                        "VALUES (DEFAULT, '%s', '%s', '%s', '%s', '%s', NULL, 2);",
+                login, password, email, firstName, lastName);
+        addUserInDB(sql);
     }
 
     static void addUser(String login, String password, String email, String firstName, String lastName, int phoneNumber) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT");
-        stringBuilder.append(", \'").append(login).append('\'');
-        stringBuilder.append(", \'").append(password).append('\'');
-        stringBuilder.append(", \'").append(email).append('\'');
-        stringBuilder.append(", \'").append(firstName).append('\'');
-        stringBuilder.append(", \'").append(lastName).append('\'');
-        stringBuilder.append(", \'").append(phoneNumber).append('\'');
-        stringBuilder.append(", 2);");
-
-        addUserInDB(String.valueOf(stringBuilder));
+        String sql = String.format("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) " +
+                        "VALUES (DEFAULT, '%s', '%s', '%s', '%s', '%s', %d, 2);",
+                login, password, email, firstName, lastName, phoneNumber);
+        addUserInDB(sql);
     }
 
     private static void addUserInDB(String insert) {

@@ -1,44 +1,54 @@
-package by.it.nesterovich.jd03_01;
+package by.it.nesterovich.jd03_02;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
+import by.it.nesterovich.jd03_02.beans.*;
+import by.it.nesterovich.jd03_02.crud.*;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-class C_Init {
+public class TaskC {
 
-    static void cInit() {
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws SQLException {
+        //Разработайте (либо доработайте) метод сброса и заполнения базы с операциями:
+        //Удаления всех таблиц в вашей базе данных (используйте SQL DROP TABLE IF EXISTS имя_таблицы)
+        deleteTables();
+        //Создания всех таблиц (используйте как пример SQL из файла экспорта)
+        createTables();
+        //Заполнения таблиц через CRUD операции.
+        initTables();
+    }
+
+    private static void deleteTables() throws SQLException {
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()
+        ) {
+            statement.executeUpdate("DROP TABLE IF EXISTS reserved_tickets;");
+            statement.executeUpdate("DROP TABLE IF EXISTS films_cinemas;");
+            statement.executeUpdate("DROP TABLE IF EXISTS users;");
+            statement.executeUpdate("DROP TABLE IF EXISTS films;");
+            statement.executeUpdate("DROP TABLE IF EXISTS cinemas;");
+            statement.executeUpdate("DROP TABLE IF EXISTS roles;");
+
+            System.out.println("Tables delete");
         }
-        try (Connection connection =
-                     DriverManager.getConnection
-                             (CN_DB.URL_DB, CN_DB.USER_DB, CN_DB.PASSWORD_DB);
-             Statement statement = connection.createStatement()) {
+    }
 
+    private static void createTables() throws SQLException {
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()
+        ) {
             statement.executeUpdate(
-                    "DROP SCHEMA IF EXISTS `nesterovich` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE SCHEMA IF NOT EXISTS `nesterovich` DEFAULT CHARACTER SET utf8 ;"
-            );
-            statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`roles` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`roles` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `roles` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `role` VARCHAR(45) NOT NULL,\n" +
                             "  PRIMARY KEY (`id`))\n" +
                             "  ENGINE = InnoDB;"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`users` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`users` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `users` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `login` VARCHAR(60) NOT NULL,\n" +
                             "  `password` VARCHAR(60) NOT NULL,\n" +
@@ -57,10 +67,7 @@ class C_Init {
                             "  ENGINE = InnoDB;\n"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`films` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`films` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `films` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
                             "  `country` VARCHAR(60) NOT NULL,\n" +
@@ -71,18 +78,12 @@ class C_Init {
                             "  ENGINE = InnoDB;"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`cinemas` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`cinemas` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `cinemas` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `name` VARCHAR(45) NOT NULL,\n" +
                             "  `address` VARCHAR(45) NOT NULL,\n" +
                             "  PRIMARY KEY (`id`))\n" +
                             "  ENGINE = InnoDB;"
-            );
-            statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`films_cinemas` ;"
             );
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS `nesterovich`.`films_cinemas` (\n" +
@@ -105,10 +106,7 @@ class C_Init {
                             "ENGINE = InnoDB;"
             );
             statement.executeUpdate(
-                    "DROP TABLE IF EXISTS `nesterovich`.`reserved_tickets` ;"
-            );
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS `nesterovich`.`reserved_tickets` (\n" +
+                    "CREATE TABLE IF NOT EXISTS `reserved_tickets` (\n" +
                             "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                             "  `code` INT NOT NULL,\n" +
                             "  `cost` DECIMAL(10) NULL,\n" +
@@ -136,32 +134,40 @@ class C_Init {
                             "    ON UPDATE RESTRICT)\n" +
                             "  ENGINE = InnoDB;"
             );
-            //INSERT
-            statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest')");
 
-            statement.executeUpdate("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT, 'admin', 'padmin', 'admin@gmail.com', NULL, NULL, NULL, 1);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`users` (`id`, `login`, `password`, `email`, `firstName`, `lastName`, `phoneNumber`, `roles_id`) VALUES (DEFAULT, 'user', 'puser', 'user@gmail.com', NULL, NULL, NULL, 2);");
-
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films` (`id`, `name`, `country`, `genre`, `yearOfIssue`, `duration`) VALUES (DEFAULT, 'The Accountant', 'USA', 'action, thriller, drama', 2016, 128);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films` (`id`, `name`, `country`, `genre`, `yearOfIssue`, `duration`) VALUES (DEFAULT, 'Self/less', 'USA', 'fantasy, thriller, action', 2015, 112);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films` (`id`, `name`, `country`, `genre`, `yearOfIssue`, `duration`) VALUES (DEFAULT, 'Intouchables', 'France', 'drama, comedy, biography', 2011, 112);");
-
-            statement.executeUpdate("INSERT INTO `nesterovich`.`cinemas` (`id`, `name`, `address`) VALUES (DEFAULT, 'Belarus', 'Minsk, st. Romanovskaya Sloboda, 28');");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`cinemas` (`id`, `name`, `address`) VALUES (DEFAULT, 'Aurora', 'Minsk, st. Pritytskogo, 23');");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`cinemas` (`id`, `name`, `address`) VALUES (DEFAULT, 'October', 'Minsk, pr. Independence, 73');");
-
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 2);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 1);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 1);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 3, 3);");
-            statement.executeUpdate("INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 3);");
-
-            statement.executeUpdate("INSERT INTO `nesterovich`.`reserved_tickets` (`id`, `code`, `cost`, `users_id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 12345678, 5.2, 2, 1, 1);");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Tables create");
         }
+    }
+
+    private static void initTables() throws SQLException {
+        //roles
+        RoleCRUD.create(new Role(0, "admin"));
+        RoleCRUD.create(new Role(0, "user"));
+        //users
+        UserCRUD.create(new User(0, "admin", "password", "admin@it.by", 1));
+        UserCRUD.create(new User(0, "user2", "password", "user2@it.by", "Alex", 2));
+        UserCRUD.create(new User(0, "user3", "password", "user3@it.by", "Alex4", "Bush", 2));
+        UserCRUD.create(new User(0, "user4", "password", "user4@it.by", "Alex7", "Bush8", 12345678, 2));
+        //films
+        FilmCRUD.create(new Film(0, "name film 1", "country1", "genre1, genre2", 2010, 123));
+        FilmCRUD.create(new Film(0, "name film 2", "country3", "genre1", 2008, 113));
+        FilmCRUD.create(new Film(0, "name film 3", "country5, country1", "genre1", 2005, 120));
+        FilmCRUD.create(new Film(0, "name film 4", "country7", "genre2", 2006, 103));
+        //cinemas
+        CinemaCRUD.create(new Cinema(0, "name1", "address1"));
+        CinemaCRUD.create(new Cinema(0, "name2", "address2"));
+        CinemaCRUD.create(new Cinema(0, "name3", "address3"));
+        CinemaCRUD.create(new Cinema(0, "name4", "address4"));
+        //reserved_tickets
+        ReservedTicketCRUD.create(new ReservedTicket(0, 126413, 2.5, 1, 2, 3));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 689534, 4.8, 2, 4, 2));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 943565, 5.7, 3, 3, 4));
+        ReservedTicketCRUD.create(new ReservedTicket(0, 235655, 9.0, 1, 1, 3));
+        //films_cinemas
+        FilmCinemaCRUD.create(new FilmCinema(0, 1, 3));
+        FilmCinemaCRUD.create(new FilmCinema(0, 1, 1));
+        FilmCinemaCRUD.create(new FilmCinema(0, 3, 4));
+        FilmCinemaCRUD.create(new FilmCinema(0, 2, 3));
+        FilmCinemaCRUD.create(new FilmCinema(0, 4, 2));
     }
 }

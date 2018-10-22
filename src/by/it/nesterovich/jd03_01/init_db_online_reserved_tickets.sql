@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`roles` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`users` (
   PRIMARY KEY (`id`),
   INDEX `fk_users_roles_idx` (`roles_id` ASC),
   CONSTRAINT `fk_users_roles`
-  FOREIGN KEY (`roles_id`)
-  REFERENCES `nesterovich`.`roles` (`id`)
+    FOREIGN KEY (`roles_id`)
+    REFERENCES `nesterovich`.`roles` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`films` (
   `yearOfIssue` INT NOT NULL,
   `duration` INT NOT NULL,
   PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`cinemas` (
   `name` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -86,21 +86,23 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`cinemas` (
 DROP TABLE IF EXISTS `nesterovich`.`films_cinemas` ;
 
 CREATE TABLE IF NOT EXISTS `nesterovich`.`films_cinemas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `films_id` INT NOT NULL,
   `cinemas_id` INT NOT NULL,
-  PRIMARY KEY (`films_id`, `cinemas_id`),
-  INDEX `fk_film_cinema_cinemas1_idx` (`cinemas_id` ASC),
-  CONSTRAINT `fk_film_cinema_films1`
-  FOREIGN KEY (`films_id`)
-  REFERENCES `nesterovich`.`films` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_film_cinema_cinemas1`
-  FOREIGN KEY (`cinemas_id`)
-  REFERENCES `nesterovich`.`cinemas` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT)
-  ENGINE = InnoDB;
+  INDEX `fk_films_cinemas_films1_idx` (`films_id` ASC),
+  INDEX `fk_films_cinemas_cinemas1_idx` (`cinemas_id` ASC),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_films_cinemas_films1`
+    FOREIGN KEY (`films_id`)
+    REFERENCES `nesterovich`.`films` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_films_cinemas_cinemas1`
+    FOREIGN KEY (`cinemas_id`)
+    REFERENCES `nesterovich`.`cinemas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -111,7 +113,7 @@ DROP TABLE IF EXISTS `nesterovich`.`reserved_tickets` ;
 CREATE TABLE IF NOT EXISTS `nesterovich`.`reserved_tickets` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `code` INT NOT NULL,
-  `cost` DECIMAL(10) NULL,
+  `cost` DECIMAL(10) NOT NULL,
   `users_id` INT NOT NULL,
   `films_id` INT NOT NULL,
   `cinemas_id` INT NOT NULL,
@@ -120,21 +122,21 @@ CREATE TABLE IF NOT EXISTS `nesterovich`.`reserved_tickets` (
   INDEX `fk_reservedTickets_films1_idx` (`films_id` ASC),
   INDEX `fk_reservedTickets_cinemas1_idx` (`cinemas_id` ASC),
   CONSTRAINT `fk_reservedTickets_users1`
-  FOREIGN KEY (`users_id`)
-  REFERENCES `nesterovich`.`users` (`id`)
+    FOREIGN KEY (`users_id`)
+    REFERENCES `nesterovich`.`users` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_reservedTickets_films1`
-  FOREIGN KEY (`films_id`)
-  REFERENCES `nesterovich`.`films` (`id`)
+    FOREIGN KEY (`films_id`)
+    REFERENCES `nesterovich`.`films` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_reservedTickets_cinemas1`
-  FOREIGN KEY (`cinemas_id`)
-  REFERENCES `nesterovich`.`cinemas` (`id`)
+    FOREIGN KEY (`cinemas_id`)
+    REFERENCES `nesterovich`.`cinemas` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -193,10 +195,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nesterovich`;
-INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (1, 1);
-INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (1, 2);
-INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (2, 1);
-INSERT INTO `nesterovich`.`films_cinemas` (`films_id`, `cinemas_id`) VALUES (3, 3);
+INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 2);
+INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 1, 1);
+INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 1);
+INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 3, 3);
+INSERT INTO `nesterovich`.`films_cinemas` (`id`, `films_id`, `cinemas_id`) VALUES (DEFAULT, 2, 3);
 
 COMMIT;
 
