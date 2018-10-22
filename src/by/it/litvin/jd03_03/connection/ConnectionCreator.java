@@ -17,7 +17,7 @@ public class ConnectionCreator {
     //func
     private static Connection connection;
 
-    static Connection getConnection() throws SQLException {
+   public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             String URL_DB = "jdbc:mysql://127.0.0.1:2016/litvin" +
                     "?useUnicode=true&characterEncoding=UTF-8";
