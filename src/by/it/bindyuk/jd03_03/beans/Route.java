@@ -34,6 +34,6 @@ public class Route {
         return "Route{" +
                 "id=" + id +
                 ", city='" + city + '\'' +
-                '}';
+                '}'+'\n';
     }
 }

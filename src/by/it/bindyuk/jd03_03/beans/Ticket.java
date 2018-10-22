@@ -100,6 +100,6 @@ public class Ticket {
                 ", month=" + month +
                 ", year=" + year +
                 ", usersId=" + usersId +
-                '}';
+                '}'+'\n';
     }
 }

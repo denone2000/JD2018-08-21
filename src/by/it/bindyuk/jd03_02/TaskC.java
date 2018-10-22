@@ -15,7 +15,7 @@ import java.sql.Statement;
 
 public class TaskC {
 
-    //===============================================================================
+    //==================================================================================================================
     //метод для удаления всех таблиц
     static void reset() throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -28,12 +28,13 @@ public class TaskC {
         }
     }
 
-    //===============================================================================
+    //==================================================================================================================
     //создание таблиц по очереди
     static void initializing() throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
+            //==========================================================================================================
             //таблица роли
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`roles` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -41,6 +42,7 @@ public class TaskC {
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
             //таблица пользователей
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`users` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -61,6 +63,7 @@ public class TaskC {
                     "    ON UPDATE RESTRICT)\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
             //таблица маршрутов
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`routes` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -68,6 +71,7 @@ public class TaskC {
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
             //таблтица билетов
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`tickets` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -101,7 +105,7 @@ public class TaskC {
         }
     }
 
-    //===============================================================================
+    //==================================================================================================================
     //новая роль
     static void addRole(String role) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -111,7 +115,7 @@ public class TaskC {
         }
     }
 
-    //===============================================================================
+    //==================================================================================================================
     //новый пользователь
     static void addUser(String login, String password, String email, String passpostSeries,
                         int passportId, String bancardNumber, int cid, long rolesId) throws SQLException {
@@ -122,7 +126,7 @@ public class TaskC {
         }
     }
 
-    //===============================================================================
+    //==================================================================================================================
     //новый билет
     static void addTicket(String transport, long routesIdFrom, long routesIdTo,
                           int data, int month, int year, long usersId) throws SQLException {
@@ -133,7 +137,7 @@ public class TaskC {
         }
     }
 
-    //===============================================================================
+    //==================================================================================================================
     //новый город в маршрутах
     static void addRoute(String city) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

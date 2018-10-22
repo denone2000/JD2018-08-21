@@ -4,16 +4,17 @@ import java.sql.*;
 
 public class B_ShowUsers {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
+            //==========================================================================================================
             //буферные переменные для подсчета пользователей и ролей
             int usersCount = 0;
             int rolesCount = 0;
 
-            //==========================================================
+            //==========================================================================================================
             //inner join на две таблицы со всеми метаданными
             ResultSet resultSet = statement.executeQuery("select * from users INNER JOIN roles ON users.roles_id=roles.id");
             while (resultSet.next()) {

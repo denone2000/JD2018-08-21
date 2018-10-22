@@ -10,13 +10,11 @@ import java.sql.Statement;
 
 public class TicketCRUD {
 
-    //==================================================================================
+    //==================================================================================================================
     //запись нового билета в бд
     public static boolean create(Ticket ticket) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("INSERT INTO `tickets`(`transport`," +
                             " `routes_id from`, `routes_id to`, `data`, `month`," +
                             " `year`, `users_id`) " +
@@ -29,7 +27,6 @@ public class TicketCRUD {
                     ticket.getMonth(),
                     ticket.getYear(),
                     ticket.getUsersId());
-
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -41,15 +38,13 @@ public class TicketCRUD {
         return false;
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //прочитать билет из бд по id
     public static Ticket read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("SELECT * FROM `tickets` WHERE `id`=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
-
             if (resultSet.next()) {
                 return new Ticket(
                         resultSet.getLong("id"),
@@ -65,13 +60,11 @@ public class TicketCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //перезаписать билет
     public static boolean update(Ticket ticket) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("UPDATE `tickets` SET " +
                             "`transport`='%s'," +
                             "`routes_id from`='%d'," +
@@ -93,18 +86,18 @@ public class TicketCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //удалить билет
     public static boolean delete(Ticket ticket) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("DELETE FROM `tickets` WHERE `id`=%d",
                     ticket.getId());
             return (statement.executeUpdate(sql) == 1);
         }
     }
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws SQLException {
         Ticket ticket = new Ticket(0,"train",2,3,21,10,2019,2);
 

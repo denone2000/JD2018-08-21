@@ -40,7 +40,7 @@ public class User {
                 ", bancardNumber='" + bancardNumber + '\'' +
                 ", cid=" + cid +
                 ", roles_id=" + roles_id +
-                '}';
+                '}' + '\n';
     }
 
     public long getId() {

@@ -10,16 +10,13 @@ import java.sql.Statement;
 
 public class RouteCRUD {
 
-    //==================================================================================
+    //==================================================================================================================
     //добавление маршрута в бд
     public static boolean create(Route route) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("INSERT INTO `routes`(`city`) VALUES ('%s')",
                     route.getCity());
-
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -31,15 +28,13 @@ public class RouteCRUD {
         return false;
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //прочитать маршрут из бд по id
     public static Route read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("SELECT * FROM `routes` WHERE `id`=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
-
             if (resultSet.next()) {
                 return new Route(
                         resultSet.getLong("id"),
@@ -49,13 +44,11 @@ public class RouteCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //перезеписать маршрут
     public static boolean update(Route route) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("UPDATE `routes` SET `city`='%s' WHERE `id`=%d",
                     route.getCity(),
                     route.getId());
@@ -63,7 +56,7 @@ public class RouteCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //удалить маршрут
     public static boolean delete(Route route) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -75,15 +68,16 @@ public class RouteCRUD {
         }
     }
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws SQLException {
         Route route = new Route(0, "Orhsa");
         if (create(route))
             System.out.println("Create OK: " + route);
         long id = route.getId();
-        route=null;
+        route = null;
         route = read(id);
-        if (route!=null)
-            System.out.println("Read OK: "+route);
+        if (route != null)
+            System.out.println("Read OK: " + route);
         route.setCity("Osipovichi");
         if (update(route))
             System.out.println("Updating: " + route);

@@ -10,16 +10,13 @@ import java.sql.Statement;
 
 public class RoleCRUD {
 
-    //==================================================================================
+    //==================================================================================================================
     //добавление роли в бд
     public static boolean create(Role role) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("INSERT INTO `roles`(`role`) VALUES ('%s')",
                     role.getRole());
-
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -31,15 +28,13 @@ public class RoleCRUD {
         return false;
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //получить роль по id из бд
     public static Role read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("SELECT * FROM `roles` WHERE `id`=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
-
             if (resultSet.next()) {
                 return new Role(
                         resultSet.getLong("id"),
@@ -49,13 +44,11 @@ public class RoleCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //перезаписать роль
     public static boolean update(Role role) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("UPDATE `roles` SET `role`='%s' WHERE `id`=%d",
                     role.getRole(),
                     role.getId());
@@ -63,7 +56,7 @@ public class RoleCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //удалить роль
     public static boolean delete(Role role) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();

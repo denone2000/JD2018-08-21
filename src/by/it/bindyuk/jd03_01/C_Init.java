@@ -13,27 +13,23 @@ class C_Init {
     private static String PASSWORD_DB = "";
 
     static void initialization() {
-
-//        Driver driver = new FabricMySQLDriver();
-//        DriverManager.registerDriver(driver);
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Error loading driver: " + e);
         }
-
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
              Statement statement = connection.createStatement()
         ) {
 
+            //==========================================================================================================
             //создаем базу данных
-
             statement.executeUpdate("DROP SCHEMA IF EXISTS `bindyuk` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `bindyuk` DEFAULT CHARACTER SET utf8 ;");
 
+            //==========================================================================================================
             //создаем таблицу Роли
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`roles` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -41,6 +37,7 @@ class C_Init {
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
             //создаем таблицу Юзеров
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`users` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
@@ -61,14 +58,16 @@ class C_Init {
                     "    ON UPDATE RESTRICT)\n" +
                     "ENGINE = InnoDB;");
 
-            //создаем таблицу Билетов
-
+            //==========================================================================================================
+            //создаем таблицу машрутов
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`routes` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `city` VARCHAR(45) NULL,\n" +
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
+            //создаем таблицу билетов
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bindyuk`.`tickets` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `transport` VARCHAR(45) NULL,\n" +
@@ -99,6 +98,7 @@ class C_Init {
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
 
+            //==========================================================================================================
             //наполняем таблицы
 
             //роли
@@ -106,12 +106,14 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
 
+            //==========================================================================================================
             //юзеры
             statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`) " +
                     "VALUES (DEFAULT, 'admin', 'admin', 'admin@gmail.com', 'NULL', 0, '0', 0, 1);");
             statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`)" +
                     "VALUES (DEFAULT, 'user', 'user', 'user@gmail.com', 'MP', 2560012, '0001 0002 0003 0004', 563, 2);");
 
+            //==========================================================================================================
             //города
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Minsk');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Grodno');");
@@ -120,6 +122,7 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Mogilev');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`routes` (`id`, `city`) VALUES (DEFAULT, 'Vitsiebsk');");
 
+            //==========================================================================================================
             //билеты
             statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `month`, `year`, `users_id`) " +
                     "VALUES (DEFAULT, 'train', 1, 2, 21, 12, 2018, 2);");

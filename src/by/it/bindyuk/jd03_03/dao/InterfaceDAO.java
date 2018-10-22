@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd03_03;
+package by.it.bindyuk.jd03_03.dao;
 
 import java.sql.SQLException;
 import java.util.List;

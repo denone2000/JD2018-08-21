@@ -14,22 +14,15 @@ class B_AddRoles {
     static void addRoles() {
 
         try {
-
-//            Driver driver = new FabricMySQLDriver();
-//            DriverManager.registerDriver(driver);
-
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Error loading driver: " + e);
         }
-
         try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB);
              Statement statement = connection.createStatement()
         ) {
-
-
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `bindyuk`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");

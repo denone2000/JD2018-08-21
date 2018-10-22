@@ -10,13 +10,11 @@ import java.sql.Statement;
 
 public class UserCRUD {
 
-    //==================================================================================
+    //==================================================================================================================
     //новый пользователь
     public static boolean create(User user) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("INSERT INTO `users`(`login`, `password`, `email`, `passport series`," +
                             " `passport id`, `bancard number`, `cid`, `roles_id`) " +
                             "VALUES ('%s','%s','%s','%s','%d','%s','%d','%d');",
@@ -28,7 +26,6 @@ public class UserCRUD {
                     user.getBancardNumber(),
                     user.getCid(),
                     user.getRoles_id());
-
             if (statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS) == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -40,15 +37,13 @@ public class UserCRUD {
         return false;
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //прочитать пользователя из бд по id
     public static User read(long id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("SELECT * FROM `users` WHERE `id`=%d", id);
             ResultSet resultSet = statement.executeQuery(sql);
-
             if (resultSet.next()) {
                 return new User(
                         resultSet.getLong("id"),
@@ -65,13 +60,11 @@ public class UserCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //перезаписать пользователя
     public static boolean update(User user) throws SQLException {
-
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
             String sql = String.format("UPDATE `users` SET " +
                             "`login`='%s'," +
                             "`password`='%s'," +
@@ -95,7 +88,7 @@ public class UserCRUD {
         }
     }
 
-    //==================================================================================
+    //==================================================================================================================
     //удалить пользователя
     public static boolean delete(User user) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
@@ -107,6 +100,7 @@ public class UserCRUD {
         }
     }
 
+    @SuppressWarnings("all")
     public static void main(String[] args) throws SQLException {
         User user = new User(0, "jun", "junpass",
                 "junior@gmail.com", "MP",
