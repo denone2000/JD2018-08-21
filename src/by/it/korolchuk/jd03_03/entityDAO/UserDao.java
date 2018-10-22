@@ -22,7 +22,7 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
                     user.getPassword(),
                     user.getEmail(),
                     user.getRolesId());
-            long id = execureUodate(sql);
+            long id = executeUpdate(sql);
             if (id > 0) {
                 user.setId(id);
                 return  true;
@@ -33,9 +33,9 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
     @Override
     public User read(User id) throws SQLException {
         String where = String.format("SELECT * FROM `users` WHERE `id`=%d", id);
-        List<User> list = getAll(where);
-        if (list.size() == 1){
-            return list.get(0);
+        List<User> users = getAll(where);
+        if (users.size() > 0){
+            return users.get(0);
         }else {
             return null;
         }
@@ -54,7 +54,7 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
                 user.getEmail(),
                 user.getRolesId(),
                 user.getId());
-        return execureUodate(sql) > 0;
+        return executeUpdate(sql) > 0;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
         String sql = String.format(
                 "DELETE FROM `users` WHERE `id`=%d",
                 user.getId());
-        return execureUodate(sql) > 0;
+        return executeUpdate(sql) > 0;
     }
 
     @Override
@@ -74,22 +74,22 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
     public List<User> getAll(String where) throws SQLException {
 
         List<User> result = new ArrayList<>();
-        String sql = String.format("SELECT * FROM `users` " + where);
+        String sql = "SELECT * FROM `users` " + where;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()
         ) {
             ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next());
+            while (resultSet.next()) {
                 result.add(new User(
-                        resultSet.getLong("id"),
-                        resultSet.getString("login"),
-                        resultSet.getString("password"),
-                        resultSet.getString("email"),
-                        resultSet.getLong("roles_id")
-                ));
+                resultSet.getLong("id"),
+                resultSet.getString("login"),
+                resultSet.getString("password"),
+                resultSet.getString("email"),
+                resultSet.getLong("roles_id")));
             }
-            return null;
+        }
+            return result;
         }
     }
 

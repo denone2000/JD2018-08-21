@@ -8,7 +8,7 @@ public class User {
     private String email;
     private long rolesId;
 
-    private User() {
+    public User() {
 
     }
 
