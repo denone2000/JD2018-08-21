@@ -13,6 +13,7 @@ abstract class AbstractDao {
         long result = -1;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
+            System.out.println(sql);
             result = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (result==1 && sql.trim().toUpperCase().startsWith("INSERT")) {
                 ResultSet resultSet = statement.getGeneratedKeys();

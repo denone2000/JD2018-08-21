@@ -18,7 +18,6 @@ public class RoleDao extends AbstractDao implements InterfaceDao<Role> {
     public boolean create(Role role) throws SQLException {
         String sql = String.format("INSERT INTO `roles`(`Role`) " +
                 "VALUES ('%s');", role.getRole());
-        System.out.println(sql);
         long id = executeUpdate(sql);
         if (id > 0) {
             role.setID(id);

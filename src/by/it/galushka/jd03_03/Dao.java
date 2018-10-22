@@ -8,12 +8,14 @@ class Dao {
 
     public RoleDao role;
     public UserDao user;
-//    public CarDao car;
-//    public OrderDao order;
+    public CarDao car;
+    public OrderDao order;
 
     private Dao() {
         role = new RoleDao();
         user = new UserDao();
+        car = new CarDao();
+        order = new OrderDao();
     }
 
     static Dao getDao(){

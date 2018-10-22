@@ -89,6 +89,6 @@ public class Car {
                 ", EngineCapacity=" + EngineCapacity +
                 ", ReleaseDate='" + ReleaseDate + '\'' +
                 ", users_ID=" + users_ID +
-                '}';
+                '}' + '\n';
     }
 }

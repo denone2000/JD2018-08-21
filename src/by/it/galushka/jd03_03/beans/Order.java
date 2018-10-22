@@ -23,7 +23,7 @@ public class Order {
         Surname = surname;
         Name = name;
         MiddleName = middleName;
-        Address = address;
+        this.Address = address;
         this.users_ID = users_ID;
     }
 
@@ -56,7 +56,7 @@ public class Order {
     }
 
     public String getAddress() {
-        return Address;
+        return this.Address;
     }
 
     public long getUsers_ID() {
@@ -111,6 +111,6 @@ public class Order {
                 ", MiddleName='" + MiddleName + '\'' +
                 ", Address='" + Address + '\'' +
                 ", users_ID=" + users_ID +
-                '}';
+                '}' + '\n';
     }
 }
