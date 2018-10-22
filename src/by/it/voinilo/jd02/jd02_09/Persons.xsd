@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.jd02.voinilo.it.by/xml/Persons"
+        xmlns:tns="http://beans.jd02_09.jd02.voinilo.it.by/xml/Persons"
+        elementFormDefault="qualified">
+
+    <element name="Persons">
+       <complexType>
+           <sequence>
+               <element name="Person"
+                        type ="tns:Person"
+                        maxOccurs="unbounded">
+
+               </element>
+           </sequence>
+       </complexType>
+    </element>
+    <complexType name="Person">
+        <sequence>
+            <element name="Email" type="string"></element>
+            <element name="Nickname" type="string"></element>
+            <element name="Password" type="string"></element>
+            <element name="Ads" type="tns:Ads"></element>
+        </sequence>
+    </complexType>
+    <complexType name="Ads">
+        <sequence>
+        <element name="Ad" type="tns:Ad" maxOccurs="unbounded"
+                 minOccurs="1" ></element>
+        </sequence>
+    </complexType>
+
+    <complexType name="Ad">
+
+        <all>
+            <element name="Rooms" type="string"></element>
+            <element name="Description" type="string"></element>
+            <element name="Addres" type="string"></element>
+            <element name="Floor" type="string"></element>
+            <element name="Floors" type="string"></element>
+            <element name="Square" type="string"></element>
+            <element name="Price" type="string"></element>
+        </all>
+    </complexType>
+
+
+</schema>
