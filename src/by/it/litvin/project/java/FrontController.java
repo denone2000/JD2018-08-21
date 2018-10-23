@@ -20,6 +20,20 @@ public class FrontController extends HttpServlet {
     }
 
     private void proces (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        resp.getWriter().print("Controller is alive");
+        String command = req.getParameter("command");
+        String view="/error.jsp";
+        switch (command){
+            case "Index":view=Actions.INDEX.jsp;
+            break;
+            case "Login":view=Actions.LOGIN.jsp;
+                break;
+            case "Logout":view=Actions.LOGOUT.jsp;
+                break;
+            case "SignUp":view=Actions.SIGNUP.jsp;
+                break;
+        }
+
+        getServletContext().getRequestDispatcher(view).forward(req,resp);
     }
+
 }

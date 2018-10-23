@@ -29,10 +29,11 @@ public class Runner {
         if (dao.role.update(role))
             System.out.println("Role is changed "+role);
 
-        Form form = new Form();
-        form.setDescription("old");
-        form.setAge(20);
-        form.setUsers_id(2);
+        Form form = new Form(0,"Sasha","Zankovich","Minsk","beautifull",19,
+                "student","friendship",2);
+//        form.setDescription("old");
+//        form.setAge(20);
+//        form.setUsers_id(2);
         if (dao.form.create(form))
             System.out.println("Form is created " + form);
         form=dao.form.read(form.getId());
@@ -40,9 +41,10 @@ public class Runner {
         form.setDescription("not old");
         if (dao.form.update(form))
             System.out.println("Form is updated " + form);
-        if (dao.form.delete(form))
-            System.out.println("Form is deleted "+form);
-        dao.reset();
+//        if (dao.form.delete(form))
+//            System.out.println("Form is deleted "+form);
+//        dao.reset();
+
 
 
     }

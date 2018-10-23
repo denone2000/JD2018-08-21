@@ -11,7 +11,7 @@ public class FormCrud {
 
     public static void main(String[] args) throws SQLException {
 
-        Form form = new Form(3,"Minsk","Beautiful",16,"school girl",
+        Form form = new Form(3,"Sasha","Zankovich","Minsk","Beautiful",16,"school girl",
                 "friendship",2);
         if (create(form))
             System.out.println("Create " + form);
@@ -37,6 +37,8 @@ public class FormCrud {
             if (resultSet.next()) {
                 Form form = new Form(
                         resultSet.getLong("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("surname"),
                         resultSet.getString("address"),
                         resultSet.getString("description"),
                         resultSet.getInt("age"),
@@ -57,12 +59,16 @@ public class FormCrud {
         ) {
             String sql = String.format(
                     "UPDATE `form` SET " +
+                            "`name`='%s'," +
+                            "`surname`='%s'," +
                             "`address`='%s'," +
                             "`description`='%s'," +
                             "`age`=%d," +
                             "`information`='%s'," +
                             "`aim`='%s'," +
                             "`users_id`=%d WHERE `id`=%d",
+                    form.getName(),
+                    form.getSurname(),
                     form.getAddress(),
                     form.getDescription(),
                     form.getAge(),
@@ -93,8 +99,10 @@ public class FormCrud {
                 Statement statement = connection.createStatement()
         ) {
             String sql = String.format(
-                    "INSERT INTO `form`(`address`,`description`,`age`,`information`,`aim`,`users_id`)" +
-                            " VALUES ('%s','%s',%d,'%s','%s',%d);",
+                    "INSERT INTO `form`(`name`,`surname`,`address`,`description`,`age`,`information`,`aim`,`users_id`)" +
+                            " VALUES ('%s','%s','%s','%s',%d,'%s','%s',%d);",
+                    form.getName(),
+                    form.getSurname(),
                     form.getAddress(),
                     form.getDescription(),
                     form.getAge(),

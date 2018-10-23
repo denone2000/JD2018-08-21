@@ -24,8 +24,10 @@ public class FormDao extends AbstractDao implements InterfaceDao<Form> {
     @Override
     public boolean create(Form form) throws SQLException {
         String sql = String.format(
-                "INSERT INTO `form`(`address`,`description`,`age`,`information`,`aim`,`users_id`)" +
-                        " VALUES ('%s','%s',%d,'%s','%s',%d);",
+                "INSERT INTO `form`(`name`,`surname`,`address`,`description`,`age`,`information`,`aim`,`users_id`)" +
+                        " VALUES ('%s','%s','%s','%s',%d,'%s','%s',%d);",
+                form.getName(),
+                form.getSurname(),
                 form.getAddress(),
                 form.getDescription(),
                 form.getAge(),
@@ -41,12 +43,16 @@ public class FormDao extends AbstractDao implements InterfaceDao<Form> {
     public boolean update(Form form) throws SQLException {
         String sql = String.format(
                 "UPDATE `form` SET " +
+                        "`name`='%s'," +
+                        "`surname`='%s'," +
                         "`address`='%s'," +
                         "`description`='%s'," +
                         "`age`=%d," +
                         "`information`='%s'," +
                         "`aim`='%s'," +
                         "`users_id`=%d WHERE `id`=%d",
+                form.getName(),
+                form.getSurname(),
                 form.getAddress(),
                 form.getDescription(),
                 form.getAge(),
@@ -76,6 +82,8 @@ public class FormDao extends AbstractDao implements InterfaceDao<Form> {
             while (resultSet.next()) {
                 Form form=new Form();
                 form.setId(resultSet.getLong("id"));
+                form.setName(resultSet.getString("name"));
+                form.setSurname(resultSet.getString("surname"));
                 form.setAddress(resultSet.getString("address"));
                 form.setDescription(resultSet.getString("description"));
                 form.setAge(resultSet.getInt("age"));
