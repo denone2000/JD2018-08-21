@@ -15,6 +15,8 @@ public class Runner {
                     "test", "test", "test",
                     1234, "test", 123, 2);
             dao.user.create(user);
+            user = dao.user.read(user.getId());
+            System.out.println(user);
             List<Role> all = dao.role.getAll("WHERE `id`=1");
             System.out.println(all);
             List<Role> all1 = dao.role.getAll();
