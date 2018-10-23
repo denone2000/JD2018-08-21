@@ -91,7 +91,7 @@ public class OrderDao extends AbstractDao implements InterfaceDao<Order> {
                 order.setName(resultSetOrders.getString("Name"));
                 order.setMiddleName(resultSetOrders.getString("Middle name"));
                 order.setAddress(resultSetOrders.getString("Address"));
-                order.setAddress(resultSetOrders.getString("users_ID"));
+                order.setUsers_ID(resultSetOrders.getLong("users_ID"));
                 orders.add(order);
             }
             return orders;
