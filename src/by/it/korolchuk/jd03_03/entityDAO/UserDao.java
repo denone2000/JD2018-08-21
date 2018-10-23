@@ -15,28 +15,28 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
 
     @Override
     public boolean create(User user) throws SQLException {
-            String sql = String.format(
-                    "INSERT INTO `users`(`login`, `password`, `email`, `roles_id`) " +
-                            "VALUES ('%s','%s','%s',%d)",
-                    user.getLogin(),
-                    user.getPassword(),
-                    user.getEmail(),
-                    user.getRolesId());
-            long id = executeUpdate(sql);
-            if (id > 0) {
-                user.setId(id);
-                return  true;
-            }
-            return false;
+        String sql = String.format(
+                "INSERT INTO `users`(`login`, `password`, `email`, `roles_id`) " +
+                        "VALUES ('%s','%s','%s',%d)",
+                user.getLogin(),
+                user.getPassword(),
+                user.getEmail(),
+                user.getRolesId());
+        long id = executeUpdate(sql);
+        if (id > 0) {
+            user.setId(id);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public User read(User id) throws SQLException {
-        String where = String.format("SELECT * FROM `users` WHERE `id`=%d", id);
+    public User read(long id) throws SQLException {
+        String where = String.format("WHERE `id`=%d", id);
         List<User> users = getAll(where);
-        if (users.size() > 0){
+        if (users.size() > 0) {
             return users.get(0);
-        }else {
+        } else {
             return null;
         }
     }
@@ -82,14 +82,14 @@ public class UserDao extends AbstractDao implements InterfaceDAO<User> {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 result.add(new User(
-                resultSet.getLong("id"),
-                resultSet.getString("login"),
-                resultSet.getString("password"),
-                resultSet.getString("email"),
-                resultSet.getLong("roles_id")));
+                        resultSet.getLong("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("email"),
+                        resultSet.getLong("roles_id")));
             }
         }
-            return result;
-        }
+        return result;
     }
+}
 

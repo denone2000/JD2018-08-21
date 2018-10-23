@@ -1,5 +1,6 @@
 package by.it.korolchuk.jd03_03;
 
+import by.it.korolchuk.jd03_03.beans.Role;
 import by.it.korolchuk.jd03_03.beans.User;
 
 import java.sql.SQLException;
@@ -10,5 +11,6 @@ public class Runner {
         Dao dao = Dao.getDao();
         List<User> users = dao.user.getAll();
         System.out.println(users);
+
     }
 }

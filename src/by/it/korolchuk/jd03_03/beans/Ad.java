@@ -9,14 +9,14 @@ public class Ad {
     private String sex;
     private long age;
     private long height;
-    private String qalities;
+    private String qualities;
     private long usersId;
 
     public Ad() {
     }
 
     public Ad(long id, String description, String kindOfAnimal, String greed,
-              String sex, long age, long height, String qalities, long usersId) {
+              String sex, long age, long height, String qualities, long usersId) {
         this.id = id;
         this.description = description;
         this.kindOfAnimal = kindOfAnimal;
@@ -24,7 +24,7 @@ public class Ad {
         this.sex = sex;
         this.age = age;
         this.height = height;
-        this.qalities = qalities;
+        this.qualities = qualities;
         this.usersId = usersId;
     }
 
@@ -85,11 +85,11 @@ public class Ad {
     }
 
     public String getQalities() {
-        return qalities;
+        return qualities;
     }
 
     public void setQalities(String qalities) {
-        this.qalities = qalities;
+        this.qualities = qalities;
     }
 
     public long getUsersId() {
@@ -108,10 +108,10 @@ public class Ad {
                 ", kindOfAnimal='" + kindOfAnimal + '\'' +
                 ", greed='" + greed + '\'' +
                 ", sex='" + sex + '\'' +
-                ", age=" + age +
-                ", height=" + height +
-                ", qalities='" + qalities + '\'' +
-                ", usersId=" + usersId +
-                '}';
+                ", age='" + age +
+                ", height='" + height +
+                ", qualities='" + qualities + '\'' +
+                ", usersId='" + usersId +
+                "}\n";
     }
 }

@@ -17,7 +17,9 @@ public class AbstractDao {
                 Statement statement = connection.createStatement()
         ) {
             result = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-            if (result == 1 && sql.trim().toUpperCase().startsWith("insert ")) {
+
+            System.out.println(sql);
+            if (result == 1 && sql.trim().toUpperCase().startsWith("INSERT ")) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     result = generatedKeys.getLong(1);

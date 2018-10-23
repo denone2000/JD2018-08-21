@@ -1,13 +1,13 @@
 package by.it.korolchuk.jd03_03;
 
-        import java.sql.SQLException;
-        import java.util.List;
+import java.sql.SQLException;
+import java.util.List;
 
 public interface InterfaceDAO<TYPE> {
 
     boolean create(TYPE bean) throws SQLException;
 
-    TYPE read(TYPE id) throws SQLException;
+    TYPE read(long id) throws SQLException;
 
     boolean update(TYPE bean) throws SQLException;
 
