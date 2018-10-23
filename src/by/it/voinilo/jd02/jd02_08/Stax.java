@@ -1,7 +1,5 @@
 package by.it.voinilo.jd02.jd02_08;
 
-import by.it.korolchuk.jd02_05.Calc_jd02_05.Str;
-
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;

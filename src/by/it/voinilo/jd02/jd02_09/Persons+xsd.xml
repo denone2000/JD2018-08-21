@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation = "http://beans.jd02_09.jd02.voinilo.it.by/xml/Persons Persons.xsd"
+    xmlns = "http://beans.jd02_09.jd02.voinilo.it.by/xml/Persons">
+    <Person>
+        <Email>asd@mail.ru</Email>
+        <Nickname>asd</Nickname>
+        <Password>1234</Password>
+        <Ads>
+            <Ad>
+                <Rooms>2</Rooms>
+                <Description>Квартира в центре города</Description>
+                <Addres>Пр.Пушкина 2-3-4</Addres>
+                <Floor>2</Floor>
+                <Floors>5</Floors>
+                <Square>21</Square>
+                <Price>300k</Price>
+            </Ad>
+            <Ad >
+                <Rooms>3</Rooms>
+                <Description>Квартира в спальном районе</Description>
+                <Addres>Центральная, 212</Addres>
+                <Floor>4</Floor>
+                <Floors>10</Floors>
+                <Square>43</Square>
+                <Price>250k</Price>
+            </Ad>
+            <Ad >
+                <Rooms>1</Rooms>
+                <Description>Квартира рядом с метро</Description>
+                <Addres>Победителей,24</Addres>
+                <Floor>1</Floor>
+                <Floors>10</Floors>
+                <Square>25</Square>
+                <Price>221k</Price>
+            </Ad>
+        </Ads>
+    </Person>
+
+</Persons>
