@@ -75,9 +75,7 @@ public class Reset {
                     "  `transport` VARCHAR(45) NULL,\n" +
                     "  `routes_id from` INT NOT NULL,\n" +
                     "  `routes_id to` INT NOT NULL,\n" +
-                    "  `data` INT NULL,\n" +
-                    "  `month` INT NULL,\n" +
-                    "  `year` INT NULL,\n" +
+                    "  `data` TIMESTAMP NULL,\n" +
                     "  `users_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
                     "  INDEX `fk_tickets_users1_idx` (`users_id` ASC),\n" +
@@ -110,9 +108,11 @@ public class Reset {
 
             //==========================================================================================================
             //юзеры
-            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`) " +
+            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`," +
+                    " `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`) " +
                     "VALUES (DEFAULT, 'admin', 'admin', 'admin@gmail.com', 'NULL', 0, '0', 0, 1);");
-            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`, `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`)" +
+            statement.executeUpdate("INSERT INTO `bindyuk`.`users` (`id`, `login`, `password`, `email`," +
+                    " `passport series`, `passport id`, `bancard number`, `cid`, `roles_id`)" +
                     "VALUES (DEFAULT, 'user', 'user', 'user@gmail.com', 'MP', 2560012, '0001 0002 0003 0004', 563, 2);");
 
             //==========================================================================================================
@@ -126,8 +126,8 @@ public class Reset {
 
             //==========================================================================================================
             //билеты
-            statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `month`, `year`, `users_id`) " +
-                    "VALUES (DEFAULT, 'train', 1, 2, 21, 12, 2018, 2);");
+            statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `users_id`)" +
+                    " VALUES (DEFAULT, 'train', 1, 2, '1540816800', 2);");
 
         } catch (SQLException e) {
             e.printStackTrace();

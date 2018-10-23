@@ -6,13 +6,15 @@
          metadata-complete="true">
 
     <servlet>
-        <servlet-name>HelloServletName</servlet-name>
-        <servlet-class>by.it.bindyuk.project.java.HelloServlet</servlet-class>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>by.it.bindyuk.project.java.FrontController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloServletName</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/do</url-pattern>
     </servlet-mapping>
+
+
 
 </web-app>
