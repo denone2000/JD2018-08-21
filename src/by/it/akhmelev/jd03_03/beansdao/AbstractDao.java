@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public abstract class AbstractDao {
     protected long executeUpdate(String sql) throws SQLException {
-        long result = -1;
+        long result;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);

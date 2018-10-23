@@ -16,8 +16,8 @@ public class MyValidator {
 
         String lang = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         String root = System.getProperty("user.dir");
-        String xml = root + "/src/by/it/akhmelev/jd02_07/Persons+XSD.xml";
-        String xsd = root + "/src/by/it/akhmelev/jd02_07/Persons.xsd";
+        String xml = root + "/src/by/it/akhmelev/jd02_07/Companies+XSD.xml";
+        String xsd = root + "/src/by/it/akhmelev/jd02_07/Companies.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(lang);
         try {
             Schema schema = factory.newSchema(new File(xsd));

@@ -2,7 +2,7 @@ package by.it.basumatarau.jd03_01;
 
 import java.sql.*;
 
-public class B_AddRoles {
+class B_AddRoles {
 
     static void addRoles(String roleName){
         String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +

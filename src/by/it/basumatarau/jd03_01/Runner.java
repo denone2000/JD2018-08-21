@@ -3,20 +3,15 @@ package by.it.basumatarau.jd03_01;
 public class Runner {
     public static void main(String[] args) {
 
-
+        C_Reset.resetDB();
         C_init.createDB();
 
-
-        A_AddUser.addUser("George Bush Jr.", "oil", "gbj@usa.com");
-
-        A_AddData.addData("NY primaries", "presidential elections", "somewhere in NY", "2000-02-18 19:30:00", 0.0f, 1);
-        A_AddData.addData("CA primaries", "presidential elections", "somewhere in CA", "2000-02-22 19:30:00", 0.0f, 1);
-        A_AddData.addData("FL primaries", "regular meeting", "somewhere in FL", "2000-02-26 19:30:00", 10.0f, 1);
-
+        A_AddUser.addUser("new user", "asd34fd", "newuser@mail.com");
+        A_AddData.addData("big venue", "presidential elections", 0L, 0.0f, 1, "city hall", "some address");
+        A_AddData.addData("small venue", "party", 0L, 0.0f, 1, "pub", "some pub address");
+        A_AddData.addData("very small venue", "commute", 0L, 0.0f, 1, "work", "work address");
 
         B_ShowUsers.showUsers();
         B_AddRoles.addRoles("moderator");
-
-        //C_Reset.resetDB();
     }
 }

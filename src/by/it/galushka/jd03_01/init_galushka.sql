@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `galushka`.`orders` ;
 
 CREATE TABLE IF NOT EXISTS `galushka`.`orders` (
   `ID` INT NOT NULL AUTO_INCREMENT,
-  `Passport id` VARCHAR(14) NULL,
+  `Passport ID` VARCHAR(14) NULL,
   `Order date` DATE NULL,
   `Return date` DATE NULL,
   `Surname` VARCHAR(45) NULL,
@@ -138,7 +138,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `galushka`;
-INSERT INTO `galushka`.`orders` (`ID`, `Passport id`, `Order date`, `Return date`, `Surname`, `Name`, `Middle name`, `Address`, `users_ID`) VALUES (DEFAULT, '123456789oiuyt', '2018.01.01', '2018/11/01', 'Ivanov', 'Ivan', 'Ivanovich', 'Lenina, 3', 2);
+INSERT INTO `galushka`.`orders` (`ID`, `Passport ID`, `Order date`, `Return date`, `Surname`, `Name`, `Middle name`, `Address`, `users_ID`) VALUES (DEFAULT, '123456789oiuyt', '2018.01.01', '2018/11/01', 'Ivanov', 'Ivan', 'Ivanovich', 'Lenina, 3', 2);
 
 COMMIT;
 
