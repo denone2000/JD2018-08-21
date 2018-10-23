@@ -1,35 +1,36 @@
 package by.it.korolchuk.jd03_02;
 
-import by.it.korolchuk.jd03_02.beans.Ad;
-import by.it.korolchuk.jd03_02.beans.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TaskB {
     public static void main(String[] args) throws SQLException {
 
-        getUsersList();
-    }
 
-    static String getUsersList() throws SQLException {
-        String login = null;
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            int userCounter = 0;
+            int roleCounter = 0;
 
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            String sql = String.format("SELECT login FROM `users` ");
-            ResultSet resultSet = statement.executeQuery(sql);
-
+            ResultSet resultSet = statement.executeQuery(
+                    "select * from users INNER JOIN roles ON users.roles_id=roles.id");
             while (resultSet.next()) {
-                login = resultSet.getString("login");
-                System.out.println(login);
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                for (int i = 1; i < columnCount + 1; i++) {
+                    System.out.print(
+                            metaData.getColumnLabel(i) + " = " +
+                                    resultSet.getString(i) + "\t"
+                    );
+                }
+                System.out.println();
+                userCounter++;
             }
-            return login;
+            ResultSet resultSet1 = statement.executeQuery("select * from roles;");
+            while (resultSet1.next()) {
+                roleCounter++;
+            }
+            System.out.println("Number of users " + userCounter + "\n" + "Number of roles" + roleCounter);
         }
     }
-
 }
