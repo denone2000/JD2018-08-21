@@ -9,10 +9,10 @@ import java.io.PrintWriter;
 
 public class JavaServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter prn=resp.getWriter();
-        prn.println("<br><br>Hello world!!");
-        prn.println("<br>URI:"+req.getRequestURI());
-        prn.flush();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        PrintWriter writer = resp.getWriter();
+        writer.println("Hello world!!");
+        writer.flush();
     }
 }
