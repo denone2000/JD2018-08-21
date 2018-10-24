@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class FrontController extends HttpServlet {
 
@@ -18,8 +17,9 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        process(req, resp);
+        //process(req, resp);
     }
+
 
 
     private void process(HttpServletRequest req, HttpServletResponse resp)
@@ -42,6 +42,9 @@ public class FrontController extends HttpServlet {
                 view = Actions.SIGNUP.jsp;
                 break;
         }
+
+        resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
+        resp.setHeader("Pragma", "no-cache");
 
         getServletContext().getRequestDispatcher(view).forward(req,resp);
 
