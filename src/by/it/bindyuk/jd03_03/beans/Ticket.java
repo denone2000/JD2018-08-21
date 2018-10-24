@@ -1,24 +1,22 @@
 package by.it.bindyuk.jd03_03.beans;
 
+import java.sql.Timestamp;
+
 public class Ticket {
 
     private long id;
     private String transport;
     private long routesIdFrom;
     private long routesIdTo;
-    private int data;
-    private int month;
-    private int year;
+    private Timestamp data;
     private long usersId;
 
-    public Ticket(long id, String transport, long routesIdFrom, long routesIdTo, int data, int month, int year, long usersId) {
+    public Ticket(long id, String transport, long routesIdFrom, long routesIdTo, Timestamp data, long usersId) {
         this.id = id;
         this.transport = transport;
         this.routesIdFrom = routesIdFrom;
         this.routesIdTo = routesIdTo;
         this.data = data;
-        this.month = month;
-        this.year = year;
         this.usersId = usersId;
     }
 
@@ -57,28 +55,12 @@ public class Ticket {
         this.routesIdTo = routesIdTo;
     }
 
-    public int getData() {
+    public Timestamp getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(Timestamp data) {
         this.data = data;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public long getUsersId() {
@@ -97,9 +79,7 @@ public class Ticket {
                 ", routesIdFrom=" + routesIdFrom +
                 ", routesIdTo=" + routesIdTo +
                 ", data=" + data +
-                ", month=" + month +
-                ", year=" + year +
                 ", usersId=" + usersId +
-                '}'+'\n';
+                '}';
     }
 }

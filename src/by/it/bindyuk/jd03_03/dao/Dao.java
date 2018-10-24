@@ -17,6 +17,10 @@ class Dao {
     private Dao() {
     }
 
+    public void reset() {
+        Reset.main(new String[0]);
+    }
+
     //==================================================================================================================
     //Singleton, внутри инициализируются все поля DAO
     public static Dao getDao() {
