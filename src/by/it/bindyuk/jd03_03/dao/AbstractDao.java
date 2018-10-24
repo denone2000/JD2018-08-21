@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-abstract class AbstractDao {
+public abstract class AbstractDao {
 
     //==================================================================================================================
     //метод для SOLID, получаем id из бина
-    long executeCreate(String sql) throws SQLException {
+    protected long executeCreate(String sql) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -28,7 +28,7 @@ abstract class AbstractDao {
 
     //==================================================================================================================
     //метод для SOLID, узнаем, был ли изменен бин
-    boolean executeUpdate(String sql) throws SQLException {
+    protected boolean executeUpdate(String sql) throws SQLException {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {

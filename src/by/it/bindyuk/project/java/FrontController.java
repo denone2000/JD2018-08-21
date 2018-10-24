@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class FrontController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
@@ -19,18 +20,31 @@ public class FrontController extends HttpServlet {
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String command = req.getParameter("command");
+
         String view = "/error.jsp";
         switch (command) {
-            case "Index": view=Actions.INDEX.jsp;
-            break;
-            case "Login": view=Actions.LOGIN.jsp;
+            case "Index":
+                view = Actions.INDEX.jsp;
                 break;
-            case "Logout": view=Actions.LOGOUT.jsp;
+            case "Login":
+                view = Actions.LOGIN.jsp;
                 break;
-            case "SignUp": view=Actions.SIGNUP.jsp;
+            case "Logout":
+                view = Actions.LOGOUT.jsp;
                 break;
-
+            case "SignUp":
+                view = Actions.SIGNUP.jsp;
+                break;
+            case "Ticket":
+                view = Actions.TICKET.jsp;
+                break;
+            case "Registration":
+                view = Actions.REGISTRATION.jsp;
+                break;
         }
-        getServletContext().getRequestDispatcher(view).forward(req,resp);
+
+        //кэшируем вывод сервлета
+        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //или нужно что-то сделать с request'ом ?
+        getServletContext().getRequestDispatcher(view).forward(req, resp);
     }
 }
