@@ -1,12 +1,13 @@
-package by.it.litvin.jd03_02;
+package by.it.litvin.jd03_03.beansdao;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-class C_Init {
+public class Reset {
 
-    static void init(){
+    public static void main(String[] args) {
+
 
         try {
             Driver driver = new FabricMySQLDriver();
@@ -77,7 +78,7 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.ru', 1);");
             statement.executeUpdate("INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 2);");
-            statement.executeUpdate("INSERT INTO `litvin`.`form` (`id`,`name`,`surname`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT,'Sasha','Zankovich', 'Minsk', 'beautiful', 18, 'student', 'relationship', 2);");
+            statement.executeUpdate("INSERT INTO `litvin`.`form` (`id`, `name`, `surname`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT, 'Sasha', 'Zankovich', 'Minsk', 'beautiful', 19, 'student', 'relationship', 2);");
 
         }catch (SQLException e){
             e.printStackTrace();

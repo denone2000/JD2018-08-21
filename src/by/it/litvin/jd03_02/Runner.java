@@ -11,7 +11,7 @@ public class Runner {
 //        A_AddData.addData("Minsk","Young",16,"schoolgirl","friendship",2);
 //        B_AddRoles.addRoles("admin");
 //        B_ShowUsers.showUsers();
-        TaskC.addForm("minsk","young",18,"student","relationship",0);
+        TaskC.addForm("sasha","zankovich","minsk","young",18,"student","relationship",0);
         TaskC.addRole("admin");
         TaskC.addUser("Edward","ed","edward@mail.ru",2);
 

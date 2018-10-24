@@ -4,9 +4,9 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
- class A_AddData {
+class A_AddData {
 
-     static void addData(String address, String description, int age, String information, String aim, int users_id) {
+    static void addData(String name, String surname, String address, String description, int age, String information, String aim, int users_id) {
         try {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
@@ -23,8 +23,8 @@ import java.sql.*;
         String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
                 "?useUnicode=true&characterEncoding=UTF-8";
         String USER_DB = "root";
-         String PASSWORD_DB = "";
-         try (Connection connection =
+        String PASSWORD_DB = "";
+        try (Connection connection =
                      DriverManager.getConnection
                              (URL_DB, USER_DB, PASSWORD_DB)) {
 
@@ -33,8 +33,8 @@ import java.sql.*;
 
             statement.executeUpdate(
                     String.format(
-                            "INSERT INTO `litvin`.`form` (`id`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT, '%s', '%s', %d , '%s', '%s', %d );",
-                            address, description, age, information, aim, users_id)
+                            "INSERT INTO `litvin`.`form` (`id`,`name`,`surname`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT,'%s', '%s', '%s', '%s', %d , '%s', '%s', %d );",
+                            name, surname, address, description, age, information, aim, users_id)
             );
         } catch (SQLException e) {
             e.printStackTrace();
