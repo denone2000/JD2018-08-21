@@ -1,20 +1,24 @@
 package by.it.galushka.jd03_03;
 
-import by.it.galushka.jd03_02.beans.User;
+import by.it.galushka.jd03_03.dao.*;
 
-public class Dao {
+class Dao {
 
     private static Dao instance;
 
-    InterfaceDAO<User> role;
-    InterfaceDAO<User> user;
-    InterfaceDAO<User> car;
-    InterfaceDAO<User> order;
+    public RoleDao role;
+    public UserDao user;
+    public CarDao car;
+    public OrderDao order;
 
     private Dao() {
+        role = new RoleDao();
+        user = new UserDao();
+        car = new CarDao();
+        order = new OrderDao();
     }
 
-    Dao getDao(){
+    static Dao getDao(){
         if(instance == null){
             synchronized (Dao.class){
                 if(instance==null){
