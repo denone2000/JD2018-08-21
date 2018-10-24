@@ -11,6 +11,10 @@ public enum Actions {
         this.jsp = "/logout.jsp";
     }}, SIGNUP {{
         this.jsp = "/signup.jsp";
+    }},CREATEVENUE {{
+        this.jsp = "/createVenue.jsp";
+    }},LISTWENUES{{
+        this.jsp = "/listVenues.jsp";
     }};
 
     public String jsp = "/error.jsp";

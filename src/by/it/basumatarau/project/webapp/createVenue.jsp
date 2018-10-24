@@ -2,10 +2,6 @@
 <%@ include file="include/head.htm" %>
 <body>
 <%@ include file="include/menu.htm" %>
-<p>Cmd Sign-up: ${message}</p>
+<p>Cmd CreateVenue: ${message}</p>
 </body>
 </html>
-
-
-
-

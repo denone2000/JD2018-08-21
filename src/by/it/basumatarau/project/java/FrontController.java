@@ -41,6 +41,12 @@ public class FrontController extends HttpServlet {
             case "SignUp":
                 view = Actions.SIGNUP.jsp;
                 break;
+            case "CreateVenue":
+                view = Actions.CREATEVENUE.jsp;
+                break;
+            case "ListVenues":
+                view = Actions.LISTWENUES.jsp;
+                break;
         }
 
         resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
