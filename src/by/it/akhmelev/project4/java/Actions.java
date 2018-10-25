@@ -1,4 +1,4 @@
-package by.it.akhmelev.project.java;
+package by.it.akhmelev.project4.java;
 
 public enum Actions {
 
