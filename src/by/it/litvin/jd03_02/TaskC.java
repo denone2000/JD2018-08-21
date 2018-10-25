@@ -28,12 +28,12 @@ public class TaskC {
 
         }
     }
-    static void addForm(String address,String description,int age, String information,String aim,long users_id)
+    static void addForm(String name,String surname,String address,String description,int age, String information,String aim,long users_id)
             throws SQLException{
         try (
                 Connection connection=ConnectionCreator.getConnection();
                 Statement statement=connection.createStatement()){
-            Form form=new Form(0,address,description,age,information,aim,2);
+            Form form=new Form(0,name,surname,address,description,age,information,aim,2);
            FormCrud.create(form);
 
         }

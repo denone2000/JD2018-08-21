@@ -56,6 +56,8 @@ class C_Init {
                     "ENGINE = InnoDB;\n");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `litvin`.`form` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `name` VARCHAR(500) NULL,\n" +
+                    "  `surname` VARCHAR(500) NULL,\n" +
                     "  `address` VARCHAR(500) NULL,\n" +
                     "  `description` VARCHAR(5000) NULL,\n" +
                     "  `age` INT NULL,\n" +
@@ -75,7 +77,7 @@ class C_Init {
             statement.executeUpdate("INSERT INTO `litvin`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
             statement.executeUpdate("INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'admin', 'admin@mail.ru', 1);");
             statement.executeUpdate("INSERT INTO `litvin`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'user', 'user@mail.ru', 2);");
-            statement.executeUpdate("INSERT INTO `litvin`.`form` (`id`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT, 'Minsk', 'beautiful', 18, 'student', 'relationship', 2);");
+            statement.executeUpdate("INSERT INTO `litvin`.`form` (`id`,`name`,`surname`, `address`, `description`, `age`, `information`, `aim`, `users_id`) VALUES (DEFAULT,'Sasha','Zankovich', 'Minsk', 'beautiful', 18, 'student', 'relationship', 2);");
 
         }catch (SQLException e){
             e.printStackTrace();

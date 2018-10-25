@@ -15,17 +15,15 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
     //==================================================================================================================
     //запись нового билета в бд
     public boolean create(Ticket ticket) throws SQLException {
-        String sql = String.format("INSERT INTO `tickets`(`transport`," +
-                        " `routes_id from`, `routes_id to`, `data`, `month`," +
-                        " `year`, `users_id`) " +
+        String sql = String.format("INSERT INTO `tickets`(`transport`, " +
+                        "`routes_id from`, `routes_id to`, `data`, " +
+                        "`users_id`) " +
                         "VALUES ('%s','%d','%d'," +
-                        "'%d','%d','%d','%d')",
+                        "'%s','%d')",
                 ticket.getTransport(),
                 ticket.getRoutesIdFrom(),
                 ticket.getRoutesIdTo(),
                 ticket.getData(),
-                ticket.getMonth(),
-                ticket.getYear(),
                 ticket.getUsersId());
         long id = executeCreate(sql);
         if (id > 0) {
@@ -53,17 +51,13 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
                         "`transport`='%s'," +
                         "`routes_id from`='%d'," +
                         "`routes_id to`='%d'," +
-                        "`data`='%d'," +
-                        "`month`='%d'," +
-                        "`year`='%d'," +
+                        "`data`='%s'," +
                         "`users_id`='%d'" +
                         "WHERE `id`=%d",
                 ticket.getTransport(),
                 ticket.getRoutesIdFrom(),
                 ticket.getRoutesIdTo(),
                 ticket.getData(),
-                ticket.getMonth(),
-                ticket.getYear(),
                 ticket.getUsersId(),
                 ticket.getId());
         return (executeUpdate(sql));
@@ -92,9 +86,7 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
                         resultSet.getString("transport"),
                         resultSet.getLong("routes_id from"),
                         resultSet.getLong("routes_id to"),
-                        resultSet.getInt("data"),
-                        resultSet.getInt("month"),
-                        resultSet.getInt("year"),
+                        resultSet.getTimestamp("data"),
                         resultSet.getLong("users_id"));
                 listTickets.add(ticket);
             }
@@ -117,9 +109,7 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
                         resultSet.getString("transport"),
                         resultSet.getLong("routes_id from"),
                         resultSet.getLong("routes_id to"),
-                        resultSet.getInt("data"),
-                        resultSet.getInt("month"),
-                        resultSet.getInt("year"),
+                        resultSet.getTimestamp("data"),
                         resultSet.getLong("users_id"));
                 listTickets.add(ticket);
             }

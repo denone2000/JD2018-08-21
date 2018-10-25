@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Email, Nickname, Password, Ads)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Ads (Ad)+>
+        <!ELEMENT Ad (Description,KindOfAnimal,Greed,Sex,Age,Height,Qualities)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT KindOfAnimal (#PCDATA)>
+        <!ELEMENT Greed (#PCDATA)>
+        <!ELEMENT Sex (#PCDATA)>
+        <!ELEMENT Age (#PCDATA)>
+        <!ELEMENT Height (#PCDATA)>
+        <!ELEMENT Qualities (#PCDATA)>
