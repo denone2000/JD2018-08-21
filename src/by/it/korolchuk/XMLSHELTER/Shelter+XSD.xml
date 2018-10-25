@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://korolchuk.it.by/"
+         xsi:schemaLocation="http://korolchuk.it.by/ Shelter.xsd">
+    <Person>
+        <Email>111@mail.ru</Email>
+        <Nickname>user1</Nickname>
+        <Password>1236578</Password>
+        <Ads>
+            <Ad>
+                <Description>Dooby the dog</Description>
+                <KindOfAnimal>a dog</KindOfAnimal>
+                <Greed>without greed</Greed>
+                <Sex>male</Sex>
+                <Age>2</Age>
+                <Height>45</Height>
+                <Qualities>needs training</Qualities>
+            </Ad>
+            <Ad>
+                <Description>Maya the dog</Description>
+                <KindOfAnimal>>a dog</KindOfAnimal>
+                <Greed>without greed</Greed>
+                <Sex>female</Sex>
+                <Age>2</Age>
+                <Height>60</Height>
+                <Qualities>disabled dog without a paw</Qualities>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>222@mail.ru</Email>
+        <Nickname>user2</Nickname>
+        <Password>87654321</Password>
+        <Ads>
+            <Ad>
+                <Description>Max the parrot</Description>
+                <KindOfAnimal>a parrot</KindOfAnimal>
+                <Greed>budgerigar</Greed>
+                <Sex>male</Sex>
+                <Age>5</Age>
+                <Height>15</Height>
+                <Qualities>warning: turns the air blue!</Qualities>
+            </Ad>
+            <Ad>
+                <Description>Decorative rat</Description>
+                <KindOfAnimal>a rat</KindOfAnimal>
+                <Greed>standard</Greed>
+                <Sex>female</Sex>
+                <Age>1</Age>
+                <Height>15</Height>
+                <Qualities>steals shining things</Qualities>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>333@mail.ru</Email>
+        <Nickname>user3</Nickname>
+        <Password>5876378</Password>
+        <Ads>
+            <Ad>
+                <Description>Belka the old dog</Description>
+                <KindOfAnimal>>a dog</KindOfAnimal>
+                <Greed>without greed</Greed>
+                <Sex>female</Sex>
+                <Age>11</Age>
+                <Height>55</Height>
+                <Qualities>ideal calm dog for phlegmatic people</Qualities>
+            </Ad>
+            <Ad>
+                <Description>Tikhon the cat</Description>
+                <KindOfAnimal>a cat</KindOfAnimal>
+                <Greed>reed cat</Greed>
+                <Sex>male</Sex>
+                <Age>4</Age>
+                <Height>23</Height>
+                <Qualities>has diabetes, needs care</Qualities>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>444@mail.ru</Email>
+        <Nickname>user4</Nickname>
+        <Password>367909865</Password>
+        <Ads>
+            <Ad>
+                <Description>Ginger Lucy</Description>
+                <KindOfAnimal>>a dog</KindOfAnimal>
+                <Greed>without greed</Greed>
+                <Sex>female</Sex>
+                <Age>5</Age>
+                <Height>50</Height>
+                <Qualities>adores digging holes in a yard</Qualities>
+            </Ad>
+            <Ad>
+                <Description>Old Bobby</Description>
+                <KindOfAnimal>a cat</KindOfAnimal>
+                <Greed>without greed</Greed>
+                <Sex>male</Sex>
+                <Age>13</Age>
+                <Height>25</Height>
+                <Qualities>one-eyed pirate</Qualities>
+            </Ad>
+        </Ads>
+    </Person>
+</Persons>

@@ -3,6 +3,8 @@ package by.it.litvin.jd03_02.beans;
 public class Form {
 
     private long id;
+    private String name;
+    private String surname;
     private String address;
     private String description;
     private int age;
@@ -14,8 +16,11 @@ public class Form {
 
     }
 
-    public Form(long id, String address, String description, int age, String information, String aim, long users_id) {
+    public Form(long id, String name, String surname, String address, String description, int age,
+                String information, String aim, long users_id) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
         this.address = address;
         this.description = description;
         this.age = age;
@@ -30,6 +35,22 @@ public class Form {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getAddress() {
@@ -84,6 +105,8 @@ public class Form {
     public String toString() {
         return "Form{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", address='" + address + '\'' +
                 ", description='" + description + '\'' +
                 ", age=" + age +

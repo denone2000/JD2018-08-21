@@ -7,6 +7,7 @@ import by.it.bindyuk.jd03_03.beans.User;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class TestDao {
     private Role role = new Role(0, "test");
     private Route route = new Route(0, "New York");
     private Ticket ticket = new Ticket(0, "TEST",
-            1, 2, 21, 2, 2019, 2);
+            1, 2, new Timestamp(66666666),2);
 
     //==================================================================================================================
     //Тест операций CRUD для USER
