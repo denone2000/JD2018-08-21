@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://yarmolenka.it-academy.by/xml/Customers"
+        xmlns:tns="http://yarmolenka.it-academy.by/xml/Customers"
+        elementFormDefault="qualified">
+    <element name="Customers">
+        <complexType>
+            <sequence>
+                <element name="Player"
+                         type="tns:player"
+                         minOccurs="2"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="player">
+    <sequence>
+        <element name="Name" type="string"/>
+        <element name="BirthDate" type="tns:birthdate"/>
+        <element name="Phone" type="positiveInteger"/>
+        <element name="Address" type="tns:address"/>
+        <element name="Status" type="string"/>
+        <element name="Bar" type="string"/>
+        <element name="Cashback" type="float"/>
+    </sequence>
+    </complexType>
+    <complexType name="address">
+        <sequence>
+            <element name="Country" type="string"/>
+            <element name="City" type="string"/>
+            <element name="Street" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="birthdate">
+        <sequence>
+            <element name="Year" type="string"/>
+            <element name="Month" type="string"/>
+            <element name="Day" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
+

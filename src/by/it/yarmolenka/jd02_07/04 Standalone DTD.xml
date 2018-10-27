@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="yes" ?>
+<!DOCTYPE Customers [
+        <!ELEMENT Customers (Player)+>
+        <!ELEMENT Player (Name, BirthDate, Phone, Address, Status, Bar, Cashback)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT BirthDate (Year, Month, Day)>
+        <!ELEMENT Year (#PCDATA)>
+        <!ELEMENT Month (#PCDATA)>
+        <!ELEMENT Day (#PCDATA)>
+        <!ELEMENT Phone (#PCDATA)>
+        <!ELEMENT Address (Country, City, Street)>
+        <!ELEMENT Country (#PCDATA)>
+        <!ELEMENT City (#PCDATA)>
+        <!ELEMENT Street (#PCDATA)>
+        <!ELEMENT Status (#PCDATA)>
+        <!ELEMENT Bar (#PCDATA)>
+        <!ELEMENT Cashback (#PCDATA)>
+        ]>
+<Customers>
+    <Player>
+        <Name>Alla Pugacheva</Name>
+        <BirthDate>
+            <Year>1939</Year>
+            <Month>04</Month>
+            <Day>15</Day>
+        </BirthDate>
+        <Phone>3822773</Phone>
+        <Address>
+            <Country>Russia</Country>
+            <City>Moscow</City>
+            <Street>Nikolskaya 27</Street>
+
+        </Address>
+        <Status>Platinum</Status>
+        <Bar>Unlimited</Bar>
+        <Cashback>0.2</Cashback>
+    </Player>
+    <Player>
+        <Name>Maksim Galkin</Name>
+        <BirthDate>
+            <Year>1976</Year>
+            <Month>06</Month>
+            <Day>18</Day>
+        </BirthDate>
+        <Phone>3884773</Phone>
+        <Address>
+            <Country>Russia</Country>
+            <City>Moscow</City>
+            <Street>Dmitrovskaya 48</Street>
+        </Address>
+        <Status>Gold</Status>
+        <Bar>Unlimited</Bar>
+        <Cashback>0.1</Cashback>
+    </Player>
+</Customers>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!ELEMENT Customers (Player)+>
+        <!ELEMENT Player (Name, BirthDate, Phone, Address, Status, Bar, Cashback)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT BirthDate (Year, Month, Day)>
+        <!ELEMENT Year (#PCDATA)>
+        <!ELEMENT Month (#PCDATA)>
+        <!ELEMENT Day (#PCDATA)>
+        <!ELEMENT Phone (#PCDATA)>
+        <!ELEMENT Address (Country, City, Street)>
+        <!ELEMENT Country (#PCDATA)>
+        <!ELEMENT City (#PCDATA)>
+        <!ELEMENT Street (#PCDATA)>
+        <!ELEMENT Status (#PCDATA)>
+        <!ELEMENT Bar (#PCDATA)>
+        <!ELEMENT Cashback (#PCDATA)>

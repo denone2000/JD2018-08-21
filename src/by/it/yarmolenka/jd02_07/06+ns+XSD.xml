@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns:Customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:ns="http://yarmolenka.it-academy.by/xml/Customers"
+          xsi:schemaLocation="http://yarmolenka.it-academy.by/xml/Customers 05.xsd">
+    <ns:Player>
+        <ns:Name>Alla Pugacheva</ns:Name>
+        <ns:BirthDate>
+            <ns:Year>1939</ns:Year>
+            <ns:Month>04</ns:Month>
+            <ns:Day>15</ns:Day>
+        </ns:BirthDate>
+        <ns:Phone>3822773</ns:Phone>
+        <ns:Address>
+            <ns:Country>Russia</ns:Country>
+            <ns:City>Moscow</ns:City>
+            <ns:Street>Nokolskaya 27</ns:Street>
+        </ns:Address>
+        <ns:Status>Platinum</ns:Status>
+        <ns:Bar>Unlimited</ns:Bar>
+        <ns:Cashback>0.2</ns:Cashback>
+    </ns:Player>
+    <ns:Player>
+        <ns:Name>Maksim Galkin</ns:Name>
+        <ns:BirthDate>
+            <ns:Year>1976</ns:Year>
+            <ns:Month>06</ns:Month>
+            <ns:Day>18</ns:Day>
+        </ns:BirthDate>
+        <ns:Phone>3822773</ns:Phone>
+        <ns:Address>
+            <ns:Country>Russia</ns:Country>
+            <ns:City>Moscow</ns:City>
+            <ns:Street>Dmitrovskaya 48</ns:Street>
+        </ns:Address>
+        <ns:Status>Gold</ns:Status>
+        <ns:Bar>Unlimited</ns:Bar>
+        <ns:Cashback>0.1</ns:Cashback>
+    </ns:Player>
+</ns:Customers>
